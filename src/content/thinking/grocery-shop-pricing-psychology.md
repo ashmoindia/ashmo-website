@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-I was 19. I was running a grocery shop in Deira, Dubai.
+I was 19. I was running a grocery shop in Deira, Dubai. It was part of [a longer journey](/work/early-hustle) that shaped everything I do today.
 
 No MBA. No pricing framework. No spreadsheet optimisation. Just a counter, a customer, and a decision to make in real time.
 
@@ -51,3 +51,5 @@ But the fundamentals haven't moved:
 I learned all of this behind a counter at 19.
 
 The shop is gone. The lessons compound daily.
+
+Those same instincts — reading people, understanding value, staying disciplined on margins — became the foundation of [how I approach brand positioning](/thinking/brand-positioning-hardest-thing) and eventually [how FiLLi Cafe scaled to 80+ outlets](/work/filli-cafe).

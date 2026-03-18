@@ -24,7 +24,7 @@ But being for everyone means being memorable to no one.
 
 The brands that win — the ones that people recommend without being asked — are the ones that can explain what they are in one clear sentence. Not a paragraph. Not a deck. One sentence.
 
-I learned this the hard way with FiLLi. We weren't "a cafe." We were the place for saffron chai. That specificity didn't limit us. **It made us unforgettable.**
+I learned this the hard way with [FiLLi](/work/filli-cafe). We weren't "a cafe." We were the place for saffron chai. That specificity didn't limit us. **It made us unforgettable.**
 
 > "The problem with most brand strategies is not the strategy. It's that nobody follows through past week two."
 
@@ -49,3 +49,5 @@ But by year three, something shifts. People start describing your brand the way 
 By year five, your positioning is your moat. Competitors can copy your product. They can't copy ten years of consistent positioning.
 
 That's the compound effect nobody talks about. And it starts with the abstract work most founders skip.
+
+I talk about this in more depth in [the podcast](/podcast) — and much of what I know about consistency comes from [the years I spent learning pricing and selling](/thinking/grocery-shop-pricing-psychology) long before FiLLi existed.

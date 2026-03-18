@@ -34,3 +34,5 @@ FiLLi taught me that brand building is not design. It's not marketing. It's the 
 > The brand is not the logo. The brand is what people feel when they see the logo.
 
 Consistency compounds. That's the real secret behind FiLLi's growth.
+
+I've written about [why brand positioning is the hardest thing to get right](/thinking/brand-positioning-hardest-thing) — FiLLi is the proof. And the foundation for all of this was laid during [my early years as a merchant and designer](/work/early-hustle).

@@ -28,7 +28,7 @@ But nobody talks about the middle.
 
 The middle is where most people quit. It's the phase where effort and results are completely disconnected. You're working hard and nothing visible is happening.
 
-I spent years in the middle. At FiLLi, in my personal life, in my creative work. Years where the effort was real but the reward was invisible.
+I spent years in the middle. At [FiLLi](/work/filli-cafe), in my personal life, in my creative work. Years where the effort was real but the reward was invisible.
 
 > "When opportunity comes, it feels sudden to the world. But to you — it feels inevitable."
 
@@ -51,3 +51,5 @@ On the days it doesn't feel natural, you do the work anyway. Not because you're 
 The discipline of showing up is the discipline of patience.
 
 They're the same thing.
+
+This is the same principle behind [what I learned running a grocery shop at 19](/thinking/grocery-shop-pricing-psychology) — and the same principle that [made FiLLi's brand positioning compound over a decade](/thinking/brand-positioning-hardest-thing).
