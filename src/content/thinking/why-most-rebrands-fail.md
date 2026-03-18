@@ -64,7 +64,7 @@ What you notice if you pay attention is that the brands that last in Dubai — t
 
 The brands that do dramatic rebrands in this market usually do it because they lost clarity about what they were. They started chasing trends instead of deepening their position. The rebrand becomes an attempt to manufacture a clarity that should have been built into the strategy from day one.
 
-At [FiLLi](/work/filli-cafe), we've resisted the temptation to do what I call the "reset rebrand" — where you throw everything out and start fresh because it feels exciting. Instead, we've done what I'd call evolutionary tightening. Our identity has become cleaner, more confident, more refined over the years. But if you showed someone our branding from 2010 and our branding today, they'd recognise it as the same brand. That continuity is not an accident. It's a strategic choice. And it's one of the reasons [brand decisions compound](/thinking/brand-decisions-compound) over time.
+At [FiLLi](/work/filli-cafe), we've resisted the temptation to do what I call the "reset rebrand" — where you throw everything out and start fresh because it feels exciting. Instead, we've done what I'd call evolutionary tightening. Our identity has become cleaner, more confident, more refined over the years. But if you showed someone our branding from 2010 and our branding today, they'd recognise it as the same brand. That continuity is not an accident. It's a strategic choice. And it's one of the reasons [brand decisions compound](/thinking/brand-decisions-that-compound) over time.
 
 ## How Do You Know If Your Brand Identity Is Actually the Problem?
 

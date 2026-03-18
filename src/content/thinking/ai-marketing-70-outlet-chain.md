@@ -74,7 +74,7 @@ This matters beyond websites. It means that every digital project I evaluate now
 
 ## How Does AI Fit Into Running Meta Ad Campaigns?
 
-[Meta ad campaigns](/thinking/meta-ad-campaigns) are where AI has the most measurable impact for me.
+[Meta ad campaigns](/thinking/meta-ad-campaigns-creative-lessons) are where AI has the most measurable impact for me.
 
 Running ads for FiLLi across 80+ outlets means constant creative production. We're not running one campaign — we're running dozens, with different locations, audiences, offers, and seasonal moments. The volume alone used to be the constraint.
 
