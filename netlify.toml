@@ -2,6 +2,25 @@
   command = "npm run build"
   publish = "dist"
 
+# Redirect all domain variants to canonical https://ashmo.io
+[[redirects]]
+  from = "https://www.ashmo.io/*"
+  to = "https://ashmo.io/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.ashmo.io/*"
+  to = "https://ashmo.io/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://ashmo.io/*"
+  to = "https://ashmo.io/:splat"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -9,3 +28,4 @@
     X-Frame-Options = "SAMEORIGIN"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
