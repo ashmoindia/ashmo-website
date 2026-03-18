@@ -9,9 +9,10 @@ interface Props {
 const { number, title, description, purple = false } = Astro.props;
 ---
 
-<div
+<a
+  href="/thinking"
   class:list={[
-    "bg-surface border border-border rounded-lg p-8 md:p-9 transition-all duration-200 cursor-pointer",
+    "block bg-surface border border-border rounded-lg p-8 md:p-9 transition-all duration-200 no-underline",
     purple
       ? "hover:border-secondary"
       : "hover:border-accent",
@@ -24,6 +25,6 @@ const { number, title, description, purple = false } = Astro.props;
   >
     {number}
   </p>
-  <h3 class="font-heading text-lg md:text-xl font-semibold mb-3">{title}</h3>
+  <h3 class="font-heading text-lg md:text-xl font-semibold mb-3 text-text">{title}</h3>
   <p class="text-sm text-text-secondary font-light leading-relaxed">{description}</p>
-</div>
+</a>

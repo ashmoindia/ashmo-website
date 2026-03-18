@@ -5,7 +5,7 @@ date: 1999-01-01
 category: "merchant-mindset"
 tags: ["entrepreneurship", "hustle", "foundation"]
 published: true
-image: "/images/work/early-hustle.jpg"
+image: "/og-default.jpg"
 imageAlt: "Early entrepreneurial journey"
 ---
 

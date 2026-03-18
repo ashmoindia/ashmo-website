@@ -5,7 +5,7 @@ date: 2026-03-15
 category: "founder-documentary"
 tags: ["podcast", "storytelling", "video"]
 published: true
-image: "/images/work/podcast.jpg"
+image: "/og-default.jpg"
 imageAlt: "Ashmo podcast recording"
 ---
 

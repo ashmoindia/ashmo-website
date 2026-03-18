@@ -5,7 +5,7 @@ date: 2026-03-01
 category: "founder-documentary"
 tags: ["writing", "platform", "personal brand"]
 published: true
-image: "/images/work/ashmo-platform.jpg"
+image: "/og-default.jpg"
 imageAlt: "ashmo.io personal brand website"
 ---
 

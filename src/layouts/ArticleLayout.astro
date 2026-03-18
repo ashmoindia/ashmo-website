@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
@@ -8,9 +9,17 @@ interface Props {
   updated?: Date;
   pillar: string;
   image?: string;
+  currentSlug?: string;
 }
 
-const { title, description, date, updated, pillar, image } = Astro.props;
+const { title, description, date, updated, pillar, image, currentSlug } = Astro.props;
+
+// Get related articles (same pillar, excluding current)
+const allArticles = await getCollection('thinking', ({ data }) => data.published);
+const relatedArticles = allArticles
+  .filter(a => a.data.pillar === pillar && a.id !== currentSlug)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
 
 const pillarLabels: Record<string, string> = {
   'merchant-mindset': 'Merchant Mindset',
@@ -99,6 +108,21 @@ const articleSchema = {
           <p class="text-sm text-text-tertiary">Founder, brand builder, and merchant philosopher. <a href="/story" class="text-accent hover:text-accent-light">Read my story</a></p>
         </div>
       </div>
+
+      <!-- Related Articles -->
+      {relatedArticles.length > 0 && (
+        <div class="mt-16 pt-10 border-t border-border">
+          <h2 class="text-[0.889rem] font-body font-medium uppercase tracking-[0.08em] text-text-tertiary mb-8">Keep Reading</h2>
+          <div class="flex flex-col gap-6">
+            {relatedArticles.map(article => (
+              <a href={`/thinking/${article.id}`} class="group block no-underline">
+                <h3 class="font-heading text-lg font-semibold text-text group-hover:text-accent transition-colors mb-1">{article.data.title}</h3>
+                <p class="text-sm text-text-tertiary font-light">{article.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
     </div>
   </article>

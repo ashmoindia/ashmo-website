@@ -5,7 +5,7 @@ date: 2012-01-01
 category: "brand-building"
 tags: ["branding", "F&B", "scaling"]
 published: true
-image: "/images/work/filli-cafe.jpg"
+image: "/og-default.jpg"
 imageAlt: "FiLLi Cafe brand identity and outlets"
 ---
 

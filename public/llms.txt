@@ -1,9 +1,17 @@
 # ashmo.io
 
-> Personal brand website of Ashraf Hassan (Ashmo) — founder, brand builder, and writer.
+> Personal brand website of Ashraf Hassan (Ashmo) — founder, brand builder, and writer with 25+ years of business experience.
 
 ## About
 Ashmo is the Head of Brand & Growth at FiLLi Cafe, a 70+ outlet cafe chain in the UAE. He has 25+ years of experience spanning retail, brand strategy, marketing, and the AI creator economy. He writes about what real business actually looks like — not the glamour version, the survival version.
+
+## Expertise
+- Brand positioning and strategy for F&B and retail businesses
+- Cafe growth and scaling (built FiLLi Cafe from 1 outlet to 70+)
+- Pricing psychology and merchant intelligence
+- AI and creator economy applications for business
+- Marketing campaign management (1,000+ Meta ad campaigns)
+- Founder mindset, discipline, and habit philosophy
 
 ## Content Pillars
 - Merchant Mindset: Real business stories from the ground — selling, pricing, reading people
@@ -17,10 +25,25 @@ Ashmo is the Head of Brand & Growth at FiLLi Cafe, a 70+ outlet cafe chain in th
 - Thinking (Articles): https://ashmo.io/thinking/
 - Founder Story: https://ashmo.io/story/
 - Podcast: https://ashmo.io/podcast/
+- Work & Case Studies: https://ashmo.io/work/
 - Contact: https://ashmo.io/contact/
+
+## Articles
+- Why Brand Positioning Is the Hardest Thing: https://ashmo.io/thinking/brand-positioning-hardest-thing/
+- What a Grocery Shop at 19 Taught Me About Pricing: https://ashmo.io/thinking/grocery-shop-pricing-psychology/
+- Patience Is Not Passive: https://ashmo.io/thinking/patience-is-not-passive/
+
+## Case Studies
+- FiLLi Cafe — From 1 outlet to 70+: https://ashmo.io/work/filli-cafe/
+- The Early Hustle — Entrepreneurial foundations: https://ashmo.io/work/early-hustle/
+- The Podcast — Long-form founder conversations: https://ashmo.io/work/the-podcast/
 
 ## Social
 - LinkedIn: https://www.linkedin.com/in/iamashmo/
 - Instagram: https://www.instagram.com/iam_ashmo/
 - YouTube: https://www.youtube.com/@iamashmo
 - Facebook: https://www.facebook.com/iamashmo
+
+## Contact
+- Website: https://ashmo.io/contact/
+- Email: ashmoindia@gmail.com

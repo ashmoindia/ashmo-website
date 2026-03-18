@@ -21,6 +21,7 @@ const { Content } = await render(article);
   updated={article.data.updated}
   pillar={article.data.pillar}
   image={article.data.image}
+  currentSlug={article.id}
 >
   <Content />
 </ArticleLayout>

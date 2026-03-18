@@ -21,9 +21,34 @@ const categoryLabels: Record<string, string> = {
 
 const purpleCategories = ['founder-documentary'];
 const isPurple = purpleCategories.includes(entry.data.category);
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": entry.data.title,
+  "description": entry.data.description,
+  "datePublished": entry.data.date.toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": "Ashraf Hassan",
+    "alternateName": "Ashmo",
+    "url": "https://ashmo.io/story"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Ashraf Hassan",
+    "url": "https://ashmo.io"
+  },
+  "mainEntityOfPage": canonicalURL.toString(),
+  ...(entry.data.image ? { "image": new URL(entry.data.image, Astro.site).toString() } : {})
+};
 ---
 
-<BaseLayout title={entry.data.title} description={entry.data.description} image={entry.data.image}>
+<BaseLayout title={entry.data.title} description={entry.data.description} image={entry.data.image} type="article" publishedDate={entry.data.date}>
+
+  <!-- Article JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
   <article class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
     <div class="max-w-[680px]">
