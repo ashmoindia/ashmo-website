@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const work = await getCollection('work', ({ data }) => data.published);
+  return work.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const categoryLabels: Record<string, string> = {
+  'brand-building': 'Brand Building',
+  'founder-documentary': 'Founder Documentary',
+  'merchant-mindset': 'Merchant Mindset',
+};
+
+const purpleCategories = ['founder-documentary'];
+const isPurple = purpleCategories.includes(entry.data.category);
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description} image={entry.data.image}>
+
+  <article class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[680px]">
+
+      <!-- Meta -->
+      <div class="mb-10">
+        <span
+          class="text-[0.667rem] font-medium uppercase tracking-[0.12em]"
+          style={`color: ${isPurple ? 'var(--color-secondary)' : 'var(--color-accent)'}`}
+        >
+          {categoryLabels[entry.data.category] || entry.data.category}
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-heading text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-8 max-w-[640px]">
+        {entry.data.title}
+      </h1>
+
+      <!-- Lead -->
+      <p class="text-xl md:text-[1.22rem] text-text-secondary leading-relaxed font-light mb-12 max-w-[600px]">
+        {entry.data.description}
+      </p>
+
+      <!-- Separator -->
+      <div class="w-12 h-px mb-12" style={`background: ${isPurple ? 'var(--color-secondary)' : 'var(--color-accent)'}`}></div>
+
+      <!-- Body -->
+      <div class="prose">
+        <Content />
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-20 pt-10 border-t border-border">
+        <a href="/work" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
+          <span class="inline-block transition-transform group-hover:-translate-x-1">&larr;</span> All work
+        </a>
+      </div>
+
+    </div>
+  </article>
+
+</BaseLayout>

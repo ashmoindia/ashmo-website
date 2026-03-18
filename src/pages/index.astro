@@ -88,6 +88,7 @@ const latestArticles = sortedArticles.filter(a => a.id !== featuredArticle?.id).
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            loading="lazy"
           ></iframe>
         </div>
         <div class="p-8 md:p-10 flex flex-col justify-center relative z-10">
@@ -115,7 +116,7 @@ const latestArticles = sortedArticles.filter(a => a.id !== featuredArticle?.id).
   <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
       <div class="aspect-[4/5] bg-surface rounded-lg border border-border relative overflow-hidden">
-        <img src="/images/ashmo-portrait.png" alt="Ashmo — founder, brand builder" class="w-full h-full object-cover object-top" />
+        <img src="/images/ashmo-portrait.webp" alt="Ashmo — founder, brand builder" width="516" height="696" loading="lazy" class="w-full h-full object-cover object-top" />
         <div class="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none" style="background: linear-gradient(to top, rgba(212,135,90,0.12), transparent)"></div>
       </div>
       <div>

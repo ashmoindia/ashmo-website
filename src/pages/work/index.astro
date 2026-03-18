@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkCard from '../../components/WorkCard.astro';
+import { getCollection } from 'astro:content';
+
+const allWork = await getCollection('work', ({ data }) => data.published);
+
+// Custom sort: FiLLi first (featured), then by date descending
+const sortedWork = allWork.sort((a, b) => {
+  if (a.id === 'filli-cafe') return -1;
+  if (b.id === 'filli-cafe') return 1;
+  return b.data.date.valueOf() - a.data.date.valueOf();
+});
+---
+
+<BaseLayout title="Work" description="25 years of building brands, businesses, and ideas. From a grocery shop in Deira to an 80+ outlet cafe chain.">
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-24">
+    <div class="mb-16">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] mb-4">
+        The work.
+      </h1>
+      <p class="text-lg text-text-secondary font-light max-w-[520px] leading-relaxed">
+        25 years of building brands, businesses, and ideas. Not a portfolio — a body of work.
+      </p>
+    </div>
+
+    {sortedWork.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {sortedWork.map((item, i) => (
+          <WorkCard
+            title={item.data.title}
+            description={item.data.description}
+            date={item.data.date}
+            category={item.data.category}
+            slug={item.id}
+            featured={i === 0}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-text-secondary font-light">Work coming soon.</p>
+    )}
+
+    <!-- Philosophy -->
+    <div class="mt-20 pt-12 border-t border-border max-w-[560px]">
+      <blockquote class="font-heading text-xl md:text-2xl font-medium leading-snug text-text-secondary italic">
+        "The years that look wasted are often the ones doing the most work."
+      </blockquote>
+      <div class="mt-8 flex flex-col md:flex-row gap-6">
+        <a href="/story" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
+          Read my story <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+        </a>
+        <a href="/thinking" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-text-tertiary hover:text-text-secondary transition-colors group">
+          Read my thinking <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

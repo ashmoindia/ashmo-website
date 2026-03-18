@@ -1,0 +1,68 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  category: string;
+  slug: string;
+  featured?: boolean;
+}
+
+const { title, description, category, slug, featured = false } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  'brand-building': 'Brand Building',
+  'founder-documentary': 'Founder Documentary',
+  'merchant-mindset': 'Merchant Mindset',
+};
+
+const purpleCategories = ['founder-documentary'];
+const isPurple = purpleCategories.includes(category);
+---
+
+<a
+  href={`/work/${slug}`}
+  class:list={[
+    "block bg-surface border border-border rounded-lg transition-all duration-200 no-underline group relative overflow-hidden",
+    "hover:border-border-light hover:bg-surface-hover",
+    featured ? "p-10 md:p-14 col-span-full" : "p-8 md:p-10",
+  ]}
+>
+  <div
+    class="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] pointer-events-none"
+    style={`background: radial-gradient(circle, ${isPurple ? 'rgba(201,162,212,0.06)' : 'rgba(212,135,90,0.06)'} 0%, transparent 70%)`}
+  />
+
+  <div class="relative z-10">
+    <p
+      class="text-[0.667rem] font-medium uppercase tracking-[0.12em] mb-5"
+      style={`color: ${isPurple ? 'var(--color-secondary)' : 'var(--color-accent)'}`}
+    >
+      {categoryLabels[category] || category}
+    </p>
+
+    <h3
+      class:list={[
+        "font-heading font-semibold leading-tight mb-4 transition-colors duration-200",
+        featured ? "text-2xl md:text-[2rem] max-w-[600px]" : "text-xl md:text-2xl",
+        isPurple ? "group-hover:text-secondary-light" : "group-hover:text-accent-light",
+      ]}
+    >
+      {title}
+    </h3>
+
+    <p class:list={[
+      "text-text-secondary font-light leading-relaxed",
+      featured ? "text-[0.944rem] max-w-[560px]" : "text-[0.889rem]",
+    ]}>
+      {description}
+    </p>
+
+    <p class:list={[
+      "mt-6 text-[0.778rem] font-medium transition-colors duration-200",
+      isPurple ? "text-secondary/60 group-hover:text-secondary" : "text-accent/60 group-hover:text-accent",
+    ]}>
+      Read more &rarr;
+    </p>
+  </div>
+</a>

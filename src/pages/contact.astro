@@ -12,8 +12,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Whether it's about brand strategy, collaboration, or just a conversation — I'd like to hear from you.
       </p>
 
-      <form name="contact" method="POST" data-netlify="true" class="flex flex-col gap-6">
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="flex flex-col gap-6">
         <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
         <div>
           <label for="name" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Name</label>

@@ -7,12 +7,16 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  type?: 'website' | 'article';
+  publishedDate?: Date;
 }
 
 const {
   title,
   description = "Notes on brand building, merchant thinking, and the discipline of showing up.",
-  image = "/og-default.jpg"
+  image = "/og-default.jpg",
+  type = "website",
+  publishedDate,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -32,11 +36,15 @@ const fullTitle = title === "Home" ? "Ashmo — Founder, Brand Builder, Writer" 
   <link rel="canonical" href={canonicalURL} />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={type} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={new URL(image, Astro.site)} />
+  {type === 'article' && publishedDate && (
+    <meta property="article:published_time" content={publishedDate.toISOString()} />
+  )}
+  {type === 'article' && <meta property="article:author" content="Ashmo" />}
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -50,6 +58,33 @@ const fullTitle = title === "Home" ? "Ashmo — Founder, Brand Builder, Writer" 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <meta name="generator" content={Astro.generator} />
+
+  <!-- JSON-LD: Person + WebSite (sitewide) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ashraf Hassan",
+    "alternateName": "Ashmo",
+    "url": "https://ashmo.io",
+    "description": "Founder, brand builder, and writer. Head of Brand & Growth at FiLLi Cafe. 25+ years in retail, brand scaling, and marketing.",
+    "jobTitle": "Head of Brand & Growth",
+    "worksFor": { "@type": "Organization", "name": "FiLLi Cafe" },
+    "knowsAbout": ["Brand Strategy", "Cafe Growth", "Marketing", "AI in Business", "Retail"],
+    "sameAs": [
+      "https://www.linkedin.com/in/iamashmo/",
+      "https://www.instagram.com/iam_ashmo/",
+      "https://www.youtube.com/@iamashmo",
+      "https://www.facebook.com/iamashmo"
+    ]
+  })} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ashmo",
+    "url": "https://ashmo.io",
+    "description": "Notes on brand building, merchant thinking, and the discipline of showing up.",
+    "author": { "@type": "Person", "name": "Ashraf Hassan", "alternateName": "Ashmo" }
+  })} />
 </head>
 <body class="bg-bg text-text font-body leading-relaxed">
   <Header />

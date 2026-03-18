@@ -6,9 +6,11 @@ interface Props {
   pillar: string;
   slug: string;
   featured?: boolean;
+  headingLevel?: 'h2' | 'h3';
 }
 
-const { title, description, date, pillar, slug, featured = false } = Astro.props;
+const { title, description, date, pillar, slug, featured = false, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
 
 const pillarLabels: Record<string, string> = {
   'merchant-mindset': 'Merchant Mindset',
@@ -53,7 +55,7 @@ const readingTime = Math.max(3, Math.ceil(description.length / 40)) + ' min read
       {pillarLabels[pillar] || pillar}
     </p>
 
-    <h3
+    <Heading
       class:list={[
         "font-heading font-semibold leading-tight mb-4 transition-colors duration-200",
         featured ? "text-2xl md:text-[2rem] max-w-[600px]" : "text-xl",
@@ -61,7 +63,7 @@ const readingTime = Math.max(3, Math.ceil(description.length / 40)) + ' min read
       ]}
     >
       {title}
-    </h3>
+    </Heading>
 
     <p class="text-text-secondary text-[0.944rem] font-light leading-relaxed mb-6">
       {description}

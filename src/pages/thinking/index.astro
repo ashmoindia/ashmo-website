@@ -27,6 +27,7 @@ const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data
             pillar={article.data.pillar}
             slug={article.id}
             featured={i === 0}
+            headingLevel="h2"
           />
         ))}
       </div>
