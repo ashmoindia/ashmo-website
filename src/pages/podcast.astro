@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const episodes = [
+  {
+    title: "CAFE PROFIT: This Is What Successful Coffee Shop Owners Do Differently",
+    show: "The eCom Show by Shan",
+    episode: "#86",
+    description: "What separates thriving cafe owners from those who struggle? In this episode, Ashmo shares the strategies, brand thinking, and operational discipline behind building a 70+ outlet cafe chain — and what most coffee shop owners get wrong.",
+    youtubeId: "E0W1FqtuKw0",
+    date: "2025",
+    pillar: "brand-growth",
+  },
+];
+
+const purplePillars = ['ai-selling', 'habit-philosophy'];
+---
+
+<BaseLayout title="Podcast" description="Conversations on brand building, merchant thinking, and the discipline of showing up.">
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
+    <div class="mb-16">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Podcast</h1>
+      <p class="text-lg text-text-secondary font-light max-w-[520px]">
+        Conversations on brand building, cafe growth, and what real business actually looks like.
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-12">
+      {episodes.map(ep => (
+        <article class="bg-surface border border-border rounded-lg overflow-hidden">
+          <!-- Video Embed -->
+          <div class="aspect-video w-full">
+            <iframe
+              src={`https://www.youtube.com/embed/${ep.youtubeId}`}
+              title={ep.title}
+              class="w-full h-full"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <!-- Episode Info -->
+          <div class="p-8 md:p-10">
+            <div class="flex items-center gap-4 mb-4">
+              <span
+                class="text-[0.667rem] font-medium uppercase tracking-[0.12em]"
+                style={`color: ${purplePillars.includes(ep.pillar) ? 'var(--color-secondary)' : 'var(--color-accent)'}`}
+              >
+                {ep.show}
+              </span>
+              <span class="text-[0.667rem] text-text-tertiary">{ep.episode}</span>
+            </div>
+
+            <h2 class="font-heading text-xl md:text-2xl font-semibold leading-tight mb-4">
+              {ep.title}
+            </h2>
+
+            <p class="text-text-secondary font-light leading-relaxed text-[0.944rem]">
+              {ep.description}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
