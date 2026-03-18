@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('thinking', ({ data }) => data.published);
+const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Thinking" description="Essays on brand building, merchant thinking, AI, and the discipline of showing up.">
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-24">
+    <div class="mb-16">
+      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Thinking</h1>
+      <p class="text-lg text-text-secondary font-light max-w-[480px]">
+        Essays on brand building, merchant wisdom, and the discipline of showing up.
+      </p>
+    </div>
+
+    {sortedArticles.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {sortedArticles.map((article, i) => (
+          <ArticleCard
+            title={article.data.title}
+            description={article.data.description}
+            date={article.data.date}
+            pillar={article.data.pillar}
+            slug={article.id}
+            featured={i === 0}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="text-text-secondary font-light">Articles coming soon.</p>
+    )}
+  </section>
+
+</BaseLayout>

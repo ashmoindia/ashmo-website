@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact" description="Want to connect? I'd like to hear from you.">
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[540px]">
+
+      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Get in touch.</h1>
+      <p class="text-lg text-text-secondary font-light leading-relaxed mb-12">
+        Whether it's about brand strategy, collaboration, or just a conversation — I'd like to hear from you.
+      </p>
+
+      <form name="contact" method="POST" data-netlify="true" class="flex flex-col gap-6">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div>
+          <label for="name" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors resize-y"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="self-start px-7 py-3 bg-accent border border-accent rounded-lg text-bg text-sm font-medium hover:bg-accent-light hover:border-accent-light transition-colors cursor-pointer"
+        >
+          Send Message
+        </button>
+      </form>
+
+      <div class="mt-16 pt-10 border-t border-border">
+        <p class="text-sm text-text-tertiary mb-2">Or find me on</p>
+        <a href="https://linkedin.com/in/ashmo" target="_blank" rel="noopener" class="text-accent hover:text-accent-light transition-colors text-sm font-medium">
+          LinkedIn &rarr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

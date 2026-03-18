@@ -1,0 +1,80 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  updated?: Date;
+  pillar: string;
+  image?: string;
+}
+
+const { title, description, date, updated, pillar, image } = Astro.props;
+
+const pillarLabels: Record<string, string> = {
+  'merchant-mindset': 'Merchant Mindset',
+  'brand-growth': 'Brand Growth',
+  'ai-selling': 'AI & Selling',
+  'habit-philosophy': 'Habit Philosophy',
+  'founder-documentary': 'Founder Documentary',
+};
+
+const purplePillars = ['ai-selling', 'habit-philosophy'];
+const isPurple = purplePillars.includes(pillar);
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title} description={description} image={image}>
+
+  <article class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[680px]">
+
+      <!-- Meta -->
+      <div class="flex items-center gap-6 mb-10">
+        <span
+          class="text-[0.667rem] font-medium uppercase tracking-[0.12em]"
+          style={`color: ${isPurple ? 'var(--color-secondary)' : 'var(--color-accent)'}`}
+        >
+          {pillarLabels[pillar] || pillar}
+        </span>
+        <span class="w-px h-4 bg-border"></span>
+        <span class="text-[0.778rem] text-text-tertiary">{formattedDate}</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-heading text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-8 max-w-[640px]">
+        {title}
+      </h1>
+
+      <!-- Lead -->
+      <p class="text-xl md:text-[1.22rem] text-text-secondary leading-relaxed font-light mb-12 max-w-[600px]">
+        {description}
+      </p>
+
+      <!-- Separator -->
+      <div class="w-12 h-px mb-12" style={`background: ${isPurple ? 'var(--color-secondary)' : 'var(--color-accent)'}`}></div>
+
+      <!-- Body -->
+      <div class="prose">
+        <slot />
+      </div>
+
+      <!-- Author -->
+      <div class="mt-20 pt-10 border-t border-border flex items-center gap-5">
+        <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-xs text-text-tertiary">A</div>
+        <div>
+          <p class="text-[0.889rem] font-medium text-text">Ashmo</p>
+          <p class="text-sm text-text-tertiary">Founder, brand builder, and merchant philosopher. <a href="/story" class="text-accent hover:text-accent-light">Read my story</a></p>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+</BaseLayout>

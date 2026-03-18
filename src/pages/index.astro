@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import PillarCard from '../components/PillarCard.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('thinking', ({ data }) => data.published);
+const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featuredArticle = sortedArticles.find(a => a.data.featured) || sortedArticles[0];
+const latestArticles = sortedArticles.filter(a => a.id !== featuredArticle?.id).slice(0, 2);
+---
+
+<BaseLayout title="Home">
+
+  <!-- Hero -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-12 md:pt-20 pb-20 md:pb-28 relative">
+    <!-- Warm glow -->
+    <div class="absolute top-[20%] -right-[10%] w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(circle, rgba(212,135,90,0.12) 0%, transparent 70%)"></div>
+
+    <div class="relative z-10">
+      <p class="text-[0.722rem] font-medium uppercase tracking-[0.15em] text-accent mb-8 flex items-center gap-3">
+        <span class="block w-8 h-px bg-accent"></span>
+        Founder &middot; Brand Builder &middot; Writer
+      </p>
+
+      <h1 class="font-heading text-4xl md:text-6xl lg:text-[3.6rem] font-bold leading-[1.08] tracking-tight mb-8 max-w-[780px]">
+        I build brands, study what works, and write about <em class="italic text-accent">what I learn.</em>
+      </h1>
+
+      <p class="text-lg md:text-xl text-text-secondary max-w-[520px] leading-relaxed font-light">
+        Notes on brand building, merchant thinking, and the discipline of showing up — from someone who's been doing the work for 25 years.
+      </p>
+
+      <a href="/thinking" class="inline-flex items-center gap-2.5 mt-12 text-[0.889rem] font-medium text-text hover:text-accent transition-colors group">
+        Read my thinking <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Latest Thinking -->
+  {(featuredArticle || latestArticles.length > 0) && (
+    <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
+      <div class="flex justify-between items-baseline mb-14 border-b border-border pb-6">
+        <h2 class="text-[1.11rem] font-body font-medium uppercase tracking-[0.08em] text-text-tertiary">Latest Thinking</h2>
+        <a href="/thinking" class="text-sm text-text-tertiary hover:text-accent transition-colors">View all &rarr;</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {featuredArticle && (
+          <ArticleCard
+            title={featuredArticle.data.title}
+            description={featuredArticle.data.description}
+            date={featuredArticle.data.date}
+            pillar={featuredArticle.data.pillar}
+            slug={featuredArticle.id}
+            featured={true}
+          />
+        )}
+
+        {latestArticles.map(article => (
+          <ArticleCard
+            title={article.data.title}
+            description={article.data.description}
+            date={article.data.date}
+            pillar={article.data.pillar}
+            slug={article.id}
+          />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- Philosophy Quote -->
+  <section class="py-24 md:py-32 text-center relative">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" style="background: radial-gradient(circle, rgba(201,162,212,0.12) 0%, transparent 60%)"></div>
+    <blockquote class="font-heading text-3xl md:text-5xl font-normal italic leading-[1.2] text-text max-w-[700px] mx-auto px-6 relative z-10">
+      "Patience is not passive. Patience is doing the work while waiting for the result."
+    </blockquote>
+    <p class="mt-8 text-sm text-text-tertiary tracking-wide relative z-10">— Ashmo</p>
+  </section>
+
+  <!-- About Teaser -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <div class="aspect-[4/5] bg-surface rounded-lg border border-border flex items-center justify-center text-text-tertiary text-sm relative overflow-hidden">
+        <div class="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none" style="background: linear-gradient(to top, rgba(212,135,90,0.12), transparent)"></div>
+        <span class="relative z-10">Photo of Ashmo</span>
+      </div>
+      <div>
+        <h2 class="font-heading text-3xl md:text-[2.4rem] font-semibold leading-[1.15] mb-6">
+          Merchant's son. Brand architect. Calm builder.
+        </h2>
+        <p class="text-[1.05rem] text-text-secondary font-light leading-[1.75] mb-6">
+          I grew up helping my father trade coconuts in Kerala, ran a grocery shop in Dubai at 19, and spent over a decade turning FiLLi Cafe from a local chai spot into a 70+ outlet cultural brand.
+        </p>
+        <p class="text-[1.05rem] text-text-secondary font-light leading-[1.75] mb-8">
+          Now I write about what real business actually looks like — not the glamour version, the survival version.
+        </p>
+        <a href="/story" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
+          Read my story <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Pillars -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
+    <div class="flex justify-between items-baseline mb-14 border-b border-border pb-6">
+      <h2 class="text-[1.11rem] font-body font-medium uppercase tracking-[0.08em] text-text-tertiary">What I Write About</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <PillarCard number="01" title="Merchant Mindset" description="Real business stories from the ground. Selling, pricing, reading people. The wisdom of trade — not MBA theory." />
+      <PillarCard number="02" title="Brand Building & Cafe Growth" description="The intelligence behind scaling FiLLi from a chai spot to 70+ outlets. Field-tested, not theoretical." />
+      <PillarCard number="03" title="AI & Future of Selling" description="How AI and creator economy are reshaping business — from a 25-year operator's perspective." purple={true} />
+      <PillarCard number="04" title="Habit Philosophy" description="Patience, discipline, and the inner operating system. The philosophy of showing up — distilled from decades of building." purple={true} />
+      <PillarCard number="05" title="Founder Documentary" description="The real texture of a founder-operator's life. Not curated. Not glamorised. What building actually looks like." />
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 text-center border-t border-border">
+    <p class="font-heading text-xl md:text-2xl text-text-secondary">
+      Want to talk? <a href="/contact" class="text-accent border-b border-accent pb-0.5 hover:text-accent-light hover:border-accent-light transition-colors">Get in touch</a>
+    </p>
+  </section>
+
+</BaseLayout>

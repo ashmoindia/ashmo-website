@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS — ashmo.io
+   Dark Editorial with Warm Soul
+   ============================================ */
+@theme {
+  --color-bg: #0F0F0F;
+  --color-bg-deep: #080808;
+  --color-surface: #1A1A1A;
+  --color-surface-hover: #222220;
+
+  --color-text: #F5F0EB;
+  --color-text-secondary: #9A9490;
+  --color-text-tertiary: #5E5955;
+
+  --color-accent: #D4875A;
+  --color-accent-light: #E8A472;
+
+  --color-secondary: #C9A2D4;
+  --color-secondary-light: #D8B8E0;
+
+  --color-border: #2A2725;
+  --color-border-light: #333030;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 200ms ease-out;
+}
+
+a:hover {
+  color: var(--color-accent-light);
+}
+
+/* ============================================
+   ARTICLE BODY PROSE
+   ============================================ */
+.prose {
+  max-width: 680px;
+}
+
+.prose p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 1.6em;
+  color: var(--color-text-secondary);
+  font-weight: 300;
+}
+
+.prose strong {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.prose em {
+  font-style: italic;
+}
+
+.prose h2 {
+  font-size: 1.67rem;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  color: var(--color-text);
+}
+
+.prose h3 {
+  font-size: 1.33rem;
+  margin-top: 2.5em;
+  margin-bottom: 0.8em;
+  color: var(--color-text);
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding: 24px 0 24px 32px;
+  margin: 2.5em 0;
+}
+
+.prose blockquote p {
+  font-family: var(--font-heading);
+  font-size: 1.33rem;
+  font-style: italic;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.6em;
+  padding-left: 1.5em;
+  color: var(--color-text-secondary);
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--color-accent-light);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 3em 0;
+}
+
+.prose code {
+  background: var(--color-surface);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.889rem;
+}
+
+.prose pre {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 24px;
+  overflow-x: auto;
+  margin-bottom: 1.6em;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose img {
+  border-radius: 4px;
+  margin: 2em 0;
+  max-width: 100%;
+  height: auto;
+}
