@@ -70,6 +70,38 @@ const latestArticles = sortedArticles.filter(a => a.id !== featuredArticle?.id).
     </section>
   )}
 
+  <!-- Featured Podcast -->
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
+    <div class="flex justify-between items-baseline mb-14 border-b border-border pb-6">
+      <h2 class="text-[1.11rem] font-body font-medium uppercase tracking-[0.08em] text-text-tertiary">Latest Episode</h2>
+      <a href="/podcast" class="text-sm text-text-tertiary hover:text-accent transition-colors">All episodes &rarr;</a>
+    </div>
+
+    <div class="bg-surface border border-border rounded-lg overflow-hidden relative">
+      <div class="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] pointer-events-none" style="background: radial-gradient(circle, rgba(212,135,90,0.08) 0%, transparent 70%)"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="aspect-video">
+          <iframe
+            src="https://www.youtube.com/embed/E0W1FqtuKw0"
+            title="CAFE PROFIT: This Is What Successful Coffee Shop Owners Do Differently"
+            class="w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center relative z-10">
+          <p class="text-[0.667rem] font-medium uppercase tracking-[0.12em] text-accent mb-4">The eCom Show &middot; #86</p>
+          <h3 class="font-heading text-xl md:text-2xl font-semibold leading-tight mb-4">CAFE PROFIT: This Is What Successful Coffee Shop Owners Do Differently</h3>
+          <p class="text-text-secondary font-light leading-relaxed text-[0.944rem] mb-6">What separates thriving cafe owners from those who struggle? The strategies, brand thinking, and operational discipline behind building a 70+ outlet cafe chain.</p>
+          <a href="/podcast" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
+            Watch full episode <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Philosophy Quote -->
   <section class="py-24 md:py-32 text-center relative">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" style="background: radial-gradient(circle, rgba(201,162,212,0.12) 0%, transparent 60%)"></div>
