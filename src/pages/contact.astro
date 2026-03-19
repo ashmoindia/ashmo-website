@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Whether it's about brand strategy, collaboration, or just a conversation — I'd like to hear from you.
       </p>
 
-      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="flex flex-col gap-6">
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-recaptcha="true" class="flex flex-col gap-6">
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
@@ -48,6 +48,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors resize-y"
           ></textarea>
         </div>
+
+        <div data-netlify-recaptcha="true"></div>
 
         <button
           type="submit"
