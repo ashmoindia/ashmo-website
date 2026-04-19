@@ -1,26 +1,64 @@
 ---
 const year = new Date().getFullYear();
+const primaryLinks = [
+  { href: '/thinking/', label: 'Thinking' },
+  { href: '/restaurant-finance/', label: 'Finance' },
+  { href: '/work/', label: 'Work' },
+  { href: '/story/', label: 'Story' },
+  { href: '/contact/', label: 'Contact' },
+];
+
+const utilityLinks = [
+  { href: '/privacy-policy/', label: 'Privacy' },
+  { href: '/terms/', label: 'Terms' },
+  {
+    href: 'https://www.linkedin.com/in/iamashmo/',
+    label: 'LinkedIn',
+    external: true,
+  },
+];
 ---
 
 <footer class="max-w-[1200px] mx-auto px-6 md:px-12 border-t border-border">
-  <div class="py-10 flex flex-col md:flex-row justify-between items-center gap-4">
-    <div class="flex items-center gap-5">
-      <p class="text-xs text-text-tertiary">&copy; {year} Ashraf Hassan (Ashmo)</p>
-      <a href="/privacy-policy/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Privacy</a>
-      <a href="/terms/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Terms</a>
+  <div class="py-10 md:py-12 flex flex-col gap-8">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-10">
+      <div class="max-w-[420px]">
+        <a href="/ashraf-hassan/" class="inline-flex items-baseline gap-2 no-underline">
+          <span class="text-sm text-text font-medium">Ashraf Hassan</span>
+          <span class="text-sm text-accent italic">(Ashmo)</span>
+        </a>
+        <p class="mt-2 text-sm text-text-tertiary leading-relaxed">
+          Founder, brand builder, writer, and operator.
+        </p>
+      </div>
+
+      <nav aria-label="Footer" class="flex flex-wrap gap-x-5 gap-y-2 md:justify-end">
+        {primaryLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
     </div>
-    <ul class="flex gap-7 list-none">
-      <li><a href="/ashraf-hassan/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Ashraf Hassan</a></li>
-      <li><a href="/restaurant-finance/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Finance</a></li>
-      <li><a href="/thinking/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Thinking</a></li>
-      <li><a href="/story/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Story</a></li>
-      <li><a href="/work/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Work</a></li>
-      <li><a href="/podcast/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Podcast</a></li>
-      <li><a href="/contact/" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Contact</a></li>
-      <li><a href="https://www.linkedin.com/in/iamashmo/" target="_blank" rel="me noopener" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">LinkedIn</a></li>
-      <li><a href="https://www.instagram.com/iam_ashmo/" target="_blank" rel="me noopener" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Instagram</a></li>
-      <li><a href="https://www.youtube.com/@iamashmo" target="_blank" rel="me noopener" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">YouTube</a></li>
-      <li><a href="https://www.facebook.com/iamashmo" target="_blank" rel="me noopener" class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline">Facebook</a></li>
-    </ul>
+
+    <div class="pt-4 border-t border-border-light flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+      <p class="text-xs text-text-tertiary">&copy; {year} Ashmo</p>
+
+      <div class="flex flex-wrap gap-x-4 gap-y-2">
+        {utilityLinks.map((link) => (
+          <a
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'me noopener' : undefined}
+            class="text-xs text-text-tertiary hover:text-text-secondary transition-colors no-underline"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
   </div>
 </footer>
