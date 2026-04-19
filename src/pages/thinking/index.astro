@@ -7,13 +7,13 @@ const allArticles = await getCollection('thinking', ({ data }) => data.published
 const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="Thinking — Ashmo" description="Essays on brand architecture, operator intelligence, and the mechanics of building businesses that last.">
+<BaseLayout title="Thinking" description="Essays by Ashraf Hassan on brand architecture, operator intelligence, and the mechanics of building businesses that last.">
 
   <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-24">
     <div class="mb-16">
       <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Thinking</h1>
       <p class="text-lg md:text-xl text-text-secondary font-light max-w-[480px]">
-        Essays on brand architecture, operator decisions, and the mechanics of building businesses that compound over time.
+        Essays by Ashraf Hassan, known as Ashmo, on brand architecture, operator decisions, and the mechanics of building businesses that compound over time.
       </p>
     </div>
 

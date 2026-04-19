@@ -21,9 +21,12 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const brandName = "Ashraf Hassan";
 const fullTitle = title === "Home"
   ? "Ashraf Hassan (Ashmo) — Founder, Brand Builder, Writer"
-  : `${title} — Ashmo`;
+  : title.includes(brandName)
+    ? title
+    : `${title} — ${brandName}`;
 const pageImageURL = new URL(image, Astro.site).toString();
 const webpageSchema = {
   "@context": "https://schema.org",

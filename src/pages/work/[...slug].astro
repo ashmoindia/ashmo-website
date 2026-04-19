@@ -63,6 +63,10 @@ const articleSchema = {
         </span>
       </div>
 
+      <p class="text-[0.778rem] uppercase tracking-[0.14em] text-text-tertiary mb-8">
+        By <a href="/ashraf-hassan/" class="text-accent hover:text-accent-light">Ashraf Hassan (Ashmo)</a>
+      </p>
+
       <!-- Title -->
       <h1 class="font-heading text-3xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-8 max-w-[640px]">
         {entry.data.title}
@@ -82,10 +86,19 @@ const articleSchema = {
       </div>
 
       <!-- Footer -->
-      <div class="mt-20 pt-10 border-t border-border">
-        <a href="/work/" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
-          <span class="inline-block transition-transform group-hover:-translate-x-1">&larr;</span> All work
-        </a>
+      <div class="mt-20 pt-10 border-t border-border flex flex-col gap-8">
+        <div class="flex items-center gap-5">
+          <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-xs text-text-tertiary">A</div>
+          <div>
+            <p class="text-[0.889rem] font-medium text-text">Ashraf Hassan (Ashmo)</p>
+            <p class="text-sm text-text-tertiary">Founder, brand builder, and operator. <a href="/ashraf-hassan/" class="text-accent hover:text-accent-light">View profile</a></p>
+          </div>
+        </div>
+        <div>
+          <a href="/work/" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
+            <span class="inline-block transition-transform group-hover:-translate-x-1">&larr;</span> All work
+          </a>
+        </div>
       </div>
 
     </div>

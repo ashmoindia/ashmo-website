@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { personId, personSchema, websiteId } from '../data/entity';
+
+const profilePageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': 'https://ashmo.io/ashraf-hassan/#profile',
+  url: 'https://ashmo.io/ashraf-hassan/',
+  name: 'Ashraf Hassan (Ashmo)',
+  description:
+    'Ashraf Hassan, known as Ashmo, is a founder, brand builder, writer, and operator sharing essays and case notes on brand growth, merchant thinking, and UAE restaurant finance.',
+  isPartOf: {
+    '@id': websiteId,
+  },
+  about: {
+    '@id': personId,
+  },
+  mainEntity: personSchema,
+};
+---
+
+<BaseLayout
+  title="Ashraf Hassan (Ashmo)"
+  description="Ashraf Hassan, known as Ashmo, is a founder, brand builder, writer, and operator sharing essays on brand growth, merchant thinking, and UAE restaurant finance."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px]">
+      <p class="text-[0.72rem] uppercase tracking-[0.22em] text-accent mb-4">Profile</p>
+      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.05] mb-5">
+        Ashraf Hassan <span class="italic text-accent">(Ashmo)</span>
+      </h1>
+      <p class="text-lg md:text-xl text-text-secondary font-light leading-[1.75] max-w-[680px] mb-8">
+        Founder, brand builder, writer, and operator with 25+ years of experience across retail, cafe growth, marketing, and merchant decision-making.
+      </p>
+      <p class="text-base text-text-secondary font-light leading-[1.85] max-w-[720px] mb-10">
+        I write about brand positioning, the mechanics of scaling a consumer business, founder judgement, pricing psychology, and the slower operational work that makes a brand feel consistent over time. My work includes helping build FiLLi Cafe from a single outlet into a 100+ location brand across 13 countries, and building Ashmo into a long-term archive of practical thinking for operators.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+        <div class="border border-border bg-surface/70 px-6 py-6">
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-3">What I write about</p>
+          <p class="text-sm text-text-secondary font-light leading-[1.8]">
+            Brand strategy, merchant instinct, cafe growth, founder discipline, pricing, marketing systems, and UAE restaurant finance.
+          </p>
+        </div>
+        <div class="border border-border bg-surface/70 px-6 py-6">
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-3">Known for</p>
+          <p class="text-sm text-text-secondary font-light leading-[1.8]">
+            FiLLi Cafe brand building, practical operator essays, and translating real business pressure into clear writing and decision tools.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-14">
+        <a href="/story/" class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+          Read the background
+        </a>
+        <a href="/thinking/" class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+          Read the essays
+        </a>
+        <a href="/contact/" class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+          Contact Ashraf Hassan
+        </a>
+      </div>
+
+      <div class="border-t border-border pt-10">
+        <p class="text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary mb-4">Start here</p>
+        <div class="flex flex-col gap-4">
+          <a href="/thinking/brand-positioning-hardest-thing/" class="text-text hover:text-accent transition-colors">Why Brand Positioning Is the Hardest Thing</a>
+          <a href="/work/filli-cafe/" class="text-text hover:text-accent transition-colors">FiLLi Cafe</a>
+          <a href="/restaurant-finance/" class="text-text hover:text-accent transition-colors">UAE Restaurant Finance</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
