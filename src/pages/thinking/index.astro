@@ -17,6 +17,21 @@ const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data
       </p>
     </div>
 
+    <div class="mb-16 p-8 md:p-10 bg-surface border border-border rounded-lg">
+      <p class="text-[0.722rem] font-medium uppercase tracking-[0.15em] text-accent mb-5">Start Here</p>
+      <div class="flex flex-col gap-4">
+        <a href="/thinking/brand-positioning-hardest-thing/" class="text-text hover:text-accent transition-colors">
+          Why Brand Positioning Is the Hardest Thing
+        </a>
+        <a href="/thinking/grocery-shop-pricing-psychology/" class="text-text hover:text-accent transition-colors">
+          What a Grocery Shop at 19 Taught Me About Pricing
+        </a>
+        <a href="/thinking/ai-marketing-70-outlet-chain/" class="text-text hover:text-accent transition-colors">
+          How AI Runs Marketing for a 100+ Outlet Chain
+        </a>
+      </div>
+    </div>
+
     {sortedArticles.length > 0 ? (
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {sortedArticles.map((article, i) => (

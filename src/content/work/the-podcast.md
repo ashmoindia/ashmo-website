@@ -1,6 +1,6 @@
 ---
 title: "The Podcast"
-description: "Long-form conversations about brand building, merchant thinking, and what 25 years of business actually teaches you. No scripts, no guests — just honest reflection."
+description: "Long-form reflections on brand building, merchant thinking, and what 25 years of business actually teaches you."
 date: 2026-03-15
 category: "founder-documentary"
 tags: ["podcast", "storytelling", "video"]
@@ -33,4 +33,4 @@ The podcast is on YouTube because video creates connection that audio alone can'
 
 The podcast is early. Episode one is live. The goal isn't to become a "content creator." The goal is to build an archive of honest business thinking that compounds over time — just like the brands I build.
 
-Many of these ideas start as written pieces: [brand positioning](/thinking/brand-positioning-hardest-thing), [pricing psychology from the grocery shop](/thinking/grocery-shop-pricing-psychology), [patience as a strategy](/thinking/patience-is-not-passive). The podcast gives them a voice.
+Many of these ideas start as written pieces: [brand positioning](/thinking/brand-positioning-hardest-thing/), [pricing psychology from the grocery shop](/thinking/grocery-shop-pricing-psychology/), [patience as a strategy](/thinking/patience-is-not-passive/). The podcast gives them a voice.

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+---
+
+<BaseLayout
+  title="Delivery Profitability Calculator"
+  description="Compare delivery sales against commission, discounts, packaging, and food cost to see real channel contribution."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px] mb-10">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Calculator</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">Delivery profitability calculator</h1>
+      <p class="text-[1.02rem] md:text-[1.1rem] text-text-secondary font-light leading-[1.9]">
+        Use this to see whether your delivery channel is creating contribution or simply inflating revenue while the margin disappears underneath it.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)] gap-8">
+      <form id="delivery-form" class="rounded-[1.5rem] border border-border bg-surface/80 px-6 py-6 md:px-8 md:py-8 space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Monthly delivery sales (AED)</span>
+            <input id="delivery-sales" type="number" min="0" value="240000" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Commission %</span>
+            <input id="commission" type="number" min="0" max="100" step="0.1" value="28" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Food cost %</span>
+            <input id="food-cost" type="number" min="0" max="100" step="0.1" value="31" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Discount / subsidy %</span>
+            <input id="discount-rate" type="number" min="0" max="100" step="0.1" value="8" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+          <label class="block md:col-span-2">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Monthly packaging + refunds (AED)</span>
+            <input id="packaging" type="number" min="0" value="18000" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+        </div>
+      </form>
+      <div class="rounded-[1.5rem] border border-border bg-[linear-gradient(145deg,rgba(21,21,20,0.95),rgba(11,11,11,0.98))] px-6 py-6 md:px-8 md:py-8">
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent-light mb-4">Output</p>
+        <div class="space-y-5">
+          <div>
+            <p class="text-[0.72rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Contribution after variable cost</p>
+            <p id="delivery-contribution" class="font-heading text-[2.2rem] leading-none">AED 39,600</p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-[1.1rem] border border-border bg-surface/60 px-4 py-4">
+              <p class="text-[0.68rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Contribution %</p>
+              <p id="delivery-ratio" class="text-[1.2rem] text-text">16.5%</p>
+            </div>
+            <div class="rounded-[1.1rem] border border-border bg-surface/60 px-4 py-4">
+              <p class="text-[0.68rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Signal</p>
+              <p id="delivery-band" class="text-[1.08rem] text-text">Still useful</p>
+            </div>
+          </div>
+          <div class="rounded-[1.1rem] border border-border bg-surface/60 px-4 py-4">
+            <p class="text-[0.72rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Decision prompt</p>
+            <p id="delivery-note" class="text-[0.98rem] text-text-secondary font-light leading-[1.75]">
+              If contribution is thin, delivery may be helping revenue optics more than branch economics.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const formatMoney = (value) => `AED ${Math.round(value).toLocaleString('en-US')}`;
+
+    const updateDelivery = () => {
+      const sales = Number(document.getElementById('delivery-sales')?.value || 0);
+      const commission = Number(document.getElementById('commission')?.value || 0) / 100;
+      const foodCost = Number(document.getElementById('food-cost')?.value || 0) / 100;
+      const discount = Number(document.getElementById('discount-rate')?.value || 0) / 100;
+      const packaging = Number(document.getElementById('packaging')?.value || 0);
+
+      const contribution = sales - (sales * commission) - (sales * foodCost) - (sales * discount) - packaging;
+      const ratio = sales > 0 ? (contribution / sales) * 100 : 0;
+
+      document.getElementById('delivery-contribution').textContent = formatMoney(contribution);
+      document.getElementById('delivery-ratio').textContent = `${ratio.toFixed(1)}%`;
+
+      const bandNode = document.getElementById('delivery-band');
+      const noteNode = document.getElementById('delivery-note');
+      if (ratio >= 18) {
+        bandNode.textContent = 'Healthy';
+        noteNode.textContent = 'The channel is still contributing. Watch promo creep and do not assume this stays healthy if discounts deepen.';
+      } else if (ratio >= 8) {
+        bandNode.textContent = 'Thin';
+        noteNode.textContent = 'The channel still works, but it is easy for packaging, refunds, or promotion creep to make it feel busier than it is profitable.';
+      } else {
+        bandNode.textContent = 'Fragile';
+        noteNode.textContent = 'This channel is barely helping after variable cost. Review pricing, promo policy, and direct-channel alternatives before scaling it further.';
+      }
+    };
+
+    document.querySelectorAll('#delivery-form input').forEach((input) => {
+      input.addEventListener('input', updateDelivery);
+    });
+    updateDelivery();
+  </script>
+</BaseLayout>

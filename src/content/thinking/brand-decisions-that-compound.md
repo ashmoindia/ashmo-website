@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-Compounding brand decisions are the strategic choices — made once and held consistently — that accumulate value over years rather than delivering immediate returns. They include owning a category word, maintaining visual consistency, and refusing to dilute your positioning for short-term gain. After 10+ years of building [FiLLi Cafe](/work/filli-cafe) from a single karak chai shop to 80+ outlets across the UAE, I've seen firsthand which decisions quietly built our brand equity — and which ones burned bright and disappeared.
+Compounding brand decisions are the strategic choices — made once and held consistently — that accumulate value over years rather than delivering immediate returns. They include owning a category word, maintaining visual consistency, and refusing to dilute your positioning for short-term gain. After 10+ years of building [FiLLi Cafe](/work/filli-cafe/) from a single karak chai shop to 100+ outlets across 13 countries, I've seen firsthand which decisions quietly built our brand equity — and which ones burned bright and disappeared.
 
 Most founders evaluate decisions by how quickly they pay off. That bias is understandable. When you're running a business, everything feels urgent. The campaign that needs to launch this week. The menu change that could boost sales this month. The rebrand someone on the team is convinced will "modernize" everything.
 
@@ -48,7 +48,7 @@ Every year in Dubai's F&B scene, there's a new trend. Bubble tea. Cloud bread. T
 
 We didn't. Not because matcha is bad. But because chasing someone else's trend dilutes your own positioning. If FiLLi starts serving matcha, what are we? A tea place that also does matcha? A trend-follower? That's the beginning of the end of specificity.
 
-The discipline to [stay positioned](/thinking/brand-positioning-hardest-thing) while trends swirl around you is one of the hardest things in brand building. It requires a tolerance for feeling like you're missing out. But what you're actually doing is deepening your moat while everyone else is widening their spread.
+The discipline to [stay positioned](/thinking/brand-positioning-hardest-thing/) while trends swirl around you is one of the hardest things in brand building. It requires a tolerance for feeling like you're missing out. But what you're actually doing is deepening your moat while everyone else is widening their spread.
 
 ## What Is the Difference Between Decisions That Compound and Decisions That Decay?
 
@@ -82,7 +82,7 @@ By year seven, "FiLLi" and "Zafran Chai" were nearly synonymous in Dubai. That's
 
 The uncomfortable truth is that most founders will never experience this because they change direction before the compounding begins. They interpret the slow early phase as evidence that the decision was wrong. It usually wasn't wrong. It was just early.
 
-This is what I mean when I say [patience is not passive](/thinking/patience-is-not-passive). Holding a brand decision through the invisible phase is one of the most active, difficult things a founder can do.
+This is what I mean when I say [patience is not passive](/thinking/patience-is-not-passive/). Holding a brand decision through the invisible phase is one of the most active, difficult things a founder can do.
 
 ## Why Do Founders Abandon Compounding Decisions?
 
@@ -116,7 +116,7 @@ One compounding decision that rarely gets discussed is pricing confidence. At Fi
 
 That decision compounded in a way I didn't fully appreciate at the time. When you hold premium pricing consistently, customers build a perception of value around it. They associate your price with quality. They feel good about choosing you because the price signals something.
 
-When you discount frequently, you train customers to wait for the next discount. You erode the perception of value you spent years building. Understanding [pricing psychology](/thinking/grocery-shop-pricing-psychology) is fundamental — the way customers perceive value is shaped by consistency far more than by the number on the tag.
+When you discount frequently, you train customers to wait for the next discount. You erode the perception of value you spent years building. Understanding [pricing psychology](/thinking/grocery-shop-pricing-psychology/) is fundamental — the way customers perceive value is shaped by consistency far more than by the number on the tag.
 
 Every discount is a withdrawal from the brand equity account. Every day of consistent pricing is a deposit.
 
@@ -130,7 +130,7 @@ The flashy campaign, the trendy menu addition, the reactive pivot — those will
 
 Brand building is not a series of sprints. It's a single, very long hold. The value isn't in any individual decision. It's in the years of consistency that follow that decision.
 
-At [FiLLi](/work/filli-cafe), the brand we have today — 80+ outlets, a name that means something specific to millions of people in the UAE — was not built by any one brilliant move. It was built by a thousand ordinary days of holding the same decisions.
+At [FiLLi](/work/filli-cafe/), the brand we have today — 100+ outlets across 13 countries, a name that means something specific to millions of people — was not built by any one brilliant move. It was built by a thousand ordinary days of holding the same decisions.
 
 That's the thing about compounding. It doesn't feel like anything while it's happening. And then one day you look back, and the accumulated weight of all those quiet, boring, disciplined decisions has built something that no amount of money or cleverness could replicate in a year.
 

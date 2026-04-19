@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-The pattern in every business that scales is this: they solve one problem with uncomfortable clarity, build a system that delivers the solution without the founder in the room, and then repeat that system across geographies, channels, or customer segments. It is not vision. It is not funding. It is operational obsession applied to a narrow promise. After 25 years of building and observing businesses — including scaling [FiLLi Cafe](/work/filli-cafe) from a single karak chai outlet to 80+ locations — I've watched this pattern repeat so consistently that I now look for it before anything else.
+The pattern in every business that scales is this: they solve one problem with uncomfortable clarity, build a system that delivers the solution without the founder in the room, and then repeat that system across geographies, channels, or customer segments. It is not vision. It is not funding. It is operational obsession applied to a narrow promise. After 25 years of building and observing businesses — including scaling [FiLLi Cafe](/work/filli-cafe/) from a single karak chai outlet to 100+ locations across 13 countries — I've watched this pattern repeat so consistently that I now look for it before anything else.
 
 Most people think scaling is about growth. More locations. More revenue. More people.
 
@@ -22,7 +22,7 @@ I've studied this across industries. Tea chains, tech startups, retail empires, 
 
 They share operational DNA.
 
-Here's what I mean. When I started [my first shop at 19](/work/early-hustle), I learned something that no business book taught me: the difference between a business that works because you're in it and a business that works because of how it's built.
+Here's what I mean. When I started [my first shop at 19](/work/early-hustle/), I learned something that no business book taught me: the difference between a business that works because you're in it and a business that works because of how it's built.
 
 That first grocery shop worked because I was behind the counter. I knew every customer. I read their behaviour in real time. I adjusted pricing, stock, and presentation based on instinct. It was profitable. But it wasn't scalable. It was a performance, and I was the performer.
 
@@ -58,7 +58,7 @@ After observing this across 25 years — in my own business and in dozens of oth
 | 4. Systematic growth | New units, channels, or markets are opened using proven systems. | Complacency. The system works, so people stop improving it. |
 | 5. Compounding scale | The brand, operations, and culture compound together. Growth accelerates. | Very few businesses reach this stage. |
 
-FiLLi is in stage five now. 80+ outlets, a brand that compounds on its own, operational systems that allow us to open new locations without reinventing the process. But getting here took over a decade of deliberate system building. There was nothing fast about it.
+FiLLi is in stage five now. 100+ outlets across 13 countries, a brand that compounds on its own, operational systems that allow us to open new locations without reinventing the process. But getting here took over a decade of deliberate system building. There was nothing fast about it.
 
 ## How Does Operational Obsession Differ From Operational Control?
 
@@ -74,7 +74,7 @@ The best operators I've met in Dubai — across food service, retail, logistics 
 
 At FiLLi, this looked like:
 - **Standardising the chai recipe** so that the saffron chai in Sharjah tastes identical to the one in Jumeirah
-- **Creating brand playbooks** that define not just what we say, but what we don't say — the same principle I wrote about in [why positioning is the hardest thing](/thinking/brand-positioning-hardest-thing)
+- **Creating brand playbooks** that define not just what we say, but what we don't say — the same principle I wrote about in [why positioning is the hardest thing](/thinking/brand-positioning-hardest-thing/)
 - **Building feedback loops** so quality issues surface before they reach the customer, not after
 - **Hiring for alignment** with the system, not just for individual talent
 
@@ -86,7 +86,7 @@ Every founder I know who has built something that truly scaled will tell you the
 
 The gap between "this is working" and "this is scaling" is enormous. And it's filled with invisible work. The kind of work that doesn't show up in pitch decks or press releases.
 
-I've written about this before — [patience is not passive](/thinking/patience-is-not-passive). It's the active discipline of continuing to build the system while the results take their time to compound.
+I've written about this before — [patience is not passive](/thinking/patience-is-not-passive/). It's the active discipline of continuing to build the system while the results take their time to compound.
 
 At FiLLi, there were years where we were operationally better but the growth hadn't caught up yet. We'd improved systems, tightened brand consistency, built better training — and the revenue line looked the same as the year before.
 
@@ -104,7 +104,7 @@ If I had to distil 25 years of observation into a single sequence, it would be t
 
 **Expansion third.** Only after the system works — consistently, repeatedly, without the founder's hands on every lever — do you expand. New locations. New markets. New channels.
 
-**Patience throughout.** The compounding takes time. The gap between effort and visible result is real and it's long. The founders who survive it are the ones who understand that [the work itself is the strategy](/thinking/patience-is-not-passive), not just a step toward one.
+**Patience throughout.** The compounding takes time. The gap between effort and visible result is real and it's long. The founders who survive it are the ones who understand that [the work itself is the strategy](/thinking/patience-is-not-passive/), not just a step toward one.
 
 This is the pattern. I've seen it in tea shops and tech companies, in family businesses and venture-backed startups, in Dubai and in markets I've studied from a distance. The product changes. The industry changes. The pattern doesn't.
 
@@ -116,7 +116,7 @@ I mean that seriously. The pattern — clarity, system, expansion, patience — 
 
 The stories that get told are about vision, disruption, and overnight success. The work that actually creates scale is repetitive, incremental, and invisible for long stretches.
 
-I think about this often. The lessons I learned [pricing goods behind a grocery counter at 19](/thinking/grocery-shop-pricing-psychology) — reading customers, understanding margins, staying disciplined — those lessons are still the ones I use most. Not because they're sophisticated. Because they're fundamental. And fundamentals are, by definition, not exciting.
+I think about this often. The lessons I learned [pricing goods behind a grocery counter at 19](/thinking/grocery-shop-pricing-psychology/) — reading customers, understanding margins, staying disciplined — those lessons are still the ones I use most. Not because they're sophisticated. Because they're fundamental. And fundamentals are, by definition, not exciting.
 
 The pattern in every business that scales is ultimately a pattern of discipline applied over time. Not brilliance. Not luck. Not timing. Discipline — aimed at a narrow promise, embedded in a system, and sustained through the years when nobody's watching.
 

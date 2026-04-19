@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../components/FinanceSectionNav.astro';
+---
+
+<BaseLayout
+  title="Contribute Benchmark Data"
+  description="Submit anonymized operating numbers to help build the Ashmo benchmark layer and receive a private comparison note."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)] gap-10">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Benchmark contribution</p>
+        <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+          Contribute anonymized numbers. Get a private comparison note back.
+        </h1>
+        <p class="text-[1.02rem] md:text-[1.1rem] text-text-secondary font-light leading-[1.9] mb-8">
+          The benchmark layer should be built slowly and credibly. If you are willing to share clean, anonymized operating numbers,
+          Ashmo will use them only inside the benchmark process and return a private flash review once the submission is usable.
+        </p>
+
+        <div class="rounded-[1.35rem] border border-border bg-surface/70 px-6 py-6">
+          <p class="mb-3 text-[0.72rem] uppercase tracking-[0.18em] text-accent-light">Minimum data package</p>
+          <ul class="space-y-3 list-none pl-0 text-[0.96rem] text-text-secondary font-light leading-[1.75]">
+            <li>Monthly sales summary</li>
+            <li>Labor summary</li>
+            <li>Rent or occupancy cost</li>
+            <li>COGS summary</li>
+            <li>Delivery channel mix</li>
+          </ul>
+        </div>
+      </div>
+
+      <form name="benchmark-contribution" method="POST" data-netlify="true" class="rounded-[1.5rem] border border-border bg-surface/80 px-6 py-6 md:px-8 md:py-8 flex flex-col gap-5">
+        <input type="hidden" name="form-name" value="benchmark-contribution" />
+        <label class="block">
+          <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Name</span>
+          <input type="text" name="name" required class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+        </label>
+        <label class="block">
+          <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Email</span>
+          <input type="email" name="email" required class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+        </label>
+        <label class="block">
+          <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Concept type</span>
+          <select name="concept_type" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none">
+            <option>Specialty cafe</option>
+            <option>Delivery-heavy QSR</option>
+            <option>Casual dining</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="block">
+          <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Outlet count</span>
+          <input type="number" name="outlet_count" min="1" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+        </label>
+        <label class="block">
+          <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">What can you share?</span>
+          <textarea name="data_summary" rows="5" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none"></textarea>
+        </label>
+        <p class="text-[0.82rem] text-text-tertiary leading-[1.7]">
+          Submissions should be anonymized before sending. The benchmark layer is designed to publish ranges only after sample and validation thresholds are met.
+        </p>
+        <button type="submit" class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+          Submit interest
+        </button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

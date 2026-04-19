@@ -1,6 +1,6 @@
 ---
 title: "The Early Hustle"
-description: "A grocery shop in Deira, training institutes, graphic design, computer assembly, freelancing — the years that looked like chaos but were actually preparation."
+description: "A grocery shop in Sharjah, training institutes, graphic design, computer assembly, freelancing — the years that looked like chaos but were actually preparation."
 date: 1999-01-01
 category: "merchant-mindset"
 tags: ["entrepreneurship", "hustle", "foundation"]
@@ -11,7 +11,7 @@ imageAlt: "Early entrepreneurial journey"
 
 ## The Grocery Shop
 
-At 19, I was running a grocery shop in Dubai's Deira district. Not managing it — running it. Stock, pricing, suppliers, customers, margins, losses. Every day was a masterclass in human behaviour.
+At 19, I was running a grocery shop in Sharjah. Not managing it — running it. Stock, pricing, suppliers, customers, margins, losses. Every day was a masterclass in human behaviour.
 
 I learned that people don't buy what they need. They buy what's in front of them at the right moment. I learned that a 5% margin on fast-moving stock beats a 40% margin on dust-collecting inventory. I learned that trust is the only currency that compounds.
 
@@ -37,6 +37,6 @@ That's branding. I just didn't have the word for it yet.
 
 > The years that look wasted are often the ones doing the most work.
 
-When [FiLLi](/work/filli-cafe) came along, I wasn't starting from zero. I was starting from fifteen years of preparation that finally had a name.
+When [FiLLi](/work/filli-cafe/) came along, I wasn't starting from zero. I was starting from fifteen years of preparation that finally had a name.
 
-I've written a deeper dive into [what the grocery shop taught me about pricing psychology](/thinking/grocery-shop-pricing-psychology) — and how those same instincts shaped [my thinking on patience as a strategy](/thinking/patience-is-not-passive).
+I've written a deeper dive into [what the grocery shop taught me about pricing psychology](/thinking/grocery-shop-pricing-psychology/) — and how those same instincts shaped [my thinking on patience as a strategy](/thinking/patience-is-not-passive/).

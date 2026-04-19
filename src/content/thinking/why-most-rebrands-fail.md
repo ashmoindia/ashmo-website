@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-A rebrand is the deliberate process of changing a company's visual identity, messaging, or market positioning to better reflect what the business has become — or needs to become. Most rebrands fail not because of bad design, but because the decision to rebrand was made for the wrong reasons. After 25 years of building and evolving brands, including [FiLLi Cafe](/work/filli-cafe) through multiple visual evolutions, I've watched more rebrands destroy value than create it.
+A rebrand is the deliberate process of changing a company's visual identity, messaging, or market positioning to better reflect what the business has become — or needs to become. Most rebrands fail not because of bad design, but because the decision to rebrand was made for the wrong reasons. After 25 years of building and evolving brands, including [FiLLi Cafe](/work/filli-cafe/) through multiple visual evolutions, I've watched more rebrands destroy value than create it.
 
 And in almost every case, the problem started before the designer opened a single file.
 
@@ -28,7 +28,7 @@ The rebrands that work — the ones that actually shift perception and unlock gr
 
 In my experience, there are only three legitimate reasons to rebrand:
 
-**1. The business has genuinely outgrown its identity.** This is the most valid reason. The company you were five years ago is not the company you are today. Your audience has shifted. Your product has evolved. Your original identity actively misleads new customers about what you do. At FiLLi, our visual identity has evolved over the years — not because we got bored, but because the brand grew from a single karak chai counter in Deira to a national chain with 80+ outlets. The identity had to grow with the business. But the core — saffron chai, Dubai roots, merchant heritage — never changed.
+**1. The business has genuinely outgrown its identity.** This is the most valid reason. The company you were five years ago is not the company you are today. Your audience has shifted. Your product has evolved. Your original identity actively misleads new customers about what you do. At FiLLi, our visual identity has evolved over the years — not because we got bored, but because the brand grew from a single karak chai counter in Deira to an international chain with 100+ outlets across 13 countries. The identity had to grow with the business. But the core — saffron chai, Dubai roots, merchant heritage — never changed.
 
 **2. The brand carries negative associations that can't be shed.** Sometimes a brand becomes associated with something that no amount of good marketing can undo. A scandal. A catastrophic product failure. A fundamental market shift that makes the old brand a liability. This is rare, and most companies who think they're in this situation are actually just in a rough quarter.
 
@@ -64,7 +64,7 @@ What you notice if you pay attention is that the brands that last in Dubai — t
 
 The brands that do dramatic rebrands in this market usually do it because they lost clarity about what they were. They started chasing trends instead of deepening their position. The rebrand becomes an attempt to manufacture a clarity that should have been built into the strategy from day one.
 
-At [FiLLi](/work/filli-cafe), we've resisted the temptation to do what I call the "reset rebrand" — where you throw everything out and start fresh because it feels exciting. Instead, we've done what I'd call evolutionary tightening. Our identity has become cleaner, more confident, more refined over the years. But if you showed someone our branding from 2010 and our branding today, they'd recognise it as the same brand. That continuity is not an accident. It's a strategic choice. And it's one of the reasons [brand decisions compound](/thinking/brand-decisions-that-compound) over time.
+At [FiLLi](/work/filli-cafe/), we've resisted the temptation to do what I call the "reset rebrand" — where you throw everything out and start fresh because it feels exciting. Instead, we've done what I'd call evolutionary tightening. Our identity has become cleaner, more confident, more refined over the years. But if you showed someone our branding from 2010 and our branding today, they'd recognise it as the same brand. That continuity is not an accident. It's a strategic choice. And it's one of the reasons [brand decisions compound](/thinking/brand-decisions-that-compound/) over time.
 
 ## How Do You Know If Your Brand Identity Is Actually the Problem?
 
@@ -72,7 +72,7 @@ Before you commission an agency, before you brief a designer, before you start a
 
 Ask ten customers — real ones, not friends — to describe your brand in three words. Then ask five people who've never bought from you to look at your current brand materials and tell you what they think you sell and who it's for.
 
-If the answers are consistent and accurate, your brand identity is doing its job. Your problem is somewhere else. Maybe it's [positioning](/thinking/brand-positioning-hardest-thing). Maybe it's distribution. Maybe it's product. Maybe it's pricing — and if you haven't thought deeply about [how pricing psychology actually works](/thinking/grocery-shop-pricing-psychology), start there before you redesign a logo.
+If the answers are consistent and accurate, your brand identity is doing its job. Your problem is somewhere else. Maybe it's [positioning](/thinking/brand-positioning-hardest-thing/). Maybe it's distribution. Maybe it's product. Maybe it's pricing — and if you haven't thought deeply about [how pricing psychology actually works](/thinking/grocery-shop-pricing-psychology/), start there before you redesign a logo.
 
 If the answers are wildly inconsistent or inaccurate, then yes — you might have a brand identity problem. But even then, the fix might not be a full rebrand. It might be a messaging overhaul. It might be tightening your visual system without replacing it. It might be killing three product lines so the remaining two make sense.
 

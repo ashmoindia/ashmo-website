@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+import FinanceResourceCard from '../../../components/FinanceResourceCard.astro';
+import { financeTemplates } from '../../../data/restaurantFinance';
+---
+
+<BaseLayout
+  title="Restaurant Finance Templates"
+  description="Download restaurant finance workbooks for UAE operators, including a P&L, weekly flash report, recipe costing file, opening budget, and business plan model."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px] mb-12">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Templates</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+        Finance workbooks built to survive real review, not just look tidy in a folder.
+      </h1>
+      <p class="text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.9]">
+        Each file is a structured Excel workbook with separated inputs, formula-led schedules, dashboards, and control checks for UAE restaurant operators. They are designed to be editable in the real world, while still feeling review-ready for management, investors, lenders, and diligence conversations.
+      </p>
+      <p class="text-[0.84rem] text-text-tertiary leading-[1.75] mt-4">
+        They are audit-friendly management tools, not a substitute for entity-specific tax, bookkeeping, or statutory audit advice.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-10">
+      <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+        <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">Controls</p>
+        <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Separate input cells, formula zones, and review checks so the file is easier to trust and hand over.</p>
+      </div>
+      <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+        <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">UAE Logic</p>
+        <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Built around UAE operator realities such as rent pressure, delivery mix, payroll burden, and opening cash needs.</p>
+      </div>
+      <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+        <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">Outputs</p>
+        <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Dashboard views, management summaries, and integrity checks are included so the pack does not stop at raw inputs.</p>
+      </div>
+      <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+        <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">Adaptable</p>
+        <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Use them as-is, or adapt them to your chart of accounts, branch format, investor pack, or internal review rhythm.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {financeTemplates.map((template) => (
+        <div class="rounded-[1.35rem] border border-border bg-surface/70 px-6 py-6">
+          <p class="mb-3 text-[0.68rem] uppercase tracking-[0.18em] text-accent">{template.format}</p>
+          <h2 class="font-heading text-[1.55rem] leading-[1.08] tracking-[-0.02em] mb-3">{template.name}</h2>
+          <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75] mb-4">{template.summary}</p>
+          <p class="text-[0.82rem] text-text-tertiary leading-[1.7] mb-5">{template.audience}</p>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <a href={template.href} download class="inline-flex items-center gap-2 text-sm text-accent-light hover:text-text no-underline transition-colors">
+              Download workbook &rarr;
+            </a>
+            <a href="/restaurant-finance/services/" class="text-[0.78rem] text-text-tertiary hover:text-text-secondary no-underline transition-colors">
+              Need a custom model or review?
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

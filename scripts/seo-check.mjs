@@ -175,7 +175,7 @@ function checkPage(html, pagePath) {
   }
 
   // 10. Internal links check (collect for cross-validation — skip assets)
-  const ASSET_PATTERNS = [/\.(css|js|svg|png|jpg|jpeg|webp|gif|ico|woff2?|ttf|eot|xml|txt|json)$/i, /^\/_astro\//];
+  const ASSET_PATTERNS = [/\.(css|js|svg|png|jpg|jpeg|webp|gif|ico|woff2?|ttf|eot|xml|txt|json|csv|xlsx?|pdf|zip)$/i, /^\/_astro\//];
   const internalLinks = extractAll(html, /href="(\/[^"#]*?)"/gi)
     .filter(link => !ASSET_PATTERNS.some(p => p.test(link)));
 

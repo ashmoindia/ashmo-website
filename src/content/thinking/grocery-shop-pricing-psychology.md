@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-Pricing psychology is the study of how customers perceive value and make purchasing decisions — and it's best learned not from textbooks, but from behind a counter. At 19, I was running a grocery shop in Dubai's Deira district, serving 200+ customers daily. It was part of [a longer journey](/work/early-hustle) that shaped everything I do today.
+Pricing psychology is the study of how customers perceive value and make purchasing decisions — and it's best learned not from textbooks, but from behind a counter. At 19, I was running a grocery shop in Sharjah, serving 200+ customers daily. It was part of [a longer journey](/work/early-hustle/) that shaped everything I do today.
 
 No MBA. No pricing framework. No spreadsheet optimisation. Just a counter, a customer, and a decision to make in real time.
 
@@ -54,4 +54,4 @@ I learned all of this behind a counter at 19.
 
 The shop is gone. The lessons compound daily.
 
-Those same instincts — reading people, understanding value, staying disciplined on margins — became the foundation of [how I approach brand positioning](/thinking/brand-positioning-hardest-thing) and eventually [how FiLLi Cafe scaled to 80+ outlets](/work/filli-cafe).
+Those same instincts — reading people, understanding value, staying disciplined on margins — became the foundation of [how I approach brand positioning](/thinking/brand-positioning-hardest-thing/) and eventually [how FiLLi Cafe scaled to 100+ outlets across 13 countries](/work/filli-cafe/).

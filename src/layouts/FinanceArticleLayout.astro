@@ -1,0 +1,56 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import FinanceSectionNav from '../components/FinanceSectionNav.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+}
+
+const { title, description, eyebrow = 'Restaurant Finance Insight' } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <FinanceSectionNav />
+  <article class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.72fr)_minmax(19rem,0.28fr)] gap-12 lg:gap-16">
+      <div class="max-w-[720px]">
+        <p class="mb-4 text-[0.72rem] uppercase tracking-[0.2em] text-accent">{eyebrow}</p>
+        <h1 class="font-heading text-4xl md:text-[3.6rem] leading-[0.98] tracking-[-0.04em] mb-5">
+          {title}
+        </h1>
+        <p class="max-w-[620px] text-[1.08rem] md:text-[1.14rem] text-text-secondary font-light leading-[1.85] mb-10">
+          {description}
+        </p>
+        <p class="mb-10 text-[0.778rem] uppercase tracking-[0.14em] text-text-tertiary">
+          By <a href="/story/" class="text-accent hover:text-accent-light">Ashraf Hassan (Ashmo)</a>
+        </p>
+        <div class="w-14 h-px bg-accent mb-12"></div>
+        <div class="prose max-w-none">
+          <slot />
+        </div>
+      </div>
+
+      <aside class="lg:pt-20">
+        <div class="sticky top-8 rounded-[1.25rem] border border-border bg-surface/70 px-6 py-6">
+          <p class="mb-4 text-[0.72rem] uppercase tracking-[0.16em] text-accent-light">Decision Lens</p>
+          <p class="text-[1.02rem] leading-[1.8] font-light text-text-secondary mb-6">
+            Every piece in this section is written to help a UAE operator make a better commercial decision, not just understand a metric in theory.
+          </p>
+          <div class="space-y-3">
+            <a href="/restaurant-finance/calculators/" class="block text-sm text-text hover:text-accent transition-colors no-underline">
+              Explore calculators &rarr;
+            </a>
+            <a href="/restaurant-finance/templates/" class="block text-sm text-text hover:text-accent transition-colors no-underline">
+              Download workbooks &rarr;
+            </a>
+            <a href="/restaurant-finance/services/" class="block text-sm text-text hover:text-accent transition-colors no-underline">
+              Review services &rarr;
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,5 +1,5 @@
 ---
-title: "How I Use AI to Run Marketing for a 70-Outlet Chain"
+title: "How AI Runs Marketing for a 100+ Outlet Chain"
 description: "AI didn't replace my marketing team. It replaced the friction between having an idea and executing it — and that changed everything."
 date: 2026-03-06
 pillar: ai-selling
@@ -8,7 +8,7 @@ featured: true
 published: true
 ---
 
-AI in marketing is the use of artificial intelligence tools to execute creative, analytical, and operational tasks that previously required either a large team or painfully slow workflows. For me — running brand and growth at [FiLLi Cafe](/work/filli-cafe), an 80+ outlet tea chain across the UAE — AI didn't replace my team. It replaced the gap between having an idea at 9am and seeing it live by noon.
+AI in marketing is the use of artificial intelligence tools to execute creative, analytical, and operational tasks that previously required either a large team or painfully slow workflows. For me — running brand and growth at [FiLLi Cafe](/work/filli-cafe/), a 100+ outlet tea chain across 13 countries — AI didn't replace my team. It replaced the gap between having an idea at 9am and seeing it live by noon.
 
 That distinction matters. Most AI marketing content is written by people who demo tools. I use them to run a real operation with real revenue, real customers, and real deadlines. This is what that actually looks like.
 
@@ -28,11 +28,11 @@ The work that used to require five calendar days of back-and-forth now happens i
 
 I'll be specific because vague AI advice is useless.
 
-**Claude Code** is the tool that changed my workflow the most. I used it to build [ashmo.io](/work/ashmo-platform) — this entire website — from architecture to deployment. Not as a developer. As a brand strategist who described what I wanted and iterated in real time. The site runs on Astro, deploys through Netlify, and the entire build happened through conversation. I described the structure. Claude wrote the code. I reviewed, adjusted, pushed live. No agency. No three-week sprint cycle. No "we'll get back to you with a quote."
+**Claude Code** is the tool that changed my workflow the most. I used it to build [ashmo.io](/work/ashmo-platform/) — this entire website — from architecture to deployment. Not as a developer. As a brand strategist who described what I wanted and iterated in real time. The site runs on Astro, deploys through Netlify, and the entire build happened through conversation. I described the structure. Claude wrote the code. I reviewed, adjusted, pushed live. No agency. No three-week sprint cycle. No "we'll get back to you with a quote."
 
 That experience rewired how I think about digital projects. The cost of building something dropped so dramatically that I now prototype ideas I would have previously dismissed as "not worth the development time."
 
-**For Meta ad creative**, I use AI to generate copy variations at volume. When you're running campaigns for [a chain with 80+ locations](/work/filli-cafe), you need localised messaging — what works for a Mall of the Emirates audience doesn't always land the same way in Deira. AI lets me produce 15 copy variations in the time it used to take to write three. I still pick the winners. The taste is still mine. But the raw material comes faster.
+**For Meta ad creative**, I use AI to generate copy variations at volume. When you're running campaigns for [a chain with 100+ locations across 13 countries](/work/filli-cafe/), you need localised messaging — what works for a Mall of the Emirates audience doesn't always land the same way in Deira. AI lets me produce 15 copy variations in the time it used to take to write three. I still pick the winners. The taste is still mine. But the raw material comes faster.
 
 **For content repurposing**, a single long-form piece — like this article — becomes social posts, newsletter sections, ad copy hooks, and internal talking points. AI doesn't create the original thinking. But it's excellent at reformatting that thinking for different channels and audiences.
 
@@ -62,7 +62,7 @@ That's the sentence I keep coming back to. The bottleneck in most marketing oper
 
 ## How Did Building a Website with AI Change My Perspective?
 
-Building [ashmo.io](/work/ashmo-platform) with Claude Code was a turning point. Not because the website itself was revolutionary — it's a personal platform, a place for my thinking and work. The turning point was the process.
+Building [ashmo.io](/work/ashmo-platform/) with Claude Code was a turning point. Not because the website itself was revolutionary — it's a personal platform, a place for my thinking and work. The turning point was the process.
 
 I'm not a developer. I've managed developers for years, briefed agencies, reviewed technical proposals. But I'd never built a production website myself. With Claude Code, I didn't need to learn a programming language. I needed to know what I wanted and describe it clearly.
 
@@ -74,15 +74,15 @@ This matters beyond websites. It means that every digital project I evaluate now
 
 ## How Does AI Fit Into Running Meta Ad Campaigns?
 
-[Meta ad campaigns](/thinking/meta-ad-campaigns-creative-lessons) are where AI has the most measurable impact for me.
+[Meta ad campaigns](/thinking/meta-ad-campaigns-creative-lessons/) are where AI has the most measurable impact for me.
 
-Running ads for FiLLi across 80+ outlets means constant creative production. We're not running one campaign — we're running dozens, with different locations, audiences, offers, and seasonal moments. The volume alone used to be the constraint.
+Running ads for FiLLi across 100+ outlets means constant creative production. We're not running one campaign — we're running dozens, with different locations, audiences, offers, and seasonal moments. The volume alone used to be the constraint.
 
 Here's what a typical workflow looks like now: I identify a campaign objective, describe the target audience and the offer, and use AI to generate a batch of headline and body copy options. I review them against our brand voice, pick the strongest three to five, and set them up as variations. Within 48 hours, performance data tells me which ones to scale.
 
 The speed advantage compounds. Because I can test more creative faster, I learn what resonates quicker. That learning feeds the next campaign. Over months, the pattern recognition — mine, not the AI's — gets sharper.
 
-But here's what AI can't do in this process: it can't tell me whether to run the campaign at all. It can't sense that a particular promotion will cheapen the brand. It can't feel that a certain tone is wrong for this moment. Those are [brand positioning](/thinking/brand-positioning-hardest-thing) decisions, and they require years of context that no model has.
+But here's what AI can't do in this process: it can't tell me whether to run the campaign at all. It can't sense that a particular promotion will cheapen the brand. It can't feel that a certain tone is wrong for this moment. Those are [brand positioning](/thinking/brand-positioning-hardest-thing/) decisions, and they require years of context that no model has.
 
 ## What Do Most People Get Wrong About AI in Marketing?
 
@@ -102,7 +102,7 @@ The future isn't "AI replaces marketers." The future is that a small team with A
 
 That last part is the filter. AI amplifies whatever you bring to it. If you bring clear brand positioning, AI helps you execute it faster. If you bring confused positioning, AI helps you produce confused content at scale. The tool doesn't fix the thinking. It just removes the excuse of "we don't have the bandwidth."
 
-I run brand and growth for an 80+ outlet chain. I build digital platforms. I write, produce, and ship marketing daily. A few years ago, that workload would have required a team of six or seven people. Today, it requires clear thinking, strong tools, and the discipline to know what still needs a human touch.
+I run brand and growth for a 100+ outlet chain operating across 13 countries. I build digital platforms. I write, produce, and ship marketing daily. A few years ago, that workload would have required a team of six or seven people. Today, it requires clear thinking, strong tools, and the discipline to know what still needs a human touch.
 
 AI didn't make me a better marketer. It made me a faster one. The difference between good marketing and great marketing is still the same as it always was — taste, timing, and the willingness to say no to most things so you can say yes to the right ones.
 

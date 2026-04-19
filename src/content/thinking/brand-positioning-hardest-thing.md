@@ -8,7 +8,7 @@ featured: true
 published: true
 ---
 
-Brand positioning is the strategic process of defining what a brand stands for in the minds of its customers — and equally important, what it does not stand for. It determines your messaging, pricing, product decisions, and hiring. After 25 years of building brands — including scaling [FiLLi Cafe](/work/filli-cafe) from a single karak chai outlet to 80+ locations across the UAE — I've learned that positioning is the single most expensive thing founders skip.
+Brand positioning is the strategic process of defining what a brand stands for in the minds of its customers — and equally important, what it does not stand for. It determines your messaging, pricing, product decisions, and hiring. After 25 years of building brands — including scaling [FiLLi Cafe](/work/filli-cafe/) from a single karak chai outlet to 100+ locations across 13 countries — I've learned that positioning is the single most expensive thing founders skip.
 
 Most founders skip it because it feels abstract. It doesn't look like work. There's no dashboard for it, no metric that moves overnight, no A/B test that proves it right.
 
@@ -24,7 +24,7 @@ But being for everyone means being memorable to no one.
 
 The brands that win — the ones that people recommend without being asked — are the ones that can explain what they are in one clear sentence. Not a paragraph. Not a deck. One sentence.
 
-I learned this the hard way with [FiLLi](/work/filli-cafe). We weren't "a cafe." We were the place for saffron chai. That specificity didn't limit us. **It made us unforgettable.**
+I learned this the hard way with [FiLLi](/work/filli-cafe/). We weren't "a cafe." We were the place for saffron chai. That specificity didn't limit us. **It made us unforgettable.**
 
 > "The problem with most brand strategies is not the strategy. It's that nobody follows through past week two."
 
@@ -57,8 +57,8 @@ But by year three, something shifts. People start describing your brand the way 
 
 By year five, your positioning is your moat. Competitors can copy your product. They can't copy ten years of consistent positioning.
 
-At FiLLi, our positioning as the saffron chai brand compounded for over a decade. Today, with 80+ outlets across the UAE, customers don't just buy our tea — they identify with the brand. That didn't happen because of a single campaign. It happened because of 10+ years of disciplined positioning.
+At FiLLi, our positioning as the saffron chai brand compounded for over a decade. Today, with 100+ outlets across 13 countries, customers don't just buy our tea — they identify with the brand. That didn't happen because of a single campaign. It happened because of 10+ years of disciplined positioning.
 
 That's the compound effect nobody talks about. And it starts with the abstract work most founders skip.
 
-I talk about this in more depth in [the podcast](/podcast) — and much of what I know about consistency comes from [the years I spent learning pricing and selling](/thinking/grocery-shop-pricing-psychology) long before FiLLi existed.
+I talk about this in more depth in [the podcast](/podcast/) — and much of what I know about consistency comes from [the years I spent learning pricing and selling](/thinking/grocery-shop-pricing-psychology/) long before FiLLi existed.

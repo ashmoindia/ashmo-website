@@ -24,7 +24,7 @@ There's a difference between having an idea and being able to explain it. You ca
 
 Writing is the stress test.
 
-When I started building [ashmo.io](/work/ashmo-platform), I didn't have a clear thesis for why I was doing it. I had a feeling. Something about wanting to own my own platform, wanting to document what I've learned, wanting to build something outside of FiLLi that was entirely mine.
+When I started building [ashmo.io](/work/ashmo-platform/), I didn't have a clear thesis for why I was doing it. I had a feeling. Something about wanting to own my own platform, wanting to document what I've learned, wanting to build something outside of FiLLi that was entirely mine.
 
 But feelings aren't strategies. The clarity came from writing. From sitting down and trying to articulate — in actual words, on an actual page — what this platform was for, who it was for, and why it mattered to me.
 
@@ -36,7 +36,7 @@ That single insight changed how I think about publishing. The article isn't the 
 
 Something strange happens when you write consistently. You start noticing patterns in your own thinking that you'd never see otherwise.
 
-When I wrote about [why brand positioning is the hardest thing](/thinking/brand-positioning-hardest-thing), I didn't set out to write about positioning. I set out to understand why so many founders I've met — smart, capable people — kept making the same mistake of staying vague. Halfway through writing it, I realised I was also writing about my own early mistakes at FiLLi. The piece taught me something about myself that I hadn't consciously understood before.
+When I wrote about [why brand positioning is the hardest thing](/thinking/brand-positioning-hardest-thing/), I didn't set out to write about positioning. I set out to understand why so many founders I've met — smart, capable people — kept making the same mistake of staying vague. Halfway through writing it, I realised I was also writing about my own early mistakes at FiLLi. The piece taught me something about myself that I hadn't consciously understood before.
 
 That's the hidden value. Writing isn't just communication. It's self-diagnosis.
 
@@ -62,9 +62,9 @@ Here's what I've come to believe: the readership is secondary. If people read it
 
 That said, something interesting happens when you publish anyway. Not when you publish to perform, but when you publish honestly. People who think similarly find you. Slowly. Over time. Not in the viral, thousands-of-followers way. In the quiet, one-email-at-a-time way.
 
-The act of publishing also creates accountability. When an idea is sitting in a private note, I can be lazy with it. I can leave it half-formed and tell myself I'll finish it later. But when I know it's going on [ashmo.io](/work/ashmo-platform), I hold myself to a higher standard. Not because anyone's checking — but because I am.
+The act of publishing also creates accountability. When an idea is sitting in a private note, I can be lazy with it. I can leave it half-formed and tell myself I'll finish it later. But when I know it's going on [ashmo.io](/work/ashmo-platform/), I hold myself to a higher standard. Not because anyone's checking — but because I am.
 
-Publishing is a discipline. And discipline, as I wrote about in [patience is not passive](/thinking/patience-is-not-passive), is the version of patience that actually produces results.
+Publishing is a discipline. And discipline, as I wrote about in [patience is not passive](/thinking/patience-is-not-passive/), is the version of patience that actually produces results.
 
 ## Why Don't More Founders Write?
 
@@ -86,7 +86,7 @@ But I'd argue it's the most productive thing you can do in a week. One hour of c
 
 When I started building ashmo.io, the technical decisions — Astro, Netlify, GitHub, Markdown — were the easy part. The hard part was answering: what is this platform for?
 
-I could have said "it's my personal website" and moved on. But that answer wasn't good enough. It didn't give me a filter for what to include and what to leave out, what to write about and what to skip, how to structure the [story](/story) I was telling.
+I could have said "it's my personal website" and moved on. But that answer wasn't good enough. It didn't give me a filter for what to include and what to leave out, what to write about and what to skip, how to structure the [story](/story/) I was telling.
 
 The clarity came from writing about it. Not writing copy for the website — writing to myself about why this mattered. Paragraphs that nobody will ever see. Messy, circling, repetitive paragraphs where I kept trying to pin down the thing I actually cared about.
 

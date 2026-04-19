@@ -28,7 +28,7 @@ But nobody talks about the middle.
 
 The middle is where most people quit. It's the phase where effort and results are completely disconnected. You're working hard and nothing visible is happening. Research suggests that roughly 90% of startups fail, and many of them fail not because the idea was wrong, but because the founders couldn't sustain effort through this invisible phase.
 
-I spent years in the middle. At [FiLLi](/work/filli-cafe), scaling from a handful of outlets to 80+ took over a decade of daily decisions that nobody saw. In my personal life, in my creative work — years where the effort was real but the reward was invisible.
+I spent years in the middle. At [FiLLi](/work/filli-cafe/), scaling from a handful of outlets to 100+ across 13 countries took over a decade of daily decisions that nobody saw. In my personal life, in my creative work — years where the effort was real but the reward was invisible.
 
 > "When opportunity comes, it feels sudden to the world. But to you — it feels inevitable."
 
@@ -58,4 +58,4 @@ The discipline of showing up is the discipline of patience.
 
 They're the same thing.
 
-This is the same principle behind [what I learned running a grocery shop at 19](/thinking/grocery-shop-pricing-psychology) — and the same principle that [made FiLLi's brand positioning compound over a decade](/thinking/brand-positioning-hardest-thing).
+This is the same principle behind [what I learned running a grocery shop at 19](/thinking/grocery-shop-pricing-psychology/) — and the same principle that [made FiLLi's brand positioning compound over a decade](/thinking/brand-positioning-hardest-thing/).

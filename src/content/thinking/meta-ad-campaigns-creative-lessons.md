@@ -1,6 +1,6 @@
 ---
-title: "What 1,000+ Meta Ad Campaigns Taught Me About Creative"
-description: "After running over a thousand campaigns for FiLLi Cafe, I learned that creative isn't about being clever — it's about understanding what makes people stop scrolling."
+title: "What 1,000+ Meta campaigns taught me about creative"
+description: "The recurring patterns that separate scroll-stopping ads from expensive noise."
 date: 2026-03-16
 pillar: merchant-mindset
 tags: ["meta-ads", "creative", "marketing"]
@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-Meta ad creative is the combination of visual, copy, and format that determines whether someone stops scrolling and pays attention to your message — and after running over 1,000 campaigns for [FiLLi Cafe](/work/filli-cafe), I can tell you that what works has almost nothing to do with what looks good in a boardroom. The ads that perform are rarely the ones the team is most proud of. They're the ones built from an honest understanding of why people scroll past everything else.
+Meta ad creative is the combination of visual, copy, and format that determines whether someone stops scrolling and pays attention to your message — and after running over 1,000 campaigns for [FiLLi Cafe](/work/filli-cafe/), I can tell you that what works has almost nothing to do with what looks good in a boardroom. The ads that perform are rarely the ones the team is most proud of. They're the ones built from an honest understanding of why people scroll past everything else.
 
 That tension — between what feels right internally and what actually moves numbers — is the central lesson of running paid creative at scale. And it took me years and a lot of wasted budget to truly accept it.
 
@@ -16,7 +16,7 @@ That tension — between what feels right internally and what actually moves num
 
 Most ad creative fails because it's made for the brand, not for the person seeing it.
 
-When you're inside a company — especially one with 80+ outlets and a strong identity like FiLLi — you start believing your brand is the main character. You think people care about your new flavour launch, your anniversary, your story.
+When you're inside a company — especially one with 100+ outlets across 13 countries and a strong identity like FiLLi — you start believing your brand is the main character. You think people care about your new flavour launch, your anniversary, your story.
 
 They don't. Not initially.
 
@@ -55,7 +55,7 @@ What I've built over the past few years at FiLLi is something closer to a creati
 
 **2. A library of proven patterns.** When something works, we document why — not just the asset, but the structure. Was it the opening frame? The copy angle? The format? Over time, this becomes a playbook. Not a rigid template, but a set of principles the team can riff on.
 
-**3. A production cadence.** We create content in batches, not on demand. One shoot produces 15-20 assets across formats. This is only possible when you know your brand's visual language well enough that production becomes efficient. It took us a while to get there, and [the clarity of our positioning](/thinking/brand-positioning-hardest-thing) is what made it possible.
+**3. A production cadence.** We create content in batches, not on demand. One shoot produces 15-20 assets across formats. This is only possible when you know your brand's visual language well enough that production becomes efficient. It took us a while to get there, and [the clarity of our positioning](/thinking/brand-positioning-hardest-thing/) is what made it possible.
 
 The result is that we're never scrambling. When a campaign needs fresh creative, there's a bench of tested concepts waiting. That operational calm is worth more than any single brilliant ad.
 
@@ -68,7 +68,7 @@ Here's why. A significant percentage of people see your ad with sound off. The p
 The best-performing copy I've written for FiLLi follows a simple structure:
 
 1. **Open with the customer's reality.** Not the product. Not the brand. Their moment. ("That 3pm lull when nothing but chai will fix it.")
-2. **Introduce the solution naturally.** Not as a pitch, but as the obvious answer. ("Zafran Chai. 80+ FiLLi outlets. Always close enough.")
+2. **Introduce the solution naturally.** Not as a pitch, but as the obvious answer. ("Zafran Chai. 100+ FiLLi outlets. Always close enough.")
 3. **One clear action.** Not three. Not "visit our website, follow us, and download the app." One thing.
 
 I've tested clever copy against simple copy hundreds of times. Simple wins. Not always by a dramatic margin, but consistently enough that I've stopped trying to be clever.
@@ -87,7 +87,7 @@ After years of working with it daily, here are the things I've learned to trust 
 
 The biggest mistake I see brands make is either fighting the algorithm on everything (over-segmenting audiences, forcing placements) or surrendering entirely (Advantage+ everything, no creative strategy, set-and-forget). The answer is somewhere in between — and finding that balance requires paying attention to the data daily, not weekly.
 
-At our scale — managing campaigns across 80+ outlets with geo-targeted promotions, national brand plays, and seasonal pushes running simultaneously — we review performance every morning. Not to micromanage, but to catch signals early. A creative that's working in Abu Dhabi but failing in Dubai tells you something. A format that's converting for new customers but not for retargeting tells you something else. The data is a conversation, and you have to be present for it.
+At our scale — managing campaigns across 100+ outlets with geo-targeted promotions, national brand plays, and seasonal pushes running simultaneously — we review performance every morning. Not to micromanage, but to catch signals early. A creative that's working in Abu Dhabi but failing in Dubai tells you something. A format that's converting for new customers but not for retargeting tells you something else. The data is a conversation, and you have to be present for it.
 
 ## What's the Most Expensive Lesson I've Learned?
 
@@ -113,7 +113,7 @@ That doesn't mean production quality is irrelevant. It means authenticity and re
 
 The principle I've landed on: **production quality should be invisible.** If someone notices how well-made your ad is, you've already lost their attention to the wrong thing. The best production quality is the kind that makes the viewer feel something without noticing the craft.
 
-This is similar to [what I learned about pricing in my early retail days](/thinking/grocery-shop-pricing-psychology) — the mechanics should be invisible. The customer should feel the value, not see the technique.
+This is similar to [what I learned about pricing in my early retail days](/thinking/grocery-shop-pricing-psychology/) — the mechanics should be invisible. The customer should feel the value, not see the technique.
 
 ## What Would I Tell a Brand Starting Their First 100 Campaigns?
 
@@ -123,7 +123,7 @@ Don't wait for the perfect ad. The perfect ad doesn't exist — it's discovered 
 
 Build your own data set. What works for another brand — even in your category — might not work for you. Your audience, your product, your price point, your brand personality — these are all variables that make someone else's playbook interesting but not necessarily useful.
 
-And most importantly: [be patient](/thinking/patience-is-not-passive). Paid advertising rewards consistency and compounding knowledge. The brands that win on Meta aren't the ones with the biggest budgets. They're the ones who've been paying attention the longest, iterating the fastest, and building institutional knowledge that compounds over years.
+And most importantly: [be patient](/thinking/patience-is-not-passive/). Paid advertising rewards consistency and compounding knowledge. The brands that win on Meta aren't the ones with the biggest budgets. They're the ones who've been paying attention the longest, iterating the fastest, and building institutional knowledge that compounds over years.
 
 ---
 

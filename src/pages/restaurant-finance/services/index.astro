@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+import { financeServices } from '../../../data/restaurantFinance';
+---
+
+<BaseLayout
+  title="Restaurant Finance Services"
+  description="Productized reviews for UAE restaurant operators covering feasibility, unit economics, delivery margin, menu profitability, and model review."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px] mb-12">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Services</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+        Advisory that starts where the numbers stop feeling trustworthy.
+      </h1>
+      <p class="text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.9]">
+        These are not generic consulting retainers. They are focused reviews tied to specific decision points: location, rent pressure,
+        margin quality, delivery dependence, menu economics, and expansion.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {financeServices.map((service) => (
+        <div class="rounded-[1.35rem] border border-border bg-surface/70 px-6 py-6">
+          <p class="mb-3 text-[0.72rem] uppercase tracking-[0.18em] text-accent">Productized review</p>
+          <h2 class="font-heading text-[1.6rem] leading-[1.08] tracking-[-0.03em] mb-3">{service.name}</h2>
+          <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75] mb-4">{service.summary}</p>
+          <div class="space-y-3 mb-6">
+            <div>
+              <p class="text-[0.68rem] uppercase tracking-[0.14em] text-text-tertiary mb-1">Outcome</p>
+              <p class="text-[0.92rem] text-text-secondary font-light leading-[1.7]">{service.outcome}</p>
+            </div>
+            <div>
+              <p class="text-[0.68rem] uppercase tracking-[0.14em] text-text-tertiary mb-1">Best trigger</p>
+              <p class="text-[0.92rem] text-text-secondary font-light leading-[1.7]">{service.trigger}</p>
+            </div>
+          </div>
+          <a href="/contact/" class="inline-flex items-center gap-2 text-sm text-accent-light hover:text-text no-underline transition-colors">
+            Request this review &rarr;
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

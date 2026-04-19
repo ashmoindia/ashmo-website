@@ -1,18 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { personId, personSchema, websiteId } from '../data/entity';
+
+const profilePageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': 'https://ashmo.io/story/#profile',
+  url: 'https://ashmo.io/story/',
+  name: 'Background — Ashraf Hassan',
+  description:
+    'Ashraf Hassan, also known as Ashmo, shares the background and operating experience behind his writing on brand building and business.',
+  isPartOf: {
+    '@id': websiteId,
+  },
+  about: {
+    '@id': personId,
+  },
+  mainEntity: personSchema,
+};
 ---
 
 <BaseLayout title="Background — Ashraf Hassan" description="Twenty years in the operational layer of brand building. One brand scaled from a single outlet to 70+. This is the thinking behind the thinking.">
+  <script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
 
   <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
     <div class="max-w-[680px]">
 
       <!-- Opening -->
       <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] mb-8">
-        The thinking didn't<br/>come from reading.
+        Ashraf Hassan.<br/>The thinking didn't come from reading.
       </h1>
       <p class="text-2xl md:text-3xl text-text-secondary font-light leading-[1.4] mb-16 max-w-[540px]">
-        It came from twenty years of running something real — and paying close attention to what actually worked.
+        People know me as Ashmo. It came from twenty years of running something real — and paying close attention to what actually worked.
       </p>
 
       <div class="w-12 h-px bg-accent mb-16"></div>
@@ -21,7 +40,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="mb-20">
         <h2 class="font-heading text-xl md:text-2xl font-semibold leading-[1.3] text-text mb-6">The Operational Foundation</h2>
         <div class="prose">
-          <p>I started with a grocery shop in Deira, Dubai. I was nineteen. No business school, no investor, no playbook. Just product, margins, footfall, and daily decisions about what to stock, how to price it, and which customers to spend time on.</p>
+          <p>I started with a grocery shop in Sharjah. I was nineteen. No business school, no investor, no playbook. Just product, margins, footfall, and daily decisions about what to stock, how to price it, and which customers to spend time on.</p>
           <p>That was the first education — and it was a rigorous one. You learn the mechanics of trade when you're living inside them. How footfall converts. How pricing psychology operates at the ground level. How trust compounds slowly between a shopkeeper and a regular customer, and how quickly it dissolves.</p>
           <p>Over the next several years I moved through IT training, design, and creative work. Not because of a plan, but because each phase revealed something new about how people make decisions and how businesses actually function at the seam between product and perception.</p>
           <p>The design years taught me that aesthetics is not decoration — it's the visual layer of a positioning decision. The IT years taught me how systems fail quietly before they fail loudly. Taken together, they built a cross-functional mental model for how businesses work at the intersection of product, brand, and human behaviour.</p>
@@ -66,15 +85,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <!-- CTA -->
       <div class="pt-10 border-t border-border flex flex-col md:flex-row gap-6">
-        <a href="/thinking" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
+        <a href="/thinking/" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
           Read the thinking <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
         </a>
-        <a href="/principles" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-text-tertiary hover:text-text-secondary transition-colors group">
+        <a href="/principles/" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-text-tertiary hover:text-text-secondary transition-colors group">
           Operator principles <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
         </a>
-        <a href="/work" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-text-tertiary hover:text-text-secondary transition-colors group">
+        <a href="/work/" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-text-tertiary hover:text-text-secondary transition-colors group">
           See the work <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
         </a>
+      </div>
+
+      <div class="mt-12 pt-10 border-t border-border">
+        <p class="text-[0.722rem] font-medium uppercase tracking-[0.15em] text-text-tertiary mb-5">Three Useful Starting Points</p>
+        <div class="flex flex-col gap-4">
+          <a href="/thinking/brand-positioning-hardest-thing/" class="text-text hover:text-accent transition-colors">Why Brand Positioning Is the Hardest Thing</a>
+          <a href="/thinking/grocery-shop-pricing-psychology/" class="text-text hover:text-accent transition-colors">What a Grocery Shop at 19 Taught Me About Pricing</a>
+          <a href="/thinking/patience-is-not-passive/" class="text-text hover:text-accent transition-colors">Patience Is Not Passive</a>
+        </div>
       </div>
 
     </div>

@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+---
+
+<BaseLayout
+  title="Break-even Calculator"
+  description="Model break-even revenue, daily sales, and cover requirements for a UAE restaurant or cafe."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px] mb-10">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Calculator</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+        Break-even calculator
+      </h1>
+      <p class="text-[1.02rem] md:text-[1.1rem] text-text-secondary font-light leading-[1.9]">
+        Pressure test whether the branch can realistically carry its fixed cost before you ask the team to sell harder.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)] gap-8">
+      <form id="break-even-form" class="rounded-[1.5rem] border border-border bg-surface/80 px-6 py-6 md:px-8 md:py-8 space-y-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Monthly fixed cost (AED)</span>
+            <input id="fixed-cost" type="number" min="0" value="180000" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Gross margin %</span>
+            <input id="gross-margin" type="number" min="1" max="100" step="0.1" value="68" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Average spend per customer (AED)</span>
+            <input id="apc" type="number" min="1" step="0.1" value="41" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+          <label class="block">
+            <span class="mb-2 block text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Trading days per month</span>
+            <input id="trading-days" type="number" min="1" max="31" value="30" class="w-full rounded-xl border border-border bg-bg px-4 py-3 text-text focus:border-accent focus:outline-none" />
+          </label>
+        </div>
+      </form>
+
+      <div class="rounded-[1.5rem] border border-border bg-[linear-gradient(145deg,rgba(21,21,20,0.95),rgba(11,11,11,0.98))] px-6 py-6 md:px-8 md:py-8">
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent-light mb-4">Output</p>
+        <div class="space-y-5">
+          <div>
+            <p class="text-[0.72rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Monthly break-even revenue</p>
+            <p id="break-even-revenue" class="font-heading text-[2.2rem] leading-none">AED 264,706</p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-[1.1rem] border border-border bg-surface/60 px-4 py-4">
+              <p class="text-[0.68rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Daily sales needed</p>
+              <p id="daily-sales" class="text-[1.2rem] text-text">AED 8,824</p>
+            </div>
+            <div class="rounded-[1.1rem] border border-border bg-surface/60 px-4 py-4">
+              <p class="text-[0.68rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Covers needed / day</p>
+              <p id="covers-needed" class="text-[1.2rem] text-text">215</p>
+            </div>
+          </div>
+          <div class="rounded-[1.1rem] border border-border bg-surface/60 px-4 py-4">
+            <p class="text-[0.72rem] uppercase tracking-[0.14em] text-text-tertiary mb-2">Decision prompt</p>
+            <p id="break-even-note" class="text-[0.98rem] text-text-secondary font-light leading-[1.75]">
+              If the required covers feel higher than the room, location, and daypart can honestly deliver, the rent or model needs work before launch.
+            </p>
+          </div>
+          <a href="/restaurant-finance/services/" class="inline-flex items-center gap-2 text-sm text-accent-light hover:text-text no-underline transition-colors">
+            Need help interpreting it? Review services &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const formatMoney = (value) =>
+      `AED ${Math.round(value).toLocaleString('en-US')}`;
+
+    const updateBreakEven = () => {
+      const fixedCost = Number(document.getElementById('fixed-cost')?.value || 0);
+      const grossMargin = Number(document.getElementById('gross-margin')?.value || 0) / 100;
+      const apc = Number(document.getElementById('apc')?.value || 0);
+      const tradingDays = Number(document.getElementById('trading-days')?.value || 30);
+      const breakEvenRevenue = grossMargin > 0 ? fixedCost / grossMargin : 0;
+      const dailySales = tradingDays > 0 ? breakEvenRevenue / tradingDays : 0;
+      const covers = apc > 0 ? dailySales / apc : 0;
+
+      document.getElementById('break-even-revenue').textContent = formatMoney(breakEvenRevenue);
+      document.getElementById('daily-sales').textContent = formatMoney(dailySales);
+      document.getElementById('covers-needed').textContent = `${Math.ceil(covers)}`;
+
+      const note = covers > 260
+        ? 'This is a hard branch to carry. If those covers rely on perfect traffic or permanent delivery dependence, the model is probably too fragile.'
+        : covers > 180
+          ? 'The branch can work, but only if occupancy, APC, and throughput stay disciplined. Test downside months before you trust the launch case.'
+          : 'The cover requirement looks more realistic. The next check is whether rent, labor, and delivery mix still behave in a weak month.';
+      document.getElementById('break-even-note').textContent = note;
+    };
+
+    document.querySelectorAll('#break-even-form input').forEach((input) => {
+      input.addEventListener('input', updateBreakEven);
+    });
+    updateBreakEven();
+  </script>
+</BaseLayout>

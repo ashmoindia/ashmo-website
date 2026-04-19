@@ -38,4 +38,4 @@ The hardest part of ashmo.io isn't the code or the design. It's the discipline o
 
 This platform is a bet that depth still matters.
 
-Start with [why brand positioning is the hardest thing to get right](/thinking/brand-positioning-hardest-thing), or go deeper into [the merchant mindset that shaped everything](/thinking/grocery-shop-pricing-psychology). The [podcast](/podcast) is where these ideas get the space they deserve.
+Start with [why brand positioning is the hardest thing to get right](/thinking/brand-positioning-hardest-thing/), or go deeper into [the merchant mindset that shaped everything](/thinking/grocery-shop-pricing-psychology/). The [podcast](/podcast/) is where these ideas get the space they deserve.

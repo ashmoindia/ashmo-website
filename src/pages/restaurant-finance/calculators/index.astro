@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+import FinanceResourceCard from '../../../components/FinanceResourceCard.astro';
+import { financeCalculators } from '../../../data/restaurantFinance';
+---
+
+<BaseLayout
+  title="Restaurant Finance Calculators"
+  description="Break-even, rent-to-revenue, labor cost-to-company, and delivery margin calculators for UAE restaurant operators."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px] mb-12">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Calculators</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+        The decision tools that should sit next to the branch P&amp;L.
+      </h1>
+      <p class="text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.9]">
+        These are designed to be used before you sign the lease, after a weak month, during pricing reviews, or whenever revenue looks
+        good but the business still feels uncomfortable.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {financeCalculators.map((calculator) => (
+        <FinanceResourceCard
+          eyebrow={calculator.metric}
+          title={calculator.name}
+          description={calculator.summary}
+          href={`/restaurant-finance/calculators/${calculator.slug}/`}
+          metadata="Open calculator"
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

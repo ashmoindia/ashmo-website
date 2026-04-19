@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+---
+
+<BaseLayout
+  title="Benchmark Methodology"
+  description="How Ashmo intends to collect, validate, anonymize, and publish benchmark ranges for UAE restaurant operators."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px] mb-10">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Methodology</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+        Benchmark methodology
+      </h1>
+      <p class="text-[1.02rem] md:text-[1.1rem] text-text-secondary font-light leading-[1.9]">
+        The benchmark layer should never behave like a black box. Operators need to understand what data is being compared,
+        how it is cleaned, and why a range is being labeled as a benchmark rather than an opinion.
+      </p>
+    </div>
+
+    <div class="prose max-w-[760px]">
+      <h2>1. Source labeling</h2>
+      <p>
+        Every benchmark note should make source type visible. Ashmo uses four source labels: Official UAE Data, Licensed Market Research,
+        Ashmo Operator Benchmark, and Model Assumption. These are not cosmetic tags. They explain the confidence level of the number.
+      </p>
+
+      <h2>2. Submission standard</h2>
+      <p>
+        No operator submission should enter the benchmark layer without a minimum data structure. At a minimum, the platform should ask for
+        monthly sales, labor summary, rent or occupancy cost, COGS summary, and delivery channel mix. If the file structure is incomplete,
+        the submission should not distort the range.
+      </p>
+
+      <h2>3. Validation</h2>
+      <p>
+        Validation should happen in three steps: structural checks, reasonableness checks, and flagged manual review for suspicious or
+        unusual submissions. This protects the benchmark layer from poor-quality data and from operators uploading numbers that are too
+        incomplete to trust.
+      </p>
+
+      <h2>4. Anonymization</h2>
+      <p>
+        No single operator should ever be identifiable inside a published range. Benchmarks should only be released after concept buckets,
+        geography groups, and sample thresholds are met. Raw operator files should never be exposed publicly.
+      </p>
+
+      <h2>5. Sample threshold and outliers</h2>
+      <p>
+        A range should not be published below a minimum sample threshold. Outliers should be quarantined first, then reviewed. Some
+        outliers may be excluded from ranges and later turned into blind case studies because they are more valuable as insight than as
+        benchmark noise.
+      </p>
+
+      <h2>6. Reporting cadence</h2>
+      <p>
+        Benchmark notes should show period covered and refresh cadence. The value of a range is not just the number. It is the clarity
+        around whether that number reflects a recent operating window or an outdated one.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

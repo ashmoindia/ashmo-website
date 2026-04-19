@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+import FinanceResourceCard from '../../../components/FinanceResourceCard.astro';
+import { evidenceLayers, trustMarkers } from '../../../data/restaurantFinance';
+---
+
+<BaseLayout
+  title="Restaurant Benchmarks"
+  description="How Ashmo approaches benchmark ranges for UAE restaurants, including evidence layers, governance, and pilot contribution logic."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.38fr)] gap-10 md:gap-14 mb-12">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Benchmarks</p>
+        <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+          A benchmark layer only works if operators trust how the numbers are built.
+        </h1>
+        <p class="text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.9]">
+          This section is intentionally explicit about source type, methodology, sample logic, and what gets labeled as assumption rather than fact.
+        </p>
+      </div>
+      <div class="rounded-[1.4rem] border border-border bg-surface px-6 py-6">
+        <p class="mb-4 text-[0.72rem] uppercase tracking-[0.18em] text-accent-light">Visible trust markers</p>
+        <div class="space-y-4">
+          {trustMarkers.map((marker) => (
+            <div class="flex gap-3">
+              <span class="mt-1 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">{marker}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+      {evidenceLayers.map((layer, index) => (
+        <FinanceResourceCard
+          eyebrow={`Layer 0${index + 1}`}
+          title={layer.title}
+          description={layer.summary}
+          metadata="Evidence model"
+        />
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)] gap-8">
+      <div class="rounded-[1.35rem] border border-border bg-surface/70 px-6 py-6">
+        <p class="mb-3 text-[0.72rem] uppercase tracking-[0.18em] text-accent">Pilot benchmark plan</p>
+        <h2 class="font-heading text-[1.7rem] leading-[1.08] tracking-[-0.03em] mb-4">Start with a narrow operator cohort, not broad claims.</h2>
+        <ul class="space-y-3 list-none pl-0 text-[0.96rem] text-text-secondary font-light leading-[1.75]">
+          <li>10 to 15 operators</li>
+          <li>Clearly defined concept buckets</li>
+          <li>Minimum data package with validation rules</li>
+          <li>Private comparison note in exchange for submission</li>
+          <li>Publish ranges only after sample threshold is met</li>
+        </ul>
+      </div>
+      <div class="rounded-[1.35rem] border border-border bg-surface/70 px-6 py-6">
+        <p class="mb-3 text-[0.72rem] uppercase tracking-[0.18em] text-accent">Quality control</p>
+        <h2 class="font-heading text-[1.7rem] leading-[1.08] tracking-[-0.03em] mb-4">Validation matters more than volume in the early benchmark layer.</h2>
+        <ul class="space-y-3 list-none pl-0 text-[0.96rem] text-text-secondary font-light leading-[1.75]">
+          <li>Structural validation before ingestion</li>
+          <li>Reasonableness checks against concept norms</li>
+          <li>Manual review for suspicious outliers</li>
+          <li>Outlier quarantine before publication</li>
+          <li>Anonymization before any range leaves the system</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <FinanceResourceCard
+        eyebrow="Methodology"
+        title="Read the benchmark methodology"
+        description="See how source types, validation, anonymization, sample thresholds, and outlier handling are meant to work before any range is published."
+        href="/restaurant-finance/benchmarks/methodology/"
+        metadata="Open methodology"
+      />
+    </div>
+  </section>
+</BaseLayout>

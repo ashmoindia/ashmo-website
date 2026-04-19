@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+import FinanceResourceCard from '../../../components/FinanceResourceCard.astro';
+import { financeInsights } from '../../../data/restaurantFinance';
+---
+
+<BaseLayout
+  title="Restaurant Finance Insights"
+  description="UAE restaurant finance insights on rent, margins, labor, table turns, delivery economics, and branch profitability."
+>
+  <FinanceSectionNav />
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
+    <div class="max-w-[760px] mb-12">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Insights</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+        Financial thinking for UAE restaurant operators.
+      </h1>
+      <p class="text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.9]">
+        These pieces are written to help an operator decide, not just understand. Every topic ties back to branch economics,
+        commercial pressure, or the discipline of making numbers usable.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {financeInsights.map((insight) => (
+        <FinanceResourceCard
+          eyebrow={insight.readTime}
+          title={insight.title}
+          description={insight.description}
+          href={`/restaurant-finance/insights/${insight.slug}/`}
+          metadata="Finance insight"
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

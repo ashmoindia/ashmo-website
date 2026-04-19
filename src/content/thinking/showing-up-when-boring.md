@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-Showing up when it's boring means sustaining effort on the days when work feels routine, invisible, and unrewarding. It is the single behaviour that separates people who build lasting things from people who start exciting things and abandon them. After 25 years of building — from a grocery shop counter in Deira to scaling FiLLi Cafe across 80+ outlets — I can say this with certainty: the boring days are where the real work happens.
+Showing up when it's boring means sustaining effort on the days when work feels routine, invisible, and unrewarding. It is the single behaviour that separates people who build lasting things from people who start exciting things and abandon them. After 25 years of building — from a grocery shop counter in Sharjah to scaling FiLLi Cafe across 100+ outlets in 13 countries — I can say this with certainty: the boring days are where the real work happens.
 
 Nobody posts about the boring days. There are no stories about the Tuesday afternoon where you did the same thing you did last Tuesday. No documentaries about the weeks where nothing changed. No interviews about the month where you just kept going.
 
@@ -28,15 +28,15 @@ There was no applause. No milestone. No notification telling me I was doing well
 
 > "Discipline is not doing hard things. It's doing ordinary things on the days when ordinary feels unbearable."
 
-That grocery counter was my first real education in consistency. Not the exciting lessons — those came from [reading customers and learning pricing in real time](/thinking/grocery-shop-pricing-psychology). The deeper lesson was simpler: the shop only works if you open it. Every day. Even the boring ones. Especially the boring ones.
+That grocery counter was my first real education in consistency. Not the exciting lessons — those came from [reading customers and learning pricing in real time](/thinking/grocery-shop-pricing-psychology/). The deeper lesson was simpler: the shop only works if you open it. Every day. Even the boring ones. Especially the boring ones.
 
 ## What Does "Boring" Actually Look Like When You're Building Something?
 
-People romanticise building. They see the outcome — 80+ FiLLi Cafe outlets across the UAE and beyond — and they imagine some kind of montage. Fast-moving scenes of hustle, breakthroughs, celebrations.
+People romanticise building. They see the outcome — 100+ FiLLi Cafe outlets across 13 countries — and they imagine some kind of montage. Fast-moving scenes of hustle, breakthroughs, celebrations.
 
 The reality is different. The reality is thousands of days that looked almost identical.
 
-At [FiLLi](/work/filli-cafe), the boring days looked like this: reviewing supplier contracts for the third time that month. Following up on a maintenance issue at one outlet while another outlet needed a staffing adjustment. Checking consistency across locations — is the Zafran Chai the same at branch 12 as it is at branch 47? Having the same conversation about quality standards that you had last week, because standards don't maintain themselves.
+At [FiLLi](/work/filli-cafe/), the boring days looked like this: reviewing supplier contracts for the third time that month. Following up on a maintenance issue at one outlet while another outlet needed a staffing adjustment. Checking consistency across locations — is the Zafran Chai the same at branch 12 as it is at branch 47? Having the same conversation about quality standards that you had last week, because standards don't maintain themselves.
 
 None of that is exciting. All of it is essential.
 
@@ -52,7 +52,7 @@ The interesting thing about boring work is that it's almost always the work that
 
 This is the question I get asked most often, and the honest answer is uncomfortable: you don't always want to.
 
-There were years — actual years — in my journey where I couldn't see progress. The [early hustle days](/work/early-hustle) were full of this. Working long hours with no clear indication that any of it was leading somewhere. No feedback loop. No dashboard showing a graph going up. Just effort going into a void.
+There were years — actual years — in my journey where I couldn't see progress. The [early hustle days](/work/early-hustle/) were full of this. Working long hours with no clear indication that any of it was leading somewhere. No feedback loop. No dashboard showing a graph going up. Just effort going into a void.
 
 During those stretches, I relied on three things:
 
@@ -68,11 +68,11 @@ Something strange happens when you accumulate enough boring days: they stop bein
 
 You realise that every day you showed up added a thin, invisible layer. And those layers, stacked over years, created something solid. Something that couldn't have been built any other way.
 
-FiLLi didn't become an 80+ outlet chain because of a single brilliant decision. It became that through thousands of ordinary decisions, made consistently, over more than a decade. The Zafran Chai recipe didn't become iconic because of one perfect day in the kitchen. It became iconic because we protected it — the same way, every day, at every location — for years.
+FiLLi didn't become a 100+ outlet chain across 13 countries because of a single brilliant decision. It became that through thousands of ordinary decisions, made consistently, over more than a decade. The Zafran Chai recipe didn't become iconic because of one perfect day in the kitchen. It became iconic because we protected it — the same way, every day, at every location — for years.
 
 I see the same thing now with [ashmo.io](https://ashmo.io). Building this site, writing these articles, structuring my thinking — none of it feels dramatic in the moment. Some days it feels like talking into a void. But I've been through this before. I know what accumulation looks like. I know that the days where nothing seems to be happening are the days where everything is being built.
 
-This is the companion truth to what I wrote in [Patience Is Not Passive](/thinking/patience-is-not-passive). Patience isn't waiting. And consistency isn't heroic. They're both just the quiet act of doing the thing again.
+This is the companion truth to what I wrote in [Patience Is Not Passive](/thinking/patience-is-not-passive/). Patience isn't waiting. And consistency isn't heroic. They're both just the quiet act of doing the thing again.
 
 ## Why Do Most People Struggle With the Boring Phase?
 

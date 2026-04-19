@@ -1,177 +1,455 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ArticleCard from '../components/ArticleCard.astro';
-import PillarCard from '../components/PillarCard.astro';
 import { getCollection } from 'astro:content';
+import { evidenceLayers, financeCalculators, trustMarkers } from '../data/restaurantFinance';
 
 const allArticles = await getCollection('thinking', ({ data }) => data.published);
+const allWork = await getCollection('work', ({ data }) => data.published);
+
 const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const featuredArticle = sortedArticles.find(a => a.data.featured) || sortedArticles[0];
-const latestArticles = sortedArticles.filter(a => a.id !== featuredArticle?.id).slice(0, 2);
+const sortedWork = allWork.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const articleById = new Map(sortedArticles.map((article) => [article.id, article]));
+const workById = new Map(sortedWork.map((entry) => [entry.id, entry]));
+
+const heroEssay = articleById.get('brand-positioning-hardest-thing') ?? sortedArticles[0];
+const latestArticle = sortedArticles[0];
+const philosophyEssay = articleById.get('grocery-shop-pricing-psychology') ?? sortedArticles[1];
+const archiveFeature = workById.get('filli-cafe') ?? sortedWork[0];
+
+const archiveCards = [
+  articleById.get('why-most-rebrands-fail'),
+  articleById.get('ai-marketing-70-outlet-chain'),
+  articleById.get('patience-is-not-passive'),
+  workById.get('early-hustle'),
+].filter(Boolean);
+
+const latestNotes = sortedArticles
+  .filter((article) => ![
+    heroEssay?.id,
+    philosophyEssay?.id,
+    'why-most-rebrands-fail',
+    'ai-marketing-70-outlet-chain',
+    'patience-is-not-passive',
+  ].includes(article.id))
+  .slice(0, 3);
+
+const financeHighlights = financeCalculators.slice(0, 3);
+const financeEvidencePreview = evidenceLayers.slice(0, 3);
+
+const pillarLabels = {
+  'merchant-mindset': 'Merchant Mindset',
+  'brand-growth': 'Brand Growth',
+  'ai-selling': 'AI & Selling',
+  'habit-philosophy': 'Habit Philosophy',
+  'founder-documentary': 'Founder Documentary',
+};
+
+const formatDate = (date) =>
+  date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
+const getHref = (entry) => {
+  if (!entry) return '/thinking/';
+  return entry.collection === 'work'
+    ? `/work/${entry.id}/`
+    : `/thinking/${entry.id}/`;
+};
+
+const getLabel = (entry) => {
+  if (!entry) return '';
+  return entry.collection === 'work'
+    ? entry.data.category.replace('-', ' ')
+    : (pillarLabels[entry.data.pillar] || entry.data.pillar);
+};
 ---
 
-<BaseLayout title="Home">
+<BaseLayout
+  title="Home"
+  description="Ashraf Hassan, known as Ashmo, is a founder, brand builder, and writer sharing essays on brand strategy, cafe growth, and merchant thinking."
+>
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-6 md:pt-10 pb-24 md:pb-32 overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] gap-10 md:gap-12 xl:gap-16 items-center">
+      <div class="max-w-[34rem] pr-0 lg:pr-4 xl:pr-8">
+        <p class="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent mb-5">
+          Ashraf Hassan / Ashmo · Volume IV / Notes from the field
+        </p>
+        <h1 class="font-heading text-[2.9rem] md:text-[4.8rem] lg:text-[4.9rem] xl:text-[5.35rem] font-semibold leading-[0.94] tracking-[-0.04em] mb-6 max-w-[8ch]">
+          The Architecture
+          <br />
+          of <span class="italic text-accent">Brand Permanence</span>
+        </h1>
+        <p class="max-w-[28rem] text-[1.02rem] md:text-[1.08rem] text-text-secondary font-light leading-[1.85] mb-8">
+          I'm Ashraf Hassan, known as Ashmo. These are essays, case notes, and operational reflections on what makes a brand survive beyond the launch phase:
+          judgement, consistency, merchant instinct, and the discipline of keeping the same promise for years.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-5 sm:gap-8">
+          <a
+            href={getHref(heroEssay)}
+            class="inline-flex items-center justify-center bg-gradient-to-r from-accent-light to-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:opacity-90 transition-opacity"
+            style="color: var(--color-bg);"
+          >
+            Read the lead essay
+          </a>
+          <a
+            href="/thinking/"
+            class="inline-flex items-center gap-2 text-sm font-medium text-text-secondary no-underline hover:text-text transition-colors group"
+          >
+            View the archive
+            <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+          </a>
+        </div>
+      </div>
 
-  <!-- Hero -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-12 md:pt-20 pb-20 md:pb-28 relative">
-    <!-- Warm glow -->
-    <div class="absolute top-[20%] -right-[10%] w-[500px] h-[500px] pointer-events-none" style="background: radial-gradient(circle, rgba(212,135,90,0.12) 0%, transparent 70%)"></div>
+      <div class="lg:pl-2 xl:pl-6">
+        <div class="relative aspect-[4/5] overflow-hidden bg-surface">
+          <img
+            src="/images/homepage/editorial-hero.png"
+            alt="Architectural concrete surfaces with a warm interior glow"
+            width="512"
+            height="512"
+            class="h-full w-full object-cover opacity-80 mix-blend-screen"
+          />
+          <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,8,0.08),rgba(8,8,8,0.44))]"></div>
+          <div class="absolute inset-y-0 left-[18%] w-px bg-white/7"></div>
+          <div class="absolute inset-y-0 left-[48%] w-px bg-white/8"></div>
+          <div class="absolute inset-y-0 right-[19%] w-px bg-white/7"></div>
+          <div class="absolute top-0 right-[18%] h-full w-[18%] bg-black/16"></div>
+          <div class="absolute top-[14%] right-[26%] h-[58%] w-[20%] bg-gradient-to-b from-accent/55 via-accent/10 to-transparent blur-[2px]"></div>
+          <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg via-bg/55 to-transparent"></div>
+          {latestArticle && (
+            <a
+              href={getHref(latestArticle)}
+              class="group absolute left-5 right-5 bottom-5 md:left-6 md:right-auto md:bottom-6 md:max-w-[22rem] no-underline"
+            >
+              <div class="relative overflow-hidden border border-white/10 bg-[linear-gradient(135deg,rgba(15,15,15,0.92),rgba(15,15,15,0.78))] px-5 py-5 backdrop-blur-md transition-all duration-300 group-hover:border-accent/40 group-hover:bg-[linear-gradient(135deg,rgba(20,18,17,0.96),rgba(20,18,17,0.84))]">
+                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(206,151,111,0.18),transparent_48%)]"></div>
+                <div class="relative">
+                  <div class="flex items-center justify-between gap-3 mb-3">
+                    <p class="text-[0.66rem] uppercase tracking-[0.24em] text-accent-light">
+                      Latest Highlight
+                    </p>
+                    <span class="text-[0.68rem] uppercase tracking-[0.16em] text-text-tertiary">
+                      {formatDate(latestArticle.data.date)}
+                    </span>
+                  </div>
 
-    <div class="relative z-10">
-      <p class="text-[0.722rem] font-medium uppercase tracking-[0.15em] text-accent mb-8 flex items-center gap-3">
-        <span class="block w-8 h-px bg-accent"></span>
-        Operator &middot; Brand Architect &middot; Pattern Thinker
-      </p>
+                  <p class="font-heading text-[1.15rem] md:text-[1.28rem] leading-[1.1] tracking-[-0.02em] text-text mb-2 group-hover:text-accent-light transition-colors">
+                    {latestArticle.data.title}
+                  </p>
 
-      <h1 class="font-heading text-4xl md:text-6xl lg:text-[3.6rem] font-bold leading-[1.08] tracking-tight mb-8 max-w-[780px]">
-        Most brand problems aren't creative problems. They're <em class="italic text-accent">thinking problems.</em>
-      </h1>
+                  <p class="text-[0.88rem] text-text-secondary font-light leading-[1.65] mb-4">
+                    {latestArticle.data.description}
+                  </p>
 
-      <p class="text-lg md:text-xl text-text-secondary max-w-[520px] leading-relaxed font-light">
-        I've spent 20 years in the operational layer of brand building — not studying it, running it. Now I write about what I learned.
-      </p>
-
-      <a href="/thinking" class="inline-flex items-center gap-2.5 mt-12 text-[0.889rem] font-medium text-text hover:text-accent transition-colors group">
-        Read the thinking <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-      </a>
+                  <div class="flex items-center justify-between gap-4">
+                    <span class="text-[0.66rem] uppercase tracking-[0.18em] text-text-tertiary">
+                      {getLabel(latestArticle)}
+                    </span>
+                    <span class="inline-flex items-center gap-2 text-sm font-medium text-accent-light">
+                      Read now
+                      <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          )}
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Latest Thinking -->
-  {(featuredArticle || latestArticles.length > 0) && (
-    <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
-      <div class="flex justify-between items-baseline mb-14 border-b border-border pb-6">
-        <h2 class="text-[1.11rem] font-body font-medium uppercase tracking-[0.08em] text-text-tertiary">Latest Thinking</h2>
-        <a href="/thinking" class="text-sm text-text-tertiary hover:text-accent transition-colors">View all &rarr;</a>
+  <section class="bg-surface py-20 md:py-24">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="max-w-[760px] mx-auto text-center">
+        <p class="font-heading text-[1.9rem] md:text-[2.4rem] italic text-accent-light leading-[1.35]">
+          "We do not build for the moment. We build for the memory that remains after repetition."
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {featuredArticle && (
-          <ArticleCard
-            title={featuredArticle.data.title}
-            description={featuredArticle.data.description}
-            date={featuredArticle.data.date}
-            pillar={featuredArticle.data.pillar}
-            slug={featuredArticle.id}
-            featured={true}
-          />
-        )}
-
-        {latestArticles.map(article => (
-          <ArticleCard
-            title={article.data.title}
-            description={article.data.description}
-            date={article.data.date}
-            pillar={article.data.pillar}
-            slug={article.id}
-          />
-        ))}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mt-14 md:mt-18 max-w-[920px] mx-auto">
+        <div>
+          <p class="text-[0.72rem] font-medium uppercase tracking-[0.18em] text-text-tertiary mb-4">
+            Intentional Curation
+          </p>
+          <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8]">
+            This site is not built around content velocity. It is built around durable ideas that can still matter a year from now:
+            trade, positioning, compounding, and operational clarity.
+          </p>
+        </div>
+        <div>
+          <p class="text-[0.72rem] font-medium uppercase tracking-[0.18em] text-text-tertiary mb-4">
+            Structural Integrity
+          </p>
+          <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8]">
+            The visual restraint is deliberate. The page should feel like a quiet archive where the weight of the argument leads,
+            and the design simply gives the thinking enough room to breathe.
+          </p>
+        </div>
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
-  <!-- Featured Podcast -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
-    <div class="flex justify-between items-baseline mb-14 border-b border-border pb-6">
-      <h2 class="text-[1.11rem] font-body font-medium uppercase tracking-[0.08em] text-text-tertiary">Latest Episode</h2>
-      <a href="/podcast" class="text-sm text-text-tertiary hover:text-accent transition-colors">All episodes &rarr;</a>
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-28">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-3">Selected Works</p>
+        <h2 class="font-heading text-3xl md:text-[2.9rem] font-semibold leading-[1.02] tracking-[-0.03em]">
+          The Archive Collection
+        </h2>
+      </div>
+      <p class="max-w-[28rem] text-sm md:text-[0.98rem] text-text-secondary font-light leading-[1.8]">
+        A tighter front page for the strongest arguments, operating lessons, and case work that explain the site.
+      </p>
     </div>
 
-    <div class="bg-surface border border-border rounded-lg overflow-hidden relative">
-      <div class="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] pointer-events-none" style="background: radial-gradient(circle, rgba(212,135,90,0.08) 0%, transparent 70%)"></div>
-      <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="aspect-video">
-          <iframe
-            src="https://www.youtube.com/embed/E0W1FqtuKw0"
-            title="CAFE PROFIT: This Is What Successful Coffee Shop Owners Do Differently"
-            class="w-full h-full"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+      {heroEssay && (
+        <a
+          href={getHref(heroEssay)}
+          class="group flex flex-col bg-surface px-7 py-8 min-h-[18rem] no-underline transition-colors duration-200 hover:bg-[#22201e]"
+        >
+          <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-5">
+            {getLabel(heroEssay)}
+          </p>
+          <h3 class="font-heading text-[1.9rem] leading-[1.08] tracking-[-0.02em] mb-4 group-hover:text-accent-light transition-colors">
+            {heroEssay.data.title}
+          </h3>
+          <p class="text-[0.98rem] text-text-secondary font-light leading-[1.75] mb-8">
+            {heroEssay.data.description}
+          </p>
+          <div class="mt-auto flex items-center justify-between text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">
+            <span>{formatDate(heroEssay.data.date)}</span>
+            <span>&nearr;</span>
+          </div>
+        </a>
+      )}
+
+      {archiveFeature && (
+        <a
+          href={getHref(archiveFeature)}
+          class="group relative md:col-span-2 min-h-[18rem] overflow-hidden no-underline bg-surface"
+        >
+          <img
+            src="/images/homepage/archive-texture.png"
+            alt="Warm editorial texture"
+            width="512"
+            height="512"
+            class="absolute inset-0 h-full w-full object-cover opacity-85 mix-blend-screen transition-transform duration-700 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.88),rgba(8,8,8,0.28))]"></div>
+          <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bg to-transparent"></div>
+          <div class="relative z-10 flex h-full flex-col justify-end px-8 py-8 md:px-10 md:py-10">
+            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent-light mb-4">
+              {getLabel(archiveFeature)}
+            </p>
+            <h3 class="font-heading text-[2rem] md:text-[2.6rem] leading-[1.04] tracking-[-0.03em] max-w-[28rem] mb-3 group-hover:text-accent-light transition-colors">
+              {archiveFeature.data.title}
+            </h3>
+            <p class="max-w-[30rem] text-[0.96rem] text-text-secondary font-light leading-[1.75] mb-5">
+              {archiveFeature.data.description}
+            </p>
+            <span class="inline-flex items-center gap-2 text-sm font-medium text-accent-light">
+              Read case file <span>&rarr;</span>
+            </span>
+          </div>
+        </a>
+      )}
+
+      {archiveCards.map((entry) => (
+        <a
+          href={getHref(entry)}
+          class="group flex flex-col bg-surface px-7 py-8 min-h-[15.5rem] no-underline transition-colors duration-200 hover:bg-[#22201e]"
+        >
+          <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-5">
+            {getLabel(entry)}
+          </p>
+          <h3 class="font-heading text-[1.55rem] leading-[1.12] tracking-[-0.02em] mb-5 group-hover:text-accent-light transition-colors">
+            {entry.data.title}
+          </h3>
+          <p class="text-[0.95rem] text-text-secondary font-light leading-[1.75]">
+            {entry.data.description}
+          </p>
+          <div class="mt-auto pt-8 flex items-center justify-between text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">
+            <span>{entry.collection === 'work' ? 'Case file' : formatDate(entry.data.date)}</span>
+            <span>&nearr;</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-surface py-24 md:py-28">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14">
+      <div class="lg:col-span-4">
+        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-4">Latest Notes</p>
+        <h2 class="font-heading text-3xl md:text-[2.7rem] font-semibold leading-[1.04] tracking-[-0.03em] mb-5">
+          New entries from the working archive.
+        </h2>
+        <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8] max-w-[24rem]">
+          Fresh essays continue the same long conversation: what makes people trust, remember, return, and stay.
+        </p>
+      </div>
+
+      <div class="lg:col-span-8 space-y-4">
+        {latestNotes.map((article) => (
+          <a
+            href={getHref(article)}
+            class="group block bg-bg-deep/70 px-6 py-6 md:px-8 md:py-7 no-underline transition-colors duration-200 hover:bg-bg-deep"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-4 md:gap-6 items-start">
+              <p class="text-[0.7rem] uppercase tracking-[0.18em] text-text-tertiary pt-1">
+                {getLabel(article)}
+              </p>
+              <div>
+                <h3 class="font-heading text-[1.5rem] md:text-[1.8rem] leading-[1.12] tracking-[-0.02em] mb-2 group-hover:text-accent-light transition-colors">
+                  {article.data.title}
+                </h3>
+                <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75]">
+                  {article.data.description}
+                </p>
+              </div>
+              <div class="text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary pt-1">
+                {formatDate(article.data.date)}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-start">
+      <div class="lg:col-span-5">
+        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-4">UAE Restaurant Finance</p>
+        <h2 class="font-heading text-3xl md:text-[2.9rem] font-semibold leading-[1.04] tracking-[-0.03em] mb-5">
+          A decision desk for founders who need the numbers to hold.
+        </h2>
+        <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8] max-w-[29rem] mb-8">
+          We’ve built a new operator section around branch profitability, break-even logic, labor cost, delivery margin,
+          and benchmark discipline for UAE cafes, QSRs, and founder-led restaurant groups.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
+          <a
+            href="/restaurant-finance/"
+            class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors"
+            style="color: var(--color-bg);"
+          >
+            Open the calculators
+          </a>
+          <a
+            href="/restaurant-finance/templates/"
+            class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors"
+          >
+            Get the templates
+          </a>
         </div>
-        <div class="p-8 md:p-10 flex flex-col justify-center relative z-10">
-          <p class="text-[0.667rem] font-medium uppercase tracking-[0.12em] text-accent mb-4">The eCom Show &middot; #86</p>
-          <h3 class="font-heading text-xl md:text-2xl font-semibold leading-tight mb-4">CAFE PROFIT: This Is What Successful Coffee Shop Owners Do Differently</h3>
-          <p class="text-text-secondary font-light leading-relaxed text-[0.944rem] mb-6">What separates thriving cafe owners from those who struggle? The strategies, brand thinking, and operational discipline behind building a 70+ outlet cafe chain.</p>
-          <a href="/podcast" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
-            Watch full episode <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-8">
+          {financeHighlights.map((item) => (
+            <a
+              href={`/restaurant-finance/calculators/${item.slug}/`}
+              class="group bg-surface px-6 py-6 no-underline transition-colors duration-200 hover:bg-[#22201e]"
+            >
+              <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-4">Calculator</p>
+              <h3 class="font-heading text-[1.35rem] leading-[1.12] tracking-[-0.02em] mb-3 group-hover:text-accent-light transition-colors">
+                {item.name}
+              </h3>
+              <p class="text-sm text-text-secondary font-light leading-[1.7]">
+                {item.summary}
+              </p>
+            </a>
+          ))}
+        </div>
+
+        <div class="border border-border bg-surface/60 px-6 py-6 md:px-7 md:py-7">
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+            <div>
+              <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">Why this section is different</p>
+              <p class="text-sm md:text-[0.96rem] text-text-secondary font-light leading-[1.8] max-w-[35rem]">
+                Every number is tagged by source type so an owner can distinguish official UAE data, licensed market research,
+                Ashmo operator benchmarks, and model assumptions before making a decision.
+              </p>
+            </div>
+            <a
+              href="/restaurant-finance/benchmarks/"
+              class="inline-flex items-center gap-2 text-sm font-medium text-accent-light no-underline hover:text-text transition-colors"
+            >
+              See the benchmark method <span>&rarr;</span>
+            </a>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+            {financeEvidencePreview.map((layer) => (
+              <div class="border border-border-light/70 px-4 py-4">
+                <p class="text-[0.68rem] uppercase tracking-[0.16em] text-text-tertiary mb-2">{layer.title}</p>
+                <p class="text-sm text-text-secondary font-light leading-[1.7]">{layer.summary}</p>
+              </div>
+            ))}
+          </div>
+          <div class="mt-5 flex flex-col gap-2">
+            {trustMarkers.map((marker) => (
+              <p class="text-[0.82rem] text-text-tertiary font-light leading-[1.6]">
+                {marker}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center">
+      <div class="lg:col-span-5">
+        <h2 class="font-heading text-3xl md:text-[3rem] font-semibold leading-[1.02] tracking-[-0.03em] mb-5">
+          Enter the
+          <br />
+          Curated <span class="text-accent italic">Archive</span>
+        </h2>
+        <p class="max-w-[24rem] text-[0.98rem] text-text-secondary font-light leading-[1.8]">
+          If the site feels aligned with how you think about work, the best next move is simple:
+          read the essays, understand the story, or start a direct conversation.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7 bg-surface px-7 py-8 md:px-10 md:py-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <a href="/thinking/" class="group bg-bg-deep/70 px-5 py-5 no-underline hover:bg-bg-deep transition-colors">
+            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-3">Archive</p>
+            <h3 class="font-heading text-[1.4rem] leading-[1.14] mb-2 group-hover:text-accent-light transition-colors">
+              Start with the essays
+            </h3>
+            <p class="text-sm text-text-secondary font-light leading-[1.7]">
+              The clearest route into the thinking.
+            </p>
+          </a>
+          <a href="/story/" class="group bg-bg-deep/70 px-5 py-5 no-underline hover:bg-bg-deep transition-colors">
+            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-3">Background</p>
+            <h3 class="font-heading text-[1.4rem] leading-[1.14] mb-2 group-hover:text-accent-light transition-colors">
+              Read the story
+            </h3>
+            <p class="text-sm text-text-secondary font-light leading-[1.7]">
+              The long arc behind the work.
+            </p>
+          </a>
+          <a href="/contact/" class="group bg-bg-deep/70 px-5 py-5 no-underline hover:bg-bg-deep transition-colors">
+            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-3">Contact</p>
+            <h3 class="font-heading text-[1.4rem] leading-[1.14] mb-2 group-hover:text-accent-light transition-colors">
+              Reach out directly
+            </h3>
+            <p class="text-sm text-text-secondary font-light leading-[1.7]">
+              For collaborations, ideas, or conversation.
+            </p>
           </a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Philosophy Quote -->
-  <section class="py-24 md:py-32 text-center relative">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none" style="background: radial-gradient(circle, rgba(201,162,212,0.12) 0%, transparent 60%)"></div>
-    <blockquote class="font-heading text-2xl md:text-3xl font-semibold leading-[1.3] text-text max-w-[600px] mx-auto px-6 relative z-10">
-      "Brand consistency is an operational discipline. Not a creative one."
-    </blockquote>
-    <p class="mt-6 text-sm text-text-tertiary tracking-wide relative z-10">— Ashmo</p>
-  </section>
-
-  <!-- About Teaser -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
-      <div class="aspect-[4/5] bg-surface rounded-lg border border-border relative overflow-hidden">
-        <img src="/images/ashmo-portrait.webp" alt="Ashmo — founder, brand builder" width="516" height="696" loading="eager" fetchpriority="high" class="w-full h-full object-cover object-top" />
-        <div class="absolute bottom-0 left-0 right-0 h-1/2 pointer-events-none" style="background: linear-gradient(to top, rgba(212,135,90,0.12), transparent)"></div>
-      </div>
-      <div>
-        <h2 class="font-heading text-3xl md:text-[2.4rem] font-semibold leading-[1.15] mb-6">
-          Twenty years of execution. One brand scaled from a single outlet to 70+.
-        </h2>
-        <p class="text-[1.05rem] text-text-secondary font-light leading-[1.75] mb-6">
-          I started with a grocery shop in Deira at 19. Moved through design, IT, and creative work. Then spent two decades in the operational layer of brand building — making the calls, designing the systems, living with the decisions.
-        </p>
-        <p class="text-[1.05rem] text-text-secondary font-light leading-[1.75] mb-8">
-          What I write about is the interior architecture of that: how positioning decisions compound, how brand consistency is actually an operational problem, and why clear thinking is the real competitive advantage.
-        </p>
-        <a href="/story" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
-          The background <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Content Pillars -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-20 md:py-24">
-    <div class="flex justify-between items-baseline mb-14 border-b border-border pb-6">
-      <h2 class="text-[1.11rem] font-body font-medium uppercase tracking-[0.08em] text-text-tertiary">What I Write About</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <PillarCard number="01" title="Operator Intelligence" description="How real businesses make decisions. Pricing, footfall, selling, margins — the intelligence of the ground floor, not the boardroom." />
-      <PillarCard number="02" title="Brand Architecture" description="The structural decisions that make brands consistent, scalable, and hard to replace. Built from two decades at one brand." />
-      <PillarCard number="03" title="The New Operating Layer" description="How AI is reshaping the mechanics of marketing, selling, and brand management — from someone running it at scale." purple={true} />
-      <PillarCard number="04" title="Execution Philosophy" description="The mental operating system behind long games. Patience, compounding decisions, and the discipline of staying clear under pressure." purple={true} />
-      <PillarCard number="05" title="Field Notes" description="Short dispatches from inside the work. Observations, decisions, and the small things that turn out to matter." />
-    </div>
-  </section>
-
-  <!-- Closing CTA -->
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 border-t border-border">
-    <div class="max-w-[580px]">
-      <p class="font-heading text-2xl md:text-3xl font-normal leading-[1.3] text-text mb-6">
-        If you're building something and the thinking feels muddy —
-      </p>
-      <p class="text-[1.05rem] text-text-secondary font-light leading-[1.75] mb-10">
-        The positioning isn't landing. The brand isn't compounding. The decisions don't feel like a system yet. That's what this platform is built around.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-6">
-        <a href="/thinking" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-accent hover:text-accent-light transition-colors group">
-          Start with the thinking <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-        </a>
-        <a href="/principles" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-text-tertiary hover:text-text-secondary transition-colors group">
-          Read the principles <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-        </a>
-        <a href="/contact" class="inline-flex items-center gap-2 text-[0.889rem] font-medium text-text-tertiary hover:text-text-secondary transition-colors group">
-          Reach out directly <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
 </BaseLayout>

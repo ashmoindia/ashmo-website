@@ -1,0 +1,27 @@
+Line Item,Amount AED,% of Revenue,Notes
+Net Sales,0,100,Input monthly net sales after discounts and VAT treatment
+Food Revenue,0,0,Optional split
+Beverage Revenue,0,0,Optional split
+Delivery Revenue,0,0,Optional split
+Cost of Goods Sold,0,0,Total food and beverage cost
+Gross Profit,0,0,Formula
+Labor - Salaries,0,0,Front and back of house payroll
+Labor - Overtime,0,0,Variable labor cost
+Labor - Benefits / Visas / Medical,0,0,Cost to company items
+Rent,0,0,Fixed occupancy cost
+Service Charge / Mall Charges,0,0,If applicable
+Utilities,0,0,Electricity gas water internet
+Packaging,0,0,Delivery and takeaway consumables
+Aggregator Commissions,0,0,Platform commissions
+Promotions / Discounts Funded,0,0,Brand-funded discount cost
+Marketing,0,0,Digital influencer print PR
+Repairs and Maintenance,0,0,Equipment service and upkeep
+Cleaning / Pest Control,0,0,Store operating hygiene
+Software / POS / SaaS,0,0,Tech subscriptions
+Bank Charges / Payment Fees,0,0,Card fees gateway fees
+Licenses / Compliance,0,0,Annualized monthly provision
+Insurance,0,0,Annualized monthly provision
+General and Administrative,0,0,Back-office overhead
+Store EBITDA,0,0,Formula before central overhead
+Central Overhead Allocation,0,0,Only if used
+Operating EBITDA,0,0,Formula

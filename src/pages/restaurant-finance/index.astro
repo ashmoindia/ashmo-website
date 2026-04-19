@@ -1,0 +1,233 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FinanceSectionNav from '../../components/FinanceSectionNav.astro';
+import FinanceResourceCard from '../../components/FinanceResourceCard.astro';
+import {
+  evidenceLayers,
+  financeCalculators,
+  financeInsights,
+  financeMetrics,
+  financeServices,
+  financeTemplates,
+  roadmapPhases,
+  trustMarkers,
+} from '../../data/restaurantFinance';
+---
+
+<BaseLayout
+  title="UAE Restaurant Finance"
+  description="Decision tools, benchmarks, calculators, and templates for UAE restaurant operators who need to understand branch profitability before they expand."
+>
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-6 md:pt-10 pb-8 md:pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] gap-8 md:gap-12 items-stretch">
+      <div class="rounded-[1.75rem] border border-border bg-[linear-gradient(145deg,rgba(20,20,19,0.96),rgba(12,12,12,0.98))] px-7 py-10 md:px-10 md:py-12">
+        <p class="text-[0.72rem] uppercase tracking-[0.24em] text-accent mb-5">UAE Restaurant Finance</p>
+        <h1 class="font-heading text-[2.8rem] md:text-[4.8rem] leading-[0.94] tracking-[-0.05em] mb-6 max-w-[11ch]">
+          The operator&apos;s decision desk for branch profitability.
+        </h1>
+        <p class="max-w-[38rem] text-[1.02rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.85] mb-8">
+          Built for founder-led cafes, QSRs, and small multi-unit operators in the UAE who need to answer one question
+          before they sign, scale, discount, or expand: can this branch actually make money?
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+          <a href="/restaurant-finance/calculators/" class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+            Open the calculators
+          </a>
+          <a href="/restaurant-finance/templates/" class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+            Get the templates
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {financeCalculators.map((calculator) => (
+          <div class="rounded-[1.35rem] border border-border bg-surface/80 px-5 py-5">
+            <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">{calculator.metric}</p>
+            <p class="font-heading text-[1.45rem] leading-[1.08] tracking-[-0.02em] mb-3">{calculator.name}</p>
+            <p class="text-[0.94rem] text-text-secondary font-light leading-[1.7] mb-4">{calculator.summary}</p>
+            <a href={`/restaurant-finance/calculators/${calculator.slug}/`} class="text-sm text-accent-light hover:text-text no-underline transition-colors">
+              Launch &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FinanceSectionNav />
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)] gap-10 md:gap-14 items-start">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Why this exists</p>
+        <h2 class="font-heading text-3xl md:text-[2.9rem] leading-[1.04] tracking-[-0.03em] mb-5">
+          Local operators need local numbers, not recycled restaurant theory.
+        </h2>
+        <p class="max-w-[46rem] text-[1.02rem] text-text-secondary font-light leading-[1.9] mb-10">
+          Most restaurant advice is either too generic, too global, or too far from the daily reality of running a branch in the UAE.
+          Ashmo is designed to sit in the middle: practical enough for a founder to use tonight, structured enough to become a real benchmark layer over time.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {evidenceLayers.map((layer, index) => (
+            <div class="rounded-[1.25rem] border border-border bg-surface/60 px-5 py-5">
+              <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">Layer 0{index + 1}</p>
+              <p class="font-heading text-[1.35rem] leading-[1.08] mb-2">{layer.title}</p>
+              <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">{layer.summary}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-[1.4rem] border border-border bg-surface px-6 py-6">
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent-light mb-4">Trust markers</p>
+        <div class="space-y-4">
+          {trustMarkers.map((marker) => (
+            <div class="flex gap-3">
+              <span class="mt-1 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">{marker}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Start here</p>
+          <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+            The first finance insights that make the whole section usable.
+          </h2>
+        </div>
+        <a href="/restaurant-finance/insights/" class="text-sm text-text-secondary hover:text-accent-light no-underline transition-colors">
+          All finance insights &rarr;
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {financeInsights.slice(0, 3).map((insight) => (
+          <FinanceResourceCard
+            eyebrow={insight.readTime}
+            title={insight.title}
+            description={insight.description}
+            href={`/restaurant-finance/insights/${insight.slug}/`}
+            metadata="Insight"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)] gap-10 md:gap-16">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Metrics framework</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04] mb-5">
+          What this platform is built to measure.
+        </h2>
+        <p class="text-[1rem] text-text-secondary font-light leading-[1.85] max-w-[40rem]">
+          The metrics are organized around decisions, not vanity. Each one should help an operator decide whether to open, price,
+          schedule, cut, invest, or pause.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {financeMetrics.map((group) => (
+          <div class="rounded-[1.25rem] border border-border bg-surface/70 px-5 py-5">
+            <p class="font-heading text-[1.2rem] leading-[1.08] mb-4">{group.title}</p>
+            <ul class="space-y-2 list-none pl-0">
+              {group.items.map((item) => (
+                <li class="text-[0.92rem] text-text-secondary font-light leading-[1.6]">{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Templates and services</p>
+          <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+            Utility first, then advisory.
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,0.52fr)_minmax(0,0.48fr)] gap-10">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary mb-4">Template library</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {financeTemplates.slice(0, 4).map((template) => (
+              <FinanceResourceCard
+                eyebrow={template.format}
+                title={template.name}
+                description={template.summary}
+                href="/restaurant-finance/templates/"
+                metadata="Download"
+              />
+            ))}
+          </div>
+        </div>
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary mb-4">Productized services</p>
+          <div class="grid grid-cols-1 gap-4">
+            {financeServices.slice(0, 3).map((service) => (
+              <FinanceResourceCard
+                eyebrow="Advisory"
+                title={service.name}
+                description={service.summary}
+                href="/restaurant-finance/services/"
+                metadata={service.outcome}
+                accent="soft"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="mb-10">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">How it unfolds</p>
+      <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+        Three phases. One compounding system.
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {roadmapPhases.map((phase) => (
+        <div class="rounded-[1.35rem] border border-border bg-surface/70 px-6 py-6">
+          <p class="font-heading text-[1.4rem] leading-[1.08] mb-3">{phase.title}</p>
+          <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75]">{phase.summary}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-28">
+    <div class="rounded-[1.8rem] border border-border bg-[linear-gradient(140deg,rgba(24,24,23,0.96),rgba(12,12,12,0.98))] px-7 py-10 md:px-10 md:py-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+      <div class="max-w-[46rem]">
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Next step</p>
+        <h2 class="font-heading text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-[1.04] mb-4">
+          If you want better decisions, start with the branch economics before you chase more growth.
+        </h2>
+        <p class="text-[1rem] text-text-secondary font-light leading-[1.85]">
+          Use the calculators. Download the templates. If the numbers still look foggy, move into a review.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/restaurant-finance/calculators/" class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+          Open tools
+        </a>
+        <a href="/restaurant-finance/services/" class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+          Review services
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

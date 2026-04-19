@@ -1,6 +1,6 @@
 ---
 title: "FiLLi Cafe"
-description: "From a single karak chai outlet to 80+ locations across the UAE. I didn't just design the brand — I shaped how an entire generation thinks about tea."
+description: "From a single karak chai outlet to 100+ locations across 13 countries. I didn't just design the brand — I shaped how an entire generation thinks about tea."
 date: 2012-01-01
 category: "brand-building"
 tags: ["branding", "F&B", "scaling"]
@@ -21,7 +21,7 @@ I saw something the market hadn't articulated yet: people weren't just buying te
 
 **Positioning Strategy** — FiLLi became "the people's chai." Not premium. Not cheap. Culturally embedded. The brand positioned itself as a daily ritual, not an occasional treat. That distinction drove everything — from pricing to store placement.
 
-**Growth From 1 to 80+** — Scaling a cafe brand isn't about opening more stores. It's about making sure the 80th store feels exactly like the 1st. I built the brand guidelines, quality standards, and visual consistency systems that made franchise growth possible.
+**Growth From 1 to 100+** — Scaling a cafe brand isn't about opening more stores. It's about making sure the 100th store feels exactly like the 1st. I built the brand guidelines, quality standards, and visual consistency systems that made franchise growth possible.
 
 **Digital & Social Presence** — Built FiLLi's digital footprint from zero to one of the most recognised F&B social presences in the UAE. Content strategy, campaign design, social media management — all rooted in the brand's voice.
 
@@ -35,4 +35,4 @@ FiLLi taught me that brand building is not design. It's not marketing. It's the 
 
 Consistency compounds. That's the real secret behind FiLLi's growth.
 
-I've written about [why brand positioning is the hardest thing to get right](/thinking/brand-positioning-hardest-thing) — FiLLi is the proof. And the foundation for all of this was laid during [my early years as a merchant and designer](/work/early-hustle).
+I've written about [why brand positioning is the hardest thing to get right](/thinking/brand-positioning-hardest-thing/) — FiLLi is the proof. And the foundation for all of this was laid during [my early years as a merchant and designer](/work/early-hustle/).
