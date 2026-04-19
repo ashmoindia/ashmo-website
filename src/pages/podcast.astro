@@ -1,17 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const episodes = [
-  {
-    title: "CAFE PROFIT: This Is What Successful Coffee Shop Owners Do Differently",
-    show: "The eCom Show by Shan",
-    episode: "#86",
-    description: "What separates thriving cafe owners from those who struggle? In this episode, Ashmo shares the strategies, brand thinking, and operational discipline behind building a 70+ outlet cafe chain — and what most coffee shop owners get wrong.",
-    youtubeId: "E0W1FqtuKw0",
-    date: "2025",
-    pillar: "brand-growth",
-  },
-];
+import { podcastEpisodes } from '../data/podcast';
 
 const purplePillars = ['ai-selling', 'habit-philosophy'];
 ---
@@ -27,7 +16,7 @@ const purplePillars = ['ai-selling', 'habit-philosophy'];
     </div>
 
     <div class="flex flex-col gap-12">
-      {episodes.map(ep => (
+      {podcastEpisodes.map(ep => (
         <article class="bg-surface border border-border rounded-lg overflow-hidden">
           <!-- Video Embed -->
           <div class="aspect-video w-full">

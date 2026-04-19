@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { featuredPodcastEpisode } from '../data/podcast';
 import { evidenceLayers, financeCalculators, trustMarkers } from '../data/restaurantFinance';
 
 const allArticles = await getCollection('thinking', ({ data }) => data.published);
@@ -65,6 +66,8 @@ const getLabel = (entry) => {
     ? entry.data.category.replace('-', ' ')
     : (pillarLabels[entry.data.pillar] || entry.data.pillar);
 };
+
+const featuredPodcastWatchUrl = `https://www.youtube.com/watch?v=${featuredPodcastEpisode.youtubeId}`;
 ---
 
 <BaseLayout
@@ -280,6 +283,84 @@ const getLabel = (entry) => {
           </div>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center">
+      <div class="lg:col-span-5">
+        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-4">
+          Featured Conversation
+        </p>
+        <h2 class="font-heading text-3xl md:text-[2.9rem] font-semibold leading-[1.04] tracking-[-0.03em] mb-5 max-w-[14ch]">
+          {featuredPodcastEpisode.title}
+        </h2>
+        <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8] max-w-[28rem] mb-4">
+          The episode I would point people to first if they want the clearest audio version of how I think about cafe growth,
+          founder judgement, and the operating discipline required to build a brand that survives repetition.
+        </p>
+        <p class="text-[0.95rem] text-text-tertiary font-light leading-[1.75] max-w-[28rem] mb-8">
+          {featuredPodcastEpisode.show} {featuredPodcastEpisode.episode} &middot; {featuredPodcastEpisode.date}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
+          <a
+            href={featuredPodcastWatchUrl}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors"
+            style="color: var(--color-bg);"
+          >
+            Watch on YouTube
+          </a>
+          <a
+            href="/podcast/"
+            class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors"
+          >
+            Visit the podcast archive
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="bg-surface border border-border overflow-hidden">
+          <div class="aspect-video w-full">
+            <iframe
+              src={`https://www.youtube.com/embed/${featuredPodcastEpisode.youtubeId}`}
+              title={featuredPodcastEpisode.title}
+              class="w-full h-full"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+
+          <div class="px-6 py-6 md:px-8 md:py-7 border-t border-border-light">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
+              <div>
+                <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">
+                  {featuredPodcastEpisode.show}
+                </p>
+                <h3 class="font-heading text-[1.45rem] md:text-[1.75rem] leading-[1.12] tracking-[-0.02em] mb-3">
+                  {featuredPodcastEpisode.title}
+                </h3>
+                <p class="text-[0.95rem] text-text-secondary font-light leading-[1.75] max-w-[38rem]">
+                  {featuredPodcastEpisode.description}
+                </p>
+              </div>
+
+              <a
+                href={featuredPodcastWatchUrl}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 text-sm font-medium text-accent-light no-underline hover:text-text transition-colors"
+              >
+                Open on YouTube <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
