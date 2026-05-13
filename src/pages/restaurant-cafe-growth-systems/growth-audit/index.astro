@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PillarSectionNav from '../../../components/PillarSectionNav.astro';
+import PillarBreadcrumbs from '../../../components/PillarBreadcrumbs.astro';
+import PillarResourceCard from '../../../components/PillarResourceCard.astro';
+import PillarCTA from '../../../components/PillarCTA.astro';
+import {
+  growthAuditPath,
+  growthBasePath,
+  growthNav,
+  growthOffers,
+} from '../../../data/restaurantGrowth';
+
+const breadcrumbs = [
+  { href: '/', label: 'Home' },
+  { href: `${growthBasePath}/`, label: 'Growth systems' },
+  { href: growthAuditPath, label: 'Growth audit' },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://ashmo.io/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Restaurant & Cafe Growth Systems',
+      item: `https://ashmo.io${growthBasePath}/`,
+    },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Growth Audit',
+      item: `https://ashmo.io${growthAuditPath}`,
+    },
+  ],
+};
+
+const reviewAreas = [
+  'Brand clarity and positioning strength',
+  'Footfall, trade-area, and local demand capture',
+  'Performance media structure across Meta, Search, and Maps',
+  'Delivery and aggregator health',
+  'CRM, loyalty, and repeat revenue mechanics',
+  'Measurement gaps, reporting quality, and operator decision visibility',
+];
+
+const outputs = [
+  'A clear diagnosis of the biggest growth constraint',
+  'Priority actions for the next 30 to 90 days',
+  'A channel and capability view, not just a media opinion',
+  'Links into the right framework pages and next-step offers',
+];
+---
+
+<BaseLayout
+  title="Restaurant Growth Audit"
+  description="Request a restaurant or cafe growth audit, strategy call, 90-day plan, or fractional CMO advisory discussion."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <PillarSectionNav items={growthNav} rootHref="/restaurant-cafe-growth-systems/" />
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-16 md:pb-20">
+    <PillarBreadcrumbs items={breadcrumbs} />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] gap-8 md:gap-12 items-stretch">
+      <div class="rounded-[1.75rem] border border-border bg-[linear-gradient(145deg,rgba(20,20,19,0.96),rgba(12,12,12,0.98))] px-7 py-10 md:px-10 md:py-12">
+        <p class="text-[0.72rem] uppercase tracking-[0.24em] text-accent mb-5">Growth audit &amp; advisory</p>
+        <h1 class="font-heading text-[2.8rem] md:text-[4.4rem] leading-[0.94] tracking-[-0.05em] mb-6 max-w-[10ch]">
+          Bring the real pressure point. I will help you diagnose the system behind it.
+        </h1>
+        <p class="max-w-[40rem] text-[1.02rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.85] mb-8">
+          This page is for restaurant and cafe founders, operators, and brand teams who need a sharper view on brand, footfall,
+          launch, delivery, retention, or multi-store growth. Choose the offer that matches the urgency, then send context through the form below.
+        </p>
+        <a href="#growth-audit-form" class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+          Start the request
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {growthOffers.map((offer) => (
+          <PillarResourceCard
+            eyebrow={offer.eyebrow}
+            title={offer.title}
+            description={offer.description}
+            href={offer.href}
+            metadata="Choose this path"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 xl:grid-cols-[minmax(0,0.52fr)_minmax(0,0.48fr)] gap-10">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">What gets reviewed</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04] mb-5">
+          The audit looks at the full growth system.
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {reviewAreas.map((item) => (
+            <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+              <p class="text-[0.95rem] text-text-secondary font-light leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">What you get back</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04] mb-5">
+          Clear next moves, not generic commentary.
+        </h2>
+        <div class="space-y-4">
+          {outputs.map((item) => (
+            <div class="flex gap-3 rounded-[1.2rem] border border-border bg-surface/60 px-5 py-5">
+              <span class="mt-2 block h-2 w-2 rounded-full bg-accent shrink-0"></span>
+              <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+        <div class="rounded-[1.2rem] border border-border bg-surface/60 px-5 py-5 mt-5">
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-3">Also useful</p>
+          <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75] mb-4">
+            If the real question is branch economics, rent pressure, labor, or delivery contribution, the UAE Restaurant Finance desk is still live and connected to this section.
+          </p>
+          <a href="/restaurant-finance/" class="text-sm text-accent-light hover:text-text no-underline transition-colors">
+            Explore the finance desk &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="growth-audit-form" class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div id="strategy-call" class="relative -top-24"></div>
+    <div id="growth-audit" class="relative -top-24"></div>
+    <div id="ninety-day-plan" class="relative -top-24"></div>
+    <div id="fractional-cmo" class="relative -top-24"></div>
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] gap-10 md:gap-14">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Request form</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04] mb-5">
+          Share the context that matters.
+        </h2>
+        <p class="text-[1rem] text-text-secondary font-light leading-[1.85] max-w-[34rem]">
+          The more specific the commercial pressure, the sharper the diagnostic can be. Share the brand stage, outlet count,
+          channel mix, and the problem you most want to solve.
+        </p>
+      </div>
+
+      <form
+        name="restaurant-growth-audit"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        data-netlify-recaptcha="true"
+        class="rounded-[1.5rem] border border-border bg-surface/80 px-6 py-6 md:px-8 md:py-8 flex flex-col gap-6"
+      >
+        <input type="hidden" name="form-name" value="restaurant-growth-audit" />
+        <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label for="name" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Name</label>
+            <input id="name" name="name" type="text" required class="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors" />
+          </div>
+          <div>
+            <label for="email" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Email</label>
+            <input id="email" name="email" type="email" required class="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors" />
+          </div>
+          <div>
+            <label for="brand" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Brand / business</label>
+            <input id="brand" name="brand" type="text" required class="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors" />
+          </div>
+          <div>
+            <label for="outlets" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Outlet count</label>
+            <input id="outlets" name="outlets" type="text" placeholder="e.g. 1, 4, 22" class="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label for="engagementType" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">What do you want?</label>
+            <select id="engagementType" name="engagementType" class="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors">
+              <option value="Growth audit">Growth audit</option>
+              <option value="Strategy call">Strategy call</option>
+              <option value="90-day growth plan">90-day growth plan</option>
+              <option value="Fractional CMO advisory">Fractional CMO advisory</option>
+            </select>
+          </div>
+          <div>
+            <label for="priority" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Primary pressure point</label>
+            <select id="priority" name="priority" class="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors">
+              <option value="Brand positioning">Brand positioning</option>
+              <option value="Footfall and local demand">Footfall and local demand</option>
+              <option value="Delivery sales and channel health">Delivery sales and channel health</option>
+              <option value="Retention and CRM">Retention and CRM</option>
+              <option value="Launch or expansion planning">Launch or expansion planning</option>
+              <option value="Marketing plan and measurement">Marketing plan and measurement</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="message" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">What is happening right now?</label>
+          <textarea id="message" name="message" rows="6" required class="w-full bg-bg border border-border rounded-xl px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors resize-y"></textarea>
+        </div>
+
+        <div data-netlify-recaptcha="true"></div>
+
+        <button type="submit" class="self-start px-7 py-3 bg-accent border border-accent rounded-full text-bg text-sm font-medium hover:bg-accent-light hover:border-accent-light transition-colors cursor-pointer">
+          Submit request
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <PillarCTA
+    eyebrow="Need a faster route?"
+    title="If you already know the problem area, jump straight into the framework."
+    description="The hub and child pages are built so you can self-diagnose first, then come back with clearer context for a call, audit, or plan."
+    primary={{ href: `${growthBasePath}/`, label: 'Open the growth hub' }}
+    secondary={{ href: '/restaurant-finance/', label: 'Open restaurant finance' }}
+  />
+
+  <script is:inline>
+    const intent = window.location.hash.replace('#', '');
+    const select = document.getElementById('engagementType');
+    const intentMap = {
+      'strategy-call': 'Strategy call',
+      'growth-audit': 'Growth audit',
+      'ninety-day-plan': '90-day growth plan',
+      'fractional-cmo': 'Fractional CMO advisory',
+    };
+
+    if (select && intent && intentMap[intent]) {
+      select.value = intentMap[intent];
+    }
+  </script>
+</BaseLayout>

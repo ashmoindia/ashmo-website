@@ -1,0 +1,56 @@
+---
+import type { IntelligenceReport } from '../data/intelligence';
+
+interface Props {
+  report: IntelligenceReport;
+}
+
+const { report } = Astro.props;
+---
+
+<article
+  class="report-card group flex h-full flex-col rounded-[1.5rem] border border-white/6 bg-[linear-gradient(180deg,rgba(24,26,30,0.98),rgba(16,18,21,0.98))] p-6 transition-colors duration-200 hover:border-accent/30 hover:bg-[linear-gradient(180deg,rgba(28,30,34,0.98),rgba(18,20,23,0.98))]"
+  data-country={report.filters.country.join(' ')}
+  data-topic={report.filters.topic.join(' ')}
+>
+  <div class="flex items-start justify-between gap-4">
+    <p class="text-[0.64rem] uppercase tracking-[0.24em] text-accent-light">{report.eyebrow}</p>
+    <span class:list={[
+      'inline-flex rounded-full px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.16em]',
+      report.accessModel === 'approved_reuse'
+        ? 'bg-accent/14 text-accent-light'
+        : 'bg-white/[0.06] text-text-secondary',
+    ]}>
+      {report.accessModel === 'approved_reuse' ? 'Approved reuse' : 'Mixed source'}
+    </span>
+  </div>
+
+  <h3 class="mt-5 text-[1.45rem] md:text-[1.65rem] font-semibold leading-[1.04] tracking-[-0.04em] font-body text-text">
+    {report.title}
+  </h3>
+  <p class="mt-4 text-sm text-text-secondary leading-[1.8]">{report.summary}</p>
+
+  <div class="mt-6 flex flex-wrap gap-2">
+    {report.filters.country.map((item) => (
+      <span class="rounded-full border border-white/8 px-3 py-1 text-[0.64rem] uppercase tracking-[0.16em] text-text-tertiary">
+        {item.replace('-', ' ')}
+      </span>
+    ))}
+    {report.filters.topic.slice(0, 2).map((item) => (
+      <span class="rounded-full border border-white/8 px-3 py-1 text-[0.64rem] uppercase tracking-[0.16em] text-text-tertiary">
+        {item.replace('-', ' ')}
+      </span>
+    ))}
+  </div>
+
+  <div class="mt-auto pt-8 flex items-center justify-between gap-4">
+    <p class="text-[0.68rem] uppercase tracking-[0.16em] text-text-tertiary">Updated {report.updated}</p>
+    <a
+      href={`/intelligence/reports/${report.slug}/`}
+      class="inline-flex items-center gap-2 text-sm font-medium text-accent-light no-underline transition-transform group-hover:translate-x-1"
+    >
+      Open report
+      <span>&rarr;</span>
+    </a>
+  </div>
+</article>

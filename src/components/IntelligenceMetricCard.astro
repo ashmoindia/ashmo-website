@@ -1,0 +1,51 @@
+---
+import type { IntelligenceFact } from '../data/intelligence';
+import { getSourceById } from '../data/intelligence';
+
+interface Props {
+  fact: IntelligenceFact;
+}
+
+const { fact } = Astro.props;
+const source = getSourceById(fact.sourceId);
+const isCitationOnly = fact.kind === 'citation_signal';
+---
+
+<article class="overflow-hidden rounded-[1.35rem] border border-white/6 bg-[linear-gradient(180deg,rgba(31,34,38,0.94),rgba(22,24,27,0.96))] px-5 py-5">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+    <div class="min-w-0">
+      <p class="text-[0.64rem] uppercase tracking-[0.2em] text-accent-light">{fact.label}</p>
+      <p class="mt-3 text-[1.85rem] font-semibold tracking-[-0.04em] text-text leading-none font-body md:text-[1.95rem]">
+        {fact.displayValue}
+      </p>
+      <p
+        class="mt-3 text-[0.95rem] text-text-secondary leading-[1.6]"
+        style="-webkit-box-orient: vertical; -webkit-line-clamp: 4; display: -webkit-box; overflow: hidden;"
+      >
+        {fact.note}
+      </p>
+    </div>
+    <span class:list={[
+      'inline-flex max-w-full self-start rounded-full px-2.5 py-1 text-center text-[0.56rem] leading-[1.2] uppercase tracking-[0.14em] whitespace-normal',
+      isCitationOnly
+        ? 'bg-white/[0.06] text-text-secondary'
+        : 'bg-accent/14 text-accent-light',
+    ]}>
+      {isCitationOnly ? 'Citation-led' : 'Chart-safe'}
+    </span>
+  </div>
+
+  <div class="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[0.68rem] text-text-tertiary">
+    <span>{fact.geography}</span>
+    <span class="hidden md:inline text-white/20">&bull;</span>
+    <span>{fact.coveragePeriod}</span>
+    {source && (
+      <>
+        <span class="hidden md:inline text-white/20">&bull;</span>
+        <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-accent-light hover:text-text">
+          {source.name}
+        </a>
+      </>
+    )}
+  </div>
+</article>

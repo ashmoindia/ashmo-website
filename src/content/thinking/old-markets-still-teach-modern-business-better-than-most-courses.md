@@ -1,5 +1,6 @@
 ---
 title: "Old Markets Teach Business Better Than Most Courses"
+metaTitle: "Old Markets Teach Business"
 description: "Before dashboards and playbooks, there was the market. The lessons are still more honest there."
 date: 2026-04-15
 pillar: merchant-mindset

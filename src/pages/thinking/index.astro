@@ -2,53 +2,269 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+type ThinkingEntry = CollectionEntry<'thinking'>;
+
+const isDefined = (value: ThinkingEntry | undefined): value is ThinkingEntry => Boolean(value);
 
 const allArticles = await getCollection('thinking', ({ data }) => data.published);
 const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featuredArticle = sortedArticles.find((article) => article.data.featured) ?? sortedArticles[0];
+const archiveArticles = featuredArticle
+  ? sortedArticles.filter((article) => article.id !== featuredArticle.id)
+  : [];
+
+const pillarMeta = {
+  'merchant-mindset': {
+    label: 'Merchant Mindset',
+    description: 'Trade, pricing, attention, and the ground-level mechanics of how people actually buy.',
+  },
+  'brand-growth': {
+    label: 'Brand Growth',
+    description: 'Positioning, campaign judgment, consistency, and the decisions that scale without losing the brand.',
+  },
+  'ai-selling': {
+    label: 'AI & Selling',
+    description: 'Where modern tools compress execution and where human judgment still matters most.',
+  },
+  'habit-philosophy': {
+    label: 'Habit Philosophy',
+    description: 'Discipline, patience, decision quality, and the operating psychology behind durable work.',
+  },
+  'founder-documentary': {
+    label: 'Founder Documentary',
+    description: 'The parts of building people usually skip when they tell the polished version later.',
+  },
+} as const;
+
+const pillarOrder = [
+  'merchant-mindset',
+  'brand-growth',
+  'ai-selling',
+  'habit-philosophy',
+  'founder-documentary',
+] as const;
+
+const pillarSummaries = pillarOrder.map((pillar) => ({
+  pillar,
+  ...pillarMeta[pillar],
+  count: sortedArticles.filter((article) => article.data.pillar === pillar).length,
+}));
+
+const entryPointSlugs = [
+  'brand-positioning-hardest-thing',
+  'grocery-shop-pricing-psychology',
+  'ai-marketing-70-outlet-chain',
+];
+
+const entryPoints = entryPointSlugs
+  .map((slug) => sortedArticles.find((article) => article.id === slug))
+  .filter(isDefined);
+
+const articleCount = sortedArticles.length;
+const publishedYears = new Set(sortedArticles.map((article) => article.data.date.getFullYear())).size;
+const latestPublished = sortedArticles[0]?.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
+
+const archiveLinks = [
+  { href: '/principles/', label: 'Operator principles', accent: true },
+  { href: '/story/', label: 'Background' },
+  { href: '/work/', label: 'Body of work' },
+];
 ---
 
-<BaseLayout title="Thinking" description="Essays by Ashraf Hassan on brand architecture, operator intelligence, and the mechanics of building businesses that last.">
+<BaseLayout
+  title="Thinking"
+  description="Essays by Ashraf Hassan on merchant judgment, brand growth, AI in execution, and the slower decisions that make businesses compound."
+>
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-14 pb-10 md:pb-14">
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,0.97fr)_minmax(0,1.03fr)]">
+      <div class="rounded-[2rem] border border-white/6 bg-[linear-gradient(145deg,rgba(18,18,19,0.98),rgba(10,10,10,0.98))] px-7 py-8 md:px-9 md:py-10">
+        <p class="text-[0.7rem] uppercase tracking-[0.24em] text-accent-light">Thinking</p>
+        <h1 class="mt-5 font-heading text-[2.8rem] md:text-[5rem] leading-[0.94] tracking-[-0.05em] max-w-[8ch]">
+          Essays from the operator layer.
+        </h1>
+        <p class="mt-6 max-w-[36rem] text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.85]">
+          This is the writing archive: brand architecture, merchant instinct, AI execution, patience, and the kinds of decisions that become expensive only after scale exposes them.
+        </p>
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-24">
-    <div class="mb-16">
-      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Thinking</h1>
-      <p class="text-lg md:text-xl text-text-secondary font-light max-w-[480px]">
-        Essays by Ashraf Hassan, known as Ashmo, on brand architecture, operator decisions, and the mechanics of building businesses that compound over time.
+        <div class="mt-8 grid gap-3 sm:grid-cols-3">
+          <div class="rounded-[1.2rem] border border-white/6 bg-white/[0.03] px-4 py-4">
+            <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Published</p>
+            <p class="mt-2 text-[1.8rem] font-semibold tracking-[-0.04em] text-text">{articleCount}</p>
+          </div>
+          <div class="rounded-[1.2rem] border border-white/6 bg-white/[0.03] px-4 py-4">
+            <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Pillars</p>
+            <p class="mt-2 text-[1.8rem] font-semibold tracking-[-0.04em] text-text">{pillarSummaries.length}</p>
+          </div>
+          <div class="rounded-[1.2rem] border border-white/6 bg-white/[0.03] px-4 py-4">
+            <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Latest</p>
+            <p class="mt-2 text-[1.15rem] font-semibold tracking-[-0.03em] text-text">{latestPublished}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-[2rem] border border-white/6 bg-[linear-gradient(155deg,rgba(18,20,24,0.98),rgba(11,12,15,0.98))] px-6 py-7 md:px-8 md:py-8">
+        <div class="flex flex-col gap-6 border-b border-white/6 pb-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent">Archive structure</p>
+            <h2 class="mt-3 font-heading text-[1.9rem] md:text-[2.45rem] leading-[1.02] tracking-[-0.04em] max-w-[12ch]">
+              Built around recurring problems, not random posting.
+            </h2>
+          </div>
+          <span class="inline-flex self-start rounded-full border border-white/8 bg-white/[0.04] px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-text-tertiary">
+            {publishedYears}+ active years
+          </span>
+        </div>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-2">
+          {pillarSummaries.map((pillar) => (
+            <article class="rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-4 py-4">
+              <div class="flex items-start justify-between gap-4">
+                <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent-light">{pillar.label}</p>
+                <span class="text-[0.82rem] font-medium text-text-tertiary">{pillar.count}</span>
+              </div>
+              <p class="mt-3 text-[0.92rem] text-text-secondary font-light leading-[1.72]">
+                {pillar.description}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {featuredArticle && (
+    <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-18 md:pb-20">
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.2em] text-accent-light">Lead essay</p>
+          <h2 class="mt-4 font-heading text-[2.2rem] md:text-[3rem] leading-[0.98] tracking-[-0.04em] max-w-[11ch]">
+            The clearest entry into the archive right now.
+          </h2>
+        </div>
+        <p class="max-w-[32rem] text-[0.98rem] text-text-secondary font-light leading-[1.85]">
+          One piece up front. The rest of the archive follows. The goal is to help someone enter the thinking quickly, not make them guess where to start.
+        </p>
+      </div>
+
+      <div class="mt-10">
+        <ArticleCard
+          title={featuredArticle.data.title}
+          description={featuredArticle.data.description}
+          date={featuredArticle.data.date}
+          pillar={featuredArticle.data.pillar}
+          tags={featuredArticle.data.tags}
+          slug={featuredArticle.id}
+          featured={true}
+          headingLevel="h2"
+        />
+      </div>
+    </section>
+  )}
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-18 md:pb-20">
+    <div class="rounded-[1.85rem] border border-white/6 bg-[linear-gradient(180deg,rgba(16,18,22,0.98),rgba(10,11,14,0.98))] px-6 py-7 md:px-8 md:py-8">
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Entry points</p>
+          <h2 class="mt-3 font-heading text-[1.9rem] md:text-[2.4rem] leading-[1.02] tracking-[-0.04em] max-w-[11ch]">
+            Three places to start if you want the lens fast.
+          </h2>
+        </div>
+        <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
+          These pieces explain the archive from three angles: positioning, merchant instinct, and modern execution.
+        </p>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {entryPoints.map((article) => (
+          <a
+            href={`/thinking/${article.id}/`}
+            class="rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-5 py-5 no-underline transition-colors hover:border-accent/40 hover:bg-white/[0.045]"
+          >
+            <p class="text-[0.66rem] uppercase tracking-[0.18em] text-accent-light">
+              {pillarMeta[article.data.pillar].label}
+            </p>
+            <p class="mt-4 font-heading text-[1.3rem] leading-[1.08] tracking-[-0.03em] text-text">
+              {article.data.title}
+            </p>
+            <p class="mt-3 text-[0.94rem] text-text-secondary font-light leading-[1.72]">
+              {article.data.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.2em] text-accent-light">Archive</p>
+        <h2 class="mt-4 font-heading text-[2.2rem] md:text-[3rem] leading-[0.98] tracking-[-0.04em] max-w-[10ch]">
+          The rest of the essays, arranged to be browsed instead of endured.
+        </h2>
+      </div>
+      <p class="max-w-[32rem] text-[0.98rem] text-text-secondary font-light leading-[1.85]">
+        The archive leans editorial on purpose. Fewer boxes shouting at once. More visual calm, stronger hierarchy, and clearer context around each piece.
       </p>
     </div>
 
-    <div class="mb-16 p-8 md:p-10 bg-surface border border-border rounded-lg">
-      <p class="text-[0.722rem] font-medium uppercase tracking-[0.15em] text-accent mb-5">Start Here</p>
-      <div class="flex flex-col gap-4">
-        <a href="/thinking/brand-positioning-hardest-thing/" class="text-text hover:text-accent transition-colors">
-          Why Brand Positioning Is the Hardest Thing
-        </a>
-        <a href="/thinking/grocery-shop-pricing-psychology/" class="text-text hover:text-accent transition-colors">
-          What a Grocery Shop at 19 Taught Me About Pricing
-        </a>
-        <a href="/thinking/ai-marketing-70-outlet-chain/" class="text-text hover:text-accent transition-colors">
-          How AI Runs Marketing for a 100+ Outlet Chain
-        </a>
-      </div>
-    </div>
-
-    {sortedArticles.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {sortedArticles.map((article, i) => (
+    {archiveArticles.length > 0 ? (
+      <div class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {archiveArticles.map((article) => (
           <ArticleCard
             title={article.data.title}
             description={article.data.description}
             date={article.data.date}
             pillar={article.data.pillar}
+            tags={article.data.tags}
             slug={article.id}
-            featured={i === 0}
-            headingLevel="h2"
+            headingLevel="h3"
           />
         ))}
       </div>
     ) : (
-      <p class="text-text-secondary font-light">Articles coming soon.</p>
+      <p class="mt-10 text-text-secondary font-light">Articles coming soon.</p>
     )}
   </section>
 
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
+    <div class="rounded-[1.85rem] border border-white/6 bg-[linear-gradient(180deg,rgba(16,18,22,0.98),rgba(10,11,14,0.98))] px-6 py-7 md:px-8 md:py-8">
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Next layer</p>
+          <h2 class="mt-3 font-heading text-[1.9rem] md:text-[2.4rem] leading-[1.02] tracking-[-0.04em] max-w-[12ch]">
+            The archive connects best when it sits next to the principles and the work.
+          </h2>
+        </div>
+        <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
+          The writing explains the judgments. The principles explain the operating beliefs. The work shows where those beliefs were tested.
+        </p>
+      </div>
+
+      <div class="mt-8 flex flex-col gap-3 md:flex-row md:flex-wrap">
+        {archiveLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'inline-flex items-center justify-center rounded-full px-5 py-3 text-[0.78rem] font-semibold uppercase tracking-[0.16em] no-underline transition-colors',
+              link.accent
+                ? 'bg-gradient-to-r from-accent-light to-accent text-bg'
+                : 'border border-white/10 text-text-secondary hover:border-accent/40 hover:text-text',
+            ]}
+            style={link.accent ? 'color: var(--color-bg);' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,28 @@
+---
+import type { IntelligenceFact } from '../data/intelligence';
+import { getSourceById } from '../data/intelligence';
+
+interface Props {
+  fact: IntelligenceFact;
+}
+
+const { fact } = Astro.props;
+const source = getSourceById(fact.sourceId);
+---
+
+<article class="rounded-[1.35rem] bg-[linear-gradient(180deg,rgba(19,21,24,0.98),rgba(14,16,19,0.98))] p-5">
+  <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Citation-led signal</p>
+  <h3 class="mt-4 text-[1.55rem] font-semibold tracking-[-0.04em] text-text font-body leading-none">
+    {fact.displayValue}
+  </h3>
+  <p class="mt-2 text-sm text-text">{fact.label}</p>
+  <p class="mt-3 text-sm text-text-secondary leading-[1.7]">{fact.note}</p>
+  <div class="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.68rem] text-text-tertiary">
+    <span>{fact.coveragePeriod}</span>
+    {source && (
+      <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-accent-light hover:text-text">
+        Visit original source
+      </a>
+    )}
+  </div>
+</article>

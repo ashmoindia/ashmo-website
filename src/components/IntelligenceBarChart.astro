@@ -1,0 +1,68 @@
+---
+import type { ComparisonCard } from '../data/intelligence';
+import { getSourceById } from '../data/intelligence';
+
+interface Props {
+  comparison: ComparisonCard;
+}
+
+const { comparison } = Astro.props;
+const values = comparison.groups.flatMap((group) => group.items.map((item) => item.value));
+const maxValue = Math.max(...values, 1);
+---
+
+<section class="rounded-[1.6rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,25,0.98),rgba(14,16,19,0.98))] px-6 py-6 md:px-7 md:py-7">
+  <div class="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+    <div>
+      <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Original chart</p>
+      <h2 class="mt-3 text-[1.6rem] md:text-[2rem] font-semibold tracking-[-0.04em] font-body text-text">
+        {comparison.title}
+      </h2>
+    </div>
+    <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.75]">{comparison.description}</p>
+  </div>
+
+  <div class="mt-8 grid gap-5">
+    {comparison.groups.map((group) => {
+      const source = getSourceById(group.sourceId);
+      return (
+        <div class="rounded-[1.2rem] bg-white/[0.02] px-4 py-4">
+          <div class="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p class="text-sm font-medium text-text">{group.label}</p>
+            <div class="flex flex-wrap items-center gap-x-3 gap-y-2 text-[0.68rem] text-text-tertiary">
+              <span>{group.sourcePublished}</span>
+              {source && (
+                <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-accent-light hover:text-text">
+                  {source.name}
+                </a>
+              )}
+            </div>
+          </div>
+
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            {group.items.map((item) => {
+              const width = `${Math.max((item.value / maxValue) * 100, 8)}%`;
+              const barClass = item.accent === 'gold'
+                ? 'bg-[linear-gradient(90deg,rgba(212,135,90,0.9),rgba(233,193,118,0.88))]'
+                : 'bg-[linear-gradient(90deg,rgba(131,140,155,0.72),rgba(99,102,241,0.38))]';
+
+              return (
+                <div>
+                  <div class="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.16em] text-text-tertiary">
+                    <span>{item.label}</span>
+                    <span class="text-text">{item.displayValue}</span>
+                  </div>
+                  <div class="mt-2 h-2 rounded-full bg-white/[0.06]">
+                    <div class:list={['h-full rounded-full', barClass]} style={`width: ${width};`}></div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <p class="mt-6 text-sm text-text-secondary leading-[1.75]">{comparison.footer}</p>
+</section>

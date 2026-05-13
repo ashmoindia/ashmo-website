@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 
 interface Props {
   title: string;
+  metaTitle?: string;
   description: string;
   date: Date;
   updated?: Date;
@@ -12,7 +13,7 @@ interface Props {
   currentSlug?: string;
 }
 
-const { title, description, date, updated, pillar, image, currentSlug } = Astro.props;
+const { title, metaTitle, description, date, updated, pillar, image, currentSlug } = Astro.props;
 
 // Get related articles (same pillar, excluding current)
 const allArticles = await getCollection('thinking', ({ data }) => data.published);
@@ -62,10 +63,10 @@ const articleSchema = {
 };
 ---
 
-<BaseLayout title={title} description={description} image={image} type="article" publishedDate={date}>
+<BaseLayout title={metaTitle || title} description={description} image={image} type="article" publishedDate={date}>
 
   <!-- Article JSON-LD -->
-  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 
   <article class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
     <div class="max-w-[680px]">

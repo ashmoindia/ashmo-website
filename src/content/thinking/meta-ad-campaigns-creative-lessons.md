@@ -1,5 +1,6 @@
 ---
 title: "What 1,000+ Meta campaigns taught me about creative"
+metaTitle: "Meta Ad Creative Lessons"
 description: "The recurring patterns that separate scroll-stopping ads from expensive noise."
 date: 2026-03-16
 pillar: merchant-mindset

@@ -1,0 +1,46 @@
+---
+import type { SourceRecord } from '../data/intelligence';
+
+interface Props {
+  source: SourceRecord;
+  published?: string;
+  geography?: string;
+}
+
+const { source, published, geography } = Astro.props;
+---
+
+<article class="rounded-[1.35rem] border border-white/6 bg-[linear-gradient(180deg,rgba(23,25,28,0.98),rgba(15,17,20,0.98))] p-5">
+  <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Source disclosure</p>
+
+  <div class="mt-5 grid gap-3 text-sm">
+    <div class="flex items-start justify-between gap-4">
+      <span class="text-text-tertiary">Source</span>
+      <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-right text-text hover:text-accent-light">
+        {source.name}
+      </a>
+    </div>
+    <div class="flex items-start justify-between gap-4">
+      <span class="text-text-tertiary">Source type</span>
+      <span class="text-right text-text">{source.sourceType}</span>
+    </div>
+    <div class="flex items-start justify-between gap-4">
+      <span class="text-text-tertiary">Published / updated</span>
+      <span class="text-right text-text">{published ?? source.updateFrequency}</span>
+    </div>
+    <div class="flex items-start justify-between gap-4">
+      <span class="text-text-tertiary">Geography</span>
+      <span class="text-right text-text">{geography ?? source.coverage}</span>
+    </div>
+    <div class="flex items-start justify-between gap-4">
+      <span class="text-text-tertiary">Access type</span>
+      <span class="text-right text-text">{source.reuseClassification.replace('_', ' ')}</span>
+    </div>
+    <div class="flex items-start justify-between gap-4">
+      <span class="text-text-tertiary">Attribution</span>
+      <span class="max-w-[28rem] text-right text-text-secondary">{source.attribution}</span>
+    </div>
+  </div>
+
+  <p class="mt-5 text-sm text-text-secondary leading-[1.75]">{source.governanceNote}</p>
+</article>

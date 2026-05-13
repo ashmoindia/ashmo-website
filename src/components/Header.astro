@@ -1,75 +1,95 @@
 ---
 const navLinks = [
   { href: "/thinking/", label: "Thinking" },
-  { href: "/restaurant-finance/", label: "Finance" },
+  { href: "/intelligence/", label: "Intelligence" },
+  { href: "/restaurant-cafe-growth-systems/", label: "Growth" },
   { href: "/principles/", label: "Principles" },
   { href: "/work/", label: "Work" },
   { href: "/podcast/", label: "Podcast" },
   { href: "/story/", label: "Story" },
-  { href: "/contact/", label: "Contact" },
 ];
 
 const currentPath = Astro.url.pathname;
+const isGrowthPath = currentPath.startsWith('/restaurant-cafe-growth-systems/') || currentPath.startsWith('/restaurant-finance/');
+const isContactPath = currentPath.startsWith('/contact/');
 ---
 
-<header class="max-w-[1200px] mx-auto px-6 md:px-12 py-8 md:py-10">
-  <nav class="flex justify-between items-center">
-    <a href="/" class="flex items-center gap-3 hover:opacity-90 transition-opacity no-underline">
-      <img src="/images/logo-emblem-white.svg" alt="Ashmo" class="h-8 w-auto" />
-    </a>
+<header class="sticky top-0 z-40 px-4 pt-3 md:px-6 md:pt-4 xl:px-8">
+  <div class="mx-auto max-w-[1560px]">
+    <nav class="rounded-[26px] border border-border bg-[rgba(7,7,17,0.78)] px-4 py-3 shadow-[0_18px_70px_rgba(0,0,0,0.34)] backdrop-blur-xl md:px-5 md:py-3.5">
+      <div class="flex items-center justify-between gap-4 lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-5">
+      <a href="/" class="flex items-center gap-3 rounded-full border border-transparent px-1 py-1 no-underline transition-opacity hover:opacity-90">
+        <img src="/images/logo-emblem-white.svg" alt="Ashmo" class="h-7 w-auto md:h-8" />
+      </a>
 
-    <!-- Desktop Nav -->
-    <ul class="hidden md:flex gap-9 list-none">
-      {navLinks.map(link => (
-        <li>
-          <a
-            href={link.href}
-            class:list={[
-              "text-[0.833rem] font-normal tracking-wide transition-colors duration-200 no-underline",
-              currentPath.startsWith(link.href)
-                ? "text-text"
-                : "text-text-tertiary hover:text-text"
-            ]}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+      <ul class="hidden lg:flex items-center justify-center gap-1 list-none">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                "inline-flex items-center rounded-full px-3.5 py-2 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.06em] transition-all duration-200 no-underline",
+                (link.href === "/restaurant-cafe-growth-systems/" ? isGrowthPath : currentPath.startsWith(link.href))
+                  ? "bg-white/10 text-text shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
+                  : "text-text-tertiary hover:bg-white/6 hover:text-text"
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
 
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-btn"
-      class="md:hidden text-text-tertiary hover:text-text transition-colors p-2"
-      aria-label="Toggle menu"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <line x1="4" y1="7" x2="20" y2="7" />
-        <line x1="4" y1="12" x2="20" y2="12" />
-        <line x1="4" y1="17" x2="20" y2="17" />
-      </svg>
-    </button>
-  </nav>
+      <div class="flex items-center justify-end gap-2 md:gap-3">
+        <a
+          href="/contact/"
+          class:list={[
+            "inline-flex min-h-11 items-center justify-center rounded-full px-4 py-2 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.06em] no-underline transition-all duration-200 md:px-5 md:py-2.5 md:text-[0.7rem]",
+            isContactPath
+              ? "border border-accent/40 bg-white/6 text-text hover:border-accent/60 hover:bg-white/10"
+              : "bg-gradient-to-r from-accent-light via-accent to-secondary text-bg shadow-[0_14px_40px_rgba(212,135,90,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_46px_rgba(201,162,212,0.22)]"
+          ]}
+          style={!isContactPath ? "color: var(--color-bg);" : undefined}
+        >
+          Contact
+        </a>
 
-  <!-- Mobile Nav -->
-  <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-b border-border">
-    <ul class="flex flex-col gap-4 list-none">
-      {navLinks.map(link => (
-        <li>
-          <a
-            href={link.href}
-            class:list={[
-              "text-base transition-colors duration-200 no-underline",
-              currentPath.startsWith(link.href)
-                ? "text-text"
-                : "text-text-tertiary hover:text-text"
-            ]}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
+        <button
+          id="mobile-menu-btn"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-text-tertiary transition-colors hover:text-text lg:hidden"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="4" y1="7" x2="20" y2="7" />
+            <line x1="4" y1="12" x2="20" y2="12" />
+            <line x1="4" y1="17" x2="20" y2="17" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+      <div id="mobile-menu" class="hidden lg:hidden mt-4 border-t border-white/8 pt-4">
+        <ul class="flex flex-col gap-2 list-none">
+          {navLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  "flex min-h-11 items-center rounded-[18px] px-4 py-3 font-mono text-[0.82rem] font-semibold uppercase tracking-[0.06em] transition-all duration-200 no-underline",
+                  (link.href === "/restaurant-cafe-growth-systems/" ? isGrowthPath : currentPath.startsWith(link.href))
+                    ? "bg-white/7 text-text"
+                    : "text-text-secondary hover:bg-white/4 hover:text-text"
+                ]}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -78,5 +98,7 @@ const currentPath = Astro.url.pathname;
   const menu = document.getElementById('mobile-menu');
   btn?.addEventListener('click', () => {
     menu?.classList.toggle('hidden');
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isExpanded));
   });
 </script>

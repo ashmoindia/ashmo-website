@@ -1,0 +1,137 @@
+---
+import IntelligenceLayout from '../../layouts/IntelligenceLayout.astro';
+import IntelligenceSourceAttribution from '../../components/IntelligenceSourceAttribution.astro';
+import {
+  intelligenceSources,
+  methodologyPrinciples,
+} from '../../data/intelligence';
+
+const visibleSources = intelligenceSources.filter((source) => source.reuseClassification !== 'blocked');
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Sources & Methodology',
+  description:
+    'Source governance, attribution rules, and legal-safe publishing standards for Ashmo Intelligence.',
+  url: 'https://ashmo.io/intelligence/methodology/',
+};
+---
+
+<IntelligenceLayout
+  title="Sources & Methodology"
+  description="The legal-safe source governance model behind Ashmo Intelligence: how sources are approved, cited, or blocked."
+  eyebrow="Ashmo Intelligence / Methodology"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-20 md:pb-24">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.38fr)]">
+      <div class="rounded-[1.9rem] border border-white/6 bg-[linear-gradient(145deg,rgba(16,18,22,0.98),rgba(10,11,14,0.98))] px-6 py-8 md:px-8 md:py-10">
+        <p class="text-[0.68rem] uppercase tracking-[0.28em] text-accent-light">Governance, attribution, transparency</p>
+        <h1 class="mt-5 max-w-[12ch] text-[2.9rem] md:text-[4.4rem] leading-[0.94] tracking-[-0.06em] font-semibold font-body text-text">
+          The source framework behind the dashboard.
+        </h1>
+        <p class="mt-6 max-w-[42rem] text-[1rem] md:text-[1.08rem] text-text-secondary leading-[1.85]">
+          Ashmo Intelligence is designed like a premium intelligence product, but it is governed like a cautious publisher. The section prefers official open data,
+          public institutions, and visible attribution over opaque, copyrighted, or paywalled market-share libraries.
+        </p>
+      </div>
+
+      <div class="rounded-[1.9rem] border border-white/6 bg-[linear-gradient(180deg,rgba(18,20,23,0.98),rgba(10,11,14,0.98))] px-6 py-6">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">The five rules</p>
+        <div class="mt-5 space-y-3">
+          {methodologyPrinciples.map((principle) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{principle}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
+    <div class="grid gap-5 lg:grid-cols-3">
+      <article class="rounded-[1.5rem] border border-white/6 bg-[linear-gradient(180deg,rgba(24,27,31,0.98),rgba(15,17,20,0.98))] p-6">
+        <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Tier 1</p>
+        <h2 class="mt-4 text-[1.55rem] font-semibold tracking-[-0.04em] font-body text-text">Approved for reuse</h2>
+        <p class="mt-4 text-sm text-text-secondary leading-[1.75]">
+          Dataset pages with visible reuse terms such as CC BY 4.0. These sources can power original charts, KPI cards, and downloadable structured data when attribution is preserved.
+        </p>
+      </article>
+      <article class="rounded-[1.5rem] border border-white/6 bg-[linear-gradient(180deg,rgba(24,27,31,0.98),rgba(15,17,20,0.98))] p-6">
+        <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Tier 2</p>
+        <h2 class="mt-4 text-[1.55rem] font-semibold tracking-[-0.04em] font-body text-text">Citation only</h2>
+        <p class="mt-4 text-sm text-text-secondary leading-[1.75]">
+          Public institutions and official releases that are valuable but do not expose clear dataset-level reuse rights in the source record. These stay linked, attributed, and descriptive.
+        </p>
+      </article>
+      <article class="rounded-[1.5rem] border border-white/6 bg-[linear-gradient(180deg,rgba(24,27,31,0.98),rgba(15,17,20,0.98))] p-6">
+        <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Tier 3</p>
+        <h2 class="mt-4 text-[1.55rem] font-semibold tracking-[-0.04em] font-body text-text">Blocked by default</h2>
+        <p class="mt-4 text-sm text-text-secondary leading-[1.75]">
+          Proprietary publishers, market-share decks, and paywalled reports remain off-limits until the owner has explicit licensing rights. No screenshots, copied charts, or extracted tables.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Primary source stack</p>
+        <h2 class="mt-4 text-[2.2rem] md:text-[2.9rem] leading-[0.96] tracking-[-0.05em] font-semibold font-body text-text">
+          Recommended launch sources.
+        </h2>
+      </div>
+      <p class="max-w-[30rem] text-sm text-text-secondary leading-[1.8]">
+        These records are intentionally verbose because every chart, card, and report page in the section needs to inherit visible governance context.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-2">
+      {visibleSources.map((source) => (
+        <IntelligenceSourceAttribution source={source} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
+    <div class="grid gap-5 lg:grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)]">
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(18,20,23,0.98),rgba(11,12,15,0.98))] p-6 md:p-8">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">What this section will not do</p>
+        <div class="mt-5 space-y-3">
+          <div class="flex gap-3">
+            <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+            <p class="text-sm text-text-secondary leading-[1.75]">Republish paywalled charts, report screenshots, or branded publisher visuals.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+            <p class="text-sm text-text-secondary leading-[1.75]">Present private market-share figures as if they are open facts.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+            <p class="text-sm text-text-secondary leading-[1.75]">Use third-party logos or imply endorsement by data providers.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+            <p class="text-sm text-text-secondary leading-[1.75]">Treat generic macro indicators as substitutes for internal operator economics.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(18,20,23,0.98),rgba(11,12,15,0.98))] p-6 md:p-8">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Standard disclaimer</p>
+        <p class="mt-5 text-sm text-text-secondary leading-[1.85]">
+          Data on this section is compiled from public sources and summarized for informational purposes. Original source rights remain with their respective owners.
+          Nothing on these pages is investment advice, and any cited third-party brand, trademark, or dataset remains the property of its owner.
+        </p>
+        <p class="mt-5 text-sm text-text-secondary leading-[1.85]">
+          When source rights are unclear, the section stays descriptive. No raw data tables, copied charts, or downloadable extracts are published until the governance status changes.
+        </p>
+      </article>
+    </div>
+  </section>
+</IntelligenceLayout>

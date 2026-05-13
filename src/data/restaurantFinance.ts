@@ -32,6 +32,7 @@ export type FinanceInsight = {
 };
 
 export const financeNav = [
+  { href: '/restaurant-cafe-growth-systems/', label: 'Growth Hub' },
   { href: '/restaurant-finance/', label: 'Overview' },
   { href: '/restaurant-finance/insights/', label: 'Insights' },
   { href: '/restaurant-finance/calculators/', label: 'Calculators' },

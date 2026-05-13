@@ -9,15 +9,28 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/seo-check.mjs",
     "build:no-seo": "astro build",
+    "lint": "astro check",
     "seo": "node scripts/seo-check.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource-variable/inter-tight": "^5.2.7",
+    "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.6",
     "resend": "^6.9.4",
     "tailwindcss": "^4.2.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "yaml-language-server": {
+      "yaml": "^2.9.0"
+    }
   }
 }

@@ -1,5 +1,6 @@
 ---
 title: "How AI Runs Marketing for a 100+ Outlet Chain"
+metaTitle: "AI Marketing for 100+ Outlets"
 description: "AI didn't replace my marketing team. It replaced the friction between having an idea and executing it — and that changed everything."
 date: 2026-03-06
 pillar: ai-selling

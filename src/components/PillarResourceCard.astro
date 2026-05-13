@@ -1,0 +1,47 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  href?: string;
+  metadata?: string;
+  accent?: 'warm' | 'soft';
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  href,
+  metadata,
+  accent = 'warm',
+} = Astro.props;
+
+const accentClass = accent === 'soft'
+  ? 'group-hover:border-secondary/30 group-hover:bg-secondary/6'
+  : 'group-hover:border-accent/30 group-hover:bg-accent/6';
+---
+{href ? (
+  <a
+    href={href}
+    class:list={[
+      'group block rounded-[1.25rem] border border-border bg-surface/70 px-6 py-6 no-underline transition-all duration-200',
+      accentClass,
+    ]}
+  >
+    {eyebrow && <p class="mb-3 text-[0.68rem] uppercase tracking-[0.18em] text-accent">{eyebrow}</p>}
+    <p class="font-heading text-[1.45rem] leading-[1.08] tracking-[-0.02em] text-text mb-3">{title}</p>
+    <p class="text-[0.96rem] leading-[1.75] font-light text-text-secondary mb-5">{description}</p>
+    <div class="flex items-center justify-between gap-4 text-[0.72rem] uppercase tracking-[0.14em] text-text-tertiary">
+      <span>{metadata}</span>
+      <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
+    </div>
+  </a>
+) : (
+  <div class="rounded-[1.25rem] border border-border bg-surface/70 px-6 py-6">
+    {eyebrow && <p class="mb-3 text-[0.68rem] uppercase tracking-[0.18em] text-accent">{eyebrow}</p>}
+    <p class="font-heading text-[1.45rem] leading-[1.08] tracking-[-0.02em] text-text mb-3">{title}</p>
+    <p class="text-[0.96rem] leading-[1.75] font-light text-text-secondary mb-5">{description}</p>
+    {metadata && <p class="text-[0.72rem] uppercase tracking-[0.14em] text-text-tertiary">{metadata}</p>}
+  </div>
+)}

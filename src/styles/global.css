@@ -1,31 +1,8 @@
 @import "tailwindcss";
-
-/* ============================================
-   DESIGN TOKENS — ashmo.io
-   Dark Editorial with Warm Soul
-   ============================================ */
-@theme {
-  --color-bg: #0F0F0F;
-  --color-bg-deep: #080808;
-  --color-surface: #1A1A1A;
-  --color-surface-hover: #222220;
-
-  --color-text: #F5F0EB;
-  --color-text-secondary: #9A9490;
-  --color-text-tertiary: #5E5955;
-
-  --color-accent: #D4875A;
-  --color-accent-light: #E8A472;
-
-  --color-secondary: #C9A2D4;
-  --color-secondary-light: #D8B8E0;
-
-  --color-border: #2A2725;
-  --color-border-light: #333030;
-
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
-}
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/inter-tight";
+@import "@fontsource-variable/jetbrains-mono";
+@import "./theme.css";
 
 /* ============================================
    BASE STYLES
@@ -42,6 +19,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.max-w-\[1200px\],
+.max-w-\[1240px\] {
+  width: min(100%, var(--site-shell-max));
+  max-width: var(--site-shell-max);
+}
+
 ::selection {
   background: var(--color-accent);
   color: var(--color-bg);
@@ -53,8 +36,8 @@ body {
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   color: var(--color-text);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  line-height: 1.05;
+  letter-spacing: 0;
 }
 
 a {
@@ -154,6 +137,7 @@ a:hover {
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 0.889rem;
+  font-family: var(--font-mono);
 }
 
 .prose pre {

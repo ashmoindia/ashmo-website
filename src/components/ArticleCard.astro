@@ -5,11 +5,12 @@ interface Props {
   date: Date;
   pillar: string;
   slug: string;
+  tags?: string[];
   featured?: boolean;
   headingLevel?: 'h2' | 'h3';
 }
 
-const { title, description, date, pillar, slug, featured = false, headingLevel = 'h3' } = Astro.props;
+const { title, description, date, pillar, slug, tags = [], featured = false, headingLevel = 'h3' } = Astro.props;
 const Heading = headingLevel;
 
 const pillarLabels: Record<string, string> = {
@@ -30,47 +31,86 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 
 const readingTime = Math.max(3, Math.ceil(description.length / 40)) + ' min read';
+const accentTint = isPurple ? 'rgba(201,162,212,0.14)' : 'rgba(212,135,90,0.14)';
 ---
 
 <a
   href={`/thinking/${slug}/`}
   class:list={[
-    "block bg-surface border border-border rounded-lg transition-all duration-200 no-underline group",
-    "hover:border-border-light hover:bg-surface-hover",
-    featured ? "p-10 md:p-14 col-span-full relative overflow-hidden" : "p-8 md:p-10",
+    "group blog-card hover-lift block no-underline",
+    featured ? "col-span-full p-6 md:p-8 lg:p-10" : "h-full p-5 md:p-6",
   ]}
 >
-  {featured && (
-    <div
-      class="absolute -bottom-[20%] -right-[10%] w-[400px] h-[400px] pointer-events-none"
-      style={`background: radial-gradient(circle, ${isPurple ? 'rgba(201,162,212,0.08)' : 'rgba(212,135,90,0.08)'} 0%, transparent 70%)`}
-    />
-  )}
+  <div
+    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+  />
+  <div
+    class="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl"
+    style={`background: radial-gradient(circle, ${accentTint} 0%, transparent 72%)`}
+  />
+  <div
+    class="pointer-events-none absolute -bottom-28 -left-10 h-52 w-52 rounded-full blur-3xl"
+    style={`background: radial-gradient(circle, ${isPurple ? 'rgba(201,162,212,0.08)' : 'rgba(212,135,90,0.08)'} 0%, transparent 74%)`}
+  />
 
-  <div class="relative z-10">
-    <p
-      class="text-[0.667rem] font-medium uppercase tracking-[0.12em] mb-5"
-      style={`color: ${isPurple ? 'var(--color-secondary)' : 'var(--color-accent)'}`}
-    >
-      {pillarLabels[pillar] || pillar}
-    </p>
+  <div class:list={['relative z-10', featured ? 'grid gap-7 lg:grid-cols-[minmax(0,0.28fr)_minmax(0,0.72fr)] lg:gap-10' : 'flex h-full flex-col']}>
+    <div class:list={[featured ? 'flex flex-col justify-between gap-5 rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-5 py-5' : 'flex items-start justify-between gap-4']}>
+      <div>
+        <p
+          class="font-mono text-[0.66rem] font-semibold uppercase tracking-[0.08em]"
+          style={`color: ${isPurple ? 'var(--color-secondary-light)' : 'var(--color-accent-light)'}`}
+        >
+          {pillarLabels[pillar] || pillar}
+        </p>
+        <p class="mt-3 font-mono text-[0.72rem] uppercase tracking-[0.06em] text-text-tertiary">
+          {formattedDate}
+        </p>
+      </div>
 
-    <Heading
-      class:list={[
-        "font-heading font-semibold leading-tight mb-4 transition-colors duration-200",
-        featured ? "text-2xl md:text-[2rem] max-w-[600px]" : "text-xl",
-        isPurple ? "group-hover:text-secondary-light" : "group-hover:text-accent-light",
-      ]}
-    >
-      {title}
-    </Heading>
+      <div class:list={[featured ? 'space-y-3' : 'text-right']}>
+        <p class="font-mono text-[0.66rem] uppercase tracking-[0.06em] text-text-tertiary">Format</p>
+        <p class="text-[0.82rem] font-medium text-text-secondary">{readingTime}</p>
+      </div>
+    </div>
 
-    <p class="text-text-secondary text-[0.944rem] font-light leading-relaxed mb-6">
-      {description}
-    </p>
+    <div class:list={[featured ? 'flex min-h-full flex-col justify-between' : 'mt-6 flex flex-1 flex-col']}>
+      <div>
+        <Heading
+          class:list={[
+            'font-heading font-bold leading-[1.04] tracking-normal transition-colors duration-200',
+            featured ? 'text-[2rem] md:text-[2.7rem] max-w-[14ch]' : 'text-[1.45rem] md:text-[1.65rem]',
+            isPurple ? 'group-hover:text-secondary-light' : 'group-hover:text-accent-light',
+          ]}
+        >
+          {title}
+        </Heading>
 
-    <p class="text-[0.722rem] text-text-tertiary tracking-wide">
-      {formattedDate} &middot; {readingTime}
-    </p>
+        <p class:list={[
+          'text-text-secondary font-light leading-[1.78]',
+          featured ? 'mt-5 max-w-[42rem] text-[1rem] md:text-[1.05rem]' : 'mt-4 text-[0.94rem]',
+        ]}>
+          {description}
+        </p>
+      </div>
+
+      <div class:list={[featured ? 'mt-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between' : 'mt-6 flex flex-wrap items-center justify-between gap-4 pt-5 border-t border-white/6']}>
+        <div class="flex flex-wrap gap-2">
+          {tags.slice(0, featured ? 3 : 2).map((tag) => (
+            <span class="inline-flex rounded-full border border-white/8 bg-white/[0.03] px-3 py-1 font-mono text-[0.66rem] uppercase tracking-[0.06em] text-text-secondary">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <span
+          class:list={[
+            'inline-flex items-center gap-2 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.06em] transition-colors duration-200',
+            isPurple ? 'text-secondary/80 group-hover:text-secondary-light' : 'text-accent/80 group-hover:text-accent-light',
+          ]}
+        >
+          Read essay <span aria-hidden="true">&rarr;</span>
+        </span>
+      </div>
+    </div>
   </div>
 </a>

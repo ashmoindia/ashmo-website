@@ -1,5 +1,6 @@
 ---
 title: "What a Grocery Shop at 19 Taught Me About Pricing"
+metaTitle: "Grocery Shop Pricing Psychology"
 description: "Before analytics dashboards existed, there was a counter, a customer, and a decision to make in real time."
 date: 2026-03-08
 pillar: merchant-mindset

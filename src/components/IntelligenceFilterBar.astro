@@ -1,0 +1,103 @@
+---
+interface FilterOption {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  countryOptions: FilterOption[];
+  topicOptions: FilterOption[];
+}
+
+const { countryOptions, topicOptions } = Astro.props;
+---
+
+<div class="rounded-[1.4rem] border border-white/6 bg-[linear-gradient(180deg,rgba(19,21,24,0.98),rgba(13,15,18,0.98))] px-5 py-5 md:px-6">
+  <div class="grid gap-5 md:grid-cols-[minmax(0,0.5fr)_minmax(0,0.5fr)]">
+    <div>
+      <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Country filter</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        {countryOptions.map((option, index) => (
+          <button
+            type="button"
+            data-filter-country={option.value}
+            class:list={[
+              'intelligence-filter-btn rounded-full border px-3 py-2 text-[0.68rem] uppercase tracking-[0.16em] transition-colors',
+              index === 0
+                ? 'border-accent/40 bg-accent/12 text-accent-light'
+                : 'border-white/8 bg-white/[0.02] text-text-secondary hover:text-text',
+            ]}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
+    <div>
+      <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Topic filter</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        {topicOptions.map((option, index) => (
+          <button
+            type="button"
+            data-filter-topic={option.value}
+            class:list={[
+              'intelligence-topic-btn rounded-full border px-3 py-2 text-[0.68rem] uppercase tracking-[0.16em] transition-colors',
+              index === 0
+                ? 'border-accent/40 bg-accent/12 text-accent-light'
+                : 'border-white/8 bg-white/[0.02] text-text-secondary hover:text-text',
+            ]}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const countryButtons = Array.from(document.querySelectorAll<HTMLElement>('[data-filter-country]'));
+  const topicButtons = Array.from(document.querySelectorAll<HTMLElement>('[data-filter-topic]'));
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.report-card'));
+
+  let activeCountry = 'all';
+  let activeTopic = 'all';
+
+  const updateButtonState = (buttons: HTMLElement[], activeValue: string, attribute: string) => {
+    buttons.forEach((button) => {
+      const isActive = button.getAttribute(attribute) === activeValue;
+      button.classList.toggle('border-accent/40', isActive);
+      button.classList.toggle('bg-accent/12', isActive);
+      button.classList.toggle('text-accent-light', isActive);
+      button.classList.toggle('border-white/8', !isActive);
+      button.classList.toggle('bg-white/[0.02]', !isActive);
+      button.classList.toggle('text-text-secondary', !isActive);
+    });
+  };
+
+  const applyFilters = () => {
+    cards.forEach((card) => {
+      const country = card.getAttribute('data-country') || '';
+      const topic = card.getAttribute('data-topic') || '';
+      const countryMatch = activeCountry === 'all' || country.includes(activeCountry);
+      const topicMatch = activeTopic === 'all' || topic.includes(activeTopic);
+      card.classList.toggle('hidden', !(countryMatch && topicMatch));
+    });
+  };
+
+  countryButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeCountry = button.getAttribute('data-filter-country') || 'all';
+      updateButtonState(countryButtons, activeCountry, 'data-filter-country');
+      applyFilters();
+    });
+  });
+
+  topicButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeTopic = button.getAttribute('data-filter-topic') || 'all';
+      updateButtonState(topicButtons, activeTopic, 'data-filter-topic');
+      applyFilters();
+    });
+  });
+</script>

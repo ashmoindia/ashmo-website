@@ -1,0 +1,403 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PillarSectionNav from '../../components/PillarSectionNav.astro';
+import PillarResourceCard from '../../components/PillarResourceCard.astro';
+import PillarCTA from '../../components/PillarCTA.astro';
+import {
+  growthAuditPath,
+  growthBasePath,
+  growthBusinessStages,
+  growthBusinessTypes,
+  growthCapabilities,
+  growthFrameworkLayers,
+  growthNav,
+  growthOffers,
+  growthProofBlocks,
+  growthResources,
+  growthToolkitBundlePath,
+  growthTemplatesPath,
+} from '../../data/restaurantGrowth';
+
+const credibilityBlocks = [
+  {
+    tag: 'Revenue logic',
+    title: 'Marketer-first',
+    description: 'Channel strategy, campaign systems, content planning, and performance thinking anchored to revenue outcomes.',
+  },
+  {
+    tag: 'Store reality',
+    title: 'Operator-aware',
+    description: 'Built around footfall, frequency, delivery economics, menu behavior, branch-level momentum, and rollout pressure.',
+  },
+  {
+    tag: 'Compounding model',
+    title: 'Growth-system led',
+    description: 'The point is not to add more activity. It is to make brand, local demand, retention, and measurement work as one system.',
+  },
+];
+
+const capabilityPreview = growthCapabilities.slice(0, 12);
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Restaurant & Cafe Growth Systems',
+  description:
+    'A strategic growth hub for restaurant, cafe, QSR, and multi-unit brands covering brand, launch, local marketing, delivery, retention, and measurement.',
+  url: `https://ashmo.io${growthBasePath}/`,
+  hasPart: capabilityPreview.map((item) => ({
+    '@type': 'WebPage',
+    name: item.title,
+    url: `https://ashmo.io${item.href}`,
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: 'https://ashmo.io/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Restaurant & Cafe Growth Systems',
+      item: `https://ashmo.io${growthBasePath}/`,
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Restaurant & Cafe Growth Systems"
+  description="Operator-aware restaurant growth strategy covering brand, launch, local marketing, paid media, delivery, CRM, SEO, and measurement."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify([collectionSchema, breadcrumbSchema])} />
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-6 md:pt-10 pb-8 md:pb-10">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.94fr)_minmax(0,1.06fr)] gap-8 md:gap-12 items-stretch">
+      <div class="rounded-[1.75rem] border border-border bg-[linear-gradient(145deg,rgba(20,20,19,0.96),rgba(12,12,12,0.98))] px-7 py-10 md:px-10 md:py-12">
+        <p class="text-[0.72rem] uppercase tracking-[0.24em] text-accent mb-5">Restaurant &amp; Cafe Growth Systems</p>
+        <h1 class="font-heading text-[2.8rem] md:text-[4.8rem] leading-[0.94] tracking-[-0.05em] mb-6 max-w-[12ch]">
+          Restaurant marketing is not just ads. It is brand, demand, delivery, retention, and store-level momentum.
+        </h1>
+        <p class="max-w-[42rem] text-[1.02rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.85] mb-8">
+          I help cafes, QSRs, cloud kitchens, fast casual brands, and multi-unit operators build practical growth systems
+          that connect positioning, local demand generation, performance media, delivery behavior, CRM, and measurement to revenue.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-5">
+          <a href={`${growthAuditPath}#strategy-call`} class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+            Book a strategy call
+          </a>
+          <a href={`${growthAuditPath}#growth-audit`} class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+            Get a growth audit
+          </a>
+        </div>
+        <a href="#frameworks" class="text-sm text-accent-light hover:text-text no-underline transition-colors">
+          Explore frameworks &rarr;
+        </a>
+      </div>
+
+      <div class="relative overflow-hidden rounded-[1.75rem] border border-border bg-[linear-gradient(155deg,rgba(22,22,20,0.96),rgba(11,11,11,0.99))] px-6 py-7 md:px-7 md:py-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,135,90,0.12),transparent_34%)]"></div>
+        <div class="absolute inset-y-0 left-0 w-px bg-white/6"></div>
+        <div class="relative">
+          <div class="flex flex-col gap-4 border-b border-white/6 pb-5">
+            <div class="flex items-center justify-between gap-4">
+              <p class="text-[0.68rem] uppercase tracking-[0.2em] text-accent">Credibility</p>
+              <span class="inline-flex rounded-full border border-white/8 bg-white/[0.04] px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-text-tertiary">
+                Strategy lens
+              </span>
+            </div>
+            <h2 class="font-heading text-[1.8rem] md:text-[2.2rem] leading-[1.02] tracking-[-0.03em] max-w-[12ch]">
+              Why this reads like growth strategy, not channel chatter.
+            </h2>
+            <p class="max-w-[34rem] text-[0.96rem] text-text-secondary font-light leading-[1.8]">
+              The value is not more tactics. It is a tighter way to connect brand, local demand, delivery, retention, and measurement to real operating outcomes.
+            </p>
+          </div>
+
+          <div class="mt-6 space-y-4">
+            {credibilityBlocks.map((block, index) => (
+              <div class="grid grid-cols-[auto_1fr] gap-4 rounded-[1.25rem] border border-white/6 bg-white/[0.025] px-4 py-4 md:px-5">
+                <div class="flex flex-col items-start gap-3">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-[0.95rem] border border-white/8 bg-white/[0.04] text-[0.7rem] font-medium uppercase tracking-[0.16em] text-accent-light">
+                    0{index + 1}
+                  </span>
+                  <span class="inline-flex rounded-full bg-accent/12 px-2.5 py-1 text-[0.58rem] uppercase tracking-[0.16em] text-accent-light">
+                    {block.tag}
+                  </span>
+                </div>
+                <div>
+                  <p class="font-heading text-[1.35rem] leading-[1.08] tracking-[-0.02em] text-text">{block.title}</p>
+                  <p class="mt-2 text-[0.95rem] text-text-secondary font-light leading-[1.72]">{block.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <PillarSectionNav items={growthNav} rootHref="/restaurant-cafe-growth-systems/" />
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)] gap-10 md:gap-14 items-start">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Why this section exists</p>
+        <h2 class="font-heading text-3xl md:text-[2.9rem] leading-[1.04] tracking-[-0.03em] mb-5">
+          This is built for founders who need growth to survive contact with real restaurant operations.
+        </h2>
+        <p class="max-w-[46rem] text-[1.02rem] text-text-secondary font-light leading-[1.9] mb-10">
+          Generic agencies talk about channels. Operators think about traffic quality, menu mix, trade area, repeat behavior,
+          delivery economics, and whether branch-level effort turns into repeatable revenue. This section is built for that reality.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="rounded-[1.25rem] border border-border bg-surface/60 px-5 py-5">
+            <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">What it positions</p>
+            <p class="font-heading text-[1.35rem] leading-[1.08] mb-2">A marketer-first, operator-aware growth strategist.</p>
+            <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">
+              Someone who understands branding, launch, store traffic, delivery, CRM, and the commercial pressure behind each move.
+            </p>
+          </div>
+          <div class="rounded-[1.25rem] border border-border bg-surface/60 px-5 py-5">
+            <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">What it avoids</p>
+            <p class="font-heading text-[1.35rem] leading-[1.08] mb-2">Generic restaurant marketing language.</p>
+            <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">
+              No vague “360 solutions.” No channel dumping. No pretending that ads alone fix weak positioning or store economics.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-[1.4rem] border border-border bg-surface px-6 py-6">
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent-light mb-4">Best fit</p>
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <span class="mt-1 block h-2 w-2 rounded-full bg-accent"></span>
+            <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">Single-outlet cafes trying to turn local awareness into regulars.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="mt-1 block h-2 w-2 rounded-full bg-accent"></span>
+            <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">Independent restaurants that need a sharper commercial marketing plan.</p>
+          </div>
+          <div class="flex gap-3">
+            <span class="mt-1 block h-2 w-2 rounded-full bg-accent"></span>
+            <p class="text-[0.94rem] text-text-secondary font-light leading-[1.75]">Premium cafe brands, delivery-first operators, and multi-store groups preparing for scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">By business type</p>
+          <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+            Let the operator identify the model first.
+          </h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {growthBusinessTypes.map((item) => (
+          <PillarResourceCard
+            eyebrow={item.eyebrow}
+            title={item.title}
+            description={item.description}
+            href={item.href}
+            metadata={item.metadata}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">By business stage</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+          Search intent changes as the business changes.
+        </h2>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+      {growthBusinessStages.map((item) => (
+        <PillarResourceCard
+          eyebrow={item.eyebrow}
+          title={item.title}
+          description={item.description}
+          href={item.href}
+          metadata="See guidance"
+        />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Core capabilities</p>
+          <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+            The A-to-Z growth system, not a channel menu.
+          </h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {capabilityPreview.map((item) => (
+          <PillarResourceCard
+            eyebrow={item.eyebrow}
+            title={item.title}
+            description={item.description}
+            href={item.href}
+            metadata="Open framework"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="frameworks" class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)] gap-10 md:gap-16">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Signature framework</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04] mb-5">
+          The 8-layer restaurant growth model.
+        </h2>
+        <p class="text-[1rem] text-text-secondary font-light leading-[1.85] max-w-[40rem]">
+          The model is designed to stop founders from treating every growth problem like a traffic problem.
+          Each layer affects the next one. When the earlier layers are weak, paid activity becomes expensive and retention becomes fragile.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {growthFrameworkLayers.map((layer, index) => (
+          <div class="rounded-[1.25rem] border border-border bg-surface/70 px-5 py-5">
+            <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">Layer 0{index + 1}</p>
+            <p class="font-heading text-[1.2rem] leading-[1.08] mb-3">{layer.title}</p>
+            <p class="text-[0.92rem] text-text-secondary font-light leading-[1.7]">{layer.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Templates &amp; trackers</p>
+          <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+            The operator toolkit is live, not mocked up.
+          </h2>
+        </div>
+        <a href={growthTemplatesPath} class="text-sm text-accent-light hover:text-text no-underline transition-colors">
+          Open full toolkit &rarr;
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+        {growthResources.map((resource) => (
+          <PillarResourceCard
+            eyebrow={resource.status}
+            title={resource.title}
+            description={resource.description}
+            href={resource.href}
+            metadata={resource.metadata ?? 'Open template'}
+            accent="soft"
+          />
+        ))}
+      </div>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href={growthTemplatesPath} class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+          Browse all templates
+        </a>
+        <a href={growthToolkitBundlePath} download class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+          Download toolkit pack
+        </a>
+        <a href={`${growthAuditPath}#strategy-call`} class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+          Need a custom planning system?
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,0.54fr)_minmax(0,0.46fr)] gap-10">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Proof through thinking</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04] mb-5">
+          Strategic insight before polished case-study theater.
+        </h2>
+        <p class="text-[1rem] text-text-secondary font-light leading-[1.85] max-w-[40rem] mb-8">
+          Even without a public wall of polished case studies, the section can still prove depth through commercial diagnosis,
+          campaign logic, launch frameworks, and the way problems are broken down.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {growthProofBlocks.map((item) => (
+            <PillarResourceCard
+              eyebrow={item.eyebrow}
+              title={item.title}
+              description={item.description}
+              href={item.href}
+              metadata="Read the page"
+            />
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-[1.4rem] border border-border bg-surface px-6 py-6">
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent-light mb-4">Linked operator intelligence</p>
+        <h3 class="font-heading text-[2rem] leading-[1.04] tracking-[-0.03em] mb-4">
+          Restaurant finance sits inside the bigger growth picture.
+        </h3>
+        <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8] mb-6">
+          Brand and demand only matter if the branch model survives. The finance desk remains live as the commercial pressure layer
+          for break-even, rent, labor, delivery contribution, and decision-grade templates.
+        </p>
+        <a href="/restaurant-finance/" class="inline-flex items-center gap-2 text-sm text-accent-light hover:text-text no-underline transition-colors">
+          Explore UAE Restaurant Finance &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Ways to engage</p>
+          <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+            Entry points for founders, operators, and brand teams.
+          </h2>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+        {growthOffers.map((offer) => (
+          <PillarResourceCard
+            eyebrow={offer.eyebrow}
+            title={offer.title}
+            description={offer.description}
+            href={offer.href}
+            metadata="Start here"
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <PillarCTA
+    eyebrow="Final CTA"
+    title="If growth feels fragmented, fix the system before you ask the channels to work harder."
+    description="Use the growth audit, strategy call, 90-day plan, or fractional CMO path to identify what is actually constraining brand momentum, footfall, delivery, and repeat revenue."
+    primary={{ href: `${growthAuditPath}#growth-audit`, label: 'Get a Restaurant Growth Audit' }}
+    secondary={{ href: `${growthAuditPath}#fractional-cmo`, label: 'Explore Fractional CMO Advisory' }}
+  />
+</BaseLayout>

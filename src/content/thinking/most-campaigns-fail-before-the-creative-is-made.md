@@ -1,5 +1,6 @@
 ---
 title: "Most Campaigns Fail Before the Creative Is Made"
+metaTitle: "Why Campaigns Fail Early"
 description: "When campaigns underperform, most teams blame the ad. The real problem usually started much earlier."
 date: 2026-04-19
 pillar: brand-growth

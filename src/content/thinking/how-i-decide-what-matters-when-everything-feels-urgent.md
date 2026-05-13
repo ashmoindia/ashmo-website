@@ -1,5 +1,6 @@
 ---
 title: "How I Decide What Matters When Everything Is Urgent"
+metaTitle: "How to Decide What Matters"
 description: "Urgency is noisy. Importance is usually quieter. The work is learning to tell the difference."
 date: 2026-04-16
 pillar: habit-philosophy

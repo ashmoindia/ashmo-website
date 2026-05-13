@@ -1,0 +1,184 @@
+---
+import IntelligenceLayout from '../../../layouts/IntelligenceLayout.astro';
+import IntelligenceMetricCard from '../../../components/IntelligenceMetricCard.astro';
+import IntelligenceBarChart from '../../../components/IntelligenceBarChart.astro';
+import IntelligenceReportCard from '../../../components/IntelligenceReportCard.astro';
+import IntelligenceSourceAttribution from '../../../components/IntelligenceSourceAttribution.astro';
+import {
+  getComparisonById,
+  getFactById,
+  getReportsBySlugs,
+  getSourceById,
+  intelligenceReports,
+} from '../../../data/intelligence';
+
+const isDefined = <T,>(value: T | undefined | null): value is T => Boolean(value);
+
+export function getStaticPaths() {
+  return intelligenceReports.map((report) => ({
+    params: { slug: report.slug },
+    props: { report },
+  }));
+}
+
+const { report } = Astro.props;
+
+const featuredFacts = report.featuredFacts.map((id) => getFactById(id)).filter(isDefined);
+const comparison = report.comparisonId ? getComparisonById(report.comparisonId) : undefined;
+const relatedReports = getReportsBySlugs(report.relatedReportSlugs);
+const sources = report.sourceIds.map((id) => getSourceById(id)).filter(isDefined);
+
+const reportSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Report',
+  name: report.title,
+  description: report.summary,
+  dateModified: report.updated,
+  url: `https://ashmo.io/intelligence/reports/${report.slug}/`,
+  inLanguage: 'en',
+};
+---
+
+<IntelligenceLayout
+  title={report.metaTitle}
+  description={report.metaDescription}
+  eyebrow={`Ashmo Intelligence / ${report.title}`}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(reportSchema)} />
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-14 md:pb-18">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.68fr)_minmax(0,0.32fr)]">
+      <div class="rounded-[1.95rem] overflow-hidden border border-white/6 bg-[linear-gradient(145deg,rgba(16,18,22,0.98),rgba(9,10,13,0.99))] px-6 py-8 md:px-8 md:py-10">
+        <p class="text-[0.68rem] uppercase tracking-[0.28em] text-accent-light">{report.eyebrow}</p>
+        <h1 class="mt-5 max-w-[12ch] text-[2.8rem] md:text-[4.6rem] leading-[0.92] tracking-[-0.06em] font-semibold font-body text-text">
+          {report.title}
+        </h1>
+        <p class="mt-6 max-w-[42rem] text-[1rem] md:text-[1.08rem] text-text-secondary leading-[1.85]">{report.summary}</p>
+
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="rounded-full border border-white/8 px-3 py-1 text-[0.64rem] uppercase tracking-[0.16em] text-text-tertiary">
+            {report.geography}
+          </span>
+          <span class="rounded-full border border-white/8 px-3 py-1 text-[0.64rem] uppercase tracking-[0.16em] text-text-tertiary">
+            Updated {report.updated}
+          </span>
+          <span class:list={[
+            'rounded-full px-3 py-1 text-[0.64rem] uppercase tracking-[0.16em]',
+            report.accessModel === 'approved_reuse'
+              ? 'bg-accent/14 text-accent-light'
+              : 'bg-white/[0.06] text-text-secondary',
+          ]}>
+            {report.accessModel === 'approved_reuse' ? 'Approved-reuse charts' : 'Mixed-source narrative'}
+          </span>
+        </div>
+      </div>
+
+      <aside class="rounded-[1.6rem] border border-white/6 bg-[linear-gradient(180deg,rgba(18,20,23,0.98),rgba(10,11,14,0.98))] px-6 py-6">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Executive summary</p>
+        <div class="mt-5 space-y-4">
+          {report.executiveSummary.map((item) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {featuredFacts.map((fact) => (
+        <IntelligenceMetricCard fact={fact} />
+      ))}
+    </div>
+  </section>
+
+  {comparison && (
+    <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+      <IntelligenceBarChart comparison={comparison} />
+    </section>
+  )}
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="grid gap-5 lg:grid-cols-[minmax(0,0.56fr)_minmax(0,0.44fr)]">
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,26,0.98),rgba(12,13,16,0.98))] p-6 md:p-7">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">What this means for operators</p>
+        <div class="mt-5 space-y-4">
+          {report.operatorTakeaways.map((item) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,26,0.98),rgba(12,13,16,0.98))] p-6 md:p-7">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Limitations</p>
+        <div class="mt-5 space-y-4">
+          {report.limitations.map((item) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="grid gap-5 lg:grid-cols-2">
+      {report.sections.map((section) => (
+        <article class="rounded-[1.6rem] bg-[linear-gradient(180deg,rgba(19,21,24,0.98),rgba(13,15,18,0.98))] p-6 md:p-7">
+          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">{section.title}</p>
+          <p class="mt-5 text-sm text-text-secondary leading-[1.85]">{section.body}</p>
+          <div class="mt-5 space-y-3">
+            {section.bullets.map((item) => (
+              <div class="flex gap-3">
+                <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+                <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Source block</p>
+        <h2 class="mt-4 text-[2rem] md:text-[2.6rem] leading-[0.98] tracking-[-0.05em] font-semibold font-body text-text">
+          Attribution stays visible.
+        </h2>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-2">
+      {sources.map((source) => (
+        <IntelligenceSourceAttribution source={source} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Related reports</p>
+        <h2 class="mt-4 text-[2rem] md:text-[2.6rem] leading-[0.98] tracking-[-0.05em] font-semibold font-body text-text">
+          Keep following the signal stack.
+        </h2>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {relatedReports.map((entry) => (
+        <IntelligenceReportCard report={entry} />
+      ))}
+    </div>
+  </section>
+</IntelligenceLayout>

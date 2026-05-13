@@ -1,0 +1,21 @@
+---
+import type { IntelligenceTopic } from '../data/intelligence';
+
+interface Props {
+  topic: IntelligenceTopic;
+}
+
+const { topic } = Astro.props;
+---
+
+<article class="rounded-[1.5rem] bg-[linear-gradient(180deg,rgba(22,24,28,0.98),rgba(14,16,19,0.98))] p-6">
+  <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">{topic.eyebrow}</p>
+  <h3 class="mt-4 text-[1.55rem] font-semibold tracking-[-0.04em] font-body text-text">{topic.name}</h3>
+  <p class="mt-4 text-sm text-text-secondary leading-[1.75]">{topic.summary}</p>
+  <p class="mt-5 text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">Safe data strategy</p>
+  <p class="mt-2 text-sm text-text-secondary leading-[1.75]">{topic.safeDataStrategy}</p>
+  <a href={`/intelligence/topics/${topic.slug}/`} class="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent-light no-underline">
+    Open topic page
+    <span>&rarr;</span>
+  </a>
+</article>

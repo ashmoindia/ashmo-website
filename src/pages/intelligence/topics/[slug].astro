@@ -1,0 +1,138 @@
+---
+import IntelligenceLayout from '../../../layouts/IntelligenceLayout.astro';
+import IntelligenceMetricCard from '../../../components/IntelligenceMetricCard.astro';
+import IntelligenceSignalCard from '../../../components/IntelligenceSignalCard.astro';
+import IntelligenceBarChart from '../../../components/IntelligenceBarChart.astro';
+import IntelligenceReportCard from '../../../components/IntelligenceReportCard.astro';
+import IntelligenceSourceAttribution from '../../../components/IntelligenceSourceAttribution.astro';
+import {
+  getComparisonById,
+  getFactById,
+  getReportsBySlugs,
+  getSourceById,
+  intelligenceTopics,
+} from '../../../data/intelligence';
+
+const isDefined = <T,>(value: T | undefined | null): value is T => Boolean(value);
+
+export function getStaticPaths() {
+  return intelligenceTopics.map((topic) => ({
+    params: { slug: topic.slug },
+    props: { topic },
+  }));
+}
+
+const { topic } = Astro.props;
+
+const proxyFacts = topic.proxyFacts.map((id) => getFactById(id)).filter(isDefined);
+const signalFacts = topic.signalFacts.map((id) => getFactById(id)).filter(isDefined);
+const comparison = topic.comparisonId ? getComparisonById(topic.comparisonId) : undefined;
+const relatedReports = getReportsBySlugs(topic.relatedReportSlugs);
+const sourceIds = [...new Set([...proxyFacts, ...signalFacts].map((fact) => fact.sourceId))];
+const sources = sourceIds.map((id) => getSourceById(id)).filter(isDefined);
+---
+
+<IntelligenceLayout
+  title={topic.metaTitle}
+  description={topic.metaDescription}
+  eyebrow={`Ashmo Intelligence / ${topic.name}`}
+>
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-14 md:pb-18">
+    <div class="rounded-[1.95rem] overflow-hidden border border-white/6 bg-[linear-gradient(145deg,rgba(16,18,22,0.98),rgba(9,10,13,0.99))] px-6 py-8 md:px-8 md:py-10">
+      <p class="text-[0.68rem] uppercase tracking-[0.28em] text-accent-light">{topic.eyebrow}</p>
+      <h1 class="mt-5 max-w-[12ch] text-[2.8rem] md:text-[4.5rem] leading-[0.92] tracking-[-0.06em] font-semibold font-body text-text">
+        {topic.title}
+      </h1>
+      <p class="mt-6 max-w-[42rem] text-[1rem] md:text-[1.08rem] text-text-secondary leading-[1.85]">{topic.summary}</p>
+
+      <div class="mt-8 rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-5 py-5 md:px-6">
+        <p class="text-[0.66rem] uppercase tracking-[0.22em] text-accent-light">Safe data strategy</p>
+        <p class="mt-4 text-sm text-text-secondary leading-[1.8]">{topic.safeDataStrategy}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {proxyFacts.map((fact) => (
+        <IntelligenceMetricCard fact={fact} />
+      ))}
+    </div>
+  </section>
+
+  {comparison && (
+    <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+      <IntelligenceBarChart comparison={comparison} />
+    </section>
+  )}
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Citation-led intelligence</p>
+        <h2 class="mt-4 text-[2rem] md:text-[2.6rem] leading-[0.98] tracking-[-0.05em] font-semibold font-body text-text">
+          Market texture without unlicensed raw-data publishing.
+        </h2>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {signalFacts.map((fact) => (
+        <IntelligenceSignalCard fact={fact} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="grid gap-5 lg:grid-cols-[minmax(0,0.58fr)_minmax(0,0.42fr)]">
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,26,0.98),rgba(12,13,16,0.98))] p-6 md:p-7">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">What operators should do</p>
+        <div class="mt-5 space-y-4">
+          {topic.operatorActions.map((item) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,26,0.98),rgba(12,13,16,0.98))] p-6 md:p-7">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Caution</p>
+        <div class="mt-5 space-y-4">
+          {topic.caution.map((item) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Related reports</p>
+        <h2 class="mt-4 text-[2rem] md:text-[2.6rem] leading-[0.98] tracking-[-0.05em] font-semibold font-body text-text">
+          Detail pages linked from the topic layer.
+        </h2>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {relatedReports.map((report) => (
+        <IntelligenceReportCard report={report} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
+    <div class="grid gap-5 lg:grid-cols-2">
+      {sources.map((source) => (
+        <IntelligenceSourceAttribution source={source} />
+      ))}
+    </div>
+  </section>
+</IntelligenceLayout>

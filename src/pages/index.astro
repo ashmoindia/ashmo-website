@@ -1,44 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 import { featuredPodcastEpisode } from '../data/podcast';
-import { evidenceLayers, financeCalculators, trustMarkers } from '../data/restaurantFinance';
+import { financeCalculators, financeTemplates } from '../data/restaurantFinance';
+import {
+  growthAuditPath,
+  growthFrameworkLayers,
+  growthTemplates,
+  growthToolkitBundlePath,
+} from '../data/restaurantGrowth';
+
+type ThinkingEntry = CollectionEntry<'thinking'>;
+type WorkEntry = CollectionEntry<'work'>;
+type HomeEntry = ThinkingEntry | WorkEntry;
+
+const isDefined = <T,>(value: T | undefined | null): value is T => Boolean(value);
 
 const allArticles = await getCollection('thinking', ({ data }) => data.published);
 const allWork = await getCollection('work', ({ data }) => data.published);
 
 const sortedArticles = allArticles.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const sortedWork = allWork.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const sortedWork = allWork.sort((a, b) => {
+  if (a.id === 'filli-cafe') return -1;
+  if (b.id === 'filli-cafe') return 1;
+  return b.data.date.valueOf() - a.data.date.valueOf();
+});
 
 const articleById = new Map(sortedArticles.map((article) => [article.id, article]));
 const workById = new Map(sortedWork.map((entry) => [entry.id, entry]));
 
-const heroEssay = articleById.get('brand-positioning-hardest-thing') ?? sortedArticles[0];
+const featuredArticles = [
+  'brand-positioning-hardest-thing',
+  'the-ai-tools-that-actually-saved-me-time',
+  'most-campaigns-fail-before-the-creative-is-made',
+]
+  .map((slug) => articleById.get(slug))
+  .filter(isDefined);
+
+const caseStudies = [
+  workById.get('filli-cafe'),
+  workById.get('ashmo-platform'),
+  workById.get('the-podcast'),
+]
+  .filter(isDefined);
+
 const latestArticle = sortedArticles[0];
-const philosophyEssay = articleById.get('grocery-shop-pricing-psychology') ?? sortedArticles[1];
-const archiveFeature = workById.get('filli-cafe') ?? sortedWork[0];
+const frameworkPreview = growthFrameworkLayers.slice(0, 4);
+const featuredGrowthTemplates = growthTemplates.slice(0, 2);
+const featuredFinanceTemplates = financeTemplates.slice(0, 2);
 
-const archiveCards = [
-  articleById.get('why-most-rebrands-fail'),
-  articleById.get('ai-marketing-70-outlet-chain'),
-  articleById.get('patience-is-not-passive'),
-  workById.get('early-hustle'),
-].filter(Boolean);
-
-const latestNotes = sortedArticles
-  .filter((article) => ![
-    heroEssay?.id,
-    philosophyEssay?.id,
-    'why-most-rebrands-fail',
-    'ai-marketing-70-outlet-chain',
-    'patience-is-not-passive',
-  ].includes(article.id))
-  .slice(0, 3);
-
-const financeHighlights = financeCalculators.slice(0, 3);
-const financeEvidencePreview = evidenceLayers.slice(0, 3);
-
-const pillarLabels = {
+const pillarLabels: Record<string, string> = {
   'merchant-mindset': 'Merchant Mindset',
   'brand-growth': 'Brand Growth',
   'ai-selling': 'AI & Selling',
@@ -46,491 +58,433 @@ const pillarLabels = {
   'founder-documentary': 'Founder Documentary',
 };
 
-const formatDate = (date) =>
+const categoryLabels: Record<string, string> = {
+  'brand-building': 'Brand Building',
+  'founder-documentary': 'Founder Documentary',
+  'merchant-mindset': 'Merchant Mindset',
+};
+
+const formatDate = (date: Date) =>
   date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
   });
 
-const getHref = (entry) => {
+const getHref = (entry?: HomeEntry) => {
   if (!entry) return '/thinking/';
   return entry.collection === 'work'
     ? `/work/${entry.id}/`
     : `/thinking/${entry.id}/`;
 };
 
-const getLabel = (entry) => {
-  if (!entry) return '';
+const getLabel = (entry: HomeEntry) => {
   return entry.collection === 'work'
-    ? entry.data.category.replace('-', ' ')
+    ? (categoryLabels[entry.data.category] || entry.data.category)
     : (pillarLabels[entry.data.pillar] || entry.data.pillar);
 };
 
 const featuredPodcastWatchUrl = `https://www.youtube.com/watch?v=${featuredPodcastEpisode.youtubeId}`;
+
+const proofCards = [
+  {
+    value: '100+',
+    label: 'outlet scale',
+    description: 'Brand and operating lessons from FiLLi Cafe growth across real stores, campaigns, and systems.',
+  },
+  {
+    value: '13',
+    label: 'countries',
+    description: 'A point of view shaped by regional expansion, franchise consistency, and market-specific execution.',
+  },
+  {
+    value: '25',
+    label: 'years in business',
+    description: 'Merchant instincts, brand judgment, and practical strategy from a long operating arc.',
+  },
+];
+
+const osCards = [
+  {
+    title: 'Signal capture',
+    description: 'Turn market notes, customer behavior, branch feedback, and campaign results into usable decision inputs.',
+  },
+  {
+    title: 'Creative operating rhythm',
+    description: 'Move from isolated content production to repeatable briefs, formats, hooks, and review loops.',
+  },
+  {
+    title: 'AI-assisted repurposing',
+    description: 'Use AI to reshape strong ideas across essays, social posts, briefs, and internal notes without outsourcing taste.',
+  },
+  {
+    title: 'Operator review layer',
+    description: 'Keep the system anchored to margin, demand, consistency, and what actually happens in stores.',
+  },
+];
+
+const productCards = [
+  {
+    eyebrow: 'Toolkit',
+    title: 'Restaurant Growth Toolkit',
+    description: `${growthTemplates.length} practical workbooks for positioning, campaigns, content, local marketing, delivery, CRM, franchise rollout, and KPI review.`,
+    href: growthToolkitBundlePath,
+    cta: 'Download pack',
+    meta: 'XLSX bundle',
+  },
+  {
+    eyebrow: 'Finance desk',
+    title: 'Restaurant Finance Workbooks',
+    description: `${financeTemplates.length} finance templates and ${financeCalculators.length} calculators for operators who need branch economics to be visible before decisions get expensive.`,
+    href: '/restaurant-finance/templates/',
+    cta: 'Open templates',
+    meta: 'Models and calculators',
+  },
+  {
+    eyebrow: 'Growth audit',
+    title: 'Operator Growth Review',
+    description: 'A structured entry point for founders who need clearer diagnosis across positioning, local demand, media, delivery, retention, and measurement.',
+    href: `${growthAuditPath}#growth-audit-form`,
+    cta: 'Request review',
+    meta: 'Strategy intake',
+  },
+];
 ---
 
 <BaseLayout
   title="Home"
-  description="Ashraf Hassan, known as Ashmo, is a founder, brand builder, and writer sharing essays on brand strategy, cafe growth, and merchant thinking."
+  description="Ashraf Hassan, known as Ashmo, builds AI-assisted systems for brand growth, restaurant strategy, and operator-level thinking."
 >
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-6 md:pt-10 pb-24 md:pb-32 overflow-hidden">
-    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] gap-10 md:gap-12 xl:gap-16 items-center">
-      <div class="max-w-[34rem] pr-0 lg:pr-4 xl:pr-8">
-        <p class="text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent mb-5">
-          Ashraf Hassan / Ashmo · Volume IV / Notes from the field
-        </p>
-        <h1 class="font-heading text-[2.9rem] md:text-[4.8rem] lg:text-[4.9rem] xl:text-[5.35rem] font-semibold leading-[0.94] tracking-[-0.04em] mb-6 max-w-[8ch]">
-          The Architecture
-          <br />
-          of <span class="italic text-accent">Brand Permanence</span>
-        </h1>
-        <p class="max-w-[28rem] text-[1.02rem] md:text-[1.08rem] text-text-secondary font-light leading-[1.85] mb-8">
-          I'm Ashraf Hassan, known as Ashmo. These are essays, case notes, and operational reflections on what makes a brand survive beyond the launch phase:
-          judgement, consistency, merchant instinct, and the discipline of keeping the same promise for years.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-5 sm:gap-8">
-          <a
-            href={getHref(heroEssay)}
-            class="inline-flex items-center justify-center bg-gradient-to-r from-accent-light to-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:opacity-90 transition-opacity"
-            style="color: var(--color-bg);"
-          >
-            Read the lead essay
-          </a>
-          <a
-            href="/thinking/"
-            class="inline-flex items-center gap-2 text-sm font-medium text-text-secondary no-underline hover:text-text transition-colors group"
-          >
-            View the archive
-            <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="lg:pl-2 xl:pl-6">
-        <div class="relative aspect-[4/5] overflow-hidden bg-surface">
-          <img
-            src="/images/homepage/editorial-hero.png"
-            alt="Architectural concrete surfaces with a warm interior glow"
-            width="512"
-            height="512"
-            class="h-full w-full object-cover opacity-80 mix-blend-screen"
-          />
-          <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,8,0.08),rgba(8,8,8,0.44))]"></div>
-          <div class="absolute inset-y-0 left-[18%] w-px bg-white/7"></div>
-          <div class="absolute inset-y-0 left-[48%] w-px bg-white/8"></div>
-          <div class="absolute inset-y-0 right-[19%] w-px bg-white/7"></div>
-          <div class="absolute top-0 right-[18%] h-full w-[18%] bg-black/16"></div>
-          <div class="absolute top-[14%] right-[26%] h-[58%] w-[20%] bg-gradient-to-b from-accent/55 via-accent/10 to-transparent blur-[2px]"></div>
-          <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-bg via-bg/55 to-transparent"></div>
-          {latestArticle && (
-            <a
-              href={getHref(latestArticle)}
-              class="group absolute left-5 right-5 bottom-5 md:left-6 md:right-auto md:bottom-6 md:max-w-[22rem] no-underline"
-            >
-              <div class="relative overflow-hidden border border-white/10 bg-[linear-gradient(135deg,rgba(15,15,15,0.92),rgba(15,15,15,0.78))] px-5 py-5 backdrop-blur-md transition-all duration-300 group-hover:border-accent/40 group-hover:bg-[linear-gradient(135deg,rgba(20,18,17,0.96),rgba(20,18,17,0.84))]">
-                <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(206,151,111,0.18),transparent_48%)]"></div>
-                <div class="relative">
-                  <div class="flex items-center justify-between gap-3 mb-3">
-                    <p class="text-[0.66rem] uppercase tracking-[0.24em] text-accent-light">
-                      Latest Highlight
-                    </p>
-                    <span class="text-[0.68rem] uppercase tracking-[0.16em] text-text-tertiary">
-                      {formatDate(latestArticle.data.date)}
-                    </span>
-                  </div>
-
-                  <p class="font-heading text-[1.15rem] md:text-[1.28rem] leading-[1.1] tracking-[-0.02em] text-text mb-2 group-hover:text-accent-light transition-colors">
-                    {latestArticle.data.title}
-                  </p>
-
-                  <p class="text-[0.88rem] text-text-secondary font-light leading-[1.65] mb-4">
-                    {latestArticle.data.description}
-                  </p>
-
-                  <div class="flex items-center justify-between gap-4">
-                    <span class="text-[0.66rem] uppercase tracking-[0.18em] text-text-tertiary">
-                      {getLabel(latestArticle)}
-                    </span>
-                    <span class="inline-flex items-center gap-2 text-sm font-medium text-accent-light">
-                      Read now
-                      <span class="transition-transform group-hover:translate-x-1">&rarr;</span>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-surface py-20 md:py-24">
-    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
-      <div class="max-w-[760px] mx-auto text-center">
-        <p class="font-heading text-[1.9rem] md:text-[2.4rem] italic text-accent-light leading-[1.35]">
-          "We do not build for the moment. We build for the memory that remains after repetition."
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 mt-14 md:mt-18 max-w-[920px] mx-auto">
-        <div>
-          <p class="text-[0.72rem] font-medium uppercase tracking-[0.18em] text-text-tertiary mb-4">
-            Intentional Curation
-          </p>
-          <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8]">
-            This site is not built around content velocity. It is built around durable ideas that can still matter a year from now:
-            trade, positioning, compounding, and operational clarity.
-          </p>
-        </div>
-        <div>
-          <p class="text-[0.72rem] font-medium uppercase tracking-[0.18em] text-text-tertiary mb-4">
-            Structural Integrity
-          </p>
-          <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8]">
-            The visual restraint is deliberate. The page should feel like a quiet archive where the weight of the argument leads,
-            and the design simply gives the thinking enough room to breathe.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-28">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+  <section class="section-shell pt-14 pb-18 md:pt-20 md:pb-24">
+    <div class="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] lg:gap-14">
       <div>
-        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-3">Selected Works</p>
-        <h2 class="font-heading text-3xl md:text-[2.9rem] font-semibold leading-[1.02] tracking-[-0.03em]">
-          The Archive Collection
-        </h2>
+        <p class="mono-label mb-5">Ashraf Hassan / Ashmo.io / Brand systems</p>
+        <h1 class="hero-title">
+          Building the <span class="gradient-text">AI Marketing OS</span> for operator-led brands.
+        </h1>
+        <p class="body-lead mt-7 max-w-[42rem]">
+          I write, build, and document practical systems for brand growth, restaurant strategy, AI-assisted execution, and the merchant instincts that make businesses survive repetition.
+        </p>
+
+        <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+          <a href="/restaurant-cafe-growth-systems/" class="button-gradient">
+            Explore the OS
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+          <a href={latestArticle ? getHref(latestArticle) : '/thinking/'} class="button-secondary">
+            Read latest thinking
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+
+        <div class="mt-9 grid grid-cols-3 gap-3 max-w-[34rem]">
+          {proofCards.map((item) => (
+            <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.04] px-4 py-4">
+              <p class="font-mono text-[1.45rem] font-bold leading-none text-text">{item.value}</p>
+              <p class="mt-2 font-mono text-[0.62rem] uppercase tracking-[0.06em] text-text-tertiary">{item.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <p class="max-w-[28rem] text-sm md:text-[0.98rem] text-text-secondary font-light leading-[1.8]">
-        A tighter front page for the strongest arguments, operating lessons, and case work that explain the site.
+
+      <div class="code-card gradient-border">
+        <div class="code-window-bar">
+          <span class="code-dot" aria-hidden="true"></span>
+          <span class="ml-9">ashmo-os.config.ts</span>
+        </div>
+        <div class="relative z-10 space-y-2 px-5 py-6 md:px-7 md:py-8">
+          <div class="code-line"><span>01</span><code><span class="text-secondary-light">const</span> ashmoOS = buildGrowthSystem(&#123;</code></div>
+          <div class="code-line"><span>02</span><code>  inputs: ['merchant instinct', 'brand memory', 'market signal'],</code></div>
+          <div class="code-line"><span>03</span><code>  stack: ['Astro', 'Markdown', 'AI workflows', 'operator review'],</code></div>
+          <div class="code-line"><span>04</span><code>  outputs: ['essays', 'toolkits', 'case files', 'growth audits'],</code></div>
+          <div class="code-line"><span>05</span><code>  rule: 'AI can produce. Judgment still decides.',</code></div>
+          <div class="code-line"><span>06</span><code>&#125;);</code></div>
+        </div>
+        <div class="relative z-10 border-t border-white/8 bg-white/[0.025] px-5 py-5 md:px-7">
+          <div class="grid gap-3 sm:grid-cols-3">
+            <div>
+              <p class="font-mono text-[0.62rem] uppercase tracking-[0.06em] text-text-tertiary">Mode</p>
+              <p class="mt-2 text-sm font-semibold text-text">Dark-first</p>
+            </div>
+            <div>
+              <p class="font-mono text-[0.62rem] uppercase tracking-[0.06em] text-text-tertiary">Built with</p>
+              <p class="mt-2 text-sm font-semibold text-text">Astro + Netlify</p>
+            </div>
+            <div>
+              <p class="font-mono text-[0.62rem] uppercase tracking-[0.06em] text-text-tertiary">Focus</p>
+              <p class="mt-2 text-sm font-semibold text-text">Operator clarity</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell pb-18 md:pb-24">
+    <div class="grid gap-4 md:grid-cols-3">
+      {proofCards.map((item) => (
+        <article class="proof-card hover-lift p-6 md:p-7">
+          <div class="relative z-10">
+            <p class="font-mono text-[2.4rem] font-bold leading-none text-text">{item.value}</p>
+            <p class="mt-3 mono-label">{item.label}</p>
+            <p class="mt-5 text-[0.98rem] leading-[1.75] text-text-secondary">{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-shell section-pad">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] lg:gap-12">
+      <div>
+        <p class="mono-label mb-4">AI Marketing OS</p>
+        <h2 class="section-title max-w-[12ch]">A system for sharper growth decisions.</h2>
+        <p class="body-lead mt-6 max-w-[34rem]">
+          The operating idea is simple: use AI to compress production, but keep strategy grounded in human judgment, commercial reality, and what customers actually do.
+        </p>
+        <a href="/thinking/ai-marketing-70-outlet-chain/" class="button-text mt-7">
+          Read the AI operating note
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {osCards.map((card) => (
+          <article class="feature-card hover-lift p-6">
+            <div class="relative z-10">
+              <p class="mono-label">{card.title}</p>
+              <p class="mt-4 text-[0.96rem] leading-[1.75] text-text-secondary">{card.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell pb-18 md:pb-24">
+    <div class="card-base gradient-border p-6 md:p-8 lg:p-10">
+      <div class="relative z-10 grid gap-8 lg:grid-cols-[0.72fr_1fr] lg:items-end">
+        <div>
+          <p class="mono-label mb-4">Framework preview</p>
+          <h2 class="section-title max-w-[12ch]">The practical layers underneath growth.</h2>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2">
+          {frameworkPreview.map((layer) => (
+            <div class="rounded-[1.25rem] border border-white/8 bg-white/[0.04] p-5">
+              <p class="font-mono text-[0.68rem] uppercase tracking-[0.06em] text-accent-light">{layer.title}</p>
+              <p class="mt-3 text-sm leading-[1.72] text-text-secondary">{layer.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell section-pad">
+    <div class="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label mb-4">Digital products</p>
+        <h2 class="section-title max-w-[13ch]">Toolkits for operators who need real working files.</h2>
+      </div>
+      <p class="max-w-[31rem] text-[0.98rem] leading-[1.75] text-text-secondary">
+        Templates and review paths are part of the public operating system: practical, editable, and built around restaurant and cafe decisions.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
-      {heroEssay && (
-        <a
-          href={getHref(heroEssay)}
-          class="group flex flex-col bg-surface px-7 py-8 min-h-[18rem] no-underline transition-colors duration-200 hover:bg-[#22201e]"
-        >
-          <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-5">
-            {getLabel(heroEssay)}
-          </p>
-          <h3 class="font-heading text-[1.9rem] leading-[1.08] tracking-[-0.02em] mb-4 group-hover:text-accent-light transition-colors">
-            {heroEssay.data.title}
-          </h3>
-          <p class="text-[0.98rem] text-text-secondary font-light leading-[1.75] mb-8">
-            {heroEssay.data.description}
-          </p>
-          <div class="mt-auto flex items-center justify-between text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">
-            <span>{formatDate(heroEssay.data.date)}</span>
-            <span>&nearr;</span>
-          </div>
-        </a>
-      )}
-
-      {archiveFeature && (
-        <a
-          href={getHref(archiveFeature)}
-          class="group relative md:col-span-2 min-h-[18rem] overflow-hidden no-underline bg-surface"
-        >
-          <img
-            src="/images/homepage/archive-texture.png"
-            alt="Warm editorial texture"
-            width="512"
-            height="512"
-            class="absolute inset-0 h-full w-full object-cover opacity-85 mix-blend-screen transition-transform duration-700 group-hover:scale-105"
-          />
-          <div class="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.88),rgba(8,8,8,0.28))]"></div>
-          <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bg to-transparent"></div>
-          <div class="relative z-10 flex h-full flex-col justify-end px-8 py-8 md:px-10 md:py-10">
-            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent-light mb-4">
-              {getLabel(archiveFeature)}
-            </p>
-            <h3 class="font-heading text-[2rem] md:text-[2.6rem] leading-[1.04] tracking-[-0.03em] max-w-[28rem] mb-3 group-hover:text-accent-light transition-colors">
-              {archiveFeature.data.title}
-            </h3>
-            <p class="max-w-[30rem] text-[0.96rem] text-text-secondary font-light leading-[1.75] mb-5">
-              {archiveFeature.data.description}
-            </p>
-            <span class="inline-flex items-center gap-2 text-sm font-medium text-accent-light">
-              Read case file <span>&rarr;</span>
+    <div class="grid gap-4 md:grid-cols-3">
+      {productCards.map((product) => (
+        <a href={product.href} class="product-card hover-lift flex h-full flex-col p-6 no-underline md:p-7">
+          <div class="relative z-10 flex h-full flex-col">
+            <div class="flex items-start justify-between gap-4">
+              <p class="mono-label">{product.eyebrow}</p>
+              <span class="rounded-full border border-white/8 bg-white/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.06em] text-text-tertiary">
+                {product.meta}
+              </span>
+            </div>
+            <h3 class="mt-8 text-[1.55rem] font-bold leading-[1.08] text-text">{product.title}</h3>
+            <p class="mt-4 text-[0.96rem] leading-[1.75] text-text-secondary">{product.description}</p>
+            <span class="mt-8 inline-flex items-center gap-2 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.06em] text-accent-light">
+              {product.cta} <span aria-hidden="true">&rarr;</span>
             </span>
           </div>
         </a>
-      )}
+      ))}
+    </div>
 
-      {archiveCards.map((entry) => (
-        <a
-          href={getHref(entry)}
-          class="group flex flex-col bg-surface px-7 py-8 min-h-[15.5rem] no-underline transition-colors duration-200 hover:bg-[#22201e]"
-        >
-          <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-5">
-            {getLabel(entry)}
-          </p>
-          <h3 class="font-heading text-[1.55rem] leading-[1.12] tracking-[-0.02em] mb-5 group-hover:text-accent-light transition-colors">
-            {entry.data.title}
-          </h3>
-          <p class="text-[0.95rem] text-text-secondary font-light leading-[1.75]">
-            {entry.data.description}
-          </p>
-          <div class="mt-auto pt-8 flex items-center justify-between text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary">
-            <span>{entry.collection === 'work' ? 'Case file' : formatDate(entry.data.date)}</span>
-            <span>&nearr;</span>
+    <div class="mt-5 grid gap-4 md:grid-cols-4">
+      {[...featuredGrowthTemplates, ...featuredFinanceTemplates].map((template) => (
+        <a href={template.href} class="rounded-[1.2rem] border border-white/8 bg-white/[0.035] p-5 no-underline transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:bg-white/[0.055]">
+          <p class="font-mono text-[0.64rem] uppercase tracking-[0.06em] text-text-tertiary">{template.format}</p>
+          <p class="mt-3 text-sm font-semibold leading-[1.35] text-text">{template.name}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-shell section-pad">
+    <div class="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label mb-4">Case studies</p>
+        <h2 class="section-title max-w-[12ch]">Proof from work that had to hold up.</h2>
+      </div>
+      <a href="/work/" class="button-secondary">View all work <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-3">
+      {caseStudies.map((entry) => (
+        <a href={getHref(entry)} class="case-card hover-lift flex min-h-[22rem] flex-col p-6 no-underline md:p-7">
+          <div class="relative z-10 flex h-full flex-col">
+            <p class="mono-label">{getLabel(entry)}</p>
+            <h3 class="mt-8 text-[1.7rem] font-bold leading-[1.08] text-text">{entry.data.title}</h3>
+            <p class="mt-4 text-[0.96rem] leading-[1.75] text-text-secondary">{entry.data.description}</p>
+            <div class="mt-auto flex items-center justify-between gap-4 pt-8">
+              <span class="font-mono text-[0.68rem] uppercase tracking-[0.06em] text-text-tertiary">{formatDate(entry.data.date)}</span>
+              <span class="font-mono text-sm text-accent-light" aria-hidden="true">&nearr;</span>
+            </div>
           </div>
         </a>
       ))}
     </div>
   </section>
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-center">
-      <div class="lg:col-span-5">
-        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-4">
-          Featured Conversation
-        </p>
-        <h2 class="font-heading text-3xl md:text-[2.9rem] font-semibold leading-[1.04] tracking-[-0.03em] mb-5 max-w-[14ch]">
-          {featuredPodcastEpisode.title}
-        </h2>
-        <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8] max-w-[28rem] mb-4">
-          The episode I would point people to first if they want the clearest audio version of how I think about cafe growth,
-          founder judgement, and the operating discipline required to build a brand that survives repetition.
-        </p>
-        <p class="text-[0.95rem] text-text-tertiary font-light leading-[1.75] max-w-[28rem] mb-8">
-          {featuredPodcastEpisode.show} {featuredPodcastEpisode.episode} &middot; {featuredPodcastEpisode.date}
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
-          <a
-            href={featuredPodcastWatchUrl}
-            target="_blank"
-            rel="noopener"
-            class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors"
-            style="color: var(--color-bg);"
-          >
-            Watch on YouTube
-          </a>
-          <a
-            href="/podcast/"
-            class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors"
-          >
-            Visit the podcast archive
-          </a>
+  <section class="section-shell pb-18 md:pb-24">
+    <div class="card-base gradient-border overflow-hidden">
+      <div class="relative z-10 grid gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:items-center lg:p-10">
+        <div>
+          <p class="mono-label mb-4">Featured conversation</p>
+          <h2 class="section-title max-w-[12ch]">{featuredPodcastEpisode.title}</h2>
+          <p class="mt-5 text-[0.98rem] leading-[1.78] text-text-secondary">
+            The clearest audio version of how I think about cafe growth, founder judgment, and the operating discipline required to build a brand that survives repetition.
+          </p>
+          <p class="mt-4 font-mono text-[0.68rem] uppercase tracking-[0.06em] text-text-tertiary">
+            {featuredPodcastEpisode.show} {featuredPodcastEpisode.episode} / {featuredPodcastEpisode.date}
+          </p>
+          <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+            <a href={featuredPodcastWatchUrl} target="_blank" rel="noopener" class="button-gradient">
+              Watch on YouTube
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a href="/podcast/" class="button-secondary">
+              Podcast archive
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="lg:col-span-7">
-        <div class="bg-surface border border-border overflow-hidden">
+        <div class="overflow-hidden rounded-[1.4rem] border border-white/10 bg-bg-deep shadow-2xl">
           <div class="aspect-video w-full">
             <iframe
               src={`https://www.youtube.com/embed/${featuredPodcastEpisode.youtubeId}`}
               title={featuredPodcastEpisode.title}
-              class="w-full h-full"
-              frameborder="0"
+              class="h-full w-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
               loading="lazy"
             ></iframe>
           </div>
-
-          <div class="px-6 py-6 md:px-8 md:py-7 border-t border-border-light">
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-5">
-              <div>
-                <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">
-                  {featuredPodcastEpisode.show}
-                </p>
-                <h3 class="font-heading text-[1.45rem] md:text-[1.75rem] leading-[1.12] tracking-[-0.02em] mb-3">
-                  {featuredPodcastEpisode.title}
-                </h3>
-                <p class="text-[0.95rem] text-text-secondary font-light leading-[1.75] max-w-[38rem]">
-                  {featuredPodcastEpisode.description}
-                </p>
-              </div>
-
-              <a
-                href={featuredPodcastWatchUrl}
-                target="_blank"
-                rel="noopener"
-                class="inline-flex items-center gap-2 text-sm font-medium text-accent-light no-underline hover:text-text transition-colors"
-              >
-                Open on YouTube <span>&rarr;</span>
-              </a>
-            </div>
+          <div class="border-t border-white/8 bg-white/[0.025] px-5 py-5 md:px-6">
+            <p class="mono-label">{featuredPodcastEpisode.show}</p>
+            <p class="mt-3 text-sm leading-[1.72] text-text-secondary">{featuredPodcastEpisode.description}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-surface py-24 md:py-28">
-    <div class="max-w-[1200px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14">
-      <div class="lg:col-span-4">
-        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-4">Latest Notes</p>
-        <h2 class="font-heading text-3xl md:text-[2.7rem] font-semibold leading-[1.04] tracking-[-0.03em] mb-5">
-          New entries from the working archive.
-        </h2>
-        <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8] max-w-[24rem]">
-          Fresh essays continue the same long conversation: what makes people trust, remember, return, and stay.
-        </p>
+  <section class="section-shell section-pad">
+    <div class="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label mb-4">Thinking</p>
+        <h2 class="section-title max-w-[12ch]">Essays from the operator layer.</h2>
       </div>
+      <a href="/thinking/" class="button-secondary">Open archive <span aria-hidden="true">&rarr;</span></a>
+    </div>
 
-      <div class="lg:col-span-8 space-y-4">
-        {latestNotes.map((article) => (
-          <a
-            href={getHref(article)}
-            class="group block bg-bg-deep/70 px-6 py-6 md:px-8 md:py-7 no-underline transition-colors duration-200 hover:bg-bg-deep"
-          >
-            <div class="grid grid-cols-1 md:grid-cols-[140px_1fr_auto] gap-4 md:gap-6 items-start">
-              <p class="text-[0.7rem] uppercase tracking-[0.18em] text-text-tertiary pt-1">
-                {getLabel(article)}
-              </p>
-              <div>
-                <h3 class="font-heading text-[1.5rem] md:text-[1.8rem] leading-[1.12] tracking-[-0.02em] mb-2 group-hover:text-accent-light transition-colors">
-                  {article.data.title}
-                </h3>
-                <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75]">
-                  {article.data.description}
-                </p>
-              </div>
-              <div class="text-[0.72rem] uppercase tracking-[0.16em] text-text-tertiary pt-1">
-                {formatDate(article.data.date)}
-              </div>
+    <div class="grid gap-4 md:grid-cols-3">
+      {featuredArticles.map((article) => (
+        <a href={getHref(article)} class="blog-card hover-lift flex h-full flex-col p-6 no-underline md:p-7">
+          <div class="relative z-10 flex h-full flex-col">
+            <div class="flex items-start justify-between gap-4">
+              <p class="mono-label">{getLabel(article)}</p>
+              <span class="font-mono text-[0.68rem] uppercase tracking-[0.06em] text-text-tertiary">{formatDate(article.data.date)}</span>
             </div>
-          </a>
-        ))}
+            <h3 class="mt-8 text-[1.55rem] font-bold leading-[1.1] text-text">{article.data.title}</h3>
+            <p class="mt-4 text-[0.96rem] leading-[1.75] text-text-secondary">{article.data.description}</p>
+            <span class="mt-auto pt-8 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.06em] text-accent-light">
+              Read essay <span aria-hidden="true">&rarr;</span>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-shell pb-18 md:pb-24">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,0.75fr)_minmax(320px,0.55fr)] lg:items-center">
+        <div>
+          <p class="mono-label mb-4">Newsletter</p>
+          <h2 class="section-title max-w-[13ch]">Get the sharper notes without the noise.</h2>
+          <p class="body-lead mt-5 max-w-[40rem]">
+            Occasional essays and operating notes on brand growth, AI workflows, restaurant strategy, and the practical discipline behind durable businesses.
+          </p>
+        </div>
+
+        <form name="newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-5 md:p-6">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <p class="hidden"><label>Do not fill this out: <input name="bot-field" /></label></p>
+          <label for="newsletter-email" class="font-mono text-[0.68rem] uppercase tracking-[0.06em] text-text-tertiary">
+            Email address
+          </label>
+          <div class="mt-3 flex flex-col gap-3 sm:flex-row">
+            <input
+              id="newsletter-email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder="you@example.com"
+              class="input-dark"
+            />
+            <button type="submit" class="button-gradient cursor-pointer border-0">
+              Subscribe
+            </button>
+          </div>
+          <p class="mt-4 text-xs leading-[1.65] text-text-tertiary">
+            No popups. No daily noise. Just useful notes when there is something worth sending.
+          </p>
+        </form>
       </div>
     </div>
   </section>
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-28">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-start">
-      <div class="lg:col-span-5">
-        <p class="text-[0.72rem] font-medium uppercase tracking-[0.22em] text-accent mb-4">UAE Restaurant Finance</p>
-        <h2 class="font-heading text-3xl md:text-[2.9rem] font-semibold leading-[1.04] tracking-[-0.03em] mb-5">
-          A decision desk for founders who need the numbers to hold.
-        </h2>
-        <p class="text-[0.98rem] text-text-secondary font-light leading-[1.8] max-w-[29rem] mb-8">
-          We’ve built a new operator section around branch profitability, break-even logic, labor cost, delivery margin,
-          and benchmark discipline for UAE cafes, QSRs, and founder-led restaurant groups.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
-          <a
-            href="/restaurant-finance/"
-            class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors"
-            style="color: var(--color-bg);"
-          >
-            Open the calculators
-          </a>
-          <a
-            href="/restaurant-finance/templates/"
-            class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors"
-          >
-            Get the templates
-          </a>
-        </div>
-      </div>
-
-      <div class="lg:col-span-7">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mb-8">
-          {financeHighlights.map((item) => (
-            <a
-              href={`/restaurant-finance/calculators/${item.slug}/`}
-              class="group bg-surface px-6 py-6 no-underline transition-colors duration-200 hover:bg-[#22201e]"
-            >
-              <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-4">Calculator</p>
-              <h3 class="font-heading text-[1.35rem] leading-[1.12] tracking-[-0.02em] mb-3 group-hover:text-accent-light transition-colors">
-                {item.name}
-              </h3>
-              <p class="text-sm text-text-secondary font-light leading-[1.7]">
-                {item.summary}
-              </p>
-            </a>
-          ))}
-        </div>
-
-        <div class="border border-border bg-surface/60 px-6 py-6 md:px-7 md:py-7">
-          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-            <div>
-              <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent mb-3">Why this section is different</p>
-              <p class="text-sm md:text-[0.96rem] text-text-secondary font-light leading-[1.8] max-w-[35rem]">
-                Every number is tagged by source type so an owner can distinguish official UAE data, licensed market research,
-                Ashmo operator benchmarks, and model assumptions before making a decision.
-              </p>
-            </div>
-            <a
-              href="/restaurant-finance/benchmarks/"
-              class="inline-flex items-center gap-2 text-sm font-medium text-accent-light no-underline hover:text-text transition-colors"
-            >
-              See the benchmark method <span>&rarr;</span>
-            </a>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-            {financeEvidencePreview.map((layer) => (
-              <div class="border border-border-light/70 px-4 py-4">
-                <p class="text-[0.68rem] uppercase tracking-[0.16em] text-text-tertiary mb-2">{layer.title}</p>
-                <p class="text-sm text-text-secondary font-light leading-[1.7]">{layer.summary}</p>
-              </div>
-            ))}
-          </div>
-          <div class="mt-5 flex flex-col gap-2">
-            {trustMarkers.map((marker) => (
-              <p class="text-[0.82rem] text-text-tertiary font-light leading-[1.6]">
-                {marker}
-              </p>
-            ))}
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,0.8fr)_minmax(280px,0.42fr)] lg:items-stretch">
+      <div class="card-base p-6 md:p-8 lg:p-10">
+        <div class="relative z-10">
+          <p class="mono-label mb-4">Final CTA</p>
+          <h2 class="section-title max-w-[14ch]">Start with the system, then follow the thinking.</h2>
+          <p class="body-lead mt-5 max-w-[44rem]">
+            If you are building a restaurant, cafe, founder-led brand, or content engine that needs more than surface activity, the best entry point is the growth hub.
+          </p>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a href="/restaurant-cafe-growth-systems/" class="button-gradient">Open growth hub</a>
+            <a href="/contact/" class="button-secondary">Contact Ashmo</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-24 md:py-28">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-center">
-      <div class="lg:col-span-5">
-        <h2 class="font-heading text-3xl md:text-[3rem] font-semibold leading-[1.02] tracking-[-0.03em] mb-5">
-          Enter the
-          <br />
-          Curated <span class="text-accent italic">Archive</span>
-        </h2>
-        <p class="max-w-[24rem] text-[0.98rem] text-text-secondary font-light leading-[1.8]">
-          If the site feels aligned with how you think about work, the best next move is simple:
-          read the essays, understand the story, or start a direct conversation.
-        </p>
-      </div>
-
-      <div class="lg:col-span-7 bg-surface px-7 py-8 md:px-10 md:py-10">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <a href="/thinking/" class="group bg-bg-deep/70 px-5 py-5 no-underline hover:bg-bg-deep transition-colors">
-            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-3">Archive</p>
-            <h3 class="font-heading text-[1.4rem] leading-[1.14] mb-2 group-hover:text-accent-light transition-colors">
-              Start with the essays
-            </h3>
-            <p class="text-sm text-text-secondary font-light leading-[1.7]">
-              The clearest route into the thinking.
-            </p>
-          </a>
-          <a href="/story/" class="group bg-bg-deep/70 px-5 py-5 no-underline hover:bg-bg-deep transition-colors">
-            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-3">Background</p>
-            <h3 class="font-heading text-[1.4rem] leading-[1.14] mb-2 group-hover:text-accent-light transition-colors">
-              Read the story
-            </h3>
-            <p class="text-sm text-text-secondary font-light leading-[1.7]">
-              The long arc behind the work.
-            </p>
-          </a>
-          <a href="/contact/" class="group bg-bg-deep/70 px-5 py-5 no-underline hover:bg-bg-deep transition-colors">
-            <p class="text-[0.7rem] uppercase tracking-[0.18em] text-accent mb-3">Contact</p>
-            <h3 class="font-heading text-[1.4rem] leading-[1.14] mb-2 group-hover:text-accent-light transition-colors">
-              Reach out directly
-            </h3>
-            <p class="text-sm text-text-secondary font-light leading-[1.7]">
-              For collaborations, ideas, or conversation.
-            </p>
-          </a>
+      <a href="/story/" class="proof-card hover-lift p-6 no-underline md:p-8">
+        <div class="relative z-10 flex h-full flex-col">
+          <p class="mono-label">Background</p>
+          <h3 class="mt-8 text-[1.7rem] font-bold leading-[1.08] text-text">The long arc behind the work.</h3>
+          <p class="mt-4 text-[0.96rem] leading-[1.75] text-text-secondary">
+            Grocery shop, design, brand building, FiLLi Cafe, and the public archive now becoming Ashmo.io.
+          </p>
+          <span class="mt-auto pt-8 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.06em] text-accent-light">
+            Read the story <span aria-hidden="true">&rarr;</span>
+          </span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 </BaseLayout>

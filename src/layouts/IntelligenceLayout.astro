@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import IntelligenceSectionNav from '../components/IntelligenceSectionNav.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow?: string;
+}
+
+const {
+  title,
+  description,
+  eyebrow = 'Ashmo Intelligence',
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pt-4 md:pt-8">
+    <div class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(12,14,17,0.96),rgba(11,12,15,0.98))] px-5 py-4 md:px-6">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="text-[0.68rem] uppercase tracking-[0.28em] text-accent-light">{eyebrow}</p>
+          <p class="mt-2 text-sm text-text-secondary max-w-[42rem]">
+            Public-source intelligence for Middle East food and beverage operators. Premium interface, explicit governance, original visuals only.
+          </p>
+        </div>
+        <a
+          href="/intelligence/methodology/"
+          class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs uppercase tracking-[0.16em] text-text-secondary no-underline transition-colors hover:border-accent/40 hover:text-text"
+        >
+          Sources & methodology
+        </a>
+      </div>
+      <IntelligenceSectionNav currentPath={Astro.url.pathname} />
+    </div>
+  </section>
+
+  <slot />
+</BaseLayout>

@@ -1,5 +1,6 @@
 ---
 title: "Why Founders Should Write (Even If No One Reads It)"
+metaTitle: "Why Founders Should Write"
 description: "Writing isn't content marketing. It's a thinking tool. The founders who write clearly, build clearly."
 date: 2026-03-02
 pillar: founder-documentary

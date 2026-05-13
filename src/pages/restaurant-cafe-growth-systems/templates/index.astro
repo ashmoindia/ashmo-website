@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PillarSectionNav from '../../../components/PillarSectionNav.astro';
+import {
+  growthAuditPath,
+  growthNav,
+  growthToolkitBundlePath,
+  growthTemplates,
+  growthTemplatesPath,
+} from '../../../data/restaurantGrowth';
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Restaurant Growth Templates & Trackers',
+  description:
+    'Download restaurant growth templates for annual plans, promotions, budgets, launch, CRM, delivery, local marketing, franchise rollout, and KPI tracking.',
+  url: `https://ashmo.io${growthTemplatesPath}`,
+  hasPart: growthTemplates.map((template) => ({
+    '@type': 'CreativeWork',
+    name: template.name,
+    url: `https://ashmo.io${template.href}`,
+    encodingFormat: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://ashmo.io/' },
+    { '@type': 'ListItem', position: 2, name: 'Restaurant & Cafe Growth Systems', item: 'https://ashmo.io/restaurant-cafe-growth-systems/' },
+    { '@type': 'ListItem', position: 3, name: 'Templates', item: `https://ashmo.io${growthTemplatesPath}` },
+  ],
+};
+---
+
+<BaseLayout
+  title="Restaurant & Cafe Growth Templates"
+  description="Download restaurant growth templates for annual plans, promotions, budgets, launch, CRM, delivery, local marketing, franchise rollout, and KPI tracking."
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify([collectionSchema, breadcrumbSchema])} />
+  <PillarSectionNav items={growthNav} rootHref="/restaurant-cafe-growth-systems/" />
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-12 md:pb-16">
+    <div class="max-w-[820px]">
+      <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Templates &amp; trackers</p>
+      <h1 class="font-heading text-4xl md:text-[3.6rem] tracking-[-0.04em] leading-[0.98] mb-5">
+        Download the operator toolkit behind the growth system.
+      </h1>
+      <p class="text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.9] mb-6">
+        These are working Excel files for restaurant and cafe operators who need planning control, campaign discipline,
+        branch-level visibility, and commercially useful templates. The pack covers annual marketing planning, promotions,
+        content, budget control, MROI, launch, local store marketing, menu rollout, delivery, CRM, Google Business Profile,
+        franchise execution, and KPI review.
+      </p>
+      <p class="text-[0.84rem] text-text-tertiary leading-[1.75]">
+        The files are designed to be editable and practical. They are not generic lead magnets dressed up as “frameworks.”
+      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-4">
+        <a href={growthToolkitBundlePath} download class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+          Download full toolkit pack
+        </a>
+        <a href={`${growthAuditPath}#growth-audit`} class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+          Need a custom version?
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-surface py-12 md:py-16">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+        <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">Planning</p>
+          <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Annual plans, promotion tracking, content systems, and launch control that can survive live trading.</p>
+        </div>
+        <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">Commercial</p>
+          <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Budget and MROI files keep marketing tied to contribution, not just reach or engagement.</p>
+        </div>
+        <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">Store level</p>
+          <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Launch, local store, GBP, and delivery files are built around branch reality, not head-office theory.</p>
+        </div>
+        <div class="rounded-[1.2rem] border border-border bg-surface/50 px-5 py-5">
+          <p class="text-[0.72rem] uppercase tracking-[0.16em] text-accent mb-2">Scale</p>
+          <p class="text-[0.95rem] text-text-secondary leading-[1.75]">Franchise rollout and KPI dashboards help multi-unit brands keep control as locations multiply.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1200px] mx-auto px-6 md:px-12 py-16 md:py-20">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+      <div>
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Toolkit library</p>
+        <h2 class="font-heading text-3xl md:text-[2.8rem] tracking-[-0.03em] leading-[1.04]">
+          Every missing planning format, now in one place.
+        </h2>
+      </div>
+      <a href={`${growthAuditPath}#growth-audit`} class="text-sm text-accent-light hover:text-text no-underline transition-colors">
+        Want a custom version for your business? &rarr;
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {growthTemplates.map((template) => (
+        <div id={template.slug} class="rounded-[1.35rem] border border-border bg-surface/70 px-6 py-6 scroll-mt-28">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent">{template.category}</p>
+            <span class="text-[0.72rem] uppercase tracking-[0.14em] text-text-tertiary">{template.format}</span>
+          </div>
+          <h2 class="font-heading text-[1.6rem] leading-[1.08] tracking-[-0.02em] mb-3">{template.name}</h2>
+          <p class="text-[0.96rem] text-text-secondary font-light leading-[1.75] mb-4">{template.summary}</p>
+          <p class="text-[0.82rem] text-text-tertiary leading-[1.7] mb-5">{template.audience}</p>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <a href={template.href} download class="inline-flex items-center gap-2 text-sm text-accent-light hover:text-text no-underline transition-colors">
+              Download workbook &rarr;
+            </a>
+            <a href={template.relatedHref} class="text-[0.78rem] text-text-tertiary hover:text-text-secondary no-underline transition-colors">
+              Open related growth page
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-surface py-16 md:py-20">
+    <div class="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div class="rounded-[1.45rem] border border-border bg-[linear-gradient(145deg,rgba(20,20,19,0.96),rgba(12,12,12,0.98))] px-7 py-8 md:px-10 md:py-10">
+        <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Need more than templates?</p>
+        <h2 class="font-heading text-3xl md:text-[2.6rem] tracking-[-0.03em] leading-[1.04] mb-4 max-w-[18ch]">
+          Use the toolkit as a starting point, then tighten it to your actual operating model.
+        </h2>
+        <p class="max-w-[44rem] text-[1rem] text-text-secondary font-light leading-[1.85] mb-6">
+          The files are intentionally practical, but every business has its own mix of store realities, delivery pressure, brand ambition,
+          and reporting needs. If you want a version tailored to your concept, store count, or growth stage, use the audit or strategy-call path.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href={`${growthAuditPath}#growth-audit`} class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-medium text-bg no-underline hover:bg-accent-light transition-colors" style="color: var(--color-bg);">
+            Request a growth audit
+          </a>
+          <a href={`${growthAuditPath}#strategy-call`} class="inline-flex items-center justify-center rounded-full border border-border-light px-6 py-3 text-sm font-medium text-text no-underline hover:border-accent/40 hover:text-accent-light transition-colors">
+            Book a strategy call
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

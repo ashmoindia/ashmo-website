@@ -1,0 +1,200 @@
+---
+import IntelligenceLayout from '../../../layouts/IntelligenceLayout.astro';
+import IntelligenceMetricCard from '../../../components/IntelligenceMetricCard.astro';
+import IntelligenceSignalCard from '../../../components/IntelligenceSignalCard.astro';
+import IntelligenceBarChart from '../../../components/IntelligenceBarChart.astro';
+import IntelligenceReportCard from '../../../components/IntelligenceReportCard.astro';
+import IntelligenceSourceAttribution from '../../../components/IntelligenceSourceAttribution.astro';
+import {
+  getComparisonById,
+  getFactById,
+  getReportsBySlugs,
+  getSourceById,
+  intelligenceCountries,
+} from '../../../data/intelligence';
+
+const isDefined = <T,>(value: T | undefined | null): value is T => Boolean(value);
+
+export function getStaticPaths() {
+  return intelligenceCountries.map((country) => ({
+    params: { slug: country.slug },
+    props: { country },
+  }));
+}
+
+const { country } = Astro.props;
+
+const macroFacts = country.macroFacts.map((id) => getFactById(id)).filter(isDefined);
+const signalFacts = country.signalFacts.map((id) => getFactById(id)).filter(isDefined);
+const comparison = getComparisonById(country.comparisonId);
+const relatedReports = getReportsBySlugs(country.relatedReportSlugs);
+const sourceIds = [...new Set([...macroFacts, ...signalFacts].map((fact) => fact.sourceId))];
+const sources = sourceIds.map((id) => getSourceById(id)).filter(isDefined);
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: country.metaTitle,
+  description: country.metaDescription,
+  url: `https://ashmo.io/intelligence/countries/${country.slug}/`,
+};
+---
+
+<IntelligenceLayout
+  title={country.metaTitle}
+  description={country.metaDescription}
+  eyebrow={`Ashmo Intelligence / ${country.name}`}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-14 md:pb-18">
+    <div class="rounded-[1.95rem] overflow-hidden border border-white/6 bg-[linear-gradient(145deg,rgba(17,19,23,0.98),rgba(9,10,13,0.99))] px-6 py-8 md:px-8 md:py-10">
+      <div class="relative overflow-hidden rounded-[1.6rem] bg-[linear-gradient(135deg,rgba(13,15,18,0.98),rgba(18,21,25,0.98))] px-6 py-7 md:px-7 md:py-8">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,193,118,0.14),transparent_32%)]"></div>
+        <div class="absolute inset-y-0 left-[26%] w-px bg-white/6"></div>
+        <div class="absolute inset-y-0 right-[22%] w-px bg-white/6"></div>
+        <div class="relative grid gap-8 lg:grid-cols-[minmax(0,0.68fr)_minmax(0,0.32fr)]">
+          <div>
+            <p class="text-[0.68rem] uppercase tracking-[0.24em] text-accent-light">{country.eyebrow}</p>
+            <h1 class="mt-5 max-w-[13ch] text-[2.7rem] md:text-[4.4rem] leading-[0.92] tracking-[-0.06em] font-semibold font-body text-text">
+              {country.title}
+            </h1>
+            <p class="mt-6 max-w-[40rem] text-[1rem] md:text-[1.08rem] text-text-secondary leading-[1.85]">{country.summary}</p>
+          </div>
+
+          <div class="rounded-[1.25rem] border border-white/6 bg-white/[0.03] px-5 py-5">
+            <p class="text-[0.66rem] uppercase tracking-[0.18em] text-accent-light">Coverage note</p>
+            <p class="mt-4 text-sm text-text-secondary leading-[1.75]">{country.coverageNote}</p>
+            <a href="/intelligence/methodology/" class="mt-5 inline-flex items-center gap-2 text-sm text-accent-light no-underline">
+              Review publishing rules
+              <span>&rarr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {macroFacts.map((fact) => (
+          <IntelligenceMetricCard fact={fact} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {comparison && (
+    <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+      <IntelligenceBarChart comparison={comparison} />
+    </section>
+  )}
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Citation-led sector signals</p>
+        <h2 class="mt-4 text-[2.1rem] md:text-[2.8rem] leading-[0.96] tracking-[-0.05em] font-semibold font-body text-text">
+          Public signals that stay linked and attributed.
+        </h2>
+      </div>
+      <p class="max-w-[30rem] text-sm text-text-secondary leading-[1.8]">
+        These cards summarize official public material without republishing the source visuals or pretending the releases are open datasets.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      {signalFacts.map((fact) => (
+        <IntelligenceSignalCard fact={fact} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="grid gap-5 lg:grid-cols-[minmax(0,0.55fr)_minmax(0,0.45fr)]">
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,26,0.98),rgba(12,13,16,0.98))] p-6 md:p-7">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">What owners should watch</p>
+        <div class="mt-5 space-y-4">
+          {country.whatOwnersShouldWatch.map((item) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article class="rounded-[1.65rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,26,0.98),rgba(12,13,16,0.98))] p-6 md:p-7">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Caution</p>
+        <div class="mt-5 space-y-4">
+          {country.caution.map((item) => (
+            <div class="flex gap-3">
+              <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+              <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="grid gap-5 lg:grid-cols-3">
+      <article class="rounded-[1.5rem] bg-[linear-gradient(180deg,rgba(19,21,24,0.98),rgba(13,15,18,0.98))] p-6">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">What this means for cafes</p>
+        <div class="mt-5 space-y-3">
+          {country.whatThisMeansFor.cafes.map((item) => (
+            <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+          ))}
+        </div>
+      </article>
+      <article class="rounded-[1.5rem] bg-[linear-gradient(180deg,rgba(19,21,24,0.98),rgba(13,15,18,0.98))] p-6">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">What this means for cloud kitchens</p>
+        <div class="mt-5 space-y-3">
+          {country.whatThisMeansFor.cloudKitchens.map((item) => (
+            <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+          ))}
+        </div>
+      </article>
+      <article class="rounded-[1.5rem] bg-[linear-gradient(180deg,rgba(19,21,24,0.98),rgba(13,15,18,0.98))] p-6">
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">What this means for multi-unit operators</p>
+        <div class="mt-5 space-y-3">
+          {country.whatThisMeansFor.multiUnitOperators.map((item) => (
+            <p class="text-sm text-text-secondary leading-[1.75]">{item}</p>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-14 md:pb-18">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Related reports</p>
+        <h2 class="mt-4 text-[2rem] md:text-[2.6rem] leading-[0.98] tracking-[-0.05em] font-semibold font-body text-text">
+          Continue from country context into report detail.
+        </h2>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {relatedReports.map((report) => (
+        <IntelligenceReportCard report={report} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Source stack on this page</p>
+        <h2 class="mt-4 text-[2rem] md:text-[2.6rem] leading-[0.98] tracking-[-0.05em] font-semibold font-body text-text">
+          Every source remains visible.
+        </h2>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-2">
+      {sources.map((source) => (
+        <IntelligenceSourceAttribution source={source} />
+      ))}
+    </div>
+  </section>
+</IntelligenceLayout>

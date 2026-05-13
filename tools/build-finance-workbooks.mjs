@@ -1083,7 +1083,7 @@ function buildOpeningBudgetWorkbook() {
   setValues(funding, 6, 1, [['Category', 'Gross cash'], ['Pre-opening', ''], ['Fit-out', ''], ['Opening stock', ''], ['People', ''], ['Marketing', ''], ['Working capital', ''], ['Contingency', ''], ['Total uses', '']]);
   styleRange(funding, 'A6:B6', { fillColor: COLORS.navy, fontColor: COLORS.white, bold: true });
   const categories = ['Pre-opening', 'Fit-out', 'Opening stock', 'People', 'Marketing', 'Working capital', 'Contingency'];
-  categories.forEach((category, index) => {
+  categories.forEach((_category, index) => {
     const row = 7 + index;
     setFormulas(funding, row, 2, [[`=SUMIF(Budget_Input!A$6:A$19,A${row},Budget_Input!J$6:J$19)`]]);
   });
@@ -1101,7 +1101,7 @@ function buildOpeningBudgetWorkbook() {
 
   setValues(funding, 16, 1, [['Timing', 'Gross cash'], ['M-3', ''], ['M-2', ''], ['M-1', ''], ['M+0', ''], ['M+1', ''], ['M+2', '']]);
   styleRange(funding, 'A16:B16', { fillColor: COLORS.navy, fontColor: COLORS.white, bold: true });
-  ['M-3', 'M-2', 'M-1', 'M+0', 'M+1', 'M+2'].forEach((bucket, index) => {
+  ['M-3', 'M-2', 'M-1', 'M+0', 'M+1', 'M+2'].forEach((_bucket, index) => {
     const row = 17 + index;
     setFormulas(funding, row, 2, [[`=SUMIF(Budget_Input!F$6:F$19,A${row},Budget_Input!J$6:J$19)`]]);
   });
@@ -1123,7 +1123,7 @@ function buildOpeningBudgetWorkbook() {
   styleRange(dashboard, 'B10:B10', { fillColor: COLORS.blueFill, numberFormat: FORMATS.percent1 });
   styleRange(dashboard, 'B11:B11', { fillColor: COLORS.blueFill, numberFormat: FORMATS.currency0 });
   setValues(dashboard, 14, 1, [['Timing', 'Gross cash'], ['M-3', ''], ['M-2', ''], ['M-1', ''], ['M+0', ''], ['M+1', ''], ['M+2', '']]);
-  ['M-3', 'M-2', 'M-1', 'M+0', 'M+1', 'M+2'].forEach((bucket, index) => {
+  ['M-3', 'M-2', 'M-1', 'M+0', 'M+1', 'M+2'].forEach((_bucket, index) => {
     const row = 15 + index;
     setFormulas(dashboard, row, 2, [[`=SUMIF(Budget_Input!F$6:F$19,A${row},Budget_Input!J$6:J$19)`]]);
   });

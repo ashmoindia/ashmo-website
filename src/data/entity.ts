@@ -6,7 +6,7 @@ export const socialProfiles = [
   'https://www.linkedin.com/in/iamashmo/',
   'https://www.instagram.com/iam_ashmo/',
   'https://www.youtube.com/@iamashmo',
-  'https://www.facebook.com/iamashmo',
+  'https://www.facebook.com/iamashmo/',
 ];
 
 export const personSchema = {
@@ -18,7 +18,7 @@ export const personSchema = {
   url: siteUrl,
   image: `${siteUrl}/images/ashmo-portrait.webp`,
   description:
-    'Founder, brand builder, and writer with 25+ years of experience in retail, brand scaling, and marketing.',
+    'Founder, brand builder, and writer with 25+ years of experience in retail, restaurant growth, brand scaling, and marketing.',
   email: 'mailto:ashmoindia@gmail.com',
   jobTitle: 'Head of Brand & Growth',
   worksFor: {
@@ -29,8 +29,12 @@ export const personSchema = {
     'Brand Strategy',
     'Brand Positioning',
     'Cafe Growth',
+    'Restaurant Growth Systems',
+    'Restaurant Marketing',
     'Retail Operations',
     'Marketing',
+    'Delivery Strategy',
+    'CRM and Retention',
     'AI in Business',
     'Pricing Psychology',
   ],

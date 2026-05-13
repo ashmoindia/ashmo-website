@@ -1,0 +1,252 @@
+---
+import IntelligenceLayout from '../../layouts/IntelligenceLayout.astro';
+import IntelligenceMetricCard from '../../components/IntelligenceMetricCard.astro';
+import IntelligenceBarChart from '../../components/IntelligenceBarChart.astro';
+import IntelligenceCountryCard from '../../components/IntelligenceCountryCard.astro';
+import IntelligenceTopicCard from '../../components/IntelligenceTopicCard.astro';
+import IntelligenceReportCard from '../../components/IntelligenceReportCard.astro';
+import IntelligenceFilterBar from '../../components/IntelligenceFilterBar.astro';
+import {
+  getComparisonById,
+  getFactById,
+  intelligenceCountries,
+  intelligenceFilterOptions,
+  intelligenceHubFacts,
+  intelligenceLaunchModules,
+  intelligenceReports,
+  intelligenceSources,
+  intelligenceTopics,
+  methodologyPrinciples,
+} from '../../data/intelligence';
+
+const isDefined = <T,>(value: T | undefined | null): value is T => Boolean(value);
+
+const featuredFacts = intelligenceHubFacts
+  .map((id) => getFactById(id))
+  .filter(isDefined);
+
+const macroComparison = getComparisonById('gcc-market-pulse');
+const latestReports = intelligenceReports.slice(0, 5);
+
+const approvedCount = intelligenceSources.filter((source) => source.reuseClassification === 'approved_reuse').length;
+const citationCount = intelligenceSources.filter((source) => source.reuseClassification === 'citation_only').length;
+const blockedCount = intelligenceSources.filter((source) => source.reuseClassification === 'blocked').length;
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Middle East F&B Intelligence',
+  description:
+    'Legal-safe Middle East food and beverage intelligence built from public sources, approved data reuse, and explicit source governance.',
+  url: 'https://ashmo.io/intelligence/',
+};
+---
+
+<IntelligenceLayout
+  title="Middle East F&B Intelligence"
+  description="A premium intelligence hub for Middle East food and beverage operators built from public data, attributed source material, and original charts."
+  eyebrow="Ashmo Intelligence / Dashboard"
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pt-8 md:pt-12 pb-20 md:pb-24">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.62fr)_minmax(0,0.38fr)]">
+      <div class="rounded-[2rem] overflow-hidden border border-white/6 bg-[linear-gradient(145deg,rgba(16,18,22,0.98),rgba(10,11,14,0.99))] px-6 py-8 md:px-8 md:py-10">
+        <div class="relative overflow-hidden rounded-[1.6rem] bg-[linear-gradient(135deg,rgba(12,14,17,0.98),rgba(19,22,26,0.98))] px-5 py-6 md:px-7 md:py-7">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,193,118,0.12),transparent_34%)]"></div>
+          <div class="absolute inset-y-0 left-[18%] w-px bg-white/6"></div>
+          <div class="absolute inset-y-0 left-[54%] w-px bg-white/5"></div>
+          <div class="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,transparent,rgba(8,9,11,0.48))]"></div>
+          <div class="relative">
+            <p class="text-[0.68rem] uppercase tracking-[0.28em] text-accent-light">The intelligence hub</p>
+            <h1 class="mt-5 max-w-[12ch] text-[2.9rem] md:text-[4.6rem] leading-[0.92] tracking-[-0.06em] font-semibold font-body text-text">
+              Middle East
+              <span class="block text-accent-light">F&B Intelligence</span>
+            </h1>
+            <p class="mt-6 max-w-[38rem] text-[1rem] md:text-[1.08rem] text-text-secondary leading-[1.85]">
+              A premium dashboard surface for cafe owners, restaurant founders, QSR operators, cloud kitchens, franchise groups, and investors who need
+              useful signals without copyright risk. Charts come from approved-reuse data only. Everything else is linked, attributed, and clearly labeled.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/intelligence/reports/gcc-market-pulse/"
+                class="inline-flex items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(233,193,118,0.98),rgba(212,135,90,0.92))] px-5 py-3 text-sm font-medium no-underline"
+                style="color: var(--color-bg);"
+              >
+                Open the market pulse
+              </a>
+              <a
+                href="/intelligence/methodology/"
+                class="inline-flex items-center justify-center rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-text-secondary no-underline transition-colors hover:border-accent/40 hover:text-text"
+              >
+                Review source methodology
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          {featuredFacts.map((fact) => (
+            <IntelligenceMetricCard fact={fact} />
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-4">
+        <div class="rounded-[1.75rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,25,0.98),rgba(13,15,18,0.98))] px-6 py-6">
+          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Source transparency</p>
+          <h2 class="mt-4 text-[1.55rem] leading-[1.02] tracking-[-0.05em] font-semibold font-body text-text md:text-[1.7rem]">
+            Source-governed by design.
+          </h2>
+          <p class="mt-3 max-w-[24rem] text-sm text-text-secondary leading-[1.7]">
+            Every metric, chart, and takeaway follows a visible reuse rule.
+          </p>
+          <div class="mt-5 grid grid-cols-3 gap-3">
+            <div class="rounded-[1.1rem] bg-white/[0.03] px-4 py-4">
+              <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Approved</p>
+              <p class="mt-2 text-[1.55rem] font-semibold font-body text-text">{approvedCount}</p>
+            </div>
+            <div class="rounded-[1.1rem] bg-white/[0.03] px-4 py-4">
+              <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Citation only</p>
+              <p class="mt-2 text-[1.55rem] font-semibold font-body text-text">{citationCount}</p>
+            </div>
+            <div class="rounded-[1.1rem] bg-white/[0.03] px-4 py-4">
+              <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Blocked</p>
+              <p class="mt-2 text-[1.55rem] font-semibold font-body text-text">{blockedCount}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[1.75rem] border border-white/6 bg-[linear-gradient(180deg,rgba(19,21,24,0.98),rgba(12,13,16,0.98))] px-6 py-6">
+          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Launch rules</p>
+          <div class="mt-5 space-y-3">
+            {methodologyPrinciples.map((rule) => (
+              <div class="flex gap-3">
+                <span class="mt-1.5 block h-2 w-2 rounded-full bg-accent"></span>
+                <p class="text-sm text-text-secondary leading-[1.75]">{rule}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {macroComparison && (
+    <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
+      <IntelligenceBarChart comparison={macroComparison} />
+    </section>
+  )}
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Territorial deep-dives</p>
+        <h2 class="mt-4 text-[2.2rem] md:text-[2.9rem] leading-[0.96] tracking-[-0.05em] font-semibold font-body text-text">
+          Country pages built around safe data logic.
+        </h2>
+      </div>
+      <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
+        UAE and Saudi Arabia launch first because the source stack is strongest there. The remaining GCC pages stay in the roadmap until governance confidence is high enough.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-2">
+      {intelligenceCountries.map((country) => (
+        <IntelligenceCountryCard country={country} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Topic tracks</p>
+        <h2 class="mt-4 text-[2.2rem] md:text-[2.9rem] leading-[0.96] tracking-[-0.05em] font-semibold font-body text-text">
+          Topic pages that stay useful when the raw market-share data is off-limits.
+        </h2>
+      </div>
+      <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
+        Delivery, tourism, and pricing pages rely on proxy indicators, operator commentary, and clearly disclosed source rules.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 lg:grid-cols-3">
+      {intelligenceTopics.map((topic) => (
+        <IntelligenceTopicCard topic={topic} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
+    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Report archive</p>
+        <h2 class="mt-4 text-[2.2rem] md:text-[2.9rem] leading-[0.96] tracking-[-0.05em] font-semibold font-body text-text">
+          Starter reports with visible source logic.
+        </h2>
+      </div>
+      <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
+        Filters narrow the current starter set by geography and topic. Hidden cards are filtered client-side without needing a JS framework.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <IntelligenceFilterBar
+        countryOptions={intelligenceFilterOptions.countries}
+        topicOptions={intelligenceFilterOptions.topics}
+      />
+    </div>
+
+    <div class="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      {latestReports.map((report) => (
+        <IntelligenceReportCard report={report} />
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-[1240px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
+    <div class="rounded-[1.8rem] border border-white/6 bg-[linear-gradient(180deg,rgba(18,20,24,0.98),rgba(10,11,14,0.98))] p-6 md:p-8">
+      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Launch roadmap</p>
+          <h2 class="mt-4 text-[2.1rem] md:text-[2.8rem] leading-[0.96] tracking-[-0.05em] font-semibold font-body text-text">
+            First 10 modules to publish.
+          </h2>
+        </div>
+        <a href="/intelligence/methodology/" class="text-sm text-accent-light no-underline hover:text-text">
+          See the full governance model &rarr;
+        </a>
+      </div>
+
+      <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {intelligenceLaunchModules.map((module) => (
+          <article class="rounded-[1.25rem] bg-white/[0.03] p-5">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-[0.68rem] uppercase tracking-[0.18em] text-text-tertiary">{module.sourceStrategy}</p>
+              <span class:list={[
+                'inline-flex rounded-full px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.16em]',
+                module.status === 'Live'
+                  ? 'bg-accent/14 text-accent-light'
+                  : module.status === 'Ready next'
+                    ? 'bg-white/[0.07] text-text-secondary'
+                    : 'bg-white/[0.04] text-text-tertiary',
+              ]}>
+                {module.status}
+              </span>
+            </div>
+            <h3 class="mt-4 text-[1.2rem] font-semibold tracking-[-0.03em] font-body text-text">{module.title}</h3>
+            <p class="mt-3 text-sm text-text-secondary leading-[1.75]">{module.description}</p>
+            {module.slug && (
+              <a href={`/intelligence/reports/${module.slug}/`} class="mt-5 inline-flex items-center gap-2 text-sm text-accent-light no-underline">
+                Open starter page
+                <span>&rarr;</span>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</IntelligenceLayout>

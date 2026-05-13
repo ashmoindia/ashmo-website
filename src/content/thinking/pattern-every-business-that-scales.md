@@ -1,5 +1,6 @@
 ---
 title: "The Pattern I See in Every Business That Scales"
+metaTitle: "The Pattern Every Scaler Needs"
 description: "After 25 years of building, observing, and studying businesses in Dubai and beyond, I keep seeing the same pattern in the ones that actually scale."
 date: 2026-03-14
 pillar: merchant-mindset

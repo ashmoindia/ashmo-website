@@ -1,5 +1,6 @@
 ---
 title: "The Brand Decisions That Compound Over 10 Years"
+metaTitle: "Brand Decisions That Compound"
 description: "Some brand decisions pay off in a week. The ones that matter most take a decade to reveal their full value."
 date: 2026-03-10
 pillar: brand-growth

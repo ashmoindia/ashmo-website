@@ -1,0 +1,39 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const links = [
+  { href: '/intelligence/', label: 'Hub' },
+  { href: '/intelligence/countries/uae/', label: 'Countries' },
+  { href: '/intelligence/topics/delivery-cloud-kitchens/', label: 'Topics' },
+  { href: '/intelligence/reports/gcc-market-pulse/', label: 'Reports' },
+  { href: '/intelligence/methodology/', label: 'Methodology' },
+];
+---
+
+<nav class="mt-5 overflow-x-auto" aria-label="Intelligence section navigation">
+  <ul class="flex min-w-max gap-2">
+    {links.map((link) => {
+      const isActive = currentPath === link.href || (link.href !== '/intelligence/' && currentPath.startsWith(link.href));
+      return (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              'inline-flex items-center rounded-full px-4 py-2 text-[0.72rem] uppercase tracking-[0.16em] no-underline transition-colors',
+              isActive
+                ? 'bg-accent text-bg'
+                : 'border border-white/8 bg-white/[0.02] text-text-secondary hover:border-accent/30 hover:text-text',
+            ]}
+            style={isActive ? 'color: var(--color-bg);' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</nav>
