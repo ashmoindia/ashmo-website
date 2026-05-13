@@ -1,6 +1,6 @@
 ---
 title: "Why Most Rebrands Fail Before They Start"
-description: "The rebrand isn't the problem. The thinking — or lack of it — before the rebrand is what kills it."
+description: "Most rebrands fail before the designer opens a file. After 25 years scaling brands including FiLLi Cafe, here's the real reason — and what to do instead."
 date: 2026-03-08
 pillar: brand-growth
 tags: ["rebrand", "brand-strategy", "positioning"]
