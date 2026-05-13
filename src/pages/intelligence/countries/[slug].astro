@@ -38,12 +38,19 @@ const pageSchema = {
   description: country.metaDescription,
   url: `https://ashmo.io/intelligence/countries/${country.slug}/`,
 };
+
+const breadcrumbs = [
+  { name: 'Intelligence', href: '/intelligence/' },
+  { name: 'Countries', href: '/intelligence/' },
+  { name: country.name, href: `/intelligence/countries/${country.slug}/` },
+];
 ---
 
 <IntelligenceLayout
   title={country.metaTitle}
   description={country.metaDescription}
   eyebrow={`Ashmo Intelligence / ${country.name}`}
+  breadcrumbs={breadcrumbs}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(pageSchema)} />
 

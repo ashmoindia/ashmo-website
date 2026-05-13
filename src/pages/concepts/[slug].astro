@@ -1,0 +1,201 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const concepts = await getCollection('fnbConcepts', ({ data }) => data.published);
+  return concepts.map((concept) => ({
+    params: { slug: concept.id },
+    props: { concept },
+  }));
+}
+
+interface Props { concept: CollectionEntry<'fnbConcepts'> }
+const { concept } = Astro.props;
+const { Content } = await render(concept);
+
+const {
+  title,
+  metaTitle,
+  metaDescription,
+  h1,
+  summary,
+  category,
+  region,
+  audience,
+  risks,
+  checklist,
+  relatedPages,
+  faqs,
+  date,
+  updated,
+  image,
+} = concept.data;
+
+const breadcrumbs = [
+  { name: 'F&B Concepts', href: '/concepts/' },
+  { name: title, href: `/concepts/${concept.id}/` },
+];
+
+const categoryLabels: Record<string, string> = {
+  cafe: 'Cafe',
+  qsr: 'QSR',
+  beverage: 'Beverage',
+  restaurant: 'Restaurant',
+  'cloud-kitchen': 'Cloud Kitchen',
+  dessert: 'Dessert',
+  bakery: 'Bakery',
+  franchise: 'Franchise',
+};
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  'headline': title,
+  'description': metaDescription,
+  'datePublished': date.toISOString(),
+  'dateModified': (updated || date).toISOString(),
+  'author': {
+    '@type': 'Person',
+    'name': 'Ashraf Hassan',
+    'alternateName': 'Ashmo',
+    'url': 'https://ashmo.io/ashraf-hassan/',
+  },
+  'publisher': {
+    '@type': 'Organization',
+    '@id': 'https://ashmo.io/#organization',
+  },
+  'mainEntityOfPage': canonicalURL.toString(),
+  'about': region.map((r) => ({ '@type': 'Place', 'name': r })),
+  'audience': audience.map((a) => ({ '@type': 'Audience', 'audienceType': a })),
+  ...(image ? { 'image': new URL(image, Astro.site).toString() } : {}),
+};
+---
+
+<BaseLayout
+  title={metaTitle || title}
+  description={metaDescription}
+  image={image}
+  type="article"
+  publishedDate={date}
+  breadcrumbs={breadcrumbs}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <article class="section-shell pt-10 md:pt-14 pb-18 md:pb-24">
+
+    <Breadcrumbs items={breadcrumbs} />
+
+    <header class="mt-10 max-w-[760px]">
+      <div class="flex flex-wrap items-center gap-2.5 font-mono text-[0.66rem] font-semibold uppercase tracking-[0.14em] text-accent-light mb-6">
+        <span>{categoryLabels[category] || category}</span>
+        {region.length > 0 && <span class="text-text-tertiary/60">/</span>}
+        {region.map((r, i) => (
+          <Fragment>
+            <span class="text-text-tertiary">{r}</span>
+            {i < region.length - 1 && <span class="text-text-tertiary/40">·</span>}
+          </Fragment>
+        ))}
+      </div>
+
+      <h1 class="font-heading text-[2.4rem] md:text-[3.6rem] font-bold leading-[1.04] tracking-tight">
+        {h1 || title}
+      </h1>
+
+      <p class="body-lead mt-7 max-w-[640px]">
+        {summary}
+      </p>
+
+      <p class="mt-8 font-mono text-[0.7rem] uppercase tracking-[0.06em] text-text-tertiary">
+        By <a href="/ashraf-hassan/" class="text-accent-light no-underline hover:text-accent">Ashraf Hassan (Ashmo)</a>
+        <span class="mx-2 text-text-tertiary/50">·</span>
+        Operator-led intelligence
+      </p>
+    </header>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,0.8fr)] lg:gap-16">
+
+      <!-- Main body -->
+      <div class="prose max-w-[680px]">
+        <Content />
+      </div>
+
+      <!-- Right column: risks + checklist + related -->
+      <aside class="flex flex-col gap-8">
+
+        {risks.length > 0 && (
+          <section class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-6">
+            <p class="mono-label mb-4">Risks &amp; failure points</p>
+            <ul class="flex flex-col gap-3 list-none p-0">
+              {risks.map((r) => (
+                <li class="flex gap-3 text-sm leading-[1.6] text-text-secondary">
+                  <span class="mt-1.5 inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-accent"></span>
+                  <span>{r}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {checklist.length > 0 && (
+          <section class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-6">
+            <p class="mono-label mb-4">Operator checklist</p>
+            <ul class="flex flex-col gap-3 list-none p-0">
+              {checklist.map((c) => (
+                <li class="flex gap-3 text-sm leading-[1.6] text-text-secondary">
+                  <span class="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full border border-accent/40 text-[0.65rem] font-mono text-accent-light">✓</span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {relatedPages.length > 0 && (
+          <section class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-6">
+            <p class="mono-label mb-4">Related</p>
+            <ul class="flex flex-col gap-3 list-none p-0">
+              {relatedPages.map((r) => (
+                <li>
+                  <a href={r.href} class="block no-underline group">
+                    {r.eyebrow && (
+                      <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-accent-light">{r.eyebrow}</p>
+                    )}
+                    <p class="mt-0.5 text-[0.95rem] font-semibold leading-snug text-text group-hover:text-accent-light">{r.title}</p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+      </aside>
+    </div>
+
+    {faqs.length > 0 && (
+      <div class="mt-20 max-w-[820px]">
+        <FAQSection items={faqs} title={`FAQ — ${categoryLabels[category] || category}`} />
+      </div>
+    )}
+
+    <!-- CTA -->
+    <section class="mt-16 rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-8 md:p-10 max-w-[920px]">
+      <p class="mono-label mb-4">Next step</p>
+      <h2 class="font-heading text-2xl md:text-3xl font-bold tracking-tight max-w-[18ch]">
+        Request an F&amp;B concept review.
+      </h2>
+      <p class="mt-4 text-text-secondary leading-[1.7] max-w-[560px]">
+        Founder-grade diligence on your concept — market fit, unit economics, scalability, and the risks that quietly compound. Not a pitch. A working session.
+      </p>
+      <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+        <a href="/contact/" class="button-gradient">Request concept review</a>
+        <a href="/restaurant-cafe-growth-systems/" class="button-secondary">Open growth hub</a>
+      </div>
+    </section>
+
+  </article>
+</BaseLayout>

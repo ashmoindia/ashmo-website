@@ -1,0 +1,42 @@
+---
+/**
+ * Breadcrumbs
+ * Renders visual breadcrumbs. JSON-LD BreadcrumbList schema is emitted by
+ * BaseLayout when `breadcrumbs` prop is passed — keep both in sync.
+ *
+ * Usage:
+ *   <Breadcrumbs items={[
+ *     { name: 'Intelligence', href: '/intelligence/' },
+ *     { name: 'UAE', href: '/intelligence/countries/uae/' },
+ *   ]} />
+ */
+interface Item { name: string; href: string }
+interface Props {
+  items: Item[];
+  /** Show "Home" as the leading crumb. Default: true. */
+  withHome?: boolean;
+}
+
+const { items, withHome = true } = Astro.props;
+const fullItems = withHome ? [{ name: 'Home', href: '/' }, ...items] : items;
+---
+
+<nav class="text-xs font-mono uppercase tracking-[0.14em] text-text-tertiary" aria-label="Breadcrumb">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 list-none p-0">
+    {fullItems.map((item, i) => {
+      const isLast = i === fullItems.length - 1;
+      return (
+        <li class="flex items-center gap-2">
+          {isLast ? (
+            <span class="text-text" aria-current="page">{item.name}</span>
+          ) : (
+            <a href={item.href} class="text-text-tertiary no-underline transition-colors hover:text-accent-light">
+              {item.name}
+            </a>
+          )}
+          {!isLast && <span aria-hidden="true" class="text-text-tertiary/60">/</span>}
+        </li>
+      );
+    })}
+  </ol>
+</nav>

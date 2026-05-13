@@ -39,4 +39,47 @@ const work = defineCollection({
   }),
 });
 
-export const collections = { thinking, work };
+const fnbConcepts = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/fnb-concepts' }),
+  schema: z.object({
+    title: z.string(),
+    metaTitle: z.string().optional(),
+    metaDescription: z.string(),
+    h1: z.string().optional(),
+    summary: z.string(),
+    category: z.enum([
+      'cafe',
+      'qsr',
+      'beverage',
+      'restaurant',
+      'cloud-kitchen',
+      'dessert',
+      'bakery',
+      'franchise',
+    ]),
+    region: z.array(z.string()).default(['UAE']),
+    audience: z.array(z.string()).default(['investors', 'operators']),
+    risks: z.array(z.string()).default([]),
+    checklist: z.array(z.string()).default([]),
+    relatedPages: z
+      .array(
+        z.object({
+          title: z.string(),
+          href: z.string(),
+          eyebrow: z.string().optional(),
+        }),
+      )
+      .default([]),
+    faqs: z
+      .array(z.object({ q: z.string(), a: z.string() }))
+      .default([]),
+    ctaType: z.enum(['concept-review', 'growth-system', 'thinking']).default('concept-review'),
+    published: z.boolean().default(false),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+  }),
+});
+
+export const collections = { thinking, work, fnbConcepts };

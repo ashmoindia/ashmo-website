@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCollection } from 'astro:content';
+
+const concepts = (await getCollection('fnbConcepts', ({ data }) => data.published))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const breadcrumbs = [
+  { name: 'F&B Concepts', href: '/concepts/' },
+];
+
+const categoryLabels: Record<string, string> = {
+  cafe: 'Cafe',
+  qsr: 'QSR',
+  beverage: 'Beverage',
+  restaurant: 'Restaurant',
+  'cloud-kitchen': 'Cloud Kitchen',
+  dessert: 'Dessert',
+  bakery: 'Bakery',
+  franchise: 'Franchise',
+};
+
+const itemListSchema = concepts.length > 0
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      'itemListElement': concepts.map((c, i) => ({
+        '@type': 'ListItem',
+        'position': i + 1,
+        'url': new URL(`/concepts/${c.id}/`, Astro.site).toString(),
+        'name': c.data.title,
+      })),
+    }
+  : null;
+---
+
+<BaseLayout
+  title="F&B Concepts — Operator Intelligence"
+  description="Operator-led guides for UAE/GCC cafe, restaurant, QSR and beverage founders. Market reality, economics, scalability, and the risks — not franchise pitches."
+  breadcrumbs={breadcrumbs}
+>
+  {itemListSchema && (
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  )}
+
+  <section class="section-shell pt-10 md:pt-14 pb-14 md:pb-18">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mt-10 max-w-[760px]">
+      <p class="mono-label mb-5">F&amp;B Concepts</p>
+      <h1 class="hero-title">
+        Operator intelligence on the concepts founders are actually building.
+      </h1>
+      <p class="body-lead mt-7 max-w-[44rem]">
+        Each guide is written from inside the work — market reality, unit economics, scalability triggers, and the quiet risks that close cafes and restaurants in their second year. Not franchise brochures. Not generic playbooks.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-shell pb-24 md:pb-32">
+    {concepts.length === 0 ? (
+      <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.03] p-8 max-w-[640px]">
+        <p class="text-text-secondary">First concept guides going live shortly. Check back soon, or <a href="/contact/" class="text-accent-light no-underline hover:text-accent">request a concept review</a> in the meantime.</p>
+      </div>
+    ) : (
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {concepts.map((c) => (
+          <a href={`/concepts/${c.id}/`} class="card-base hover-lift p-6 md:p-7 no-underline group">
+            <div class="relative z-10 flex h-full flex-col">
+              <div class="flex flex-wrap items-center gap-2 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-accent-light">
+                <span>{categoryLabels[c.data.category] || c.data.category}</span>
+                {c.data.region.slice(0, 2).map((r) => (
+                  <Fragment>
+                    <span class="text-text-tertiary/50">·</span>
+                    <span class="text-text-tertiary">{r}</span>
+                  </Fragment>
+                ))}
+              </div>
+              <h2 class="mt-5 font-heading text-[1.45rem] font-bold leading-[1.18] text-text group-hover:text-accent-light transition-colors">
+                {c.data.title}
+              </h2>
+              <p class="mt-4 text-[0.92rem] leading-[1.7] text-text-secondary">
+                {c.data.summary}
+              </p>
+              <span class="mt-auto pt-8 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-accent-light">
+                Read the operator guide <span aria-hidden="true">&rarr;</span>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="card-base gradient-border p-6 md:p-8 lg:p-10 max-w-[920px]">
+      <div class="relative z-10">
+        <p class="mono-label mb-4">Concept review</p>
+        <h2 class="section-title max-w-[18ch]">Have a concept you're seriously evaluating?</h2>
+        <p class="body-lead mt-5 max-w-[44rem]">
+          Founder-grade diligence on F&amp;B concepts — market fit, unit economics, scalability, and the risks that quietly compound. Not a sales call. A working session.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/contact/" class="button-gradient">Request concept review</a>
+          <a href="/restaurant-cafe-growth-systems/" class="button-secondary">Open growth hub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

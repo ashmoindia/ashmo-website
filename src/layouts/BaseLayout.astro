@@ -1,8 +1,13 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { personId, personSchema, socialProfiles, websiteId, websiteSchema } from '../data/entity';
+import { organizationSchema, personId, personSchema, socialProfiles, websiteId, websiteSchema } from '../data/entity';
 import '../styles/global.css';
+
+interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
 
 interface Props {
   title: string;
@@ -10,6 +15,7 @@ interface Props {
   image?: string;
   type?: 'website' | 'article';
   publishedDate?: Date;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 const {
@@ -18,6 +24,7 @@ const {
   image = "/og-default.jpg",
   type = "website",
   publishedDate,
+  breadcrumbs,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -42,6 +49,22 @@ const webpageSchema = {
     "url": pageImageURL,
   },
 };
+
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": b.name,
+        "item": new URL(b.href, Astro.site).toString(),
+      })),
+    }
+  : null;
+
+const entityGraph = [personSchema, organizationSchema, websiteSchema, webpageSchema];
+if (breadcrumbSchema) entityGraph.push(breadcrumbSchema);
 ---
 
 <!DOCTYPE html>
@@ -89,11 +112,7 @@ const webpageSchema = {
   <meta name="generator" content={Astro.generator} />
 
   <!-- JSON-LD: entity graph -->
-  <script is:inline type="application/ld+json" set:html={JSON.stringify([
-    personSchema,
-    websiteSchema,
-    webpageSchema,
-  ])} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(entityGraph)} />
 </head>
 <body class="site-bg bg-bg text-text font-body leading-relaxed">
   <!-- Google Tag Manager (noscript) -->
