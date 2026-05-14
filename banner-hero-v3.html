@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ashmo — Hero v3 · The Exchange</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #06070b;
+    --ink: #f5f6fa;
+    --muted: #8a8f9c;
+    --muted-2: #5b6171;
+    --line: #1a1d27;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--page); color: var(--ink); }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 64px 24px 120px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  .pageHead { margin-bottom: 56px; }
+  .pageHead .kicker {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .pageHead h1 { font-size: 36px; font-weight: 700; margin-top: 8px; letter-spacing: -0.02em; }
+  .pageHead p { color: var(--muted); margin-top: 10px; font-size: 16px; max-width: 720px; }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 72px;
+    align-items: center;
+    padding: 56px 0 100px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+  .hero .left .kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+    padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px;
+    background: rgba(255,255,255,0.02);
+  }
+  .hero .left .kicker .pip {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #22c55e; box-shadow: 0 0 12px #22c55e;
+  }
+  .hero .left h1 {
+    font-size: 70px; font-weight: 700; line-height: 1.02;
+    letter-spacing: -0.04em; margin-top: 28px;
+  }
+  .hero .left h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #22d3ee 0%, #6ee7b7 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .left p {
+    color: rgba(255,255,255,0.66);
+    margin-top: 26px; font-size: 18px; max-width: 500px; line-height: 1.55;
+  }
+  .hero .left .ctas { margin-top: 36px; display: flex; gap: 12px; }
+  .hero .left .ctas a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 15px 24px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+  }
+  .hero .left .ctas .primary {
+    background: linear-gradient(135deg, #22d3ee, #6ee7b7);
+    color: #06121a;
+  }
+  .hero .left .ctas .ghost {
+    color: var(--ink); border: 1px solid var(--line);
+  }
+
+  /* ===================== THE EXCHANGE (1:1) ===================== */
+  .exchange {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 560px;
+    margin-left: auto;
+    border-radius: 28px;
+    overflow: hidden;
+    background:
+      radial-gradient(60% 50% at 50% 50%, rgba(34,211,238,0.10), rgba(34,211,238,0) 70%),
+      linear-gradient(180deg, #0c1018 0%, #06080c 100%);
+    border: 1px solid var(--line);
+    box-shadow:
+      0 40px 100px -40px rgba(0,0,0,0.75),
+      inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .exchange .inner {
+    position: absolute; inset: 0;
+    padding: 32px 32px;
+    display: flex; flex-direction: column;
+  }
+
+  /* top header */
+  .exchange .head {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; color: var(--muted-2);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .exchange .head .right { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+  .exchange .head .right .pip {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #6ee7b7; box-shadow: 0 0 10px #6ee7b7;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* column headers */
+  .exchange .cols {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+  }
+  .exchange .cols .ch {
+    font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--muted-2); font-weight: 600;
+  }
+  .exchange .cols .chRight { text-align: right; color: #6ee7b7; }
+  .exchange .cols .chMid {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 9px; letter-spacing: 0.22em; color: var(--muted-2);
+  }
+
+  /* rows */
+  .exchange .row {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 14px 0 14px;
+  }
+  .exchange .row:last-of-type { border-bottom: none; }
+
+  .exchange .row .side { display: flex; flex-direction: column; gap: 4px; }
+  .exchange .row .side.r { align-items: flex-end; text-align: right; }
+  .exchange .row .lbl {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 18px; font-weight: 700; letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .exchange .row .side.r .lbl { flex-direction: row-reverse; }
+  .exchange .row .lbl .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    box-shadow: 0 0 12px currentColor;
+  }
+  .exchange .row .lbl .dot.blue   { color: #60a5fa; background: currentColor; }
+  .exchange .row .lbl .dot.cyan   { color: #22d3ee; background: currentColor; }
+  .exchange .row .lbl .dot.indigo { color: #818cf8; background: currentColor; }
+  .exchange .row .lbl .dot.green  { color: #6ee7b7; background: currentColor; }
+  .exchange .row .lbl .dot.amber  { color: #fbbf24; background: currentColor; }
+  .exchange .row .lbl .dot.orange { color: #fb923c; background: currentColor; }
+  .exchange .row .sub {
+    font-size: 12px; color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  /* arrow */
+  .exchange .row .arrow {
+    width: 80px; height: 1px;
+    background: linear-gradient(90deg, rgba(96,165,250,0.15), rgba(110,231,183,0.7));
+    position: relative;
+  }
+  .exchange .row .arrow::after {
+    content: ""; position: absolute; right: -1px; top: -3px;
+    width: 0; height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid #6ee7b7;
+  }
+
+  /* center operator badge floating between rows */
+  .exchange .operator {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(8, 10, 16, 0.85);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(110,231,183,0.25);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    color: #6ee7b7;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 0 40px rgba(110,231,183,0.18);
+    pointer-events: none;
+  }
+  .exchange .operator .pip {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: #6ee7b7; box-shadow: 0 0 8px #6ee7b7;
+  }
+
+  /* footer tagline */
+  .exchange .foot {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--muted);
+  }
+  .exchange .foot b { color: #fff; font-weight: 700; }
+  .exchange .foot .by {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted-2);
+  }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; padding: 24px 0 64px; }
+    .hero .left h1 { font-size: 44px; }
+    .exchange { max-width: 100%; margin: 0 auto; }
+    .exchange .row .lbl { font-size: 15px; }
+    .exchange .row .arrow { width: 36px; }
+    .exchange .row .sub { font-size: 11px; }
+  }
+
+  /* ===================== SMALL PREVIEWS ===================== */
+  .smallShow {
+    display: grid; grid-template-columns: 360px 240px; gap: 32px; align-items: start;
+  }
+  .smallShow .col h3 {
+    font-size: 14px; font-weight: 600; color: var(--muted);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .smallShow .exchange .row .lbl { font-size: 14px; }
+  .smallShow .exchange .row .sub { font-size: 10px; }
+  .smallShow .exchange .row .arrow { width: 36px; }
+  .smallShow .tiny .exchange .row .lbl { font-size: 11px; }
+  .smallShow .tiny .exchange .row .arrow { width: 22px; }
+  .smallShow .tiny .exchange .row .sub { display: none; }
+  .smallShow .tiny .exchange .head { font-size: 8px; }
+  .smallShow .tiny .exchange .operator { font-size: 8px; padding: 5px 9px; }
+  @media (max-width: 900px) { .smallShow { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="pageHead">
+    <div class="kicker">ashmo.io · hero v3 · the exchange</div>
+    <h1>Same idea — without the spaghetti</h1>
+    <p>Kept the plain-English captions you liked ("how you look", "more customers", etc.) but reorganized as a clean 3-row exchange: what goes in on the left, what comes out on the right, with Ashmo as the operator in the middle.</p>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="left">
+      <div class="kicker"><span class="pip"></span> Brand &amp; Growth Operator</div>
+      <h1>I help your business <em>grow.</em></h1>
+      <p>You bring the business. I take care of how it looks, how it sells, and how it runs — and turn that into more customers walking in.</p>
+      <div class="ctas">
+        <a class="primary" href="#">Start the conversation →</a>
+        <a class="ghost" href="#">See the work</a>
+      </div>
+    </div>
+
+    <!-- THE EXCHANGE -->
+    <div class="exchange">
+      <div class="inner">
+
+        <div class="head">
+          <span>The Exchange</span>
+          <span class="right"><span class="pip"></span> Live · Working</span>
+        </div>
+
+        <div class="cols">
+          <div class="ch">What you bring</div>
+          <div class="chMid">→</div>
+          <div class="ch chRight">What you get</div>
+        </div>
+
+        <div class="row">
+          <div class="side">
+            <div class="lbl"><span class="dot blue"></span> Brand</div>
+            <div class="sub">how you look</div>
+          </div>
+          <div class="arrow"></div>
+          <div class="side r">
+            <div class="lbl"><span class="dot green"></span> Sales</div>
+            <div class="sub">more customers</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="side">
+            <div class="lbl"><span class="dot cyan"></span> Marketing</div>
+            <div class="sub">how you sell</div>
+          </div>
+          <div class="arrow"></div>
+          <div class="side r">
+            <div class="lbl"><span class="dot amber"></span> Revenue</div>
+            <div class="sub">growing monthly</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="side">
+            <div class="lbl"><span class="dot indigo"></span> Ops</div>
+            <div class="sub">how it runs</div>
+          </div>
+          <div class="arrow"></div>
+          <div class="side r">
+            <div class="lbl"><span class="dot orange"></span> Trust</div>
+            <div class="sub">people choose you</div>
+          </div>
+        </div>
+
+        <div class="foot">
+          <span>You bring the business · <b>I bring the customers</b></span>
+          <span class="by">— Ashmo</span>
+        </div>
+
+      </div>
+
+      <!-- operator badge floats in the dead center -->
+      <div class="operator"><span class="pip"></span> via Ashmo</div>
+    </div>
+  </section>
+
+  <!-- ===================== SMALL PREVIEWS ===================== -->
+  <section>
+    <div class="pageHead">
+      <div class="kicker">Holds up at small sizes</div>
+      <h1>Same asset, scaled down</h1>
+      <p>Survives shrinking — works at 360px (mobile) and 240px (thumbnails/social).</p>
+    </div>
+
+    <div class="smallShow">
+      <!-- 360 -->
+      <div class="col">
+        <h3>Medium · 360px</h3>
+        <div class="exchange" style="max-width:360px">
+          <div class="inner">
+            <div class="head">
+              <span>The Exchange</span>
+              <span class="right"><span class="pip"></span> Live</span>
+            </div>
+            <div class="cols">
+              <div class="ch">What you bring</div>
+              <div class="chMid">→</div>
+              <div class="ch chRight">What you get</div>
+            </div>
+            <div class="row">
+              <div class="side"><div class="lbl"><span class="dot blue"></span> Brand</div><div class="sub">how you look</div></div>
+              <div class="arrow"></div>
+              <div class="side r"><div class="lbl"><span class="dot green"></span> Sales</div><div class="sub">more customers</div></div>
+            </div>
+            <div class="row">
+              <div class="side"><div class="lbl"><span class="dot cyan"></span> Marketing</div><div class="sub">how you sell</div></div>
+              <div class="arrow"></div>
+              <div class="side r"><div class="lbl"><span class="dot amber"></span> Revenue</div><div class="sub">growing monthly</div></div>
+            </div>
+            <div class="row">
+              <div class="side"><div class="lbl"><span class="dot indigo"></span> Ops</div><div class="sub">how it runs</div></div>
+              <div class="arrow"></div>
+              <div class="side r"><div class="lbl"><span class="dot orange"></span> Trust</div><div class="sub">people choose you</div></div>
+            </div>
+            <div class="foot">
+              <span>by <b>Ashmo</b></span>
+              <span class="by">26.Q2</span>
+            </div>
+          </div>
+          <div class="operator"><span class="pip"></span> via Ashmo</div>
+        </div>
+      </div>
+
+      <!-- 240 -->
+      <div class="col tiny">
+        <h3>Small · 240px</h3>
+        <div class="exchange" style="max-width:240px">
+          <div class="inner" style="padding:20px">
+            <div class="head"><span>Exchange</span><span class="right"><span class="pip"></span></span></div>
+            <div class="cols" style="margin-top:10px;padding-bottom:8px">
+              <div class="ch">In</div>
+              <div class="chMid">→</div>
+              <div class="ch chRight">Out</div>
+            </div>
+            <div class="row">
+              <div class="side"><div class="lbl"><span class="dot blue"></span> Brand</div></div>
+              <div class="arrow"></div>
+              <div class="side r"><div class="lbl"><span class="dot green"></span> Sales</div></div>
+            </div>
+            <div class="row">
+              <div class="side"><div class="lbl"><span class="dot cyan"></span> Mktg</div></div>
+              <div class="arrow"></div>
+              <div class="side r"><div class="lbl"><span class="dot amber"></span> Rev.</div></div>
+            </div>
+            <div class="row">
+              <div class="side"><div class="lbl"><span class="dot indigo"></span> Ops</div></div>
+              <div class="arrow"></div>
+              <div class="side r"><div class="lbl"><span class="dot orange"></span> Trust</div></div>
+            </div>
+            <div class="foot"><span>by <b>Ashmo</b></span></div>
+          </div>
+          <div class="operator"><span class="pip"></span> Ashmo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

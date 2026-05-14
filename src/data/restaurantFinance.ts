@@ -91,11 +91,11 @@ export const financeTemplates: FinanceTemplate[] = [
     slug: 'weekly-flash-report-template',
     name: 'Weekly flash report',
     summary:
-      'A weekly trading workbook with sales by channel, covers, APC, delivery mix, labor productivity, EBITDA bridge, and exception checks for the next management huddle.',
+      'A CEO/investor weekly flash workbook with trading KPIs, variance vs target, store-level risks, marketing impact, cost leakage, management alerts, checks, scenarios, and action ownership.',
     format: 'XLSX',
     href: '/downloads/restaurant-finance/weekly-flash-report-template.xlsx',
     audience:
-      'Operators who want disciplined weekly visibility, not a month-end surprise after margin has already leaked.',
+      'Operators, founders, and finance leads who need board-ready weekly visibility before month-end surprises become expensive.',
   },
   {
     slug: 'recipe-costing-sheet',

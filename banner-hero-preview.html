@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ashmo — Hero with 1:1 Growth Flow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #07080c;
+    --ink: #f5f6fa;
+    --muted: #8a8f9c;
+    --line: #1c1f29;
+    --card: #0c0f17;
+    --accent: #22d3ee;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--page); color: var(--ink); }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 56px 24px 120px;
+  }
+  .wrap { max-width: 1280px; margin: 0 auto; }
+
+  .pageHead { margin-bottom: 48px; }
+  .pageHead .kicker {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .pageHead h1 { font-size: 36px; font-weight: 700; margin-top: 8px; letter-spacing: -0.02em; }
+  .pageHead p { color: var(--muted); margin-top: 10px; font-size: 16px; max-width: 720px; }
+
+  /* ===================== HERO (simulated) ===================== */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 72px 0 96px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+  .hero .left .kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+    padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px;
+    background: rgba(255,255,255,0.02);
+  }
+  .hero .left .kicker .pip {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #22c55e; box-shadow: 0 0 10px #22c55e;
+  }
+  .hero .left h1 {
+    font-size: 64px; font-weight: 700; line-height: 1.04;
+    letter-spacing: -0.035em; margin-top: 24px;
+  }
+  .hero .left h1 em {
+    font-style: normal;
+    background: linear-gradient(90deg, #22d3ee, #6ee7b7);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero .left p {
+    color: rgba(255,255,255,0.65);
+    margin-top: 22px; font-size: 18px; max-width: 480px; line-height: 1.55;
+  }
+  .hero .left .ctas { margin-top: 32px; display: flex; gap: 12px; }
+  .hero .left .ctas a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 22px; border-radius: 999px;
+    font-size: 14px; font-weight: 600; text-decoration: none;
+  }
+  .hero .left .ctas .primary {
+    background: linear-gradient(135deg, #22d3ee, #6ee7b7);
+    color: #06121a;
+  }
+  .hero .left .ctas .ghost {
+    color: var(--ink); border: 1px solid var(--line);
+  }
+  .hero .left .meta {
+    margin-top: 28px;
+    display: flex; gap: 24px; color: var(--muted); font-size: 13px;
+  }
+  .hero .left .meta b { color: var(--ink); font-weight: 600; }
+
+  /* ===================== THE 1:1 GROWTH FLOW ===================== */
+  .flow {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    max-width: 560px;
+    margin-left: auto;
+    border-radius: 28px;
+    background:
+      radial-gradient(60% 50% at 50% 50%, rgba(34,211,238,0.10), rgba(34,211,238,0) 60%),
+      linear-gradient(180deg, #0d1018 0%, #07080c 100%);
+    border: 1px solid var(--line);
+    box-shadow: 0 40px 100px -40px rgba(0,0,0,0.7),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+    overflow: hidden;
+  }
+  .flow .label-top, .flow .label-bot {
+    position: absolute; left: 0; right: 0; text-align: center;
+    color: rgba(255,255,255,0.5); font-size: 11px;
+    letter-spacing: 0.32em; text-transform: uppercase;
+  }
+  .flow .label-top { top: 22px; }
+  .flow .label-bot { bottom: 22px; color: rgba(255,255,255,0.7); letter-spacing: 0.18em; }
+  .flow .label-bot b { color: #fff; font-weight: 700; }
+
+  .flow svg { width: 100%; height: 100%; display: block; }
+  .flow text {
+    font-family: 'Inter', sans-serif;
+    pointer-events: none;
+  }
+  .flow .nodeLabel { fill: #fff; font-weight: 600; font-size: 13px; }
+  .flow .nodeSub   { fill: rgba(255,255,255,0.55); font-weight: 400; font-size: 10px; letter-spacing: 0.04em; }
+  .flow .nodeMain  { fill: #fff; font-weight: 700; font-size: 18px; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 32px 0 64px; }
+    .hero .left h1 { font-size: 44px; }
+    .flow { max-width: 100%; margin: 0 auto; }
+  }
+
+  /* ===================== STANDALONE PREVIEW ===================== */
+  .standalone {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;
+  }
+  .standalone .col h3 {
+    font-size: 14px; font-weight: 600; color: var(--muted);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .standalone .small { max-width: 360px; }
+  .standalone .tiny  { max-width: 240px; }
+  @media (max-width: 900px) { .standalone { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="pageHead">
+    <div class="kicker">ashmo.io · hero right-side · 1:1</div>
+    <h1>Growth Flow — adapted to a square hero asset</h1>
+    <p>The sankey-circle diagram, redesigned to fit beside your headline. Square format means it works as a hero side image AND as a social card.</p>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="left">
+      <div class="kicker"><span class="pip"></span> Brand &amp; Growth Operator</div>
+      <h1>I help business owners <em>grow.</em></h1>
+      <p>Brand, marketing, and systems — run by one operator who has actually done it. No agency. No theory. Real customers, real revenue.</p>
+      <div class="ctas">
+        <a class="primary" href="#">Start the conversation →</a>
+        <a class="ghost" href="#">See the work</a>
+      </div>
+      <div class="meta">
+        <span>10+ years operating</span>
+        <span><b>40+</b> brands grown</span>
+        <span>Dubai / India</span>
+      </div>
+    </div>
+
+    <!-- 1:1 GROWTH FLOW -->
+    <div class="flow">
+      <div class="label-top">The Growth Flow</div>
+
+      <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="hf-s1" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.75"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.75"/></linearGradient>
+          <linearGradient id="hf-s2" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.55"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.55"/></linearGradient>
+          <linearGradient id="hf-s4" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.85"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0.95"/></linearGradient>
+          <linearGradient id="hf-s5" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.6"/><stop offset="100%" stop-color="#f97316" stop-opacity="0.8"/></linearGradient>
+          <linearGradient id="hf-mid" cx="0.5" cy="0.5"><stop offset="0%" stop-color="#06b6d4" stop-opacity="0.9"/><stop offset="100%" stop-color="#10b981" stop-opacity="0.9"/></linearGradient>
+          <radialGradient id="hf-glow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Flows LEFT → CENTER (drawn first) -->
+        <path d="M115,140 C220,140 230,235 220,235 L220,265 C230,265 220,180 115,180 Z" fill="url(#hf-s1)"/>
+        <path d="M115,280 C220,280 230,285 220,285 L220,315 C230,315 220,320 115,320 Z" fill="url(#hf-s2)"/>
+        <path d="M115,420 C220,420 230,365 220,365 L220,335 C230,335 220,460 115,460 Z" fill="url(#hf-s1)" opacity="0.65"/>
+
+        <!-- Flows CENTER → RIGHT -->
+        <path d="M380,235 C485,235 470,140 485,140 L485,180 C470,180 485,265 380,265 Z" fill="url(#hf-s4)"/>
+        <path d="M380,285 C485,285 470,280 485,280 L485,320 C470,320 485,315 380,315 Z" fill="url(#hf-s5)"/>
+        <path d="M380,365 C485,365 470,420 485,420 L485,460 C470,460 485,335 380,335 Z" fill="url(#hf-s4)" opacity="0.65"/>
+
+        <!-- Center halo -->
+        <circle cx="300" cy="300" r="160" fill="url(#hf-glow)"/>
+
+        <!-- LEFT input circles -->
+        <circle cx="80"  cy="160" r="36" fill="#1e3a8a" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <circle cx="80"  cy="300" r="36" fill="#1e40af" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <circle cx="80"  cy="440" r="36" fill="#1d4ed8" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+        <!-- CENTER circle -->
+        <circle cx="300" cy="300" r="80" fill="#0e7490" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+        <circle cx="300" cy="300" r="80" fill="url(#hf-mid)" opacity="0.5"/>
+
+        <!-- RIGHT output circles -->
+        <circle cx="520" cy="160" r="36" fill="#15803d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <circle cx="520" cy="300" r="36" fill="#b45309" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        <circle cx="520" cy="440" r="36" fill="#c2410c" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+        <!-- Labels: left -->
+        <text x="80"  y="164" class="nodeLabel" text-anchor="middle">Brand</text>
+        <text x="80"  y="304" class="nodeLabel" text-anchor="middle" style="font-size:11px">Marketing</text>
+        <text x="80"  y="444" class="nodeLabel" text-anchor="middle">Ops</text>
+
+        <text x="80"  y="220" class="nodeSub"   text-anchor="middle">how you look</text>
+        <text x="80"  y="360" class="nodeSub"   text-anchor="middle">how you sell</text>
+        <text x="80"  y="500" class="nodeSub"   text-anchor="middle">how it runs</text>
+
+        <!-- Labels: center -->
+        <text x="300" y="294" class="nodeMain"  text-anchor="middle">Ashmo</text>
+        <text x="300" y="314" class="nodeSub"   text-anchor="middle">operator · 10 yrs</text>
+
+        <!-- Labels: right -->
+        <text x="520" y="164" class="nodeLabel" text-anchor="middle">Sales</text>
+        <text x="520" y="304" class="nodeLabel" text-anchor="middle">Revenue</text>
+        <text x="520" y="444" class="nodeLabel" text-anchor="middle">Trust</text>
+
+        <text x="520" y="220" class="nodeSub"   text-anchor="middle">more customers</text>
+        <text x="520" y="360" class="nodeSub"   text-anchor="middle">growing monthly</text>
+        <text x="520" y="500" class="nodeSub"   text-anchor="middle">people choose you</text>
+      </svg>
+
+      <div class="label-bot">You bring the business · <b>I bring the customers</b></div>
+    </div>
+  </section>
+
+  <!-- ===================== STANDALONE SIZES ===================== -->
+  <section>
+    <div class="pageHead">
+      <div class="kicker">Stand-alone sizes</div>
+      <h1>Same asset at smaller scales</h1>
+      <p>So you can see how it holds up as a social card or thumbnail. Same 1:1 ratio, scales cleanly.</p>
+    </div>
+
+    <div class="standalone">
+      <div class="col">
+        <h3>Medium · 360px</h3>
+        <div class="flow small">
+          <div class="label-top">The Growth Flow</div>
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
+            <use href="#"/>
+            <!-- redraw -->
+            <defs>
+              <linearGradient id="m-s1" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.75"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.75"/></linearGradient>
+              <linearGradient id="m-s2" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.55"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.55"/></linearGradient>
+              <linearGradient id="m-s4" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.85"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0.95"/></linearGradient>
+              <linearGradient id="m-s5" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.6"/><stop offset="100%" stop-color="#f97316" stop-opacity="0.8"/></linearGradient>
+              <linearGradient id="m-mid" cx="0.5" cy="0.5"><stop offset="0%" stop-color="#06b6d4" stop-opacity="0.9"/><stop offset="100%" stop-color="#10b981" stop-opacity="0.9"/></linearGradient>
+              <radialGradient id="m-glow" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <path d="M115,140 C220,140 230,235 220,235 L220,265 C230,265 220,180 115,180 Z" fill="url(#m-s1)"/>
+            <path d="M115,280 C220,280 230,285 220,285 L220,315 C230,315 220,320 115,320 Z" fill="url(#m-s2)"/>
+            <path d="M115,420 C220,420 230,365 220,365 L220,335 C230,335 220,460 115,460 Z" fill="url(#m-s1)" opacity="0.65"/>
+            <path d="M380,235 C485,235 470,140 485,140 L485,180 C470,180 485,265 380,265 Z" fill="url(#m-s4)"/>
+            <path d="M380,285 C485,285 470,280 485,280 L485,320 C470,320 485,315 380,315 Z" fill="url(#m-s5)"/>
+            <path d="M380,365 C485,365 470,420 485,420 L485,460 C470,460 485,335 380,335 Z" fill="url(#m-s4)" opacity="0.65"/>
+            <circle cx="300" cy="300" r="160" fill="url(#m-glow)"/>
+            <circle cx="80"  cy="160" r="36" fill="#1e3a8a" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="80"  cy="300" r="36" fill="#1e40af" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="80"  cy="440" r="36" fill="#1d4ed8" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="300" cy="300" r="80" fill="#0e7490" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+            <circle cx="300" cy="300" r="80" fill="url(#m-mid)" opacity="0.5"/>
+            <circle cx="520" cy="160" r="36" fill="#15803d" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="520" cy="300" r="36" fill="#b45309" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <circle cx="520" cy="440" r="36" fill="#c2410c" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="80"  y="164" class="nodeLabel" text-anchor="middle">Brand</text>
+            <text x="80"  y="304" class="nodeLabel" text-anchor="middle" style="font-size:11px">Marketing</text>
+            <text x="80"  y="444" class="nodeLabel" text-anchor="middle">Ops</text>
+            <text x="300" y="294" class="nodeMain"  text-anchor="middle">Ashmo</text>
+            <text x="300" y="314" class="nodeSub"   text-anchor="middle">operator · 10 yrs</text>
+            <text x="520" y="164" class="nodeLabel" text-anchor="middle">Sales</text>
+            <text x="520" y="304" class="nodeLabel" text-anchor="middle">Revenue</text>
+            <text x="520" y="444" class="nodeLabel" text-anchor="middle">Trust</text>
+          </svg>
+          <div class="label-bot">You bring the business · <b>I bring the customers</b></div>
+        </div>
+      </div>
+
+      <div class="col">
+        <h3>Small · 240px (thumb/social)</h3>
+        <div class="flow tiny">
+          <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="t-s1" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.75"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.75"/></linearGradient>
+              <linearGradient id="t-s2" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.55"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.55"/></linearGradient>
+              <linearGradient id="t-s4" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.85"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0.95"/></linearGradient>
+              <linearGradient id="t-s5" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.6"/><stop offset="100%" stop-color="#f97316" stop-opacity="0.8"/></linearGradient>
+              <linearGradient id="t-mid" cx="0.5" cy="0.5"><stop offset="0%" stop-color="#06b6d4" stop-opacity="0.9"/><stop offset="100%" stop-color="#10b981" stop-opacity="0.9"/></linearGradient>
+              <radialGradient id="t-glow" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <path d="M115,140 C220,140 230,235 220,235 L220,265 C230,265 220,180 115,180 Z" fill="url(#t-s1)"/>
+            <path d="M115,280 C220,280 230,285 220,285 L220,315 C230,315 220,320 115,320 Z" fill="url(#t-s2)"/>
+            <path d="M115,420 C220,420 230,365 220,365 L220,335 C230,335 220,460 115,460 Z" fill="url(#t-s1)" opacity="0.65"/>
+            <path d="M380,235 C485,235 470,140 485,140 L485,180 C470,180 485,265 380,265 Z" fill="url(#t-s4)"/>
+            <path d="M380,285 C485,285 470,280 485,280 L485,320 C470,320 485,315 380,315 Z" fill="url(#t-s5)"/>
+            <path d="M380,365 C485,365 470,420 485,420 L485,460 C470,460 485,335 380,335 Z" fill="url(#t-s4)" opacity="0.65"/>
+            <circle cx="300" cy="300" r="160" fill="url(#t-glow)"/>
+            <circle cx="80"  cy="160" r="36" fill="#1e3a8a"/>
+            <circle cx="80"  cy="300" r="36" fill="#1e40af"/>
+            <circle cx="80"  cy="440" r="36" fill="#1d4ed8"/>
+            <circle cx="300" cy="300" r="80" fill="#0e7490"/>
+            <circle cx="300" cy="300" r="80" fill="url(#t-mid)" opacity="0.5"/>
+            <circle cx="520" cy="160" r="36" fill="#15803d"/>
+            <circle cx="520" cy="300" r="36" fill="#b45309"/>
+            <circle cx="520" cy="440" r="36" fill="#c2410c"/>
+            <text x="300" y="294" class="nodeMain"  text-anchor="middle">Ashmo</text>
+            <text x="300" y="314" class="nodeSub"   text-anchor="middle">operator</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

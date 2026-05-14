@@ -215,8 +215,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Strategy brief',
     name: 'Restaurant brand positioning brief',
     summary:
-      'A brand canvas for positioning, audience tension, proof points, message pillars, store cues, and delivery-fit checks before campaigns go live.',
-    format: 'XLSX',
+      'A boardroom-grade brand clarity workbook. Brand canvas, personas, competitor matrix, proof points, weighted brand-clarity score (0–100), section health flags, audit checks, scenarios, and action plan. Built so a third party can read your positioning and stress-test it.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/restaurant-brand-positioning-brief.xlsx',
     audience:
       'Founder-led cafes, new concepts, and operators repositioning a store that feels commercially active but strategically vague.',
@@ -227,8 +227,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Annual plan',
     name: 'Annual restaurant marketing plan',
     summary:
-      'A working plan for monthly campaigns, commercial objectives, target segments, hero offers, KPI ownership, and seasonal marketing moments.',
-    format: 'XLSX',
+      'A strategic 12-month operating plan: initiatives by month, channel, owner, objective, KPI, and readiness %. Rolls up to channel mix, objective mix, monthly load, and a single plan-readiness score. Pairs cleanly with the Annual Marketing Budget Planner for spend tracking.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/annual-restaurant-marketing-plan.xlsx',
     audience:
       'Operators who need a proper 12-month marketing rhythm instead of a reactive list of ad hoc promotions.',
@@ -239,8 +239,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Tracker',
     name: 'Restaurant promotion tracker',
     summary:
-      'A promotion log that tracks offer mechanics, spend, discount leakage, redemptions, attributed revenue, and net contribution by campaign.',
-    format: 'XLSX',
+      'Per-promotion governance with matched-period baseline, incremental revenue, cannibalisation %, gross profit, net contribution after promo cost, and contribution ROI. Auto-flags WIN, HOLD, and KILL candidates so margin stops being subsidised by existing demand.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/restaurant-promotion-tracker.xlsx',
     audience:
       'Restaurant teams running recurring offers, bundle pushes, daypart campaigns, or seasonal activations that need a commercial feedback loop.',
@@ -251,8 +251,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Content system',
     name: 'Cafe content calendar',
     summary:
-      'A content production and publishing calendar for reels, menu storytelling, founder content, offers, UGC, and community moments.',
-    format: 'XLSX',
+      'A content operations system with pillars, formats, platforms, owners, approvers, production status, and post-publish performance. Rolls up to per-pillar reach, per-platform engagement, top performers, and pipeline health — so the calendar stops drying out at week 3.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/cafe-content-calendar.xlsx',
     audience:
       'Cafe and restaurant teams who want content to feel like a repeatable system rather than last-minute posting pressure.',
@@ -263,8 +263,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Budgeting',
     name: 'Annual marketing budget planner',
     summary:
-      'A month-by-month budget model for brand, local marketing, paid media, content, CRM, launch support, and testing with plan-vs-actual control.',
-    format: 'XLSX',
+      'A finance-grade budget control model: planned vs actual by month and channel, variance, utilisation, blended ROAS, and contribution-margin ROI. Surfaces overspend before it gets out of hand and gives a CFO the channel-mix and monthly-burn views they will ask for.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/annual-marketing-budget-planner.xlsx',
     audience:
       'Founders, marketing managers, and multi-unit teams who need budget discipline before channel spend starts drifting.',
@@ -275,8 +275,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Measurement',
     name: 'Marketing ROI calculator',
     summary:
-      'A campaign calculator for spend, clicks, conversions, new customers, influenced revenue, gross profit, CAC, payback, and MROI.',
-    format: 'XLSX',
+      'Campaign-level ROI: per-row CAC, ROAS, payback, contribution-margin ROI, plus an LTV/CAC table, an automatic kill-list of unprofitable campaigns, and a 2-D sensitivity heatmap on AOV × gross margin. The model a marketing lead uses to defend spend to finance.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/marketing-roi-calculator.xlsx',
     audience:
       'Operators who want to review campaign economics like a commercial lead, not just celebrate impressions and traffic.',
@@ -287,8 +287,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Launch',
     name: 'Store launch marketing checklist',
     summary:
-      'A pre-launch, opening-week, and first-30-day tracker covering buzz, local outreach, Google readiness, offers, CRM, and post-opening follow-through.',
-    format: 'XLSX',
+      'A launch control tower across 5 phases (pre-launch 90-30 / 30-7, launch week, post-launch wk 1-4, month 2-3) and 13 workstreams (permits, landlord, fit-out, hiring, brand, local marketing, digital, PR, CRM, aggregator, ops, day-1 trade plan). Risk register + GO / NO-GO score.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/store-launch-marketing-checklist.xlsx',
     audience:
       'Teams opening a new outlet that need launch control across digital, local, and in-store activation before the first month slips away.',
@@ -299,8 +299,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Local marketing',
     name: 'Local store marketing planner',
     summary:
-      'A trade-area and activity planner for geo-targeted campaigns, nearby partners, office and school plays, local media, and community events.',
-    format: 'XLSX',
+      'Maps trade-area clusters (offices, residential, schools, malls, hospitals, transport, hotels) and assigns hyperlocal tactics. Per-tactic CAC and contribution, per-cluster rollup, and a single management view of where local marketing is paying back vs leaking budget.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/local-store-marketing-planner.xlsx',
     audience:
       'Single-outlet stores and branch marketers who need a sharper local demand plan than “boost a few posts and hope”.',
@@ -311,8 +311,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Menu & offers',
     name: 'Menu launch and offer planner',
     summary:
-      'A launch planner for hero items, bundles, merchandising, asset readiness, daypart intent, target margin, and rollout timing.',
-    format: 'XLSX',
+      'Per-item profitability with net price after promo, gross margin, contribution net of cannibalisation, breakeven units, weeks-to-breakeven. Auto-classifies items using the menu-engineering matrix (STAR / WORKHORSE / PUZZLE / DOG) and recommends an action per item.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/menu-launch-and-offer-planner.xlsx',
     audience:
       'Operators and marketers launching new items or seasonal offers who need margin, storytelling, and rollout assets aligned.',
@@ -323,8 +323,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Delivery',
     name: 'Delivery & aggregator audit',
     summary:
-      'A weighted platform review for menu selection, pricing, photos, descriptions, offers, prep times, packaging, and repeat-order mechanics.',
-    format: 'XLSX',
+      'Per-platform per-store audit across 8 dimensions (menu visibility, photography, rating, delivery time, discount, commission, cancel, AOV). Single 0-100 score, monthly economics net of commission and discount, and per-listing WIN / HOLD / FIX / CRITICAL verdict.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/delivery-aggregator-audit.xlsx',
     audience:
       'Delivery-first brands and multi-channel stores that need to improve aggregator quality without wrecking channel contribution.',
@@ -335,8 +335,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'CRM & loyalty',
     name: 'CRM & loyalty campaign planner',
     summary:
-      'A lifecycle planning workbook for email, SMS, WhatsApp, push, win-back, birthday, launch, and daypart recovery journeys.',
-    format: 'XLSX',
+      'RFM-style segments (Champion, Loyal, At-risk, Lapsed, Hibernating, New) combined with a per-campaign returns calculator. Surfaces value concentration, inactivity risk, programme ROI, and which lifecycle moments actually compound — so you stop subsidising the inactive.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/crm-loyalty-campaign-planner.xlsx',
     audience:
       'Restaurant teams trying to increase repeat visits with better segmentation, timing, and campaign accountability.',
@@ -347,8 +347,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Local SEO',
     name: 'Google Business Profile checklist',
     summary:
-      'A store-level checklist for profile setup, hours, service attributes, ordering links, menu, photos, posts, reviews, and insight monitoring.',
-    format: 'XLSX',
+      '30 weighted audit items across 10 categories (basics, hours, categories, photography, posts, reviews, Q&A, menu, local-pack signals, tracking). Category scores + overall GBP audit score + action callouts so a multi-location brand can drive local without guessing.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/google-business-profile-checklist.xlsx',
     audience:
       'Independent operators and multi-store teams who need store discovery, map visibility, and profile governance handled properly.',
@@ -359,8 +359,8 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Franchise rollout',
     name: 'Franchise campaign rollout tracker',
     summary:
-      'A rollout tracker for asset distribution, local adaptation approval, go-live readiness, compliance, and post-launch branch follow-up.',
-    format: 'XLSX',
+      'Per-store deployment audit across 8 checkpoints (assets received, brief signed, launch date set, signage, PR, aggregator, CRM, local promo). Per-store readiness score, per-region rollup, per-checkpoint compliance, and a single GO / NO-GO programme score.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/franchise-campaign-rollout-tracker.xlsx',
     audience:
       'Franchise-led and multi-unit brands trying to keep central campaign control without losing local execution quality.',
@@ -371,26 +371,39 @@ export const growthTemplates: GrowthTemplate[] = [
     category: 'Dashboard',
     name: 'Restaurant KPI dashboard template',
     summary:
-      'A weekly and monthly scorecard for net sales, footfall, delivery mix, repeat rate, ad efficiency, CRM revenue, and channel-level momentum.',
-    format: 'XLSX',
+      '13-week weekly performance pack. 12 KPIs (sales, transactions, AOV, footfall conv, delivery mix, prime cost, gross margin, marketing %, repeat rate, complaints) vs target, with a weighted operating health score (0-100) — the single number a CEO or board reviews.',
+    format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/restaurant-kpi-dashboard-template.xlsx',
     audience:
       'Operators and growth leads who need one management view of demand, retention, and channel performance across the trading week.',
     relatedHref: `${growthBasePath}/dashboards-kpis/`,
   },
+  {
+    slug: 'weekly-flash-report-template',
+    category: 'CEO weekly pack',
+    name: 'Weekly flash report',
+    summary:
+      'A one-page CEO / investor weekly pack. This week vs target, sales WoW, top + bottom store movers, blended marketing ROAS, four CEO call-outs, plus a structured slot for risks and opportunities so the weekly review is disciplined, not anecdotal.',
+    format: 'Excel · v3 · investor-ready',
+    href: '/downloads/restaurant-growth/weekly-flash-report-template.xlsx',
+    audience:
+      'Founders, CEOs, CFOs, operators, and investors running a weekly performance cadence — single-store or multi-unit.',
+    relatedHref: `${growthBasePath}/dashboards-kpis/`,
+  },
 ];
 
 const featuredTemplateSlugs = [
+  'restaurant-kpi-dashboard-template',
+  'weekly-flash-report-template',
+  'marketing-roi-calculator',
+  'annual-marketing-budget-planner',
   'annual-restaurant-marketing-plan',
   'restaurant-promotion-tracker',
   'cafe-content-calendar',
-  'annual-marketing-budget-planner',
-  'marketing-roi-calculator',
   'store-launch-marketing-checklist',
   'delivery-aggregator-audit',
   'crm-loyalty-campaign-planner',
   'google-business-profile-checklist',
-  'restaurant-kpi-dashboard-template',
 ];
 
 export const growthResources: GrowthResource[] = featuredTemplateSlugs

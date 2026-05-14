@@ -11,6 +11,8 @@
     "build:no-seo": "astro build",
     "lint": "astro check",
     "seo": "node scripts/seo-check.mjs",
+    "build:premium-workbooks": "python3 tools/build-premium-workbooks.py",
+    "qa:premium-workbooks": "python3 tools/build-premium-workbooks.py --qa-only",
     "preview": "astro preview",
     "astro": "astro"
   },

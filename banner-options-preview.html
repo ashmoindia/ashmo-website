@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ashmo — Banner Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f5f8;
+    --card: #ffffff;
+    --ink: #0b0d12;
+    --muted: #6b7280;
+    --line: #e7e9ee;
+    --brand: #3a3aff;
+    --brand-soft: #5b5bff;
+    --glow: 99, 102, 241;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    padding: 64px 24px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+  .header { margin-bottom: 56px; }
+  .header .kicker {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .header h1 {
+    font-size: 38px; font-weight: 700; margin-top: 8px; letter-spacing: -0.02em;
+  }
+  .header p { color: var(--muted); margin-top: 10px; font-size: 16px; }
+
+  .option { margin-bottom: 72px; }
+  .option .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px;
+  }
+  .option .tag::before {
+    content: ""; width: 28px; height: 1px; background: var(--muted); opacity: 0.4;
+  }
+  .option h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .option .desc { color: var(--muted); margin-top: 6px; margin-bottom: 24px; font-size: 14px; max-width: 640px; }
+
+  /* ---------- Shared banner shell ---------- */
+  .banner {
+    position: relative; overflow: hidden;
+    background: #fbfbfd;
+    border-radius: 28px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.8) inset,
+      0 1px 2px rgba(15, 18, 30, 0.04),
+      0 24px 60px -24px rgba(15, 18, 30, 0.18);
+    border: 1px solid var(--line);
+  }
+
+  /* ---------- OPTION 1 : BIG NUMBER BENTO ---------- */
+  .b1 {
+    padding: 56px 56px 48px;
+    min-height: 420px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .b1 .glow {
+    position: absolute; top: -120px; right: -120px;
+    width: 460px; height: 460px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.35), rgba(99,102,241,0) 65%);
+    filter: blur(8px); pointer-events: none;
+  }
+  .b1 .label {
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .b1 .bignum {
+    font-size: 132px; line-height: 1; font-weight: 800;
+    letter-spacing: -0.04em; margin-top: 14px;
+    background: linear-gradient(180deg, #1a1d2b 0%, #3a3aff 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .b1 .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff; border: 1px solid var(--line);
+    padding: 8px 14px; border-radius: 999px;
+    font-size: 13px; color: var(--ink); font-weight: 500;
+    margin-top: 18px;
+    box-shadow: 0 2px 6px rgba(15,18,30,0.04);
+  }
+  .b1 .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+  .b1 .promise {
+    margin-top: 32px;
+    font-size: 22px; line-height: 1.35; font-weight: 600; letter-spacing: -0.01em;
+    max-width: 460px;
+  }
+  .b1 .sig {
+    margin-top: 28px; display: flex; align-items: center; gap: 12px;
+    color: var(--muted); font-size: 14px;
+  }
+  .b1 .sig .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #3a3aff, #9ca3ff);
+    color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px;
+  }
+  .b1 .right {
+    position: relative; z-index: 1;
+    background: #fff; border-radius: 22px; padding: 28px;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px -12px rgba(15,18,30,0.1);
+  }
+  .b1 .right .top {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 18px;
+  }
+  .b1 .right .top span { font-size: 12px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+  .b1 .right .top .live {
+    font-size: 11px; padding: 4px 10px; border-radius: 999px;
+    background: #ecfdf5; color: #047857; font-weight: 600; letter-spacing: 0.1em;
+  }
+  .chart { width: 100%; height: 140px; display: block; }
+  .b1 .right .footer {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px;
+  }
+  .b1 .right .footer .stat {
+    background: #f6f7fb; border-radius: 12px; padding: 14px;
+  }
+  .b1 .right .footer .stat .k { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .b1 .right .footer .stat .v { font-size: 22px; font-weight: 700; margin-top: 4px; letter-spacing: -0.01em; }
+
+  /* ---------- OPTION 2 : WHY / HOW / WHAT SIGN ---------- */
+  .b2 { padding: 64px 56px; min-height: 480px; position: relative; }
+  .b2 .orb {
+    position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+    width: 360px; height: 360px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 40% 40%, rgba(255,255,255,0.9), rgba(255,255,255,0) 55%),
+      radial-gradient(circle, rgba(59,130,246,0.55), rgba(59,130,246,0) 65%);
+    box-shadow: 0 0 80px rgba(59,130,246,0.25);
+  }
+  .b2 .orb::before, .b2 .orb::after {
+    content: ""; position: absolute; inset: 0; border-radius: 50%;
+    border: 1px solid rgba(99,102,241,0.18);
+  }
+  .b2 .orb::before { inset: 60px; }
+  .b2 .orb::after { inset: 120px; background: radial-gradient(circle, rgba(99,102,241,0.5), rgba(99,102,241,0) 70%); }
+  .b2 h2.lead {
+    font-size: 56px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em;
+    max-width: 460px;
+  }
+  .b2 .sub { color: var(--muted); margin-top: 14px; font-size: 16px; max-width: 380px; }
+  .b2 .legend {
+    position: absolute; right: 56px; top: 80px; bottom: 80px;
+    display: flex; flex-direction: column; justify-content: space-around;
+    width: 320px;
+  }
+  .b2 .leg {
+    position: relative; padding-left: 24px;
+  }
+  .b2 .leg::before {
+    content: ""; position: absolute; left: -120px; top: 14px;
+    width: 140px; height: 1px; background: linear-gradient(90deg, rgba(99,102,241,0), rgba(99,102,241,0.6));
+  }
+  .b2 .leg .k { font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: var(--ink); }
+  .b2 .leg .v { font-size: 15px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  /* ---------- OPTION 3 : THREE-CARD PROMISE ---------- */
+  .b3 { padding: 56px; }
+  .b3 .head { text-align: center; margin-bottom: 36px; }
+  .b3 .head h2 {
+    font-size: 42px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1;
+  }
+  .b3 .head p { color: var(--muted); margin-top: 10px; font-size: 16px; }
+  .b3 .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .b3 .card {
+    position: relative;
+    background: #fff; border: 1px solid var(--line); border-radius: 22px;
+    padding: 28px 26px 24px; min-height: 220px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -16px rgba(15,18,30,0.18);
+  }
+  .b3 .card .blob {
+    position: absolute; right: -40px; bottom: -40px; width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.18), rgba(99,102,241,0) 70%);
+  }
+  .b3 .card .ico {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: #eef0ff; display: grid; place-items: center;
+    font-size: 18px;
+  }
+  .b3 .card .big {
+    font-size: 44px; font-weight: 800; letter-spacing: -0.03em; margin-top: 18px;
+    background: linear-gradient(180deg, #1a1d2b 0%, #3a3aff 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .b3 .card .promise {
+    margin-top: 10px; font-size: 16px; font-weight: 600; line-height: 1.35;
+  }
+  .b3 .card .note { margin-top: 6px; font-size: 13px; color: var(--muted); }
+  .b3 .sign {
+    margin-top: 28px; text-align: center; font-size: 14px; color: var(--muted);
+  }
+  .b3 .sign b { color: var(--ink); font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .b1 { grid-template-columns: 1fr; padding: 36px; }
+    .b1 .bignum { font-size: 92px; }
+    .b2 .orb { display: none; }
+    .b2 .legend { position: static; width: auto; margin-top: 32px; gap: 24px; }
+    .b2 .leg::before { display: none; }
+    .b2 h2.lead { font-size: 38px; }
+    .b3 .grid { grid-template-columns: 1fr; }
+    .b3 .head h2 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="kicker">ashmo.io · banner options</div>
+    <h1>Three plain-language banners</h1>
+    <p>Inspired by the bento + golden-circle references. Light, calm, one idea per glance — built for business owners, not developers.</p>
+  </div>
+
+  <!-- ============ OPTION 1 ============ -->
+  <section class="option">
+    <div class="tag">Option 1 · Big Number Bento</div>
+    <h2>The proof number does the talking</h2>
+    <p class="desc">One huge stat, one sentence in plain English. Like a finance card — instantly readable.</p>
+
+    <div class="banner b1">
+      <div class="glow"></div>
+
+      <div>
+        <div class="label">Average client result</div>
+        <div class="bignum">+32%</div>
+        <div class="pill"><span class="dot"></span> more customers · in 90 days</div>
+
+        <div class="promise">
+          I help business owners grow — without the guesswork, agencies, or jargon.
+        </div>
+
+        <div class="sig">
+          <div class="avatar">A</div>
+          <div><b style="color:var(--ink)">Ashmo</b> · Brand &amp; Growth Operator · Dubai</div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="top">
+          <span>Growth signal</span>
+          <div class="live">● Live</div>
+        </div>
+
+        <svg class="chart" viewBox="0 0 320 140" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#5b5bff" stop-opacity="0.45"/>
+              <stop offset="100%" stop-color="#5b5bff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,110 L40,100 L80,90 L120,80 L160,70 L200,52 L240,46 L280,28 L320,18 L320,140 L0,140 Z" fill="url(#g1)"/>
+          <path d="M0,110 L40,100 L80,90 L120,80 L160,70 L200,52 L240,46 L280,28 L320,18" fill="none" stroke="#3a3aff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="280" cy="28" r="5" fill="#3a3aff"/>
+          <circle cx="280" cy="28" r="10" fill="#3a3aff" fill-opacity="0.2"/>
+        </svg>
+
+        <div class="footer">
+          <div class="stat">
+            <div class="k">Brands grown</div>
+            <div class="v">40+</div>
+          </div>
+          <div class="stat">
+            <div class="k">Years operating</div>
+            <div class="v">10</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 2 ============ -->
+  <section class="option">
+    <div class="tag">Option 2 · Why / How / What Sign</div>
+    <h2>A signboard, not a code editor</h2>
+    <p class="desc">Soft glowing orb on the right, big headline on the left, three short answers. Reads like a roadside sign.</p>
+
+    <div class="banner b2">
+      <div class="orb"></div>
+
+      <h2 class="lead">How I help your business grow.</h2>
+      <p class="sub">Three answers. No jargon. No long pitch.</p>
+
+      <div class="legend">
+        <div class="leg">
+          <div class="k">WHY</div>
+          <div class="v">You want more customers walking in — every single month.</div>
+        </div>
+        <div class="leg">
+          <div class="k">HOW</div>
+          <div class="v">A stronger brand on the outside, smarter marketing on the inside.</div>
+        </div>
+        <div class="leg">
+          <div class="k">WHAT</div>
+          <div class="v">Done by an operator who runs real businesses — not an agency.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 3 ============ -->
+  <section class="option">
+    <div class="tag">Option 3 · Three-Card Promise</div>
+    <h2>Three small cards. Three clear promises.</h2>
+    <p class="desc">Bento layout. Each card carries one idea and one number — scannable in under 5 seconds.</p>
+
+    <div class="banner b3">
+      <div class="head">
+        <h2>I help business owners grow.</h2>
+        <p>No agencies. No theory. Just an operator who has done it.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="blob"></div>
+          <div class="ico">📈</div>
+          <div class="big">+32%</div>
+          <div class="promise">More customers</div>
+          <div class="note">Within 90 days of working together.</div>
+        </div>
+
+        <div class="card">
+          <div class="blob"></div>
+          <div class="ico">🏷️</div>
+          <div class="big">Trust = Sales</div>
+          <div class="promise">A stronger brand</div>
+          <div class="note">Stop blending in. Start being chosen.</div>
+        </div>
+
+        <div class="card">
+          <div class="blob"></div>
+          <div class="ico">🤝</div>
+          <div class="big">10 yrs</div>
+          <div class="promise">A real operator</div>
+          <div class="note">Running real businesses — not just decks.</div>
+        </div>
+      </div>
+
+      <div class="sign">— <b>Ashmo</b> · Brand &amp; Growth Operator · Dubai</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

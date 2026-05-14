@@ -28,3 +28,4 @@ design-preview*.html
 
 # Local Netlify folder
 .netlify
+tools/node_modules

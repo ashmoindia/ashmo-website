@@ -18,7 +18,7 @@ interface Props {
   as?: 'h2' | 'h3';
 }
 
-const { items, title = 'Frequently asked', as = 'h2' } = Astro.props;
+const { items, title = 'Frequently asked', as = 'h2' } = Astro.props as Props;
 const HeadingTag = as;
 
 const faqSchema = items.length > 0

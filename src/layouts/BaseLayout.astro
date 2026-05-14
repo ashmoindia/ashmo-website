@@ -63,7 +63,7 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
     }
   : null;
 
-const entityGraph = [personSchema, organizationSchema, websiteSchema, webpageSchema];
+const entityGraph: Record<string, unknown>[] = [personSchema, organizationSchema, websiteSchema, webpageSchema];
 if (breadcrumbSchema) entityGraph.push(breadcrumbSchema);
 ---
 

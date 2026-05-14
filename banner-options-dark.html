@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ashmo — Dark Banner Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #07080c;
+    --ink: #f5f6fa;
+    --muted: #8a8f9c;
+    --muted-2: #5b6171;
+    --line: #1c1f29;
+    --card: #0c0f17;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--page); color: var(--ink); }
+  body {
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 64px 24px;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+
+  .header { margin-bottom: 56px; }
+  .header .kicker {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .header h1 { font-size: 38px; font-weight: 700; margin-top: 8px; letter-spacing: -0.02em; }
+  .header p { color: var(--muted); margin-top: 10px; font-size: 16px; max-width: 720px; }
+
+  .option { margin-bottom: 72px; }
+  .option .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 14px;
+  }
+  .option .tag::before {
+    content: ""; width: 28px; height: 1px; background: var(--muted-2);
+  }
+  .option h2 { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+  .option .desc { color: var(--muted); margin-top: 6px; margin-bottom: 24px; font-size: 14px; max-width: 700px; }
+
+  .banner {
+    position: relative; overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,0.6);
+  }
+
+  /* ============ OPTION 1 : FLOWING RIBBONS ============ */
+  .b1 {
+    background: radial-gradient(120% 80% at 50% 50%, #0d1430 0%, #060814 70%);
+    height: 460px; display: flex; align-items: center; justify-content: center;
+  }
+  .b1 svg.ribbons { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .b1 .bar {
+    position: relative; z-index: 2; width: 100%;
+    background: linear-gradient(90deg,
+      rgba(91,123,255,0) 0%,
+      rgba(91,123,255,0.85) 18%,
+      rgba(126,99,255,0.85) 50%,
+      rgba(91,123,255,0.85) 82%,
+      rgba(91,123,255,0) 100%);
+    height: 76px; display: grid; place-items: center;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 0 60px rgba(91,123,255,0.35), inset 0 1px 0 rgba(255,255,255,0.18);
+  }
+  .b1 .bar h2 {
+    font-size: 30px; font-weight: 700; letter-spacing: -0.01em;
+    color: #fff; text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  }
+  .b1 .below {
+    position: absolute; left: 0; right: 0; bottom: 28px;
+    text-align: center; color: var(--muted); font-size: 14px; letter-spacing: 0.04em;
+  }
+  .b1 .below b { color: var(--ink); font-weight: 600; }
+  .b1 .above {
+    position: absolute; left: 0; right: 0; top: 32px;
+    text-align: center;
+    color: rgba(255,255,255,0.55); font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+  }
+
+  /* ============ OPTION 2 : SANKEY OF GROWTH ============ */
+  .b2 {
+    background: #15171c;
+    padding: 48px 56px 36px;
+  }
+  .b2 .top {
+    display: flex; align-items: end; justify-content: space-between; margin-bottom: 28px;
+  }
+  .b2 .top .lead {
+    font-size: 30px; font-weight: 600; letter-spacing: -0.02em; max-width: 520px; line-height: 1.2;
+  }
+  .b2 .top .lead em { font-style: normal; color: #6ee7b7; font-weight: 700; }
+  .b2 .top .meta {
+    color: var(--muted); font-size: 13px; text-align: right; letter-spacing: 0.06em;
+  }
+  .b2 .top .meta b { display:block; color: var(--ink); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .b2 .sankey-wrap { position: relative; height: 310px; }
+  .b2 svg.sankey { width: 100%; height: 100%; display: block; }
+  .b2 .label { fill: #fff; font-family: inherit; font-weight: 600; font-size: 13px; letter-spacing: 0.02em; }
+  .b2 .label-sub { fill: rgba(255,255,255,0.6); font-family: inherit; font-weight: 400; font-size: 11px; }
+  .b2 .ico { fill: rgba(255,255,255,0.85); }
+  .b2 .foot {
+    margin-top: 22px; display: flex; align-items: center; justify-content: space-between;
+    color: var(--muted); font-size: 13px;
+  }
+  .b2 .foot b { color: var(--ink); font-weight: 600; }
+
+  /* ============ OPTION 3 : CONVERGING LINES ============ */
+  .b3 {
+    background: #000;
+    height: 520px;
+    padding: 56px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+  }
+  .b3 svg.fan { position: absolute; left: -40px; top: 0; bottom: 0; width: 70%; height: 100%; }
+  .b3 .copy {
+    position: relative; z-index: 2;
+    grid-column: 2 / 3;
+    text-align: left;
+    color: #fff;
+    padding-left: 32px;
+  }
+  .b3 .copy h2 {
+    font-size: 56px; font-weight: 700; line-height: 1.04; letter-spacing: -0.03em;
+    max-width: 480px;
+  }
+  .b3 .copy h2 em { font-style: normal; color: #4ade80; }
+  .b3 .copy p {
+    margin-top: 18px; color: rgba(255,255,255,0.65);
+    max-width: 380px; font-size: 16px; line-height: 1.5;
+  }
+  .b3 .signature {
+    margin-top: 32px; display: inline-flex; align-items: center; gap: 10px;
+    color: rgba(255,255,255,0.55); font-size: 13px; letter-spacing: 0.04em;
+  }
+  .b3 .signature .pip { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 12px #4ade80; }
+  .b3 .signature .pip-2 { background: #ef4444; box-shadow: 0 0 12px #ef4444; }
+  .b3 .signature .pip-3 { background: #facc15; box-shadow: 0 0 12px #facc15; }
+  .b3 .signature b { color: #fff; font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .b1 { height: 320px; }
+    .b1 .bar h2 { font-size: 22px; }
+    .b2 .top { flex-direction: column; align-items: start; gap: 12px; }
+    .b3 { grid-template-columns: 1fr; height: auto; padding: 36px; }
+    .b3 svg.fan { display: none; }
+    .b3 .copy { padding-left: 0; grid-column: 1; }
+    .b3 .copy h2 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="kicker">ashmo.io · dark banner options</div>
+    <h1>Three dark, cinematic banners</h1>
+    <p>Inspired by the Samsung CXL ribbons, the sankey-flow diagram, and the converging-lines quote card. Dark, calm, one big idea — and language any business owner reads in one breath.</p>
+  </div>
+
+  <!-- ============ OPTION 1 : FLOWING RIBBONS ============ -->
+  <section class="option">
+    <div class="tag">Option 1 · Flowing Ribbons</div>
+    <h2>Chaos on the left → clarity on the right</h2>
+    <p class="desc">Vibrant ribbons fan in from the edges and converge into a glowing bar with one plain sentence. Cinematic Samsung-CXL feel.</p>
+
+    <div class="banner b1">
+      <svg class="ribbons" viewBox="0 0 1200 460" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="r1" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.0"/>
+            <stop offset="20%" stop-color="#3b82f6" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0"/>
+          </linearGradient>
+          <linearGradient id="r2" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stop-color="#fb923c" stop-opacity="0.0"/>
+            <stop offset="22%" stop-color="#fb923c" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#fb923c" stop-opacity="0.0"/>
+          </linearGradient>
+          <linearGradient id="r3" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.0"/>
+            <stop offset="25%" stop-color="#06b6d4" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.0"/>
+          </linearGradient>
+          <linearGradient id="r4" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.0"/>
+            <stop offset="28%" stop-color="#a78bfa" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- LEFT side -->
+        <path d="M0,60 C300,60 380,230 600,230 C820,230 900,60 1200,60" stroke="url(#r1)" stroke-width="44" fill="none" stroke-linecap="round"/>
+        <path d="M0,120 C320,120 380,230 600,230 C820,230 880,120 1200,120" stroke="url(#r2)" stroke-width="34" fill="none" stroke-linecap="round"/>
+        <path d="M0,180 C320,180 400,230 600,230 C800,230 880,180 1200,180" stroke="url(#r3)" stroke-width="28" fill="none" stroke-linecap="round"/>
+        <path d="M0,280 C320,280 400,230 600,230 C800,230 880,280 1200,280" stroke="url(#r4)" stroke-width="34" fill="none" stroke-linecap="round"/>
+        <path d="M0,340 C320,340 400,230 600,230 C800,230 880,340 1200,340" stroke="url(#r1)" stroke-width="22" fill="none" stroke-linecap="round"/>
+        <path d="M0,400 C320,400 400,230 600,230 C800,230 880,400 1200,400" stroke="url(#r2)" stroke-width="18" fill="none" stroke-linecap="round"/>
+      </svg>
+
+      <div class="above">Brand · Marketing · Systems · Ops</div>
+
+      <div class="bar">
+        <h2>I help your business grow.</h2>
+      </div>
+
+      <div class="below">One operator. <b>Ten years.</b> Real results — not theory.</div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 2 : SANKEY OF GROWTH ============ -->
+  <section class="option">
+    <div class="tag">Option 2 · The Growth Flow</div>
+    <h2>Show the journey: inputs → operator → outcomes</h2>
+    <p class="desc">A sankey-style flow that visually says "you bring the business, I turn it into customers." No code, no jargon — just colored streams a 5-year-old can follow.</p>
+
+    <div class="banner b2">
+      <div class="top">
+        <div class="lead">I take your brand, marketing &amp; ops — and turn them into <em>more customers</em>.</div>
+        <div class="meta">
+          <b>The Growth Flow</b>
+          How Ashmo works
+        </div>
+      </div>
+
+      <div class="sankey-wrap">
+        <svg class="sankey" viewBox="0 0 1100 310" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="s1" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.75"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.75"/></linearGradient>
+            <linearGradient id="s2" x1="0" x2="1"><stop offset="0%" stop-color="#3b82f6" stop-opacity="0.55"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.55"/></linearGradient>
+            <linearGradient id="s3" x1="0" x2="1"><stop offset="0%" stop-color="#06b6d4" stop-opacity="0.7"/><stop offset="100%" stop-color="#10b981" stop-opacity="0.75"/></linearGradient>
+            <linearGradient id="s4" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.8"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0.9"/></linearGradient>
+            <linearGradient id="s5" x1="0" x2="1"><stop offset="0%" stop-color="#10b981" stop-opacity="0.55"/><stop offset="100%" stop-color="#f97316" stop-opacity="0.75"/></linearGradient>
+            <radialGradient id="mid-glow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Flows left → middle (drawn first so circles sit on top) -->
+          <path d="M94,30 C300,30 320,80 486,80 L486,110 C320,110 300,70 94,70 Z" fill="url(#s1)"/>
+          <path d="M94,120 C300,120 320,125 486,125 L486,155 C320,155 300,160 94,160 Z" fill="url(#s2)"/>
+          <path d="M94,210 C300,210 320,170 486,170 L486,200 C320,200 300,250 94,250 Z" fill="url(#s1)" opacity="0.65"/>
+
+          <!-- Flows middle → right -->
+          <path d="M614,80 C780,80 800,30 1006,30 L1006,70 C800,70 780,110 614,110 Z" fill="url(#s4)"/>
+          <path d="M614,125 C780,125 800,120 1006,120 L1006,160 C800,160 780,155 614,155 Z" fill="url(#s5)"/>
+          <path d="M614,170 C780,170 800,210 1006,210 L1006,250 C800,250 780,200 614,200 Z" fill="url(#s4)" opacity="0.65"/>
+
+          <!-- Middle glow halo -->
+          <circle cx="550" cy="140" r="110" fill="url(#mid-glow)"/>
+
+          <!-- LEFT inputs (circles) -->
+          <circle cx="60" cy="50" r="34" fill="#1e3a8a" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="60" cy="140" r="34" fill="#1e40af" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="60" cy="230" r="34" fill="#1d4ed8" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+          <!-- MIDDLE operator (circle) -->
+          <circle cx="550" cy="140" r="64" fill="#0e7490" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+          <circle cx="550" cy="140" r="64" fill="url(#s3)" opacity="0.45"/>
+
+          <!-- RIGHT outcomes (circles) -->
+          <circle cx="1040" cy="50" r="34" fill="#15803d" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="1040" cy="140" r="34" fill="#b45309" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+          <circle cx="1040" cy="230" r="34" fill="#c2410c" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+          <!-- Left labels (centered inside circle) -->
+          <text x="60" y="54" class="label" text-anchor="middle">Brand</text>
+          <text x="60" y="144" class="label" text-anchor="middle" style="font-size:12px">Marketing</text>
+          <text x="60" y="234" class="label" text-anchor="middle">Ops</text>
+
+          <!-- Left sub-captions (below each circle) -->
+          <text x="60" y="100" class="label-sub" text-anchor="middle">how you look</text>
+          <text x="60" y="190" class="label-sub" text-anchor="middle">how you sell</text>
+          <text x="60" y="280" class="label-sub" text-anchor="middle">how it runs</text>
+
+          <!-- Middle label -->
+          <text x="550" y="136" class="label" text-anchor="middle" style="font-size:18px; font-weight:700">Ashmo</text>
+          <text x="550" y="156" class="label-sub" text-anchor="middle">operator · 10 yrs</text>
+
+          <!-- Right labels -->
+          <text x="1040" y="54" class="label" text-anchor="middle">Sales</text>
+          <text x="1040" y="144" class="label" text-anchor="middle">Revenue</text>
+          <text x="1040" y="234" class="label" text-anchor="middle">Trust</text>
+
+          <!-- Right sub-captions -->
+          <text x="1040" y="100" class="label-sub" text-anchor="middle">more customers</text>
+          <text x="1040" y="190" class="label-sub" text-anchor="middle">growing monthly</text>
+          <text x="1040" y="280" class="label-sub" text-anchor="middle">people choose you</text>
+        </svg>
+      </div>
+
+      <div class="foot">
+        <div>— <b>Ashmo</b> · Brand &amp; Growth Operator · Dubai</div>
+        <div>You give me the business. I give you the customers.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPTION 3 : CONVERGING LINES ============ -->
+  <section class="option">
+    <div class="tag">Option 3 · Converging Lines</div>
+    <h2>Pure focus. One sentence does the heavy lifting.</h2>
+    <p class="desc">Black canvas. Thin lines fan in from the left and converge on a glowing point. The headline lands like a billboard.</p>
+
+    <div class="banner b3">
+      <svg class="fan" viewBox="0 0 820 520" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="fan-grad" x1="0" x2="1">
+            <stop offset="0%" stop-color="#4ade80" stop-opacity="0.0"/>
+            <stop offset="80%" stop-color="#4ade80" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#bbf7d0" stop-opacity="1"/>
+          </linearGradient>
+          <radialGradient id="focus" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#4ade80" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g stroke="url(#fan-grad)" stroke-width="1" fill="none">
+          <path d="M0,40 Q500,260 760,260"/>
+          <path d="M0,80 Q500,260 760,260"/>
+          <path d="M0,120 Q500,260 760,260"/>
+          <path d="M0,160 Q500,260 760,260"/>
+          <path d="M0,200 Q500,260 760,260"/>
+          <path d="M0,240 Q500,260 760,260"/>
+          <path d="M0,280 Q500,260 760,260"/>
+          <path d="M0,320 Q500,260 760,260"/>
+          <path d="M0,360 Q500,260 760,260"/>
+          <path d="M0,400 Q500,260 760,260"/>
+          <path d="M0,440 Q500,260 760,260"/>
+          <path d="M0,480 Q500,260 760,260"/>
+        </g>
+        <ellipse cx="760" cy="260" rx="80" ry="40" fill="url(#focus)" opacity="0.9"/>
+      </svg>
+
+      <div class="copy">
+        <h2>I help business owners <em>grow</em>.<br/>No agency. No theory. Just work that works.</h2>
+        <p>Brand, marketing, systems — all run by one operator who has actually done it. You stay focused on the floor. I take care of the rest.</p>
+        <div class="signature">
+          <span class="pip pip-2"></span><span class="pip pip-3"></span><span class="pip"></span>
+          <span>— <b>Ashmo</b> · Brand &amp; Growth Operator · Dubai</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
