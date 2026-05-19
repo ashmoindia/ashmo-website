@@ -47,10 +47,10 @@ export const challenges: Challenge[] = [
     shortDescription:
       'Create a poster concept for a fictional World Cup campaign using AI image, layout, and copy tools.',
     fullInstructions: [
-      'Create one public Instagram post or reel that shows your final poster concept.',
-      'Include the challenge hashtag in your caption so the entry can be discovered publicly.',
-      'Mention the AI tools used and keep the concept original, non-branded, and safe for public sharing.',
-      'Submit the Instagram post or reel URL through the DM flow triggered by the challenge keyword.',
+      'Create an original AI-generated poster concept for a fictional World Cup campaign. Keep it non-branded — no real team marks, official tournament logos, or sponsor impersonation.',
+      'Publish the poster as a public Instagram post or reel and include #AshmoAIChallenge in the caption so the entry can be discovered.',
+      'Disclose the AI tools you used (Midjourney, Photoshop, ChatGPT, Firefly, etc.) — transparency counts toward the score.',
+      'Enter by commenting POSTER on the Instagram announcement, then reply to our automatic DM with your post or reel link before the deadline.',
     ],
     instagramKeyword: 'POSTER',
     hashtag: '#AshmoAIChallenge',

@@ -32,6 +32,8 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const isChallengePath = Astro.url.pathname === '/challenges' || Astro.url.pathname.startsWith('/challenges/');
+const bodyBgClass = isChallengePath ? 'challenge-bg' : 'site-bg';
 const brandName = "Ashraf Hassan";
 const fullTitle = title === "Home"
   ? "Ashraf Hassan (Ashmo) — Founder, Brand Builder, Writer"
@@ -120,7 +122,7 @@ if (extraSchema && extraSchema.length > 0) entityGraph.push(...extraSchema);
   <!-- JSON-LD: entity graph -->
   <script is:inline type="application/ld+json" set:html={JSON.stringify(entityGraph)} />
 </head>
-<body class="site-bg bg-bg text-text font-body leading-relaxed">
+<body class:list={[bodyBgClass, "bg-bg text-text font-body leading-relaxed"]}>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2V4B96"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
