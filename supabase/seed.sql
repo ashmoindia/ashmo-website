@@ -17,11 +17,11 @@ insert into public.challenges (
   'ai-world-cup-poster',
   'Create a poster concept for a fictional World Cup campaign using AI image, layout, and copy tools.',
   array[
-    'Comment POSTER on the Instagram announcement.',
+    'Comment WORLDCUP on the Instagram announcement.',
     'We DM you back automatically. Reply with your Instagram post or reel link and the AI tools used.',
     'Your entry lands in our review dashboard. Shortlisted work is featured here under #AshmoAIChallenge.'
   ],
-  'POSTER',
+  'WORLDCUP',
   '#AshmoAIChallenge',
   'Featured finalist showcase plus a private AI creative workflow review with Ashmo.',
   '2026-06-01',
