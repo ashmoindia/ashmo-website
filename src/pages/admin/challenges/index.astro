@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { statusLabels } from '../../../data/challenges';
+import { getChallenges, getEntries } from '../../../lib/challenge-data';
+
+const breadcrumbs = [
+  { name: 'Admin', href: '/admin/challenges/' },
+  { name: 'Challenges', href: '/admin/challenges/' },
+];
+
+const challenges = await getChallenges();
+const entries = await getEntries();
+const stats = {
+  active: challenges.filter((challenge) => challenge.status === 'active').length,
+  draft: challenges.filter((challenge) => challenge.status === 'draft').length,
+  entries: entries.length,
+  finalists: entries.filter((entry) => ['finalist', 'winner'].includes(entry.status)).length,
+};
+---
+
+<BaseLayout
+  title="Challenge Admin"
+  description="Internal challenge management board for the AI creator engagement platform."
+  breadcrumbs={breadcrumbs}
+  noindex={true}
+>
+  <section class="section-shell pt-10 md:pt-14 pb-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mt-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label mb-5">Admin</p>
+        <h1 class="hero-title max-w-[10ch]">Challenge operations board.</h1>
+        <p class="body-lead mt-7 max-w-[44rem]">
+          Static preview of the moderation surface. The webhook and Supabase schema are ready for this board to become data-backed.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="/admin/entries/" class="button-gradient">Review entries</a>
+        <button type="button" id="manychat-health-check" class="button-secondary">Check ManyChat</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell pb-12">
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.04] p-5">
+        <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">Active</p>
+        <p class="mt-2 text-3xl font-semibold tracking-normal text-text">{stats.active}</p>
+      </div>
+      <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.04] p-5">
+        <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">Drafts</p>
+        <p class="mt-2 text-3xl font-semibold tracking-normal text-text">{stats.draft}</p>
+      </div>
+      <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.04] p-5">
+        <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">Entries</p>
+        <p class="mt-2 text-3xl font-semibold tracking-normal text-text">{stats.entries}</p>
+      </div>
+      <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.04] p-5">
+        <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">Finalists</p>
+        <p class="mt-2 text-3xl font-semibold tracking-normal text-text">{stats.finalists}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="overflow-hidden rounded-[1.4rem] border border-white/8 bg-white/[0.04]">
+      <div class="grid grid-cols-[1.25fr_0.65fr_0.65fr_0.65fr] gap-4 border-b border-white/8 px-5 py-4 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary max-md:hidden">
+        <span>Challenge</span>
+        <span>Status</span>
+        <span>Keyword</span>
+        <span>Deadline</span>
+      </div>
+      <div class="divide-y divide-white/8">
+        {challenges.map((challenge) => (
+          <a href={`/admin/challenges/${challenge.slug}/`} class="grid gap-4 px-5 py-5 no-underline transition-colors hover:bg-white/[0.03] md:grid-cols-[1.25fr_0.65fr_0.65fr_0.65fr] md:items-center">
+            <div>
+              <h2 class="text-lg font-semibold tracking-normal text-text">{challenge.title}</h2>
+              <p class="mt-1 text-sm leading-[1.6] text-text-secondary">{challenge.shortDescription}</p>
+            </div>
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-accent-light">{statusLabels[challenge.status]}</span>
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">{challenge.instagramKeyword}</span>
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">
+              {new Date(challenge.endDate).toLocaleDateString('en', { month: 'short', day: 'numeric' })}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const manyChatHealthButton = document.getElementById('manychat-health-check');
+
+    manyChatHealthButton?.addEventListener('click', async () => {
+      const originalText = manyChatHealthButton.textContent || 'Check ManyChat';
+      manyChatHealthButton.textContent = 'Checking...';
+
+      try {
+        const response = await fetch('/admin/api/manychat/health');
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.error || 'ManyChat check failed.');
+        }
+
+        manyChatHealthButton.textContent = 'ManyChat OK';
+      } catch (error) {
+        manyChatHealthButton.textContent = error instanceof Error ? error.message : 'Check failed';
+      } finally {
+        window.setTimeout(() => {
+          manyChatHealthButton.textContent = originalText;
+        }, 3200);
+      }
+    });
+  </script>
+</BaseLayout>

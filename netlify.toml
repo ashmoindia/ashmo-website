@@ -2,6 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
+[[edge_functions]]
+  path = "/admin/*"
+  function = "admin-auth"
+
 # Redirect all domain variants to canonical https://ashmo.io
 [[redirects]]
   from = "https://www.ashmo.io/*"

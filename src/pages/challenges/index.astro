@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { statusLabels } from '../../data/challenges';
+import { getChallenges, getEntriesForChallenge } from '../../lib/challenge-data';
+
+const breadcrumbs = [{ name: 'Challenges', href: '/challenges/' }];
+const challenges = await getChallenges({ publicOnly: true });
+const sortedChallenges = [...challenges].sort((a, b) => new Date(b.startDate).valueOf() - new Date(a.startDate).valueOf());
+const activeCount = challenges.filter((challenge) => challenge.status === 'active').length;
+const entriesByChallenge = new Map(
+  await Promise.all(challenges.map(async (challenge) => [
+    challenge.id,
+    await getEntriesForChallenge(challenge.id, { publicOnly: true }),
+  ] as const)),
+);
+const approvedEntryCount = challenges.reduce(
+  (total, challenge) => total + (entriesByChallenge.get(challenge.id)?.length || 0),
+  0,
+);
+---
+
+<BaseLayout
+  title="AI Creator Challenges"
+  description="Instagram-led AI creator challenges by Ashmo. Join public challenges, submit Instagram posts or reels, and get discovered through the creator database."
+  breadcrumbs={breadcrumbs}
+>
+  <section class="section-shell pt-10 md:pt-14 pb-14 md:pb-18">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.55fr)] lg:items-end">
+      <div>
+        <p class="mono-label mb-5">AI Creator Challenges</p>
+        <h1 class="hero-title max-w-[12ch]">
+          Creative prompts built for public momentum.
+        </h1>
+        <p class="body-lead mt-7 max-w-[48rem]">
+          A lightweight challenge engine where creators join through Instagram, publish public work, and build a visible record of AI experimentation.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="#active-challenges" class="button-gradient">View challenges</a>
+          <a href="/challenges/ai-world-cup-poster/" class="button-secondary">Open active brief</a>
+        </div>
+      </div>
+
+      <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-5 md:p-6">
+        <div class="flex items-center gap-4">
+          <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-[1rem] border border-white/8 bg-white/[0.04]">
+            <img src="/images/logo-emblem-white.svg" alt="Ashmo emblem" class="h-8 w-auto" />
+          </span>
+          <div>
+            <p class="font-mono text-[0.66rem] uppercase tracking-[0.16em] text-accent-light">Current system</p>
+            <p class="mt-1 text-sm leading-[1.65] text-text-secondary">Instagram comment to DM to webhook to review dashboard.</p>
+          </div>
+        </div>
+        <dl class="mt-6 grid grid-cols-2 gap-3">
+          <div class="rounded-[1rem] border border-white/6 bg-bg/35 p-4">
+            <dt class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">Active</dt>
+            <dd class="mt-2 text-3xl font-semibold tracking-normal text-text">{activeCount}</dd>
+          </div>
+          <div class="rounded-[1rem] border border-white/6 bg-bg/35 p-4">
+            <dt class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">Approved</dt>
+            <dd class="mt-2 text-3xl font-semibold tracking-normal text-text">{approvedEntryCount}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="active-challenges" class="section-shell pb-24 md:pb-32">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label mb-4">Challenge board</p>
+        <h2 class="section-title max-w-[12ch]">Open briefs and upcoming drops.</h2>
+      </div>
+      <p class="max-w-[34rem] text-sm leading-[1.8] text-text-secondary">
+        Each challenge uses public Instagram posts or reels as the submission artifact. The website keeps the rules, approved entries, and winner archive clean.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      {sortedChallenges.map((challenge) => {
+        const approvedEntries = entriesByChallenge.get(challenge.id) || [];
+        return (
+          <a href={`/challenges/${challenge.slug}/`} class="card-base hover-lift no-underline">
+            <article class="relative z-10 flex h-full flex-col p-6 md:p-7">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <span class="rounded-full border border-white/8 bg-white/[0.04] px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-accent-light">
+                  {statusLabels[challenge.status]}
+                </span>
+                <span class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">
+                  Keyword: {challenge.instagramKeyword}
+                </span>
+              </div>
+              <h3 class="mt-6 font-heading text-[1.8rem] font-bold leading-[1.08] tracking-normal text-text">
+                {challenge.title}
+              </h3>
+              <p class="mt-4 text-[0.98rem] leading-[1.75] text-text-secondary">{challenge.shortDescription}</p>
+              <div class="mt-6 grid gap-3 sm:grid-cols-3">
+                <div>
+                  <p class="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-text-tertiary">Starts</p>
+                  <p class="mt-1 text-sm text-text">{new Date(challenge.startDate).toLocaleDateString('en', { month: 'short', day: 'numeric' })}</p>
+                </div>
+                <div>
+                  <p class="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-text-tertiary">Deadline</p>
+                  <p class="mt-1 text-sm text-text">{new Date(challenge.endDate).toLocaleDateString('en', { month: 'short', day: 'numeric' })}</p>
+                </div>
+                <div>
+                  <p class="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-text-tertiary">Entries</p>
+                  <p class="mt-1 text-sm text-text">{approvedEntries.length} approved</p>
+                </div>
+              </div>
+              <span class="mt-auto pt-8 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.06em] text-accent-light">
+                Open challenge <span aria-hidden="true">&rarr;</span>
+              </span>
+            </article>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>

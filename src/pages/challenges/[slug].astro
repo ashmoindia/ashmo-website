@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import {
+  entryStatusLabels,
+  statusLabels,
+  type Challenge,
+} from '../../data/challenges';
+import { getChallenges, getEntriesForChallenge } from '../../lib/challenge-data';
+
+export async function getStaticPaths() {
+  const challenges = await getChallenges({ publicOnly: true });
+  return challenges.map((challenge) => ({
+    params: { slug: challenge.slug },
+    props: { challenge },
+  }));
+}
+
+interface Props {
+  challenge: Challenge;
+}
+
+const { challenge } = Astro.props;
+const approvedEntries = await getEntriesForChallenge(challenge.id, { publicOnly: true });
+const breadcrumbs = [
+  { name: 'Challenges', href: '/challenges/' },
+  { name: challenge.title, href: `/challenges/${challenge.slug}/` },
+];
+
+const deadlineLabel = new Date(challenge.endDate).toLocaleDateString('en', {
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+});
+
+const metaDescription =
+  challenge.status === 'active'
+    ? `${challenge.shortDescription} Submit on Instagram with ${challenge.hashtag} by ${deadlineLabel}.`
+    : challenge.shortDescription;
+
+const isClosed = challenge.status === 'closed' || challenge.status === 'archived';
+
+const challengeUrl = `https://ashmo.io/challenges/${challenge.slug}/`;
+const eventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  '@id': `${challengeUrl}#event`,
+  name: challenge.title,
+  description: challenge.shortDescription,
+  startDate: challenge.startDate,
+  endDate: challenge.endDate,
+  eventStatus:
+    challenge.status === 'active'
+      ? 'https://schema.org/EventScheduled'
+      : challenge.status === 'closed' || challenge.status === 'archived'
+        ? 'https://schema.org/EventMovedOnline'
+        : 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+  location: {
+    '@type': 'VirtualLocation',
+    url: 'https://www.instagram.com/iam_ashmo/',
+  },
+  organizer: { '@id': 'https://ashmo.io/#person' },
+  url: challengeUrl,
+  inLanguage: 'en',
+  isAccessibleForFree: true,
+  about: challenge.shortDescription,
+  keywords: challenge.hashtag,
+  offers: {
+    '@type': 'Offer',
+    name: challenge.prize,
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: challengeUrl,
+    validFrom: challenge.startDate,
+  },
+};
+---
+
+<BaseLayout
+  title={challenge.title}
+  description={metaDescription}
+  breadcrumbs={breadcrumbs}
+  noindex={isClosed}
+  extraSchema={[eventSchema]}
+>
+  <section class="section-shell pt-10 md:pt-14 pb-14 md:pb-18">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.52fr)]">
+      <div>
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent-light">
+            {statusLabels[challenge.status]}
+          </span>
+          <span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-text-tertiary">{challenge.hashtag}</span>
+        </div>
+        <h1 class="mt-6 hero-title max-w-[11ch]">{challenge.title}</h1>
+        <p class="body-lead mt-7 max-w-[48rem]">{challenge.shortDescription}</p>
+      </div>
+
+      <aside class="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-5 md:p-6">
+        <p class="mono-label">How to enter</p>
+        <ol class="mt-5 space-y-4">
+          <li class="flex gap-3">
+            <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-bg/40 font-mono text-xs text-accent-light">1</span>
+            <p class="text-sm leading-[1.7] text-text-secondary">Comment <strong class="font-semibold text-text">{challenge.instagramKeyword}</strong> on the Instagram announcement.</p>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-bg/40 font-mono text-xs text-accent-light">2</span>
+            <p class="text-sm leading-[1.7] text-text-secondary">We DM you back automatically. Reply with your Instagram post or reel link and the AI tools used.</p>
+          </li>
+          <li class="flex gap-3">
+            <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/10 bg-bg/40 font-mono text-xs text-accent-light">3</span>
+            <p class="text-sm leading-[1.7] text-text-secondary">Your entry lands in our review dashboard. Shortlisted work is featured here under <strong class="font-semibold text-text">{challenge.hashtag}</strong>.</p>
+          </li>
+        </ol>
+        <div class="mt-6 rounded-[1rem] border border-white/6 bg-bg/35 p-4">
+          <p class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">Deadline</p>
+          <p class="mt-2 text-xl font-semibold tracking-normal text-text">
+            {deadlineLabel}
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-shell pb-18 md:pb-24">
+    <div class="grid gap-4 md:grid-cols-3">
+      <article class="rounded-[1.4rem] border border-white/8 bg-white/[0.04] p-5">
+        <p class="font-mono text-[0.64rem] uppercase tracking-[0.16em] text-accent-light">Prize</p>
+        <p class="mt-4 text-[0.98rem] leading-[1.75] text-text-secondary">{challenge.prize}</p>
+      </article>
+      <article class="rounded-[1.4rem] border border-white/8 bg-white/[0.04] p-5">
+        <p class="font-mono text-[0.64rem] uppercase tracking-[0.16em] text-accent-light">Submission</p>
+        <p class="mt-4 text-[0.98rem] leading-[1.75] text-text-secondary">Submit through Instagram DM after the keyword trigger. Send your public post or reel link — no website upload needed.</p>
+      </article>
+      <article class="rounded-[1.4rem] border border-white/8 bg-white/[0.04] p-5">
+        <p class="font-mono text-[0.64rem] uppercase tracking-[0.16em] text-accent-light">Review</p>
+        <p class="mt-4 text-[0.98rem] leading-[1.75] text-text-secondary">Every DM submission syncs to our review dashboard. Entries move through approved, shortlisted, finalist, and winner.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-shell pb-18 md:pb-24">
+    <div class="grid gap-8 lg:grid-cols-2">
+      <div>
+        <p class="mono-label mb-4">Instructions</p>
+        <div class="space-y-3">
+          {challenge.fullInstructions.map((instruction) => (
+            <p class="rounded-[1rem] border border-white/6 bg-white/[0.03] px-4 py-3 text-sm leading-[1.7] text-text-secondary">{instruction}</p>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p class="mono-label mb-4">Judging criteria</p>
+        <div class="space-y-3">
+          {challenge.judgingCriteria.map((criterion) => (
+            <p class="rounded-[1rem] border border-white/6 bg-white/[0.03] px-4 py-3 text-sm leading-[1.7] text-text-secondary">{criterion}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label mb-4">Approved entries</p>
+        <h2 class="section-title max-w-[12ch]">Public work worth reviewing.</h2>
+      </div>
+      <a href={`/challenges/${challenge.slug}/winners/`} class="button-secondary">Winner archive</a>
+    </div>
+
+    {approvedEntries.length > 0 ? (
+      <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {approvedEntries.map((entry) => (
+          <a href={entry.submissionUrl} target="_blank" rel="noopener" class="card-base hover-lift no-underline">
+            <article class="relative z-10 flex h-full flex-col p-5 md:p-6">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <span class="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-accent-light">@{entry.instagramUsername}</span>
+                <span class="rounded-full border border-white/8 bg-white/[0.04] px-3 py-1 font-mono text-[0.6rem] uppercase tracking-[0.12em] text-text-tertiary">
+                  {entryStatusLabels[entry.status]}
+                </span>
+              </div>
+              <h3 class="mt-5 text-xl font-semibold tracking-normal text-text">{entry.participantName}</h3>
+              <p class="mt-3 text-sm leading-[1.75] text-text-secondary">{entry.caption}</p>
+              <p class="mt-5 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary">
+                {entry.aiToolsUsed.join(' / ')}
+              </p>
+              <span class="mt-auto pt-7 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.06em] text-accent-light">
+                View Instagram {entry.submissionType} <span aria-hidden="true">&rarr;</span>
+              </span>
+            </article>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="mt-10 max-w-[36rem] text-text-secondary">Approved entries will appear here after moderation.</p>
+    )}
+  </section>
+</BaseLayout>

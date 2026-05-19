@@ -16,6 +16,8 @@ interface Props {
   type?: 'website' | 'article';
   publishedDate?: Date;
   breadcrumbs?: BreadcrumbItem[];
+  noindex?: boolean;
+  extraSchema?: Record<string, unknown>[];
 }
 
 const {
@@ -25,6 +27,8 @@ const {
   type = "website",
   publishedDate,
   breadcrumbs,
+  noindex = false,
+  extraSchema,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -65,6 +69,7 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
 
 const entityGraph: Record<string, unknown>[] = [personSchema, organizationSchema, websiteSchema, webpageSchema];
 if (breadcrumbSchema) entityGraph.push(breadcrumbSchema);
+if (extraSchema && extraSchema.length > 0) entityGraph.push(...extraSchema);
 ---
 
 <!DOCTYPE html>
@@ -86,6 +91,7 @@ if (breadcrumbSchema) entityGraph.push(breadcrumbSchema);
   <!-- Primary Meta -->
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={canonicalURL} />
 
   <!-- Open Graph -->

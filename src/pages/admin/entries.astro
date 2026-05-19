@@ -1,0 +1,175 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { entryStatusLabels } from '../../data/challenges';
+import { getChallenges, getEntries } from '../../lib/challenge-data';
+
+const breadcrumbs = [
+  { name: 'Admin', href: '/admin/challenges/' },
+  { name: 'Entries', href: '/admin/entries/' },
+];
+
+const challenges = await getChallenges();
+const entries = await getEntries();
+const challengeById = new Map(challenges.map((challenge) => [challenge.id, challenge]));
+const sortedEntries = [...entries].sort((a, b) => new Date(b.submittedAt).valueOf() - new Date(a.submittedAt).valueOf());
+const statusCounts = sortedEntries.reduce<Record<string, number>>((counts, entry) => {
+  counts[entry.status] = (counts[entry.status] || 0) + 1;
+  return counts;
+}, {});
+---
+
+<BaseLayout
+  title="Entry Review Admin"
+  description="Moderation queue for AI creator challenge submissions."
+  breadcrumbs={breadcrumbs}
+  noindex={true}
+>
+  <section class="section-shell pt-10 md:pt-14 pb-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mt-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label mb-5">Review queue</p>
+        <h1 class="hero-title max-w-[9ch]">Entries, scores, and shortlists.</h1>
+        <p class="body-lead mt-7 max-w-[44rem]">
+          A lean moderation view for Instagram submissions. The live version should read from Supabase and write status changes through protected admin functions.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="/admin/challenges/" class="button-secondary">Challenges</a>
+        <button type="button" id="export-entries-csv" class="button-gradient">Export CSV</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell pb-12">
+    <div class="flex flex-wrap gap-3">
+      {Object.entries(entryStatusLabels).map(([status, label]) => (
+        <span class="rounded-full border border-white/8 bg-white/[0.04] px-3 py-2 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-text-secondary">
+          {label}: {statusCounts[status] || 0}
+        </span>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="overflow-hidden rounded-[1.4rem] border border-white/8 bg-white/[0.04]">
+      <div class="grid grid-cols-[0.85fr_0.95fr_0.55fr_0.45fr_1.25fr] gap-4 border-b border-white/8 px-5 py-4 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary max-lg:hidden">
+        <span>Creator</span>
+        <span>Challenge</span>
+        <span>Status</span>
+        <span>Score</span>
+        <span>Actions</span>
+      </div>
+      <div class="divide-y divide-white/8">
+        {sortedEntries.map((entry) => {
+          const challenge = challengeById.get(entry.challengeId);
+          return (
+            <article class="grid gap-4 px-5 py-5 lg:grid-cols-[0.85fr_0.95fr_0.55fr_0.45fr_1.25fr] lg:items-center">
+              <div>
+                <h2 class="text-lg font-semibold tracking-normal text-text">{entry.participantName}</h2>
+                <p class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent-light">@{entry.instagramUsername}</p>
+              </div>
+              <div>
+                <p class="text-sm font-medium text-text">{challenge?.title || entry.challengeId}</p>
+                <p class="mt-1 text-sm leading-[1.6] text-text-secondary">{entry.aiToolsUsed.join(', ')}</p>
+              </div>
+              <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">{entryStatusLabels[entry.status]}</span>
+              <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">{entry.score || '-'}</span>
+              <div>
+                <form class="admin-entry-form grid gap-2" data-entry-id={entry.id}>
+                  <div class="grid gap-2 sm:grid-cols-[1fr_80px]">
+                    <label class="sr-only" for={`status-${entry.id}`}>Status</label>
+                    <select
+                      id={`status-${entry.id}`}
+                      name="status"
+                      class="min-h-10 rounded-[0.8rem] border border-white/10 bg-bg/60 px-3 py-2 text-sm text-text outline-none focus:border-accent/60"
+                    >
+                      {Object.entries(entryStatusLabels).map(([status, label]) => (
+                        <option value={status} selected={entry.status === status}>{label}</option>
+                      ))}
+                    </select>
+                    <label class="sr-only" for={`score-${entry.id}`}>Score</label>
+                    <input
+                      id={`score-${entry.id}`}
+                      name="score"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={entry.score || ''}
+                      placeholder="Score"
+                      class="min-h-10 rounded-[0.8rem] border border-white/10 bg-bg/60 px-3 py-2 text-sm text-text outline-none focus:border-accent/60"
+                    />
+                  </div>
+                  <label class="sr-only" for={`notes-${entry.id}`}>Admin notes</label>
+                  <textarea
+                    id={`notes-${entry.id}`}
+                    name="admin_notes"
+                    rows="2"
+                    placeholder="Admin notes"
+                    class="min-h-16 rounded-[0.8rem] border border-white/10 bg-bg/60 px-3 py-2 text-sm text-text outline-none focus:border-accent/60"
+                  >{entry.adminNotes || ''}</textarea>
+                  <div class="flex flex-wrap items-center gap-2">
+                    <button type="submit" class="button-gradient min-h-10 px-3 py-2 text-[0.62rem]">Save</button>
+                    <a href={entry.submissionUrl} target="_blank" rel="noopener" class="button-secondary min-h-10 px-3 py-2 text-[0.62rem]">Open</a>
+                    {challenge && <a href={`/admin/challenges/${challenge.slug}/`} class="button-secondary min-h-10 px-3 py-2 text-[0.62rem]">Board</a>}
+                    <span class="admin-entry-message text-xs text-text-tertiary" aria-live="polite"></span>
+                  </div>
+                </form>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const forms = document.querySelectorAll<HTMLFormElement>('.admin-entry-form');
+    const exportButton = document.getElementById('export-entries-csv');
+
+    exportButton?.addEventListener('click', () => {
+      window.location.assign('/admin/api/entries/export');
+    });
+
+    forms.forEach((form) => {
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const entryId = form.dataset.entryId;
+        const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+        const message = form.querySelector<HTMLElement>('.admin-entry-message');
+        const formData = new FormData(form);
+
+        if (!entryId) return;
+
+        button?.setAttribute('disabled', 'true');
+        if (message) message.textContent = 'Saving...';
+
+        try {
+          const response = await fetch(`/admin/api/entries/${entryId}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+              status: formData.get('status'),
+              score: formData.get('score'),
+              admin_notes: formData.get('admin_notes'),
+            }),
+          });
+
+          const result = await response.json();
+          if (!response.ok || !result.ok) {
+            throw new Error(result.error || 'Update failed.');
+          }
+
+          if (message) message.textContent = 'Saved';
+        } catch (error) {
+          if (message) message.textContent = error instanceof Error ? error.message : 'Update failed';
+        } finally {
+          button?.removeAttribute('disabled');
+        }
+      });
+    });
+  </script>
+</BaseLayout>

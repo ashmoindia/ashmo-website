@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import {
+  entryStatusLabels,
+  statusLabels,
+  type Challenge,
+} from '../../../data/challenges';
+import { getChallenges, getEntriesForChallenge } from '../../../lib/challenge-data';
+
+export async function getStaticPaths() {
+  const challenges = await getChallenges();
+  return challenges.map((challenge) => ({
+    params: { slug: challenge.slug },
+    props: { challenge },
+  }));
+}
+
+interface Props {
+  challenge: Challenge;
+}
+
+const { challenge } = Astro.props;
+const challengeEntries = await getEntriesForChallenge(challenge.id);
+const averageScore = challengeEntries.length
+  ? Math.round(challengeEntries.reduce((total, entry) => total + (entry.score || 0), 0) / challengeEntries.length)
+  : 0;
+const breadcrumbs = [
+  { name: 'Admin', href: '/admin/challenges/' },
+  { name: 'Challenges', href: '/admin/challenges/' },
+  { name: challenge.title, href: `/admin/challenges/${challenge.slug}/` },
+];
+---
+
+<BaseLayout
+  title={`${challenge.title.replace(/^AI\s+/, '')} Admin`}
+  description={`Internal challenge review board for ${challenge.title}, including entries, scoring, moderation status, and finalist decisions.`}
+  breadcrumbs={breadcrumbs}
+  noindex={true}
+>
+  <section class="section-shell pt-10 md:pt-14 pb-12">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,0.95fr)_minmax(320px,0.52fr)]">
+      <div>
+        <p class="mono-label mb-5">Challenge admin</p>
+        <h1 class="section-title max-w-[14ch]">{challenge.title}</h1>
+        <p class="body-lead mt-6 max-w-[48rem]">{challenge.shortDescription}</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          {challenge.status !== 'draft' && <a href={`/challenges/${challenge.slug}/`} class="button-secondary">Public page</a>}
+          <a href="/admin/entries/" class="button-gradient">All entries</a>
+        </div>
+      </div>
+
+      <aside class="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-5 md:p-6">
+        <p class="mono-label">Moderation snapshot</p>
+        <dl class="mt-5 grid grid-cols-2 gap-3">
+          <div class="rounded-[1rem] border border-white/6 bg-bg/35 p-4">
+            <dt class="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-text-tertiary">Status</dt>
+            <dd class="mt-2 text-lg font-semibold tracking-normal text-text">{statusLabels[challenge.status]}</dd>
+          </div>
+          <div class="rounded-[1rem] border border-white/6 bg-bg/35 p-4">
+            <dt class="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-text-tertiary">Avg score</dt>
+            <dd class="mt-2 text-lg font-semibold tracking-normal text-text">{averageScore || '-'}</dd>
+          </div>
+          <div class="rounded-[1rem] border border-white/6 bg-bg/35 p-4">
+            <dt class="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-text-tertiary">Keyword</dt>
+            <dd class="mt-2 text-lg font-semibold tracking-normal text-text">{challenge.instagramKeyword}</dd>
+          </div>
+          <div class="rounded-[1rem] border border-white/6 bg-bg/35 p-4">
+            <dt class="font-mono text-[0.6rem] uppercase tracking-[0.14em] text-text-tertiary">Entries</dt>
+            <dd class="mt-2 text-lg font-semibold tracking-normal text-text">{challengeEntries.length}</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="overflow-hidden rounded-[1.4rem] border border-white/8 bg-white/[0.04]">
+      <div class="grid grid-cols-[1fr_0.7fr_0.55fr_0.55fr] gap-4 border-b border-white/8 px-5 py-4 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-text-tertiary max-md:hidden">
+        <span>Creator</span>
+        <span>Status</span>
+        <span>Score</span>
+        <span>Submitted</span>
+      </div>
+      <div class="divide-y divide-white/8">
+        {challengeEntries.map((entry) => (
+          <a href={entry.submissionUrl} target="_blank" rel="noopener" class="grid gap-4 px-5 py-5 no-underline transition-colors hover:bg-white/[0.03] md:grid-cols-[1fr_0.7fr_0.55fr_0.55fr] md:items-center">
+            <div>
+              <h2 class="text-lg font-semibold tracking-normal text-text">{entry.participantName}</h2>
+              <p class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent-light">@{entry.instagramUsername}</p>
+              {entry.adminNotes && <p class="mt-2 text-sm leading-[1.6] text-text-secondary">{entry.adminNotes}</p>}
+            </div>
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">{entryStatusLabels[entry.status]}</span>
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">{entry.score || '-'}</span>
+            <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">
+              {new Date(entry.submittedAt).toLocaleDateString('en', { month: 'short', day: 'numeric' })}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
