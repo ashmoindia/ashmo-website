@@ -16,10 +16,9 @@ insert into public.challenges (
   'ai-world-cup-poster',
   'Create a poster concept for a fictional World Cup campaign using AI image, layout, and copy tools.',
   array[
-    'Create an original AI-generated poster concept for a fictional World Cup campaign. Keep it non-branded — no real team marks, official tournament logos, or sponsor impersonation.',
-    'Publish the poster as a public Instagram post or reel and include #AshmoAIChallenge in the caption so the entry can be discovered.',
-    'Disclose the AI tools you used (Midjourney, Photoshop, ChatGPT, Firefly, etc.) — transparency counts toward the score.',
-    'Enter by commenting POSTER on the Instagram announcement, then reply to our automatic DM with your post or reel link before the deadline.'
+    'Comment POSTER on the Instagram announcement.',
+    'We DM you back automatically. Reply with your Instagram post or reel link and the AI tools used.',
+    'Your entry lands in our review dashboard. Shortlisted work is featured here under #AshmoAIChallenge.'
   ],
   'POSTER',
   '#AshmoAIChallenge',
