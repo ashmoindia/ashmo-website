@@ -2,7 +2,7 @@
 const navLinks = [
   { href: "/thinking/", label: "Thinking" },
   { href: "/intelligence/", label: "Intelligence" },
-  { href: "/challenges/", label: "Challenges" },
+  { href: "/contact/", label: "Contact" },
   { href: "/restaurant-cafe-growth-systems/", label: "Growth" },
   { href: "/principles/", label: "Principles" },
   { href: "/work/", label: "Work" },
@@ -12,8 +12,6 @@ const navLinks = [
 
 const currentPath = Astro.url.pathname;
 const isGrowthPath = currentPath.startsWith('/restaurant-cafe-growth-systems/') || currentPath.startsWith('/restaurant-finance/');
-const isContactPath = currentPath.startsWith('/contact/');
-const isChallengePath = currentPath === '/challenges' || currentPath.startsWith('/challenges/');
 ---
 
 <header class="sticky top-0 z-40 px-4 pt-3 md:px-6 md:pt-4 xl:px-8">
@@ -45,25 +43,10 @@ const isChallengePath = currentPath === '/challenges' || currentPath.startsWith(
       </ul>
 
       <div class="flex items-center justify-end gap-2 md:gap-3">
-        {isChallengePath ? (
-          <a href="/challenges/" class="button-challenge">
-            Challenge
-            <span aria-hidden="true" class="text-[0.7rem]">&rarr;</span>
-          </a>
-        ) : (
-          <a
-            href="/contact/"
-            class:list={[
-              "inline-flex min-h-11 items-center justify-center rounded-full px-4 py-2 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.06em] no-underline transition-all duration-200 md:px-5 md:py-2.5 md:text-[0.7rem]",
-              isContactPath
-                ? "border border-accent/40 bg-white/6 text-text hover:border-accent/60 hover:bg-white/10"
-                : "bg-gradient-to-r from-accent-light via-accent to-secondary text-bg shadow-[0_14px_40px_rgba(212,135,90,0.24)] hover:-translate-y-0.5 hover:shadow-[0_18px_46px_rgba(201,162,212,0.22)]"
-            ]}
-            style={!isContactPath ? "color: var(--color-bg);" : undefined}
-          >
-            Contact
-          </a>
-        )}
+        <a href="/challenges/" class="button-challenge">
+          Challenge
+          <span aria-hidden="true" class="text-[0.7rem]">&rarr;</span>
+        </a>
 
         <button
           id="mobile-menu-btn"
