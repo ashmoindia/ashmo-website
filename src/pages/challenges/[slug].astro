@@ -85,23 +85,25 @@ const eventSchema = {
   noindex={isClosed}
   extraSchema={[eventSchema]}
 >
-  <section class="section-shell pt-10 md:pt-14 pb-14 md:pb-18">
-    <Breadcrumbs items={breadcrumbs} />
-
-    <div class="mt-8 rounded-[1.5rem] border border-secondary/25 bg-[rgba(7,5,22,0.55)] p-5 backdrop-blur-md md:p-6">
-      <p class="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-secondary-light">Current system</p>
-      <div class="mt-4 flex flex-wrap items-center gap-2 md:gap-3">
-        <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-text-secondary">Instagram comment</span>
+  <section class="section-shell pt-6 md:pt-8">
+    <div class="flex flex-col gap-3 rounded-[1.25rem] border border-secondary/30 bg-[rgba(7,5,22,0.6)] px-5 py-3.5 backdrop-blur-md md:flex-row md:items-center md:gap-4 md:px-6 md:py-4">
+      <p class="font-mono text-[0.62rem] uppercase tracking-[0.16em] text-secondary-light md:whitespace-nowrap">Current system</p>
+      <div class="flex flex-wrap items-center gap-2 md:gap-2.5">
+        <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-text-secondary">Instagram comment</span>
         <span aria-hidden="true" class="font-mono text-[0.78rem] text-accent-light">&rarr;</span>
-        <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-text-secondary">DM</span>
+        <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-text-secondary">DM</span>
         <span aria-hidden="true" class="font-mono text-[0.78rem] text-accent-light">&rarr;</span>
-        <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-text-secondary">Webhook</span>
+        <span class="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-text-secondary">Webhook</span>
         <span aria-hidden="true" class="font-mono text-[0.78rem] text-accent-light">&rarr;</span>
-        <span class="rounded-full border border-secondary/35 bg-secondary/10 px-3 py-1.5 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-secondary-light">Review dashboard</span>
+        <span class="rounded-full border border-secondary/35 bg-secondary/10 px-3 py-1 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-secondary-light">Review dashboard</span>
       </div>
     </div>
+  </section>
 
-    <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.52fr)]">
+  <section class="section-shell pt-8 md:pt-10 pb-14 md:pb-18">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mt-8 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(320px,0.52fr)]">
       <div>
         <div class="flex flex-wrap items-center gap-3">
           <span class="rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-[0.14em] text-accent-light">
