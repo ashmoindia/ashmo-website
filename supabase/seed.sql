@@ -10,7 +10,8 @@ insert into public.challenges (
   end_date,
   rules,
   judging_criteria,
-  status
+  status,
+  show_public_entries
 ) values (
   'AI World Cup Poster Challenge',
   'ai-world-cup-poster',
@@ -37,7 +38,8 @@ insert into public.challenges (
     'Quality of AI usage and iteration',
     'Caption, presentation, and public engagement'
   ],
-  'active'
+  'active',
+  true
 )
 on conflict (slug) do update set
   title = excluded.title,
@@ -50,4 +52,5 @@ on conflict (slug) do update set
   end_date = excluded.end_date,
   rules = excluded.rules,
   judging_criteria = excluded.judging_criteria,
-  status = excluded.status;
+  status = excluded.status,
+  show_public_entries = excluded.show_public_entries;

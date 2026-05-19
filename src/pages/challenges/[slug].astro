@@ -21,7 +21,9 @@ interface Props {
 }
 
 const { challenge } = Astro.props;
-const approvedEntries = await getEntriesForChallenge(challenge.id, { publicOnly: true });
+const approvedEntries = challenge.showPublicEntries
+  ? await getEntriesForChallenge(challenge.id, { publicOnly: true })
+  : [];
 const breadcrumbs = [
   { name: 'Challenges', href: '/challenges/' },
   { name: challenge.title, href: `/challenges/${challenge.slug}/` },
@@ -179,6 +181,7 @@ const eventSchema = {
     </div>
   </section>
 
+  {challenge.showPublicEntries && (
   <section class="section-shell pb-24 md:pb-32">
     <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div>
@@ -215,4 +218,5 @@ const eventSchema = {
       <p class="mt-10 max-w-[36rem] text-text-secondary">Approved entries will appear here after moderation.</p>
     )}
   </section>
+  )}
 </BaseLayout>

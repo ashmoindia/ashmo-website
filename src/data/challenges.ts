@@ -17,6 +17,7 @@ export interface Challenge {
   rules: string[];
   judgingCriteria: string[];
   status: ChallengeStatus;
+  showPublicEntries?: boolean;
 }
 
 export interface ChallengeEntry {
@@ -69,6 +70,7 @@ export const challenges: Challenge[] = [
       'Caption, presentation, and public engagement',
     ],
     status: 'active',
+    showPublicEntries: true,
   },
   {
     id: 'ai-brand-concept-sprint',

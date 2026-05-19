@@ -23,6 +23,7 @@ interface SupabaseChallengeRow {
   rules: string[] | null;
   judging_criteria: string[] | null;
   status: ChallengeStatus;
+  show_public_entries: boolean | null;
 }
 
 interface SupabaseEntryRow {
@@ -110,6 +111,7 @@ const mapChallenge = (row: SupabaseChallengeRow): Challenge => ({
   rules: row.rules || [],
   judgingCriteria: row.judging_criteria || [],
   status: row.status,
+  showPublicEntries: row.show_public_entries ?? false,
 });
 
 const mapEntry = (row: SupabaseEntryRow): ChallengeEntry => ({
