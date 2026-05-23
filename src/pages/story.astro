@@ -1,71 +1,94 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PageSection from '../components/PageSection.astro';
 import { personId, personSchema, websiteId } from '../data/entity';
 
 const storyStats = [
-  { label: 'Years in trade', value: '25+' },
-  { label: 'Brand scaled', value: '70+' },
-  { label: 'Starting point', value: 'Sharjah' },
+  { label: 'years across business, brand, and digital', value: '25+' },
+  { label: 'outlet-scale brand experience', value: '100+' },
+  { label: 'countries of market exposure', value: '13' },
 ];
 
 const storyChapters = [
   {
     step: '01',
-    eyebrow: 'The operational foundation',
-    title: 'The first education was a grocery shop, not a classroom.',
+    eyebrow: 'This is not an origin story',
+    title: 'Context for how Ashmo.io thinks about business.',
     intro:
-      'I started with a grocery shop in Sharjah at nineteen. No business school, no investor, no playbook. Just product, margins, footfall, and daily decisions about what to stock, how to price it, and which customers to spend time on.',
+      'This page is context for how I think about business: how customers decide, how brands earn memory, how growth creates complexity, and how AI is changing execution without replacing judgment.',
     body: [
-      'That was the first real education. You learn the mechanics of trade quickly when you are living inside them. How footfall converts. How pricing psychology works at ground level. How trust compounds slowly between a shopkeeper and a regular customer, and how quickly it dissolves.',
-      'Over the next several years I moved through IT training, design, and creative work. Not because of a grand plan, but because each phase revealed something new about how people make decisions and how businesses actually function at the seam between product and perception.',
+      'My foundation came from trade and retail before it came from strategy decks. Product, pricing, stock movement, margins, footfall, and customer trust taught me that business is not abstract. Every decision eventually meets the customer.',
+      'That early phase included hands-on retail work, but the useful part was not the location. It was the commercial discipline it built.',
     ],
   },
   {
     step: '02',
-    eyebrow: 'The long operating stretch',
-    title: 'Twenty years inside one brand teaches you pattern fluency.',
+    eyebrow: 'The creative and digital shift',
+    title: 'Technology and design changed how I understood business.',
     intro:
-      'FiLLi Cafe started as a genuine product with strong chai, real identity, and a founder who knew what he was building but not yet how to build the brand infrastructure around it. That is where I came in.',
+      'IT training, multimedia, web, graphic design, and advertising taught me that a good product can still lose if the market cannot understand it.',
     body: [
-      'The work was never just creative. It was architectural. How do you make a brand feel consistent across seventy physical locations, each with different staff, different footfall, and different customer conversations? How do you protect positioning when the market keeps pulling toward trend-chasing?',
-      'Twenty years of that kind of decision-making produces something that is hard to name but easy to recognise: pattern fluency. The ability to see the same category of problem across different businesses and know, not from theory but from repetition, how it tends to play out.',
+      'This is where commercial instinct started meeting brand systems. Design was not only about looking better. It became a way to shape perception, make choices clearer, and help the market understand what was worth remembering.',
+      'That shift still shapes the work here: practical systems, clear language, and tools that make business decisions easier to see.',
     ],
   },
   {
     step: '03',
-    eyebrow: 'What this site is for',
-    title: 'The most valuable thing now is to make the thinking transferable.',
+    eyebrow: 'The brand-building stretch',
+    title: 'Years inside FiLLi Cafe shaped the strongest part of my thinking.',
     intro:
-      'I am in a different phase now. Not winding down — redirecting energy. The most useful thing I can do is document the thinking clearly enough that other operators can use it.',
+      'The work was not only creative. It was about protecting a product hero, building brand memory, supporting multi-location growth, aligning teams, and keeping the brand clear while the market kept changing.',
     body: [
-      'There is a specific kind of knowledge that only gets produced by running something for a long time. It is not the knowledge you learn from books. It is the pattern recognition that builds up when you have made the same category of mistake enough times to see it coming.',
-      'That knowledge does not transfer well through keynotes or celebration-case-studies. It transfers through structured writing, over time, to people who are still in the middle of building something real.',
+      'Multi-location growth makes weak systems visible. It forces discipline around naming, campaigns, product focus, franchise clarity, market adaptation, and consistency.',
+      'That experience now sits underneath the commercial breakdowns, growth systems, and market notes across Ashmo.io.',
+    ],
+  },
+  {
+    step: '04',
+    eyebrow: 'The current phase',
+    title: 'Ashmo.io is a platform, not a diary.',
+    intro:
+      'Today, ashmo.io is where I turn that experience into practical intelligence: growth systems, market notes, AI-age marketing workflows, brand breakdowns, and decision frameworks for people building in fast-moving categories.',
+    body: [
+      'The goal is not to make the past bigger. It is to make useful judgment easier to apply now.',
+      'That means clearer frameworks, better market sense, sharper positioning, and decision tools that help founders and teams move with less noise.',
     ],
   },
 ];
 
 const startingPoints = [
   {
-    href: '/thinking/brand-positioning-hardest-thing/',
-    label: 'Why Brand Positioning Is the Hardest Thing',
-    detail: 'For the founder trying to explain what the brand should mean before scale makes confusion expensive.',
+    href: '/growth/',
+    label: 'Growth Systems',
+    detail: 'Practical frameworks and review paths for restaurants, cafes, and founder-driven brands.',
   },
   {
-    href: '/thinking/grocery-shop-pricing-psychology/',
-    label: 'What a Grocery Shop at 19 Taught Me About Pricing',
-    detail: 'For anyone who wants to understand where the commercial instincts behind this site actually came from.',
+    href: '/intelligence/',
+    label: 'Market Intelligence',
+    detail: 'Public-source signals, country briefings, category notes, and commercial observations.',
   },
   {
-    href: '/thinking/patience-is-not-passive/',
-    label: 'Patience Is Not Passive',
-    detail: 'For operators who know long-term compounding matters but need language for how that discipline really works.',
+    href: '/thinking/',
+    label: 'Insights',
+    detail: 'Field notes, playbooks, brand breakdowns, AI workflows, and decision frameworks.',
+  },
+  {
+    href: '/work/',
+    label: 'Case Studies',
+    detail: 'Proof from brand systems, F&B growth, platform building, and commercial execution.',
+  },
+  {
+    href: '/podcast/',
+    label: 'Conversations',
+    detail: 'Long-form conversations on brand, growth, founder clarity, and business judgment.',
   },
 ];
 
 const storyLinks = [
-  { href: '/thinking/', label: 'Read the thinking', accent: true },
-  { href: '/principles/', label: 'Operator principles' },
-  { href: '/work/', label: 'See the work' },
+  { href: '/thinking/', label: 'Browse Insights', accent: true },
+  { href: '/growth/', label: 'Explore Growth Systems' },
+  { href: '/work/', label: 'View Case Studies' },
 ];
 
 const profilePageSchema = {
@@ -75,7 +98,7 @@ const profilePageSchema = {
   url: 'https://ashmo.io/story/',
   name: 'Background — Ashraf Hassan',
   description:
-    'Ashraf Hassan, also known as Ashmo, shares the background and operating experience behind his writing on brand building and business.',
+    'Ashraf Hassan, also known as Ashmo, connects trade, brand systems, digital growth, market intelligence, and AI-age execution into practical commercial thinking.',
   isPartOf: {
     '@id': websiteId,
   },
@@ -86,83 +109,55 @@ const profilePageSchema = {
 };
 ---
 
-<BaseLayout title="The Ashmo Story — 25 Years Operating" description="Ashraf Hassan's operating arc — from family business to scaling FiLLi Cafe from one outlet to 70+ across the GCC. The experience behind the essays.">
+<BaseLayout title="About Ashmo — Brand Systems" description="How Ashraf Hassan connects business experience, F&B growth, brand systems, market intelligence, and AI-age execution into practical thinking.">
   <script is:inline type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-14 pb-10 md:pb-14">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,0.96fr)_minmax(0,1.04fr)]">
-      <div class="rounded-[2rem] border border-white/6 bg-[linear-gradient(145deg,rgba(18,18,19,0.98),rgba(10,10,10,0.98))] px-7 py-8 md:px-9 md:py-10">
-        <p class="text-[0.7rem] uppercase tracking-[0.24em] text-accent-light">Background</p>
-        <h1 class="mt-5 font-heading text-[2.8rem] md:text-[5rem] leading-[0.94] tracking-[-0.05em] max-w-[10ch]">
-          The thinking did not come from reading alone.
-        </h1>
-        <p class="mt-6 max-w-[35rem] text-[1.04rem] md:text-[1.14rem] text-text-secondary font-light leading-[1.85]">
-          People know me as Ashmo. That perspective came from living inside trade, scale, branding, and repeated operating pressure for a long time.
-        </p>
+  <PageHero
+    eyebrow="About Ashmo"
+    title="Business judgment shaped by trade, brand systems, digital growth, and"
+    highlight="AI-age execution."
+    description="People know me as Ashmo. I use ashmo.io to document commercial intelligence for founders, marketers, and F&B business builders who need clearer thinking before they scale louder."
+    primary={{ href: '/thinking/', label: 'Browse Insights' }}
+    secondary={{ href: '/growth/', label: 'Explore Growth Systems' }}
+    stats={storyStats.map((stat) => ({ value: stat.value, label: stat.label }))}
+    sideEyebrow="What this page is really about"
+    sideTitle="Context for the commercial intelligence platform."
+    sideDescription="This is not a personal-brand biography. It is context for the judgment behind the growth systems, market notes, AI workflows, brand breakdowns, and practical frameworks on Ashmo.io."
+    sideCards={[
+      {
+        eyebrow: 'A working belief',
+        description: 'Building something real requires thinking clearly under conditions that actively work against clarity.',
+      },
+    ]}
+  />
 
-        <div class="mt-8 grid gap-3 sm:grid-cols-3">
-          {storyStats.map((stat) => (
-            <div class="rounded-[1.2rem] border border-white/6 bg-white/[0.03] px-4 py-4">
-              <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">{stat.label}</p>
-              <p class="mt-2 text-[1.8rem] font-semibold tracking-[-0.04em] text-text">{stat.value}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div class="rounded-[2rem] border border-white/6 bg-[linear-gradient(155deg,rgba(18,20,24,0.98),rgba(11,12,15,0.98))] px-6 py-7 md:px-8 md:py-8">
-        <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent">What this page is really about</p>
-        <h2 class="mt-4 font-heading text-[1.9rem] md:text-[2.5rem] leading-[1.02] tracking-[-0.04em] max-w-[13ch]">
-          The operator layer behind the writing.
-        </h2>
-        <p class="mt-5 text-[0.98rem] text-text-secondary font-light leading-[1.85]">
-          This is not a personal-brand biography. It is context for how the judgments on this site were formed: grocery retail, systems thinking, visual identity, commercial pattern recognition, and two decades of brand-building decisions that had to survive contact with reality.
-        </p>
-
-        <div class="mt-6 rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-5 py-5">
-          <p class="text-[0.64rem] uppercase tracking-[0.18em] text-text-tertiary">A working belief</p>
-          <p class="mt-4 font-heading text-[1.35rem] md:text-[1.55rem] italic leading-[1.4] text-text">
-            “Building something real requires thinking clearly under conditions that actively work against clarity.”
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
-    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-      <div>
-        <p class="text-[0.72rem] uppercase tracking-[0.2em] text-accent-light">The story in chapters</p>
-        <h2 class="mt-4 font-heading text-[2.2rem] md:text-[3rem] leading-[0.98] tracking-[-0.04em] max-w-[10ch]">
-          A timeline built from work, not image management.
-        </h2>
-      </div>
-      <p class="max-w-[32rem] text-[0.98rem] text-text-secondary font-light leading-[1.85]">
-        The useful part is not the chronology. It is the pattern recognition each phase produced and why that perspective shapes the way I write now.
-      </p>
-    </div>
-
+  <PageSection
+    eyebrow="About in chapters"
+    title="The useful context behind the"
+    highlight="platform."
+    description="The useful part is not biography. It is the pattern recognition each phase produced and how that judgment becomes practical intelligence now."
+  >
     <div class="mt-10 space-y-5">
       {storyChapters.map((chapter) => (
-        <article class="rounded-[1.7rem] border border-white/6 bg-[linear-gradient(180deg,rgba(20,22,26,0.98),rgba(13,15,18,0.98))] px-6 py-6 md:px-7 md:py-7">
-          <div class="grid gap-6 lg:grid-cols-[auto_minmax(0,0.4fr)_minmax(0,0.6fr)] lg:gap-8">
-            <div class="flex items-start gap-4 lg:block">
-              <span class="inline-flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/8 bg-white/[0.03] text-[0.72rem] uppercase tracking-[0.16em] text-accent-light">
+        <article class="feature-card hover-lift p-6 md:p-8">
+          <div class="relative z-10 grid gap-6 lg:grid-cols-[auto_minmax(0,0.38fr)_minmax(0,0.62fr)] lg:gap-8">
+            <div>
+              <span class="inline-flex h-12 w-12 items-center justify-center rounded-[1rem] border border-white/10 bg-white/[0.04] font-mono text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-accent-light">
                 {chapter.step}
               </span>
             </div>
             <div>
-              <p class="text-[0.64rem] uppercase tracking-[0.18em] text-accent-light">{chapter.eyebrow}</p>
-              <h3 class="mt-3 font-heading text-[1.5rem] md:text-[1.85rem] leading-[1.06] tracking-[-0.03em] text-text">
+              <p class="mono-label">{chapter.eyebrow}</p>
+              <h3 class="mt-4 text-[1.55rem] font-bold leading-[1.08] text-text md:text-[1.9rem]">
                 {chapter.title}
               </h3>
-              <p class="mt-4 text-[0.98rem] text-text-secondary font-light leading-[1.82]">
+              <p class="mt-5 text-[0.98rem] leading-[1.82] text-text-secondary">
                 {chapter.intro}
               </p>
             </div>
             <div class="space-y-4">
               {chapter.body.map((paragraph) => (
-                <p class="text-[0.95rem] text-text-secondary font-light leading-[1.82]">
+                <p class="text-[0.95rem] leading-[1.82] text-text-secondary">
                   {paragraph}
                 </p>
               ))}
@@ -171,53 +166,44 @@ const profilePageSchema = {
         </article>
       ))}
     </div>
-  </section>
+  </PageSection>
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
-    <div class="rounded-[1.85rem] border border-white/6 bg-[linear-gradient(180deg,rgba(16,18,22,0.98),rgba(10,11,14,0.98))] px-6 py-7 md:px-8 md:py-8">
-      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="relative z-10 grid gap-8 lg:grid-cols-[0.7fr_1fr] lg:items-end">
         <div>
-          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Three useful starting points</p>
-          <h2 class="mt-3 font-heading text-[1.9rem] md:text-[2.4rem] leading-[1.02] tracking-[-0.04em] max-w-[12ch]">
-            Start with the pieces that explain the lens fastest.
+          <p class="mono-label mb-4">Start with the useful parts</p>
+          <h2 class="section-title max-w-[13ch]">
+            Move from context into practical commercial intelligence.
           </h2>
         </div>
-        <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
-          If you want the shortest route into the thinking behind this site, begin here.
-        </p>
-      </div>
-
-      <div class="mt-8 grid gap-4 md:grid-cols-3">
-        {startingPoints.map((item) => (
-          <a
-            href={item.href}
-            class="rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-5 py-5 no-underline transition-colors hover:border-accent/30 hover:bg-white/[0.045]"
-          >
-            <p class="font-heading text-[1.3rem] leading-[1.1] tracking-[-0.03em] text-text">
-              {item.label}
-            </p>
-            <p class="mt-3 text-[0.94rem] text-text-secondary font-light leading-[1.72]">
-              {item.detail}
-            </p>
-          </a>
-        ))}
-      </div>
-
-      <div class="mt-8 flex flex-col gap-3 md:flex-row md:flex-wrap">
-        {storyLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              'inline-flex items-center justify-center rounded-full px-5 py-3 text-[0.78rem] font-semibold uppercase tracking-[0.16em] no-underline transition-colors',
-              link.accent
-                ? 'bg-gradient-to-r from-accent-light to-accent text-bg'
-                : 'border border-white/10 text-text-secondary hover:border-accent/40 hover:text-text',
-            ]}
-            style={link.accent ? 'color: var(--color-bg);' : undefined}
-          >
-            {link.label}
-          </a>
-        ))}
+        <div>
+          <p class="body-lead max-w-[42rem]">
+            If you want the shortest route into Ashmo.io, begin with the parts built for decisions.
+          </p>
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            {startingPoints.map((item) => (
+              <a href={item.href} class="feature-card hover-lift block p-5 no-underline">
+                <div class="relative z-10">
+                  <p class="text-[1.22rem] font-bold leading-[1.12] text-text">
+                    {item.label}
+                  </p>
+                  <p class="mt-4 text-[0.94rem] leading-[1.72] text-text-secondary">
+                    {item.detail}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            {storyLinks.map((link) => (
+              <a href={link.href} class:list={[link.accent ? 'button-gradient' : 'button-secondary']}>
+                {link.label}
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -1,21 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
 ---
 
 <BaseLayout
-  title="Contact Ashmo — Growth Operator (Dubai)"
-  description="Reach Ashraf Hassan (Ashmo) for brand strategy, restaurant growth work, finance modeling, AI-assisted execution, or a direct operator conversation."
+  title="Contact Ashmo — Commercial Intelligence"
+  description="Contact Ashmo for brand strategy, F&B growth systems, market intelligence, AI-age marketing workflows, digital products, and commercial strategy."
 >
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
-    <div class="max-w-[540px]">
+  <PageHero
+    eyebrow="Contact"
+    title="Start a sharper"
+    highlight="commercial conversation."
+    description="For brand strategy, F&B growth, market intelligence, digital products, or AI-age marketing systems, share what you are building and the decision you need to make next."
+    primary={{ href: '#contact-form', label: 'Send note' }}
+    secondary={{ href: '/growth/', label: 'Open Growth Systems' }}
+    stats={[
+      { value: 'Brand', label: 'strategy' },
+      { value: 'Cafe', label: 'growth' },
+      { value: 'AI', label: 'systems' },
+    ]}
+    sideEyebrow="Best fit"
+    sideTitle="Useful conversations start with context."
+    sideDescription="Share what you are building, what feels stuck, and what decision needs sharper commercial thinking."
+    sideCards={[
+      { eyebrow: 'Best topics', description: 'Brand systems, F&B growth, market intelligence, AI workflows, commercial strategy, growth reviews, digital products, or speaking.' },
+      { eyebrow: 'Social layer', description: 'LinkedIn, Instagram, YouTube, and Facebook links are listed after the form.' },
+    ]}
+  />
 
-      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Get in touch with Ashraf Hassan.</h1>
-      <p class="text-lg text-text-secondary font-light leading-relaxed mb-12">
-        Whether it's about brand strategy, collaboration, restaurant finance, or just a conversation — I'm Ashraf Hassan, also known as Ashmo, and I'd like to hear from you.
-      </p>
-
-      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-recaptcha="true" class="flex flex-col gap-6">
+  <section id="contact-form" class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" data-netlify-recaptcha="true" class="relative z-10 flex max-w-[640px] flex-col gap-6">
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden"><label>Don't fill this out: <input name="bot-field" /></label></p>
 
@@ -42,28 +58,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div>
-          <label for="message" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Message</label>
+          <label for="company" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Company / Brand</label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors"
+          />
+        </div>
+
+        <div>
+          <label for="building" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">What are you building?</label>
           <textarea
-            id="message"
-            name="message"
+            id="building"
+            name="building"
+            rows="4"
+            required
+            class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors resize-y"
+          ></textarea>
+        </div>
+
+        <div>
+          <label for="decision" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">What decision do you need help with?</label>
+          <textarea
+            id="decision"
+            name="decision"
             rows="5"
             required
             class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors resize-y"
           ></textarea>
         </div>
 
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <label for="timeline" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Timeline</label>
+            <input
+              type="text"
+              id="timeline"
+              name="timeline"
+              class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors"
+            />
+          </div>
+
+          <div>
+            <label for="budget" class="block text-xs text-text-tertiary uppercase tracking-[0.1em] mb-2">Budget range if relevant</label>
+            <input
+              type="text"
+              id="budget"
+              name="budget"
+              class="w-full bg-surface border border-border rounded-lg px-4 py-3 text-text font-light focus:outline-none focus:border-accent transition-colors"
+            />
+          </div>
+        </div>
+
         <div data-netlify-recaptcha="true"></div>
 
         <button
           type="submit"
-          class="self-start px-7 py-3 bg-accent border border-accent rounded-lg text-bg text-sm font-medium hover:bg-accent-light hover:border-accent-light transition-colors cursor-pointer"
+          class="button-gradient cursor-pointer border-0"
         >
-          Send Message
+          Send note
         </button>
       </form>
 
-      <div class="mt-16 pt-10 border-t border-border">
-        <p class="text-sm text-text-tertiary mb-3">Or find me on</p>
+      <div class="relative z-10 mt-10 border-t border-white/8 pt-8">
+        <p class="mono-label mb-4">Or find me on</p>
         <div class="flex gap-6">
           <a href="https://www.linkedin.com/in/iamashmo/" target="_blank" rel="me noopener" class="text-accent hover:text-accent-light transition-colors text-sm font-medium">LinkedIn &rarr;</a>
           <a href="https://www.instagram.com/iam_ashmo/" target="_blank" rel="me noopener" class="text-accent hover:text-accent-light transition-colors text-sm font-medium">Instagram &rarr;</a>
@@ -71,7 +130,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <a href="https://www.facebook.com/iamashmo" target="_blank" rel="me noopener" class="text-accent hover:text-accent-light transition-colors text-sm font-medium">Facebook &rarr;</a>
         </div>
       </div>
-
     </div>
   </section>
 

@@ -1,0 +1,125 @@
+---
+interface Action {
+  href: string;
+  label: string;
+}
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface SideCard {
+  eyebrow: string;
+  title?: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  highlight?: string;
+  suffix?: string;
+  description: string;
+  primary?: Action;
+  secondary?: Action;
+  tertiary?: Action;
+  stats?: Stat[];
+  sideEyebrow?: string;
+  sideTitle?: string;
+  sideDescription?: string;
+  sideCards?: SideCard[];
+}
+
+const {
+  eyebrow,
+  title,
+  highlight,
+  suffix,
+  description,
+  primary,
+  secondary,
+  tertiary,
+  stats = [],
+  sideEyebrow,
+  sideTitle,
+  sideDescription,
+  sideCards = [],
+} = Astro.props;
+---
+
+<section class="section-shell pt-14 pb-18 md:pt-20 md:pb-24">
+  <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] lg:gap-14">
+    <div class="min-w-0">
+      <p class="mono-label mb-5">{eyebrow}</p>
+      <h1 class="hero-title break-words hyphens-auto">
+        {title}{highlight && <>&nbsp;<span class="gradient-text">{highlight}</span></>}{suffix && <>&nbsp;{suffix}</>}
+      </h1>
+      <p class="body-lead mt-7 max-w-[42rem]">
+        {description}
+      </p>
+
+      {(primary || secondary || tertiary) && (
+        <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+          {primary && (
+            <a href={primary.href} class="button-gradient">
+              {primary.label}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          )}
+          {secondary && (
+            <a href={secondary.href} class="button-secondary">
+              {secondary.label}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          )}
+          {tertiary && (
+            <a href={tertiary.href} class="button-secondary">
+              {tertiary.label}
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          )}
+        </div>
+      )}
+
+      {stats.length > 0 && (
+        <div class="mt-9 grid max-w-[34rem] grid-cols-3 gap-3">
+          {stats.map((item) => (
+            <div class="rounded-[1.2rem] border border-white/8 bg-white/[0.04] px-4 py-4">
+              <p class="font-mono text-[1.45rem] font-bold leading-none text-text">{item.value}</p>
+              <p class="mt-2 font-mono text-[0.62rem] uppercase tracking-[0.06em] text-text-tertiary">{item.label}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+    {(sideTitle || sideDescription || sideCards.length > 0) && (
+      <div class="cta-panel gradient-border p-6 md:p-8">
+        <div class="relative z-10">
+          {(sideEyebrow || sideTitle || sideDescription) && (
+            <div class:list={[sideCards.length > 0 ? 'border-b border-white/8 pb-6' : undefined]}>
+              {sideEyebrow && <p class="mono-label mb-4">{sideEyebrow}</p>}
+              {sideTitle && <h2 class="font-heading font-bold leading-[1.18] text-text text-[1.25rem] md:text-[1.45rem]">{sideTitle}</h2>}
+              {sideDescription && <p class="mt-5 max-w-[34rem] text-[0.98rem] leading-[1.78] text-text-secondary">{sideDescription}</p>}
+            </div>
+          )}
+
+          {sideCards.length > 0 && (
+            <div class="mt-6 grid gap-4">
+              {sideCards.map((card) => (
+                <article class="rounded-[1.15rem] border border-white/8 bg-white/[0.035] px-4 py-4 md:px-5">
+                  <p class="mono-label mb-2">{card.eyebrow}</p>
+                  {card.title && <p class="text-[1.22rem] font-bold leading-[1.12] text-text">{card.title}</p>}
+                  <p class:list={[card.title ? 'mt-2' : undefined, 'text-[0.95rem] leading-[1.72] text-text-secondary']}>
+                    {card.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
