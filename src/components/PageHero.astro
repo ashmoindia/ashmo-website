@@ -52,8 +52,8 @@ const {
   <div class="grid items-start gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,1.05fr)] lg:gap-14">
     <div class="min-w-0">
       <p class="mono-label mb-5">{eyebrow}</p>
-      <h1 class="hero-title break-words hyphens-auto">
-        {title}{highlight && <>&nbsp;<span class="gradient-text">{highlight}</span></>}{suffix && <>&nbsp;{suffix}</>}
+      <h1 class="page-hero-title">
+        {title}{highlight && <> <span class="gradient-text">{highlight}</span></>}{suffix && <> {suffix}</>}
       </h1>
       <p class="body-lead mt-7 max-w-[42rem]">
         {description}

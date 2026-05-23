@@ -179,6 +179,17 @@
   letter-spacing: 0;
 }
 
+.page-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(2.3rem, 5vw, 3.5rem);
@@ -512,6 +523,35 @@
 
 .input-dark::placeholder {
   color: var(--color-text-tertiary);
+}
+
+.growth-detail-body h2 {
+  max-width: 14ch;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.55rem);
+  font-weight: 780;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.growth-detail-body > section > p:first-child {
+  margin-bottom: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+.growth-detail-body p {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.growth-detail-body :is(li, .rounded-\[1\.25rem\], .rounded-\[1rem\]) {
+  border-color: var(--color-border);
+  background: var(--gradient-surface);
 }
 
 @media (prefers-reduced-motion: reduce) {
