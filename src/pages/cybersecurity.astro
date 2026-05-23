@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Cybersecurity and Data Breach Policy"
+  description="Security controls, breach response, and incident communication for ashmo.io."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Cybersecurity"
+    highlight="& Breach Policy."
+    description={`Security controls and breach response. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/privacy-policy/', label: 'Privacy policy' }}
+    secondary={{ href: 'mailto:hello@ashmo.io?subject=Security%20concern', label: 'Report a concern' }}
+    stats={[
+      { value: 'HTTPS', label: 'baseline' },
+      { value: '2FA', label: 'admin' },
+      { value: '72h', label: 'notify' },
+    ]}
+    sideEyebrow="Incident response"
+    sideTitle="Reasonable controls. Honest about limits. Fast when something is wrong."
+    sideDescription="Covers technical controls, detection, containment, notification, recovery, and how to report a security or privacy concern."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Security Controls</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>HTTPS / TLS across the entire site.</li>
+            <li>Restricted access to administrative tools; least-privilege principle.</li>
+            <li>Strong password discipline and password manager use.</li>
+            <li>Two-factor authentication where supported.</li>
+            <li>Encryption in transit; encryption at rest where the underlying service supports it.</li>
+            <li>Vendor due diligence on third-party processors.</li>
+            <li>Periodic review of access, logs, and configuration.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. No Absolute Guarantee</h2>
+          <p>No digital system is 100% secure. Despite reasonable controls, no platform can guarantee that data is fully immune to compromise. By using the site you accept this inherent risk.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Incident Response</h2>
+          <p class="mb-3">If a suspected security incident occurs, the following steps are followed:</p>
+          <ol class="list-decimal pl-6 space-y-2">
+            <li><strong>Detect</strong> — identify the anomaly via logs, monitoring, or user report.</li>
+            <li><strong>Contain</strong> — restrict access, rotate credentials, isolate affected systems.</li>
+            <li><strong>Assess</strong> — determine scope, data categories affected, likely cause.</li>
+            <li><strong>Notify</strong> — inform affected users and, where required by law, regulators.</li>
+            <li><strong>Recover</strong> — restore systems, validate integrity, monitor for recurrence.</li>
+            <li><strong>Document</strong> — record the incident and the corrective actions.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Breach Notification</h2>
+          <p>If a personal data breach is likely to result in a risk to your rights, we will notify the relevant supervisory authority and affected users without undue delay, consistent with UAE Federal Decree-Law No. 45 of 2021 (Personal Data Protection Law). Where the law specifies a timeframe, we aim to meet or beat it.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. User Responsibility</h2>
+          <p>Users are responsible for protecting their own credentials, devices, and email accounts. We will never ask for your password. We will never ask you to install unsolicited software. Treat any such request as suspicious and report it.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Limitation of Liability</h2>
+          <p>To the extent permitted by UAE law, ashmo.io is not liable for losses caused by events beyond reasonable control, including DDoS attacks, hosting provider outages, third-party processor breaches, supply-chain compromises, and zero-day exploits, where reasonable security controls were in place.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Report a Security or Privacy Concern</h2>
+          <p>If you believe you have found a vulnerability, or have a security or privacy concern, email <a href="mailto:hello@ashmo.io?subject=Security%20concern" class="text-accent hover:underline">hello@ashmo.io</a> with the subject line "Security concern". We respond as quickly as possible and treat reports confidentially.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Confidentiality Policy"
+  description="ashmo.io is built on general industry knowledge and original frameworks — not on confidential employer, client, or third-party information."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Confidentiality &"
+    highlight="Conflict of Interest."
+    description={`Public-facing position on confidentiality, originality, and conflict of interest. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/compliance/', label: 'Compliance' }}
+    secondary={{ href: '/employment-disclaimer/', label: 'Employment disclaimer' }}
+    stats={[
+      { value: '100%', label: 'original' },
+      { value: '0', label: 'employer data' },
+      { value: '24h', label: 'review' },
+    ]}
+    sideEyebrow="Position"
+    sideTitle="Industry knowledge — yes. Confidential information — no."
+    sideDescription="Built from public sources, personal experience, and original interpretation. Covers anonymisation, removal requests, and an internal pre-publish checklist."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Our Position</h2>
+          <p>ashmo.io is an independent educational and advisory platform. All material is based on general industry knowledge, publicly available information, personal professional experience over many years, and original frameworks developed and authored by Ashraf Hassan.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. No Confidential Information</h2>
+          <p>The platform does not disclose, reference, or rely on confidential information belonging to any current or former employer, client, partner, vendor, franchisee, supplier, or third party. No proprietary systems, confidential campaigns, private financial data, internal strategies, employee information, recipes, supplier terms, franchise documents, or trade secrets are intentionally shared.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Case Studies and Examples</h2>
+          <p>Any case-study, scenario, or example used on the platform is generalised, anonymised, modified, fictionalised, or based on publicly available information. Brand names of employers or clients are not used unless prior written permission has been obtained, or the information is already public.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Independence</h2>
+          <p>Nothing on the platform should be interpreted as an official communication, position, endorsement, or representation of any employer, client, partner, or affiliated business. The views expressed are personal and independent unless otherwise clearly stated.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. Conflict of Interest</h2>
+          <p>The platform takes conflict of interest seriously. Topics, examples, and recommendations are chosen to avoid competing directly with any employer business. Where a topic could create perceived conflict, it is either avoided, generalised, or clearly framed as personal opinion grounded in public information.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Request for Review or Removal</h2>
+          <p>If you believe any content on this site unintentionally contains confidential, proprietary, or sensitive material — or could create a real or perceived conflict of interest — please email <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>. We will review in good faith and, where appropriate, edit, anonymise, restrict, or remove the content.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Right to Edit</h2>
+          <p>Ashmo reserves the right to edit, anonymise, restrict, or remove content at any time at sole discretion, particularly where new information suggests a confidentiality or conflict-of-interest risk.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Pre-Publish Checklist</h2>
+          <p class="mb-3">Before any article, framework, case study, course, or template is published, the following internal checklist is applied:</p>
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Does this reference a current or former employer or client?</li>
+            <li>Does this reveal internal information not in the public domain?</li>
+            <li>Does it include private numbers, budgets, revenue, margins, conversion rates, vendor terms, or internal reports?</li>
+            <li>Is every fact verifiable from public sources or original analysis?</li>
+            <li>Is any example sufficiently generalised or anonymised?</li>
+            <li>Could it create a real or perceived conflict of interest?</li>
+            <li>Could it be seen as competing with an employer?</li>
+            <li>Is any third-party material properly licensed or attributed?</li>
+            <li>Has any AI-assisted content been reviewed and edited for accuracy?</li>
+            <li>Should this be rewritten as a fictional or general illustration?</li>
+            <li>Decision: <strong>Publish</strong> / <strong>Edit</strong> / <strong>Do Not Publish</strong> / <strong>Seek Legal Review</strong>.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Contact</h2>
+          <p>Confidentiality, conflict of interest, or removal requests: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

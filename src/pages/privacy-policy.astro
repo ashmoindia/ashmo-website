@@ -1,116 +1,151 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const lastUpdated = "13 May 2026";
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
 ---
 
 <BaseLayout
   title="Privacy Policy"
-  description="How ashmo.io collects, uses, and protects your personal data."
+  description="How ashmo.io collects, uses, stores, and protects personal data under UAE PDPL and international best practice."
 >
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
-    <div class="max-w-[720px]">
+  <PageHero
+    eyebrow="Legal"
+    title="Privacy"
+    highlight="Policy."
+    description={`How ashmo.io collects, uses, stores, and protects personal data under UAE PDPL and international best practice. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/contact/', label: 'Contact Ashmo' }}
+    secondary={{ href: '/legal/', label: 'All legal pages' }}
+    stats={[
+      { value: 'PDPL', label: 'uae law' },
+      { value: 'GDPR', label: 'rights' },
+      { value: '30d', label: 'response' },
+    ]}
+    sideEyebrow="Plain language"
+    sideTitle="Data is collected only where it helps operate the site."
+    sideDescription="This page covers analytics, forms, newsletter handling, retention, third-party processors, cross-border transfer, breach response, and your rights."
+  />
 
-      <p class="text-xs text-text-tertiary uppercase tracking-[0.1em] mb-4">Legal</p>
-      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Privacy Policy</h1>
-      <p class="text-sm text-text-tertiary mb-12">Last updated: {lastUpdated}</p>
-
-      <div class="prose prose-lg max-w-none space-y-10 text-text font-light leading-relaxed">
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
 
         <div>
           <h2 class="font-heading text-xl font-bold text-text mb-3">1. Who We Are</h2>
-          <p>This website, <strong>ashmo.io</strong>, is operated by <strong>Ashraf Hassan</strong> ("Ashmo"), based in Dubai, United Arab Emirates. For any privacy-related matters, you can contact me at <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>.</p>
+          <p>This website, <strong>ashmo.io</strong>, is operated by <strong>Ashraf Hassan</strong> ("Ashmo"), based in Dubai, United Arab Emirates. For any privacy matter, contact <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>. References to "we", "us", and "the platform" mean ashmo.io operated by Ashraf Hassan.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Data We Collect</h2>
-          <p class="mb-4">We collect two categories of data:</p>
-          <p class="mb-2"><strong>Analytics data (automatic)</strong> — When you visit this site, Google Analytics 4 (via Google Tag Manager) automatically collects:</p>
-          <ul class="list-disc pl-6 space-y-1 mb-4">
-            <li>Pages visited and time spent</li>
-            <li>General geographic location (country/city level)</li>
-            <li>Device type, browser, and operating system</li>
-            <li>Referral source (how you found this site)</li>
-            <li>Scroll depth, outbound clicks, and file downloads</li>
-          </ul>
-          <p class="mb-2"><strong>Contact and request form data (voluntary)</strong> — If you submit a contact, benchmark contribution, or growth request form, we collect the details needed to respond to that enquiry, which may include:</p>
-          <ul class="list-disc pl-6 space-y-1">
-            <li>Your name</li>
-            <li>Your email address</li>
-            <li>Your message</li>
-            <li>Business context you choose to share</li>
-          </ul>
-          <p class="mt-4 mb-2"><strong>Newsletter data (voluntary)</strong> — If you subscribe to the newsletter, we collect your email address so we can send occasional Ashmo notes.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Personal Data We Collect</h2>
+          <p class="mb-3"><strong>Analytics data (automatic)</strong> — pages visited, time on page, approximate location (country/city), device, browser, OS, referrer, scroll depth, outbound clicks, file downloads.</p>
+          <p class="mb-3"><strong>Contact form data</strong> — name, email, message, business context you choose to share.</p>
+          <p class="mb-3"><strong>Newsletter/email subscription data</strong> — email address and optional name.</p>
+          <p class="mb-3"><strong>Download form data</strong> — name and email submitted to access a guide, template, framework, or workbook.</p>
+          <p class="mb-3"><strong>Course or digital product purchase data</strong> — name, email, billing details (handled by the payment processor — we do not store full card data), order details.</p>
+          <p class="mb-3"><strong>Consulting inquiry data</strong> — name, email, company name (optional), phone (optional), business context.</p>
+          <p class="mb-3"><strong>Payment data</strong> — handled by third-party processors (e.g. Stripe, PayPal). We receive transaction confirmation, last 4 digits, and billing country only.</p>
+          <p class="mb-3"><strong>Analytics / cookie data</strong> — see Section 5.</p>
+          <p><strong>CRM, email marketing, automation, retargeting data</strong> — engagement events (opens, clicks, page visits) associated with your email or anonymised cookie ID where you have consented.</p>
         </div>
 
         <div>
           <h2 class="font-heading text-xl font-bold text-text mb-3">3. How We Use Your Data</h2>
           <ul class="list-disc pl-6 space-y-2">
-            <li><strong>Analytics data</strong> is used solely to understand how visitors use this site and to improve the content and experience. It is never sold or shared with third parties for marketing.</li>
-            <li><strong>Contact and request form data</strong> is used only to respond to your enquiry. It is not added to any mailing list without your explicit consent.</li>
-            <li><strong>Newsletter data</strong> is used only to send the notes you asked to receive.</li>
+            <li>To respond to your enquiry, deliver a download, fulfil a purchase, or run a consulting conversation.</li>
+            <li>To send notes, updates, and content you have subscribed to receive.</li>
+            <li>To understand site usage, improve content, and prioritise what to publish next.</li>
+            <li>To comply with legal, tax, accounting, and regulatory obligations.</li>
+            <li>To protect the platform against fraud, abuse, scraping, or unauthorised access.</li>
           </ul>
+          <p class="mt-4">We do not sell personal data. We do not share it with third parties for their own marketing.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Google Analytics & Google Tag Manager</h2>
-          <p class="mb-4">This site uses <strong>Google Analytics 4 (GA4)</strong> and <strong>Google Tag Manager</strong>, services provided by Google LLC. Google acts as a data processor on our behalf.</p>
-          <p class="mb-4">We have also enabled <strong>Google Signals</strong>, which allows Google to associate your visit with your Google account (if you are signed in and have personalised ads enabled). This enables cross-device reporting and more accurate audience insights.</p>
-          <p class="mb-4">Google may transfer and process data in the United States and other countries. For more information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="text-accent hover:underline">Google's Privacy Policy</a>.</p>
-          <p>You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" class="text-accent hover:underline">Google Analytics Opt-out Browser Add-on</a>.</p>
-        </div>
-
-        <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">5. Cookies</h2>
-          <p class="mb-4">This site uses cookies placed by Google Analytics to distinguish unique visitors and sessions. These are first-party analytics cookies. We do not use advertising cookies, social tracking cookies, or any third-party marketing cookies.</p>
-          <p>You can control or delete cookies through your browser settings at any time.</p>
-        </div>
-
-        <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Legal Basis for Processing (GDPR)</h2>
-          <p class="mb-4">If you are located in the European Economic Area, we process your data under the following legal bases:</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Legal Basis for Processing</h2>
           <ul class="list-disc pl-6 space-y-2">
-            <li><strong>Legitimate interest</strong> — for analytics, to understand and improve this site.</li>
-            <li><strong>Contractual necessity</strong> — for contact and request form responses, to reply to your enquiry.</li>
-            <li><strong>Consent</strong> — for newsletter subscriptions.</li>
+            <li><strong>Consent</strong> — newsletter subscription, marketing cookies, optional CRM tracking.</li>
+            <li><strong>Contractual necessity</strong> — replying to enquiries, delivering downloads, fulfilling purchases.</li>
+            <li><strong>Legitimate interest</strong> — site analytics, security, fraud prevention, service improvement.</li>
+            <li><strong>Legal obligation</strong> — tax records, statutory record-keeping, lawful requests by authorities.</li>
           </ul>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">7. UAE Personal Data Protection Law (PDPL)</h2>
-          <p>As a UAE-based operator, we comply with Federal Decree-Law No. 45 of 2021 on the Protection of Personal Data. Data collected is limited to what is necessary, retained only for as long as required, and protected with appropriate security measures. You have the right to access, correct, or request deletion of your personal data by contacting us at <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. Cookies and Tracking</h2>
+          <p>This site uses essential cookies and analytics cookies. Marketing or retargeting cookies are only deployed where you have consented through the cookie banner. Full detail is in the <a href="/cookies/" class="text-accent hover:underline">Cookie Policy</a>.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Your Rights</h2>
-          <p class="mb-4">Regardless of your location, you have the right to:</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Third-Party Processors</h2>
+          <p class="mb-3">We use the following categories of trusted processors. Each operates under its own privacy policy and contractual safeguards:</p>
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Hosting and CDN (Netlify, Cloudflare)</li>
+            <li>Analytics (Google Analytics 4 via Google Tag Manager)</li>
+            <li>Email and newsletter (transactional and broadcast email providers)</li>
+            <li>CRM and marketing automation</li>
+            <li>Payment processing (Stripe, PayPal, or equivalent)</li>
+            <li>Form handling and inbox routing</li>
+            <li>Customer support tooling</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Cross-Border Data Transfer</h2>
+          <p>Some processors store or process data outside the UAE (commonly the EU, UK, or US). Where this happens, we rely on processors that publish recognised safeguards — Standard Contractual Clauses, adequacy decisions, or equivalent contractual commitments — so your data continues to receive appropriate protection.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Data Storage and Retention</h2>
           <ul class="list-disc pl-6 space-y-2">
-            <li>Request access to the personal data we hold about you</li>
-            <li>Request correction of inaccurate data</li>
-            <li>Request deletion of your data</li>
-            <li>Object to or restrict processing</li>
-            <li>Opt out of Google Signals / analytics tracking</li>
+            <li>Analytics event data: retained up to 14 months.</li>
+            <li>Contact and consulting enquiries: retained as long as needed to handle the conversation and any reasonable follow-up, then archived or deleted.</li>
+            <li>Newsletter and CRM data: retained until you unsubscribe or request deletion.</li>
+            <li>Purchase and tax records: retained for the period required by UAE law (typically 5 years).</li>
           </ul>
-          <p class="mt-4">To exercise any of these rights, email <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>. We will respond within 30 days.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Data Retention</h2>
-          <p>Analytics event data is retained for 14 months. Contact and request form submissions are retained for as long as necessary to fulfill your request or as required by applicable law. Newsletter email addresses are retained until you unsubscribe or request deletion.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Your Rights (UAE PDPL, GDPR, and International)</h2>
+          <p class="mb-3">As a UAE-based platform, we comply with Federal Decree-Law No. 45 of 2021 (UAE Personal Data Protection Law) and apply equivalent rights to all users worldwide:</p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Right of access — request a copy of the personal data we hold about you.</li>
+            <li>Right of correction — request that inaccurate data be corrected.</li>
+            <li>Right of deletion — request deletion of your personal data, subject to legal retention.</li>
+            <li>Right to restrict or object to processing.</li>
+            <li>Right to withdraw consent at any time.</li>
+            <li>Right to data portability where technically feasible.</li>
+            <li>Right to lodge a complaint with the UAE Data Office or your local supervisory authority.</li>
+          </ul>
+          <p class="mt-4">To exercise any right, email <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>. We respond within 30 days.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">10. Third-Party Links</h2>
-          <p>This site contains links to external websites (LinkedIn, Instagram, YouTube, etc.). We are not responsible for the privacy practices of those sites and encourage you to review their respective privacy policies.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">10. Security Measures</h2>
+          <p>We apply reasonable technical and organisational measures: HTTPS across the site, restricted access to personal data, password hygiene, two-factor authentication where supported, vendor due diligence, and segregated environments for personal vs. public data. No system is 100% secure — see the <a href="/cybersecurity/" class="text-accent hover:underline">Cybersecurity Policy</a> for our incident-response approach.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">11. Changes to This Policy</h2>
-          <p>We may update this policy from time to time. The "Last updated" date at the top of this page reflects when the most recent changes were made. Continued use of the site constitutes acceptance of the updated policy.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">11. Breach Notification</h2>
+          <p>If a personal data breach occurs that is likely to result in a risk to your rights, we will notify the relevant authority and affected users without undue delay, in line with UAE PDPL and international good practice. To report a suspected breach, email <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a> with the subject line "Security concern".</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">12. Contact</h2>
-          <p>For any questions about this Privacy Policy or how your data is handled, contact: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">12. Children's Data</h2>
+          <p>This platform is intended for business owners, operators, and adult professionals. We do not knowingly collect personal data from individuals under 18. If you believe a minor has submitted personal data, contact us and we will delete it.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">13. Third-Party Links</h2>
+          <p>This site links to external platforms (LinkedIn, Instagram, YouTube, partner sites). We are not responsible for their privacy practices. Review their policies before sharing personal data.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">14. Changes to This Policy</h2>
+          <p>We may update this policy. The "Last updated" date at the top of the page reflects the most recent revision. Material changes will be flagged on the homepage or by email where appropriate.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">15. Contact for Privacy Requests</h2>
+          <p>Privacy, data access, correction, deletion, or breach reports: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
         </div>
 
       </div>

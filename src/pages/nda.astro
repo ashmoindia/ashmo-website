@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Mutual NDA Template"
+  description="UAE-friendly Mutual Non-Disclosure Agreement template for freelancers, agencies, partners, developers, and collaborators working with ashmo.io."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Mutual NDA"
+    highlight="Template."
+    description={`A UAE-friendly mutual NDA template for collaborators, freelancers, partners, and developers. Last updated: ${lastUpdated}.`}
+    primary={{ href: 'mailto:hello@ashmo.io?subject=NDA%20request', label: 'Request a signed copy' }}
+    secondary={{ href: '/copyright/', label: 'IP policy' }}
+    stats={[
+      { value: '2', label: 'parties' },
+      { value: '3yr', label: 'survival' },
+      { value: 'UAE', label: 'law' },
+    ]}
+    sideEyebrow="Template"
+    sideTitle="Strong enough to protect. Simple enough to use."
+    sideDescription="Use this as a baseline mutual NDA. For binding use, populate placeholders and have a UAE-qualified lawyer confirm fit for purpose."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <p class="text-text-secondary italic">This template is provided for drafting purposes only. Replace bracketed placeholders. Have a UAE-qualified lawyer review before signing.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">Mutual Non-Disclosure Agreement</h2>
+          <p>This Mutual Non-Disclosure Agreement ("Agreement") is entered into on [Effective Date] between:</p>
+          <p class="mt-3"><strong>Party A:</strong> [Legal Name], [Registered Address], [Country] ("Disclosing/Receiving Party").</p>
+          <p class="mt-2"><strong>Party B:</strong> [Legal Name], [Registered Address], [Country] ("Disclosing/Receiving Party").</p>
+          <p class="mt-3">Each party may disclose Confidential Information to the other in connection with [Purpose of Discussion / Project].</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Confidential Information</h2>
+          <p>"Confidential Information" means any non-public information disclosed by one party to the other in any form, including: business ideas, course or product concepts, website plans, technical systems, source code, prompts, frameworks, templates, customer or client information, financial information, marketing plans, pricing, product roadmaps, strategy documents, internal data, and any information that a reasonable person would consider confidential under the circumstances.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Obligations</h2>
+          <p>The receiving party shall: (a) hold the Confidential Information in strict confidence; (b) use it only for the Purpose; (c) not disclose it to any third party without prior written consent; (d) protect it with at least the same degree of care it uses for its own confidential information, and no less than reasonable care.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Non-Use, No Copying, No Reverse Engineering</h2>
+          <p>The receiving party shall not use Confidential Information for any purpose outside the Purpose, shall not copy it except as needed for the Purpose, and shall not reverse engineer, decompile, or attempt to derive the underlying methodology of any system, prompt, framework, or product.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. No AI Training or Model Use</h2>
+          <p>The receiving party shall not use Confidential Information to train, fine-tune, or evaluate any artificial intelligence or machine-learning model, nor include it in any dataset, prompt library, or retrieval index, without prior written consent.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. Return or Deletion</h2>
+          <p>On written request, or upon termination of the Purpose, the receiving party shall promptly return or securely delete all Confidential Information and copies, and certify deletion in writing if requested.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Exceptions</h2>
+          <p>Confidential Information does not include information that: (a) is or becomes public through no fault of the receiving party; (b) was lawfully known prior to disclosure; (c) is independently developed without reference to the Confidential Information; (d) is rightfully obtained from a third party without confidentiality obligation; or (e) is required to be disclosed by law, court order, or regulator, provided the disclosing party is given prompt notice where lawful.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Term and Survival</h2>
+          <p>This Agreement is effective from the Effective Date for a period of three (3) years. The confidentiality obligations shall survive termination and continue for a further three (3) years, or indefinitely for information that constitutes a trade secret.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. No Licence</h2>
+          <p>No licence or right of any kind is granted to the receiving party other than the limited right to use the Confidential Information for the Purpose.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Injunctive Relief</h2>
+          <p>The parties acknowledge that breach of this Agreement may cause irreparable harm not adequately remedied by damages alone. The non-breaching party is entitled to seek injunctive or other equitable relief, in addition to any other remedies available at law.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">10. Governing Law and Jurisdiction</h2>
+          <p>This Agreement is governed by the laws of the United Arab Emirates. Any dispute shall be subject to the exclusive jurisdiction of the courts of Dubai, UAE, unless the parties agree in writing to arbitration under DIFC-LCIA or ADGM rules.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">11. Miscellaneous</h2>
+          <p>This Agreement is the entire understanding of the parties on confidentiality. It may only be amended in writing signed by both parties. If any provision is held invalid, the remainder remains in force. This Agreement may be signed in counterparts and by electronic signature.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">12. Signatures</h2>
+          <p class="mt-2"><strong>Party A</strong><br/>Name: ______________________<br/>Title: ______________________<br/>Signature: ______________________<br/>Date: ______________________</p>
+          <p class="mt-4"><strong>Party B</strong><br/>Name: ______________________<br/>Title: ______________________<br/>Signature: ______________________<br/>Date: ______________________</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">Need a signed copy?</h2>
+          <p>To request an executable version with your details pre-populated, email <a href="mailto:hello@ashmo.io?subject=NDA%20request" class="text-accent hover:underline">hello@ashmo.io</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

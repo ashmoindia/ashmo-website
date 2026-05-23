@@ -1,82 +1,140 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const lastUpdated = "19 March 2026";
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
 ---
 
 <BaseLayout
-  title="Terms of Use"
-  description="Terms and conditions for using ashmo.io, including content use, liability limits, and legal scope."
+  title="Terms and Conditions"
+  description="Terms and conditions governing use of ashmo.io, including content licensing, payments, refunds, liability, indemnity, and UAE governing law."
 >
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-16 pb-20 md:pb-28">
-    <div class="max-w-[720px]">
+  <PageHero
+    eyebrow="Legal"
+    title="Terms &"
+    highlight="Conditions."
+    description={`Terms and conditions governing use of ashmo.io. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/privacy-policy/', label: 'Privacy policy' }}
+    secondary={{ href: '/legal/', label: 'All legal pages' }}
+    stats={[
+      { value: 'UAE', label: 'law' },
+      { value: '20', label: 'sections' },
+      { value: '2026', label: 'updated' },
+    ]}
+    sideEyebrow="Plain English"
+    sideTitle="The rules for using this site, its content, and its digital products."
+    sideDescription="Covers acceptable use, content licensing, payments and refunds, liability, indemnity, governing law, and dispute resolution."
+  />
 
-      <p class="text-xs text-text-tertiary uppercase tracking-[0.1em] mb-4">Legal</p>
-      <h1 class="font-heading text-4xl md:text-5xl font-bold tracking-tight mb-4">Terms of Use</h1>
-      <p class="text-sm text-text-tertiary mb-12">Last updated: {lastUpdated}</p>
-
-      <div class="prose prose-lg max-w-none space-y-10 text-text font-light leading-relaxed">
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Acceptance of Terms</h2>
-          <p>By accessing and using <strong>ashmo.io</strong> (the "Site"), you agree to be bound by these Terms of Use. If you do not agree with any part of these terms, please do not use this Site. This Site is operated by <strong>Ashraf Hassan</strong> ("Ashmo"), based in Dubai, United Arab Emirates.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. About These Terms</h2>
+          <p>These Terms and Conditions ("Terms") govern your use of <strong>ashmo.io</strong> ("the platform"), operated by <strong>Ashraf Hassan</strong> ("Ashmo") based in Dubai, United Arab Emirates. By accessing the site or using any free or paid content, you agree to these Terms. If you do not agree, do not use the site.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Use of the Site</h2>
-          <p class="mb-4">You may use this Site for lawful, personal, and non-commercial purposes only. You agree not to:</p>
-          <ul class="list-disc pl-6 space-y-2">
-            <li>Reproduce, distribute, or commercially exploit any content from this Site without prior written permission</li>
-            <li>Use any automated tools (scrapers, bots) to harvest content</li>
-            <li>Attempt to gain unauthorised access to any part of the Site or its infrastructure</li>
-            <li>Use the Site in any way that could damage, disable, or impair it</li>
-            <li>Submit false, misleading, or harmful content through the contact form</li>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Use of the Website</h2>
+          <p>The platform is provided for general business, educational, and professional use. You agree to use it lawfully, not to interfere with its operation, not to access it through automated means without permission, and not to attempt to compromise its security.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Free Content and Educational Purpose</h2>
+          <p>Articles, frameworks, templates, guides, checklists, dashboards, Excel sheets, Notion templates, prompts, case studies, and downloadable resources published here are educational in nature. They reflect general industry knowledge, personal experience, and original interpretation. They are not professional advice for your specific business.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Paid Content and Digital Products</h2>
+          <p>Where you purchase a digital product, course, template, workbook, or consulting package, you receive a limited, personal, non-transferable, non-exclusive licence to use it for your own business or organisation. You may not resell, redistribute, rebrand, sublicense, or republish the content. You may not use it to train AI models, build derivative products for sale, or create competing materials.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. No Guarantee of Results</h2>
+          <p>Nothing on this platform guarantees business success, revenue, profit, investment return, franchise approval, ecommerce performance, marketing performance, hiring outcomes, or legal or regulatory compliance. Results depend on your market, team, capital, execution, and many factors beyond our control. Examples are illustrative only.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. No Professional Advice</h2>
+          <p>Content does not constitute legal, financial, tax, accounting, HR, real estate, investment, franchise, immigration, or regulatory advice unless we agree this separately in a written engagement letter. Always consult a qualified professional licensed in your jurisdiction before making decisions.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. User Responsibility</h2>
+          <p>You are responsible for how you apply any content from this platform. You are responsible for verifying that frameworks, numbers, templates, and approaches are appropriate for your specific situation, market, regulations, and business model. Customisation is required for almost everything.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Payment Terms</h2>
+          <p>Prices are displayed in the currency shown at checkout and may exclude applicable taxes. Payment is processed by third-party payment providers; we do not store full card details. By purchasing, you authorise the charge and confirm your payment information is accurate.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Refund Policy</h2>
+          <p>Because digital products and downloads are delivered instantly and cannot be returned, sales are generally final. We will consider refund requests in good faith for: duplicate charges, non-delivery, or material defects in the product. Refund requests should be sent to <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a> within 7 days of purchase. Consulting fees, once a session has commenced, are non-refundable.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">10. Access Restrictions and Account Termination</h2>
+          <p>We reserve the right to restrict, suspend, or terminate access to the platform or any account where there is reasonable evidence of misuse, fraud, payment failure, breach of these Terms, or behaviour that puts the platform or other users at risk. Where access is terminated due to your material breach, fees are non-refundable.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">11. Prohibited Use of Content</h2>
+          <p>You may not, without prior written permission:</p>
+          <ul class="list-disc pl-6 space-y-1 mt-2">
+            <li>Copy, resell, redistribute, or republish any content.</li>
+            <li>Rebrand, translate, or scrape content for commercial use.</li>
+            <li>Upload content into AI training datasets, prompt libraries, or large language model fine-tuning.</li>
+            <li>Use content to build competing courses, products, or consulting offers.</li>
+            <li>Remove copyright, attribution, or trademark notices.</li>
+            <li>Use content for unlawful, defamatory, or misleading purposes.</li>
           </ul>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Intellectual Property</h2>
-          <p class="mb-4">All content on this Site — including but not limited to articles, case studies, podcast episodes, design, text, graphics, and code — is the intellectual property of Ashraf Hassan unless otherwise stated.</p>
-          <p>You may share links to content on this Site and quote brief excerpts with appropriate attribution. Any other use requires explicit written permission.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">12. Intellectual Property</h2>
+          <p>All content is owned by Ashraf Hassan unless explicitly attributed to another author or licensor. See the <a href="/copyright/" class="text-accent hover:underline">Copyright &amp; IP Policy</a> for full detail.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Content Accuracy</h2>
-          <p>The articles, opinions, and frameworks published on this Site reflect personal views and experiences. They are provided for informational and educational purposes only and do not constitute professional advice (legal, financial, marketing, or otherwise). You should seek independent professional advice before acting on anything published here.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">13. Limitation of Liability</h2>
+          <p>To the maximum extent permitted by UAE law, Ashraf Hassan and ashmo.io shall not be liable for any indirect, incidental, consequential, special, exemplary, or punitive damages, loss of profit, loss of business, loss of data, or business interruption arising from your use of the site, its content, or any product purchased here. Total aggregate liability for any direct claim shall not exceed the amount you have paid us in the 12 months preceding the claim, or AED 1,000, whichever is lower.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">5. External Links</h2>
-          <p>This Site may contain links to third-party websites. These links are provided for convenience only. We have no control over the content of those sites and accept no responsibility for them or for any loss or damage arising from your use of them.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">14. Indemnity</h2>
+          <p>You agree to indemnify and hold harmless Ashraf Hassan and ashmo.io from any claims, damages, liabilities, costs, and expenses (including reasonable legal fees) arising from your misuse of the site, your breach of these Terms, or your violation of any law or third-party right.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Disclaimer of Warranties</h2>
-          <p>This Site is provided on an "as is" and "as available" basis without any warranties of any kind, either express or implied. We do not warrant that the Site will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">15. Third-Party Links and Tools</h2>
+          <p>The platform may link to third-party sites, integrations, or tools. We do not control and are not responsible for their content, terms, privacy, or availability.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Limitation of Liability</h2>
-          <p>To the fullest extent permitted by applicable law, Ashraf Hassan shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, this Site or its content.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">16. Force Majeure</h2>
+          <p>We are not liable for any failure or delay in performance caused by events beyond reasonable control — including but not limited to internet outages, hosting provider failure, payment processor outage, government action, natural events, pandemics, war, civil unrest, or cyber incidents.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Privacy</h2>
-          <p>Your use of this Site is also governed by our <a href="/privacy-policy/" class="text-accent hover:underline">Privacy Policy</a>, which is incorporated into these Terms by reference.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">17. Right to Update Terms</h2>
+          <p>We may update these Terms from time to time. Material changes will be reflected by updating the "Last updated" date at the top of this page. Continued use of the platform after changes are posted constitutes acceptance of the updated Terms.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Governing Law</h2>
-          <p>These Terms are governed by and construed in accordance with the laws of the United Arab Emirates. Any disputes arising from or relating to these Terms shall be subject to the exclusive jurisdiction of the courts of Dubai, UAE.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">18. Governing Law</h2>
+          <p>These Terms are governed by the laws of the United Arab Emirates, without regard to conflict of law principles.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">10. Changes to These Terms</h2>
-          <p>We reserve the right to update these Terms at any time. The "Last updated" date above reflects the most recent revision. Continued use of the Site after changes are posted constitutes your acceptance of the updated Terms.</p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">19. Jurisdiction and Dispute Resolution</h2>
+          <p>The parties shall first attempt in good faith to resolve any dispute through informal discussion. If unresolved within 30 days, the dispute shall be submitted to the exclusive jurisdiction of the courts of Dubai, United Arab Emirates, unless otherwise required by mandatory consumer protection law in your jurisdiction.</p>
         </div>
 
         <div>
-          <h2 class="font-heading text-xl font-bold text-text mb-3">11. Contact</h2>
-          <p>Questions about these Terms? Email <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">20. Contact</h2>
+          <p>For questions about these Terms: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
         </div>
 
       </div>

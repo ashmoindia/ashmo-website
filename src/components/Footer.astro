@@ -1,24 +1,30 @@
 ---
 const year = new Date().getFullYear();
 const exploreLinks = [
-  { href: '/thinking/', label: 'Thinking' },
-  { href: '/intelligence/', label: 'Intelligence' },
-  { href: '/challenges/', label: 'AI Challenges' },
-  { href: '/restaurant-cafe-growth-systems/', label: 'Growth' },
+  { href: '/thinking/', label: 'Insights' },
+  { href: '/intelligence/', label: 'Market Intelligence' },
+  { href: '/challenges/', label: 'AI Workflows' },
+  { href: '/growth/', label: 'Growth Systems' },
   { href: '/concepts/', label: 'F&B Concepts' },
-  { href: '/work/', label: 'Work' },
+  { href: '/work/', label: 'Case Studies' },
 ];
 
 const companyLinks = [
-  { href: '/principles/', label: 'Principles' },
-  { href: '/podcast/', label: 'Podcast' },
-  { href: '/story/', label: 'Story' },
+  { href: '/principles/', label: 'Building Principles' },
+  { href: '/podcast/', label: 'Conversations' },
+  { href: '/story/', label: 'About' },
   { href: '/ashraf-hassan/', label: 'About Ashmo' },
 ];
 
 const utilityLinks = [
   { href: '/privacy-policy/', label: 'Privacy' },
   { href: '/terms/', label: 'Terms' },
+  { href: '/data-policy/', label: 'Data' },
+  { href: '/cookies/', label: 'Cookies' },
+  { href: '/copyright/', label: 'Copyright' },
+  { href: '/disclaimer/', label: 'Disclaimer' },
+  { href: '/compliance/', label: 'Compliance' },
+  { href: '/legal/', label: 'All legal' },
 ];
 
 const socialLinks = [
@@ -67,7 +73,7 @@ const socialLinks = [
             </span>
           </a>
           <p class="mt-5 text-[1rem] leading-[1.8] text-text-secondary">
-            Founder, brand builder, writer, and operator building durable systems for restaurants, cafes, and founder-led brands.
+            Commercial strategy, F&amp;B growth, AI-age marketing systems, and practical business judgment.
           </p>
           <div class="mt-6 flex flex-wrap items-center gap-3">
             {socialLinks.map((link) => (
@@ -139,10 +145,10 @@ const socialLinks = [
         <div class="rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-5 md:p-6">
           <p class="font-mono text-[0.65rem] uppercase tracking-[0.06em] text-accent-light">Start here</p>
           <h2 class="mt-4 text-[1.5rem] font-bold tracking-normal text-text">
-            Need clarity on growth, brand, or operator strategy?
+            Need clarity on brand, growth, or market direction?
           </h2>
           <p class="mt-4 text-sm leading-[1.75] text-text-secondary">
-            Use the contact page if you want to talk through an idea, a growth problem, or a project that needs sharper thinking.
+            Use the contact page if you want to talk through a brand, growth, market, or AI-age marketing decision.
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a
@@ -156,7 +162,7 @@ const socialLinks = [
               href="/intelligence/"
               class="button-secondary px-5 py-3 text-text-secondary"
             >
-              Browse intelligence
+              Browse Market Intelligence
             </a>
           </div>
         </div>
@@ -164,8 +170,11 @@ const socialLinks = [
     </div>
 
     <div class="border-t border-white/6 px-6 py-4 md:px-8 md:py-5">
+      <p class="mb-3 text-[0.7rem] leading-[1.7] text-text-tertiary md:text-xs">
+        This platform provides independent educational content only. It does not disclose confidential information of any employer, client, partner, or third party. <a href="/employment-disclaimer/" class="underline decoration-text-tertiary/40 underline-offset-4 hover:text-text-secondary">Read the full position.</a>
+      </p>
       <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <p class="text-xs text-text-tertiary">&copy; {year} Ashmo. Built with restraint, clarity, and long-term thinking.</p>
+        <p class="text-xs text-text-tertiary">&copy; {year} Ashmo. Commercial intelligence, built with restraint and clarity.</p>
 
         <div class="flex flex-wrap gap-x-5 gap-y-2">
           {utilityLinks.map((link) => (

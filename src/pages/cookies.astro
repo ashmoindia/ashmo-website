@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Cookie Policy"
+  description="What cookies and similar technologies ashmo.io uses, why, and how to control them."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Cookie"
+    highlight="Policy."
+    description={`What cookies we use and how to control them. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/privacy-policy/', label: 'Privacy policy' }}
+    secondary={{ href: '/legal/', label: 'All legal pages' }}
+    stats={[
+      { value: '3', label: 'cookie classes' },
+      { value: 'GA4', label: 'analytics' },
+      { value: 'Opt-out', label: 'anytime' },
+    ]}
+    sideEyebrow="Cookies"
+    sideTitle="Essential cookies always on. Analytics and marketing only with consent."
+    sideDescription="Covers essential, analytics, and marketing cookies, the tools they relate to, and how to withdraw consent."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. What Cookies Are</h2>
+          <p>Cookies are small text files stored on your device when you visit a website. They allow the site to remember your actions and preferences over time. Similar technologies include local storage, pixels, and tags.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Categories We Use</h2>
+          <p class="mb-3"><strong>Essential cookies</strong> — required for the site to function (security, load balancing, basic preferences). Always on.</p>
+          <p class="mb-3"><strong>Analytics cookies</strong> — Google Analytics 4 via Google Tag Manager. Used to understand site usage in aggregate and improve content. Active where consent allows.</p>
+          <p><strong>Marketing / retargeting cookies</strong> — pixel tags from Meta, LinkedIn Insight, and similar tools may be deployed if you have consented. They allow ad measurement and retargeting. Off by default; only active after explicit consent.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Specific Tools</h2>
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Google Analytics 4 and Google Tag Manager</li>
+            <li>Meta Pixel (when consented)</li>
+            <li>LinkedIn Insight Tag (when consented)</li>
+            <li>Email marketing and automation providers</li>
+            <li>Payment processors</li>
+            <li>Hosting and CDN providers</li>
+            <li>Embedded third-party content (YouTube, Vimeo, etc.) which may set their own cookies</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Consent Banner</h2>
+          <p>On first visit you will see a consent banner allowing you to accept, reject, or customise non-essential cookies. You can change your choice at any time through the cookie settings link in the footer.</p>
+          <blockquote class="border-l-2 border-accent/40 pl-4 italic mt-4 text-text-secondary">"This site uses cookies to operate and to understand how it is used. Essential cookies are always on. You can accept, reject, or customise analytics and marketing cookies."</blockquote>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. Controlling Cookies</h2>
+          <p>You can clear or block cookies through your browser settings at any time. Note that disabling essential cookies may break parts of the site. To opt out of Google Analytics specifically, install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener" class="text-accent hover:underline">Google Analytics Opt-out Browser Add-on</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Contact</h2>
+          <p>Cookie questions: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

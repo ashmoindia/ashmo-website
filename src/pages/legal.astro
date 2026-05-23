@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+
+const legalPages = [
+  {
+    title: 'Privacy Policy',
+    href: '/privacy-policy/',
+    description: 'How personal data is collected, used, stored, and protected. UAE PDPL aligned.',
+  },
+  {
+    title: 'Terms & Conditions',
+    href: '/terms/',
+    description: 'Rules for using the site, paid content, payment, refunds, and liability.',
+  },
+  {
+    title: 'Data Policy',
+    href: '/data-policy/',
+    description: 'What ashmo.io stores, what users must not upload, and how submitted data is handled.',
+  },
+  {
+    title: 'Confidentiality Policy',
+    href: '/confidentiality/',
+    description: 'Public position on confidentiality, originality, and conflict of interest.',
+  },
+  {
+    title: 'Employment Disclaimer',
+    href: '/employment-disclaimer/',
+    description: 'Independence statement. Personal platform. No employer endorsement.',
+  },
+  {
+    title: 'Copyright & IP',
+    href: '/copyright/',
+    description: 'Ownership, permitted use, prohibited use, AI training restrictions, takedown.',
+  },
+  {
+    title: 'Cybersecurity Policy',
+    href: '/cybersecurity/',
+    description: 'Security controls, incident response, and breach notification.',
+  },
+  {
+    title: 'Cookie Policy',
+    href: '/cookies/',
+    description: 'Cookies, pixels, analytics, marketing tools, and how to control them.',
+  },
+  {
+    title: 'General Disclaimer',
+    href: '/disclaimer/',
+    description: 'Educational only. No legal, financial, tax, or regulatory advice.',
+  },
+  {
+    title: 'Compliance',
+    href: '/compliance/',
+    description: 'Public commitments on data, IP, employment, and responsible content.',
+  },
+  {
+    title: 'Mutual NDA Template',
+    href: '/nda/',
+    description: 'UAE-friendly mutual NDA template for collaborators and partners.',
+  },
+];
+---
+
+<BaseLayout
+  title="Legal"
+  description="The full legal framework behind ashmo.io — privacy, terms, data, IP, confidentiality, employment, security, and compliance."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="The"
+    highlight="Framework."
+    description={`The legal framework behind ashmo.io. Last reviewed: ${lastUpdated}.`}
+    primary={{ href: '/privacy-policy/', label: 'Privacy policy' }}
+    secondary={{ href: '/terms/', label: 'Terms & conditions' }}
+    stats={[
+      { value: '11', label: 'documents' },
+      { value: 'UAE', label: 'law' },
+      { value: 'Reviewed', label: 'annually' },
+    ]}
+    sideEyebrow="Protective. Independent. Clear."
+    sideTitle="One place for every legal and compliance document."
+    sideDescription="Documents are drafted to be strong, practical, and clearly written. They are not a substitute for advice from a UAE-qualified lawyer for any specific matter."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="grid gap-4 md:grid-cols-2">
+      {legalPages.map((page) => (
+        <a href={page.href} class="cta-panel gradient-border block p-6 md:p-7 no-underline transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40">
+          <p class="font-mono text-[0.65rem] uppercase tracking-[0.06em] text-accent-light">Document</p>
+          <h2 class="mt-3 font-heading text-xl font-bold text-text">{page.title}</h2>
+          <p class="mt-2 text-sm leading-[1.7] text-text-secondary">{page.description}</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-xs font-mono uppercase tracking-[0.08em] text-accent-light">Open &rarr;</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="cta-panel gradient-border mt-12 p-6 md:p-8">
+      <div class="prose prose-lg max-w-[760px] text-text font-light leading-relaxed">
+        <h2 class="font-heading text-xl font-bold text-text mb-3">A note on this framework</h2>
+        <p>ashmo.io provides independent educational content only. It does not disclose confidential information of any employer, client, partner, or third party. The documents linked above are drafted to be strong, practical, and clear, and are reviewed at least annually.</p>
+        <p class="mt-3">For any legal, privacy, or security concern, contact <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

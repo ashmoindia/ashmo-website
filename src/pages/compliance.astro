@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Compliance"
+  description="ashmo.io's public commitments on data, confidentiality, IP, employment, and responsible content creation."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Compliance &"
+    highlight="Commitments."
+    description={`Public commitments on data, confidentiality, IP, and responsible content. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/legal/', label: 'All legal pages' }}
+    secondary={{ href: 'mailto:hello@ashmo.io', label: 'Contact for concerns' }}
+    stats={[
+      { value: '8', label: 'commitments' },
+      { value: 'UAE', label: 'law-aware' },
+      { value: 'Reviewed', label: 'annually' },
+    ]}
+    sideEyebrow="Trust"
+    sideTitle="A short, public statement of how this platform operates."
+    sideDescription="Builds trust with users, employers, partners, and regulators. Designed to be reviewed annually."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Data Protection Commitment</h2>
+          <p>We collect the minimum personal data needed, store it only as long as necessary, and protect it with reasonable technical and organisational measures. We comply with UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection and apply equivalent rights to users worldwide. See the <a href="/privacy-policy/" class="text-accent hover:underline">Privacy Policy</a> and <a href="/data-policy/" class="text-accent hover:underline">Data Policy</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Confidentiality Commitment</h2>
+          <p>No confidential information of any current or former employer, client, partner, or third party is intentionally disclosed. Case studies are anonymised or generalised. See the <a href="/confidentiality/" class="text-accent hover:underline">Confidentiality Policy</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Intellectual Property Commitment</h2>
+          <p>All published content is original or properly licensed. Third-party material is attributed. Content is not licensed for AI training or commercial republication. See the <a href="/copyright/" class="text-accent hover:underline">Copyright Policy</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Employment Compliance Commitment</h2>
+          <p>The platform operates in good-faith compliance with applicable employment contracts, confidentiality obligations, and UAE labour law. Content is independent and educational. See the <a href="/employment-disclaimer/" class="text-accent hover:underline">Employment Disclaimer</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. Ethical Content Commitment</h2>
+          <p>Content is factual, honest, and clearly distinguishes opinion from analysis. No clickbait, no fabricated numbers, no misleading guarantees. Where AI tools are used to assist writing, the output is reviewed and edited for accuracy.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Responsible AI Commitment</h2>
+          <p>AI-assisted content is checked for accuracy, hallucination, and originality before publication. AI is not used to bypass copyright, fabricate sources, or generate synthetic endorsements.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Takedown and Review Process</h2>
+          <p>If any party — user, employer, partner, or regulator — has a reasonable concern about content on this site, we will review it in good faith and, where appropriate, edit, anonymise, restrict, or remove the material. Contact <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Continuous Review</h2>
+          <p>UAE data protection, cybersecurity, intellectual property, employment, and consumer protection law evolves. Policies on this site are reviewed at least annually and revised when material change is needed.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Contact for Legal, Privacy, or Security Concerns</h2>
+          <p><a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

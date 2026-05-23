@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Employment Compliance Disclaimer"
+  description="ashmo.io is a personal, independent, educational platform. It does not represent any employer, client, or affiliated business."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Employment"
+    highlight="Disclaimer."
+    description={`The platform is personal, independent, and educational. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/confidentiality/', label: 'Confidentiality policy' }}
+    secondary={{ href: '/legal/', label: 'All legal pages' }}
+    stats={[
+      { value: 'Personal', label: 'platform' },
+      { value: 'Independent', label: 'views' },
+      { value: 'UAE', label: 'labour law' },
+    ]}
+    sideEyebrow="Independence"
+    sideTitle="Personal views. No employer endorsement. No confidential information."
+    sideDescription="Sets out the independence of ashmo.io, its relationship to employment and confidentiality obligations, and the user's expected reading of the content."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Independent Personal Platform</h2>
+          <p>ashmo.io is a personal, independent, educational platform owned and operated by Ashraf Hassan. It is not the website of any employer, client, or affiliated company.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Personal Views Only</h2>
+          <p>All articles, opinions, recommendations, frameworks, and case studies represent the personal views of Ashraf Hassan based on general industry knowledge, public information, and personal experience. They do not represent the views of any current or former employer, client, partner, or affiliated business.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. No Disclosure of Employer Information</h2>
+          <p>No confidential employer information is intentionally disclosed. No internal documents, systems, data, strategies, pricing, unpublished campaigns, customer information, vendor terms, or business secrets are shared. Where examples are required, they are generalised or anonymised. See the <a href="/confidentiality/" class="text-accent hover:underline">Confidentiality Policy</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. No Use of Employer Materials</h2>
+          <p>The platform does not use, republish, adapt, or reference employer-owned materials, brand assets, templates, dashboards, files, screenshots, copy, design systems, or internal tools without written permission.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. No Competition with Employer</h2>
+          <p>The platform is designed to remain educational and advisory in nature, and does not compete with any employer's business unless and until that activity has been separately reviewed and approved in writing.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Compliance with Employment Obligations</h2>
+          <p>Ashraf Hassan operates this platform in good-faith compliance with applicable employment contracts, confidentiality and non-disclosure obligations, non-compete or non-solicitation clauses (where applicable), and the requirements of UAE Federal Decree-Law No. 33 of 2021 on the Regulation of Labour Relations.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. No Endorsement</h2>
+          <p>Users should not assume any endorsement, approval, affiliation, sponsorship, or partnership with any current or former employer, client, or partner, unless that affiliation is explicitly disclosed on the relevant page.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Reporting Concerns</h2>
+          <p>If you are a current or former employer, partner, or third party and have any concern about content on this site, please contact <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>. Concerns will be reviewed promptly and acted on in good faith.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Data Policy"
+  description="How ashmo.io handles submitted data, what users must not upload, and how confidential or sensitive information is treated."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Data"
+    highlight="Policy."
+    description={`How submitted data is handled and what users must not upload. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/privacy-policy/', label: 'Privacy policy' }}
+    secondary={{ href: '/legal/', label: 'All legal pages' }}
+    stats={[
+      { value: '5', label: 'data classes' },
+      { value: 'PDPL', label: 'aligned' },
+      { value: '24h', label: 'review' },
+    ]}
+    sideEyebrow="Data handling"
+    sideTitle="Users are responsible for what they submit. We minimise what we keep."
+    sideDescription="Covers what we store, what users must never upload, classification, review, retention, and accidental confidential submissions."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Purpose</h2>
+          <p>This Data Policy explains what data ashmo.io stores, what users are not permitted to submit, how submitted data is classified and handled, and what happens when sensitive material is received unintentionally. It complements the <a href="/privacy-policy/" class="text-accent hover:underline">Privacy Policy</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. What the Platform Stores</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Contact details voluntarily submitted via forms.</li>
+            <li>Course or product purchase records.</li>
+            <li>Consulting enquiry context shared in conversation.</li>
+            <li>Newsletter subscription state.</li>
+            <li>Analytics events (no personal identifiers).</li>
+            <li>Audit logs for security and fraud prevention.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. What Users Must Not Upload</h2>
+          <p class="mb-3">Do <strong>not</strong> upload, paste, share, or transmit to ashmo.io any of the following unless you own them or have written legal permission to share them:</p>
+          <ul class="list-disc pl-6 space-y-1">
+            <li>Confidential employer information.</li>
+            <li>Trade secrets of any company.</li>
+            <li>Private customer or client databases.</li>
+            <li>Financial reports, P&amp;L statements, or unpublished commercial figures.</li>
+            <li>Signed or draft contracts of third parties.</li>
+            <li>Payroll, salary, or employee personal data.</li>
+            <li>Supplier or vendor agreements.</li>
+            <li>Recipes, formulations, or production specifications.</li>
+            <li>Franchise manuals, operations manuals, or SOPs.</li>
+            <li>Internal strategy decks, board materials, or M&amp;A material.</li>
+            <li>Any document marked "Confidential", "Internal", "Restricted", or equivalent.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. User Responsibility for Submitted Data</h2>
+          <p>You are solely responsible for the lawfulness, accuracy, and ownership of any material you submit. By submitting data you confirm you have the right to share it. Ashmo accepts no liability for confidentiality breaches caused by user submissions.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. Review of Submitted Data</h2>
+          <p>Submissions may be reviewed manually by Ashraf Hassan or a small operations team for the purpose of responding to the request, identifying potential misuse, and ensuring nothing prohibited has been shared.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Internal Data Classification</h2>
+          <p>All submitted data is classified into one of five tiers:</p>
+          <ul class="list-disc pl-6 space-y-2 mt-2">
+            <li><strong>Public</strong> — content the user has authorised for publication.</li>
+            <li><strong>Internal</strong> — operational data used to deliver the service.</li>
+            <li><strong>Confidential</strong> — limited-access data such as purchase records.</li>
+            <li><strong>Highly Confidential</strong> — sensitive personal or financial detail; access tightly restricted.</li>
+            <li><strong>Restricted</strong> — material that should not have been shared; quarantined and addressed under Section 8.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Retention and Deletion</h2>
+          <p>Submitted data is retained only as long as needed to complete the conversation or transaction, or as required by law. To request deletion, email <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Accidental Confidential Submissions</h2>
+          <p>If material is submitted that appears confidential, proprietary, or sensitive — including content that may belong to a third party — we will:</p>
+          <ol class="list-decimal pl-6 space-y-2 mt-2">
+            <li>Stop processing the material immediately.</li>
+            <li>Quarantine it from working systems.</li>
+            <li>Notify the sender and ask whether the material should be deleted, returned, or escalated.</li>
+            <li>Delete the material on request, or by default within 30 days unless legal preservation applies.</li>
+          </ol>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Data Minimisation</h2>
+          <p>We collect the minimum data needed to do the job. We do not request information we do not need. We do not ask users for confidential employer or client information at any point.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">10. Third-Party Tools</h2>
+          <p>Some submitted data may be processed by trusted third-party tools (email, CRM, payment processing). See the <a href="/privacy-policy/#third-party-processors" class="text-accent hover:underline">Privacy Policy</a> for the full list and safeguards.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">11. Reporting Concerns</h2>
+          <p>To report a data concern or request a review of submitted material: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

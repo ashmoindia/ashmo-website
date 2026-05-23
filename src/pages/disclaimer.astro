@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Disclaimer"
+  description="ashmo.io provides educational content only. No legal, financial, tax, investment, or regulatory advice."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="General"
+    highlight="Disclaimer."
+    description={`Educational content only. No guarantees. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/terms/', label: 'Terms of use' }}
+    secondary={{ href: '/legal/', label: 'All legal pages' }}
+    stats={[
+      { value: '0', label: 'guarantees' },
+      { value: 'Educational', label: 'only' },
+      { value: 'UAE', label: 'aware' },
+    ]}
+    sideEyebrow="Reading guide"
+    sideTitle="Useful starting points, not finished answers."
+    sideDescription="Content is educational and illustrative. Always consult a qualified professional licensed in your jurisdiction for actual decisions."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Educational Purpose Only</h2>
+          <p>Everything published on ashmo.io — articles, frameworks, templates, dashboards, courses, videos, podcasts, prompts, and downloads — is provided strictly for general educational and business-planning purposes. It is not a substitute for professional advice tailored to your specific business, market, and circumstances.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. No Guaranteed Results</h2>
+          <p>No part of this platform guarantees revenue, profit, traffic, conversion, customer acquisition, franchise approval, investment return, hiring success, or any other commercial outcome. Examples and case studies are illustrative and outcomes will vary.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Not Legal, Financial, or Tax Advice</h2>
+          <p>The content is not legal, financial, tax, accounting, investment, HR, immigration, real estate, franchise, regulatory, or licensing advice. Always consult qualified professionals licensed in your jurisdiction before making decisions.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. No Compliance Guarantee</h2>
+          <p>References to UAE, GCC, or international regulations are general in nature and may change. Compliance with applicable laws — including labour law, commercial licensing, food safety, VAT, data protection, advertising standards, and employment standards — is the responsibility of each business owner.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. No Affiliation</h2>
+          <p>Unless explicitly stated, no content on the platform represents the position of any current or former employer, client, partner, or affiliated business. See the <a href="/employment-disclaimer/" class="text-accent hover:underline">Employment Disclaimer</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Templates Require Customisation</h2>
+          <p>Templates, prompts, dashboards, and frameworks published on this site are starting points. They require customisation to your market, regulations, business model, brand, and team before use.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Markets Change</h2>
+          <p>Markets, consumer behaviour, platforms, regulations, and economics change continuously. Information may become out of date. Always verify currency before relying on any specific number, benchmark, or rule.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. No Liability for Decisions</h2>
+          <p>ashmo.io and Ashraf Hassan accept no liability for business losses, operational failures, regulatory issues, third-party tool failures, or any decision made on the basis of content from this platform. Use of the platform is at your own risk and judgment.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Contact</h2>
+          <p>Questions about scope, limits, or appropriate use: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

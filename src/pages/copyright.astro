@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+const lastUpdated = "23 May 2026";
+---
+
+<BaseLayout
+  title="Copyright and Intellectual Property Policy"
+  description="All ashmo.io content is original or licensed. No copying, resale, redistribution, or AI training without written permission."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Copyright"
+    highlight="& IP."
+    description={`All content is original or licensed. Last updated: ${lastUpdated}.`}
+    primary={{ href: '/contact/', label: 'Request a licence' }}
+    secondary={{ href: '/terms/', label: 'Terms of use' }}
+    stats={[
+      { value: '©', label: 'all rights' },
+      { value: 'No AI', label: 'training' },
+      { value: 'UAE', label: 'law' },
+    ]}
+    sideEyebrow="Originality"
+    sideTitle="Original frameworks. Personal-use licence for buyers. No AI scraping."
+    sideDescription="Covers ownership, permitted use, prohibited use, AI training restrictions, takedown procedure, and infringement reporting."
+  />
+
+  <section class="section-shell pb-24 md:pb-32">
+    <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+      <div class="prose prose-lg relative z-10 max-w-[760px] space-y-10 text-text font-light leading-relaxed">
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">1. Ownership</h2>
+          <p>All content on ashmo.io — including but not limited to articles, templates, prompts, dashboards, frameworks, courses, videos, graphics, photography, worksheets, Excel sheets, Notion templates, PDFs, downloads, and the design and code of the website itself — is either original work owned by Ashraf Hassan or licensed from third parties with appropriate rights. All rights reserved.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">2. Buyer Licence</h2>
+          <p>Where you purchase a digital product, course, template, or workbook, you receive a limited, personal, non-exclusive, non-transferable, non-sublicensable licence to use it for your own business or organisation only. The licence does not transfer ownership.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">3. Permitted Use</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Use within your own organisation, with your direct team.</li>
+            <li>Adapt for your own internal operations.</li>
+            <li>Reference short excerpts (under 200 words) for fair commentary or review, with clear attribution and a link back to ashmo.io.</li>
+            <li>Quote a single chart, framework, or quote in academic, journalistic, or educational work with attribution.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">4. Prohibited Use</h2>
+          <p>Without prior written permission, you may <strong>not</strong>:</p>
+          <ul class="list-disc pl-6 space-y-1 mt-2">
+            <li>Copy, reproduce, distribute, or publish substantial portions of the content.</li>
+            <li>Resell, redistribute, sublicense, rebrand, translate, or republish content.</li>
+            <li>Scrape, mirror, or systematically harvest content.</li>
+            <li>Use content to build, train, fine-tune, or evaluate AI models, datasets, prompt libraries, or LLM tools.</li>
+            <li>Create derivative products that compete with ashmo.io products.</li>
+            <li>Remove copyright notices, attribution, or trademark marks.</li>
+            <li>Misrepresent authorship or implied endorsement.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">5. AI Training and Dataset Use</h2>
+          <p>The content on ashmo.io is explicitly <strong>not</strong> licensed for use as training data, fine-tuning data, retrieval-augmented generation source material, or for inclusion in any AI training corpus, public or commercial. Robots directives, AI-bot signals, and machine-readable opt-out signals on this site reinforce this position.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">6. Third-Party Trademarks</h2>
+          <p>References to third-party brands, products, or trademarks are for editorial, illustrative, or comparative purposes only. All trademarks are the property of their respective owners. No endorsement or affiliation is implied.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">7. Takedown and Infringement</h2>
+          <p>If you believe content on this site infringes your copyright or other intellectual property right, contact <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a> with: (a) identification of the work allegedly infringed, (b) the URL of the content on this site, (c) your contact details, and (d) a statement of good-faith belief and authority. We will review and act in good faith.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">8. Licence Requests</h2>
+          <p>To request a commercial licence, reprint, translation, syndication, training-data licence, or republication right: <a href="mailto:hello@ashmo.io" class="text-accent hover:underline">hello@ashmo.io</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-xl font-bold text-text mb-3">9. Governing Law</h2>
+          <p>This policy is governed by the laws of the United Arab Emirates, including Federal Decree-Law No. 38 of 2021 on Copyright and Neighbouring Rights, alongside international IP principles.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
