@@ -1,0 +1,9 @@
+---
+interface Props {
+  text: string;
+  as?: 'p' | 'span';
+}
+const { text, as = 'p' } = Astro.props;
+const Tag = as;
+---
+<Tag class="gold-kicker"><slot>{text}</slot></Tag>

@@ -1,0 +1,11 @@
+---
+interface Props {
+  title: string;
+  note?: string;
+}
+const { title, note } = Astro.props;
+---
+<li class="timeline-fragment">
+  <h3>{title}</h3>
+  {note && <p>{note}</p>}
+</li>

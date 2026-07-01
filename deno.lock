@@ -18,6 +18,7 @@
         "npm:@fontsource-variable/jetbrains-mono@^5.2.8",
         "npm:@tailwindcss/vite@^4.2.2",
         "npm:astro@^6.0.6",
+        "npm:bcryptjs@^3.0.3",
         "npm:resend@^6.9.4",
         "npm:tailwindcss@^4.2.2",
         "npm:typescript@^5.9.3"

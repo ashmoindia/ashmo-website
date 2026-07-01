@@ -54,7 +54,7 @@ Someone asking the price may really be asking:
 - What kind of place is this?
 - What does buying this say about me?
 
-That lesson shaped not just how I think about pricing, but how I think about selling in general. I wrote directly about it in [What a Grocery Shop at 19 Taught Me About Pricing](/thinking/grocery-shop-pricing-psychology/), but the principle goes wider than pricing. Customers are constantly translating practical decisions through emotional logic. If you cannot read that, you end up answering the wrong question.
+That lesson shaped not just how I think about pricing, but how I think about selling in general. I wrote directly about it in [what early retail taught me about pricing](/thinking/grocery-shop-pricing-psychology/), but the principle goes wider than pricing. Customers are constantly translating practical decisions through emotional logic. If you cannot read that, you end up answering the wrong question.
 
 I also learned that the customer's body language often tells the truth before their words do.
 

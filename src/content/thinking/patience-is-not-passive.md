@@ -58,4 +58,4 @@ The discipline of showing up is the discipline of patience.
 
 They're the same thing.
 
-This is the same principle behind [what I learned running a grocery shop at 19](/thinking/grocery-shop-pricing-psychology/) — and the same principle that [made FiLLi's brand positioning compound over a decade](/thinking/brand-positioning-hardest-thing/).
+This is the same principle behind [what I learned in early retail](/thinking/grocery-shop-pricing-psychology/) and the same principle that [made FiLLi's brand positioning compound over a decade](/thinking/brand-positioning-hardest-thing/).

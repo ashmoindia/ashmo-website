@@ -1,0 +1,18 @@
+---
+import PaperMoonLayout from '../../layouts/PaperMoonLayout.astro';
+---
+
+<PaperMoonLayout title="The sky is offline — Paper Moon" pageKind="offline">
+  <div class="pm-atmosphere" aria-hidden="true">
+    <span class="pm-orbit pm-orbit-one"></span>
+    <span class="pm-moon-shape pm-faded-moon"></span>
+  </div>
+  <div class="pm-shell pm-offline-shell">
+    <section class="pm-paper-card pm-state-card">
+      <span class="pm-crumb-moon pm-faded-moon" aria-hidden="true"></span>
+      <p class="pm-eyebrow">Paper Moon</p>
+      <h1>The sky is offline. Try again when the signal returns.</h1>
+      <a class="pm-secondary-button" href="/pm/">Try the sky again</a>
+    </section>
+  </div>
+</PaperMoonLayout>

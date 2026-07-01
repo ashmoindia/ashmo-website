@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="TIP Product Desk — Admin"
+  description="Private TIP product intake desk for Ashmo to upload selected products for manual source research and reviewed publication."
+  noindex={true}
+>
+  <section class="section-shell min-h-[72vh] pt-12 pb-24 md:pt-18 md:pb-28">
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,0.55fr)_minmax(320px,0.45fr)]">
+      <div>
+        <p class="mono-label">Ashmo Admin · TIP Product Desk</p>
+        <h1 class="mt-5 max-w-[12ch] font-heading text-[3rem] font-bold leading-[0.98] tracking-[-0.05em] text-text md:text-[4.8rem]">
+          Add the next product for research.
+        </h1>
+        <p class="mt-5 max-w-[42rem] text-[1rem] leading-[1.82] text-text-secondary">
+          This private intake keeps TIP editor-managed. Upload a clear product photo, add the context you already know, research the public source trail with Codex, and publish only the reviewed article you choose.
+        </p>
+
+        <div class="mt-7 grid gap-3">
+          {[
+            ['01', 'Upload privately', 'Add one clear photo, product name, and any useful link or buying context.'],
+            ['02', 'Research with Codex', 'Gather manufacturer, label, distributor, and buyer-check evidence manually.'],
+            ['03', 'Publish intentionally', 'Only reviewed products become durable public TIP articles.'],
+          ].map(([step, title, detail]) => (
+            <div class="rounded-[1.15rem] border border-white/8 bg-white/[0.04] p-4">
+              <p class="font-mono text-[0.62rem] uppercase tracking-[0.08em] text-accent-light">{step}</p>
+              <h2 class="mt-2 text-[1.08rem] font-semibold tracking-[-0.03em] text-text">{title}</h2>
+              <p class="mt-2 text-sm leading-[1.7] text-text-secondary">{detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="/tip/" class="button-secondary">Open public TIP</a>
+          <a href="/admin/entries/" class="button-secondary">Challenge entries</a>
+        </div>
+      </div>
+
+      <form
+        name="tip-editor-intake"
+        method="POST"
+        enctype="multipart/form-data"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        class="rounded-[1.6rem] border border-white/8 bg-white/[0.045] p-6 md:p-7"
+      >
+        <input type="hidden" name="form-name" value="tip-editor-intake" />
+        <input type="hidden" name="intake_mode" value="editor-managed-manual-research" />
+        <p class="hidden"><label>Do not fill this out: <input name="bot-field" /></label></p>
+
+        <div class="grid gap-5">
+          <label class="block cursor-pointer rounded-[1.25rem] border border-dashed border-accent/45 bg-accent/[0.075] px-5 py-7 text-center transition-colors hover:border-accent hover:bg-accent/[0.11]">
+            <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-accent/35 bg-accent/10 font-mono text-[1.3rem] text-accent-light">+</span>
+            <span class="mt-4 block text-[1.2rem] font-semibold tracking-[-0.03em] text-text">Upload product photo</span>
+            <span class="mt-2 block text-sm leading-[1.65] text-text-secondary">Front packaging works best. Keep the image below 8 MB.</span>
+            <input name="product_image" required type="file" accept="image/png,image/jpeg,image/webp" capture="environment" class="sr-only" />
+          </label>
+
+          <label>
+            <span class="mb-2 block font-mono text-[0.64rem] uppercase tracking-[0.08em] text-text-tertiary">Product name</span>
+            <input name="product_name" required type="text" maxlength="180" placeholder="Example: Advion Cockroach Gel Bait" class="input-dark" />
+          </label>
+          <label>
+            <span class="mb-2 block font-mono text-[0.64rem] uppercase tracking-[0.08em] text-text-tertiary">Product or source link <span class="text-text-tertiary/70">optional</span></span>
+            <input name="product_link" type="url" maxlength="500" placeholder="Official page, marketplace link, or distributor page" class="input-dark" />
+          </label>
+          <label>
+            <span class="mb-2 block font-mono text-[0.64rem] uppercase tracking-[0.08em] text-text-tertiary">Country <span class="text-text-tertiary/70">optional</span></span>
+            <input name="country" type="text" maxlength="100" placeholder="Example: United Arab Emirates" class="input-dark" />
+          </label>
+          <label>
+            <span class="mb-2 block font-mono text-[0.64rem] uppercase tracking-[0.08em] text-text-tertiary">Editor notes <span class="text-text-tertiary/70">optional</span></span>
+            <textarea name="editor_notes" rows="5" maxlength="1600" placeholder="Add visible codes, label details, seller context, questions, or the reason you selected this product." class="input-dark"></textarea>
+          </label>
+        </div>
+
+        <p class="mt-5 text-[0.76rem] leading-[1.7] text-text-tertiary">
+          Stored privately in Netlify Forms for manual research. This form does not trigger AI analysis or public publishing.
+        </p>
+        <button type="submit" class="button-gradient mt-6 w-full justify-center border-0">Save private product intake</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

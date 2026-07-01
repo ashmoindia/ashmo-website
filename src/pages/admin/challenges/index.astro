@@ -39,6 +39,7 @@ const stats = {
       <div class="flex flex-wrap gap-3">
         <a href="/admin/entries/" class="button-gradient">Review entries</a>
         <button type="button" id="manychat-health-check" class="button-secondary">Check ManyChat</button>
+        <button type="button" class="admin-logout button-secondary">Logout</button>
       </div>
     </div>
   </section>
@@ -92,6 +93,13 @@ const stats = {
 
   <script>
     const manyChatHealthButton = document.getElementById('manychat-health-check');
+    const logoutButtons = document.querySelectorAll<HTMLButtonElement>('.admin-logout');
+
+    logoutButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        window.location.assign('/admin/api/logout');
+      });
+    });
 
     manyChatHealthButton?.addEventListener('click', async () => {
       const originalText = manyChatHealthButton.textContent || 'Check ManyChat';

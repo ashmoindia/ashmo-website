@@ -102,6 +102,10 @@ export default async (req) => {
   const name = data.name?.trim() || 'there';
   const message = data.message?.trim() || '';
 
+  if (formName === 'tip-editor-intake') {
+    return new Response('Private TIP intake stored', { status: 200 });
+  }
+
   if (!email) {
     return new Response('No email provided', { status: 400 });
   }

@@ -10,7 +10,7 @@ published: true
 
 Selling is usually described as persuasion. Push harder. Handle objections better. Say the right thing at the right moment. But that has never been my experience. The people who sell well are not always the people who talk well. They are usually the people who notice well.
 
-I learned that long before I knew any formal language for business. At nineteen, I was selling groceries in Sharjah. No dashboards. No scripts. No funnel diagrams. Just a counter, a shelf, a customer, and a few seconds to understand what was really happening in front of me.
+I learned that long before I knew any formal language for business. At nineteen, I was selling directly to customers in a small retail environment. No dashboards. No scripts. No funnel diagrams. Just a counter, a shelf, a customer, and a few seconds to understand what was really happening in front of me.
 
 That environment teaches you quickly that most buying decisions are not logical performances. They are emotional movements. The customer may ask for the price, but the real question might be whether this is worth trusting. They may compare two products, but the real hesitation might be fear of making the wrong choice. They may walk away, not because the product was wrong, but because the moment felt slightly uncertain.
 
@@ -62,9 +62,9 @@ None of that fixes the actual problem.
 
 It just makes the mismatch more visible.
 
-## The merchant lesson people forget
+## The commercial lesson people forget
 
-Old-school merchants understood something many modern brands have forgotten.
+Old-school traders understood something many modern brands have forgotten.
 
 Selling is not an isolated event.
 
@@ -113,7 +113,7 @@ This is one reason [brand positioning is so expensive to leave vague](/thinking/
 
 ## How I still think about selling now
 
-Even after years in brand building, campaigns, and scale, I still return to the merchant lens.
+Even after years in brand building, campaigns, and scale, I still return to the commercial lens.
 
 When a campaign underperforms, I ask:
 What did the customer feel here?
@@ -124,14 +124,14 @@ What uncertainty did we fail to resolve?
 When a product does not move the way we expected, I ask:
 What did we assume people would perceive that they never actually perceived?
 
-These are merchant questions.
+These are commercial questions.
 
 Simple questions.
 Not shallow ones.
 
 They force you to stop admiring your own intentions and start examining the experience from the other side of the counter.
 
-That habit has stayed with me from the grocery shop to [FiLLi Cafe](/work/filli-cafe/) to every strategic conversation I have now.
+That habit has stayed with me from early retail to [FiLLi Cafe](/work/filli-cafe/) to every strategic conversation I have now.
 
 The language changes. The principle does not.
 

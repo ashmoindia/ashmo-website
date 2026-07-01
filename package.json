@@ -10,6 +10,8 @@
     "build": "astro build && node scripts/seo-check.mjs",
     "build:no-seo": "astro build",
     "lint": "astro check",
+    "test:pm": "node --test tests/paper-moon-core.test.mjs tests/paper-moon-surface.test.mjs",
+    "test:tip": "node --test tests/tip-surface.test.mjs",
     "seo": "node scripts/seo-check.mjs",
     "build:premium-workbooks": "python3 tools/build-premium-workbooks.py",
     "qa:premium-workbooks": "python3 tools/build-premium-workbooks.py --qa-only",
@@ -23,6 +25,7 @@
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.6",
+    "bcryptjs": "^3.0.3",
     "resend": "^6.9.4",
     "tailwindcss": "^4.2.2"
   },
@@ -34,5 +37,17 @@
     "yaml-language-server": {
       "yaml": "^2.9.0"
     }
-  }
+  },
+  "description": "```sh npm create astro@latest -- --template minimal ```",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github-ashmo:ashmoindia/ashmo-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

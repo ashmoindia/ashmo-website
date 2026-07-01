@@ -1,0 +1,54 @@
+---
+interface Action {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  highlight?: string;
+  suffix?: string;
+  description: string;
+  primary: Action;
+  secondary?: Action;
+}
+
+const {
+  eyebrow = 'Next step',
+  title,
+  highlight,
+  suffix,
+  description,
+  primary,
+  secondary,
+} = Astro.props;
+---
+
+<section class="section-shell pb-24 md:pb-32">
+  <div class="cta-panel gradient-border p-6 md:p-8 lg:p-10">
+    <div class="relative z-10 grid gap-8 lg:grid-cols-[minmax(0,0.72fr)_auto] lg:items-end lg:justify-between">
+      <div class="max-w-[48rem]">
+        <p class="mono-label mb-4">{eyebrow}</p>
+        <h2 class="section-title max-w-[16ch]">
+          {title}{highlight && <>&nbsp;<span class="gradient-text">{highlight}</span></>}{suffix && <>&nbsp;{suffix}</>}
+        </h2>
+        <p class="body-lead mt-5">
+          {description}
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 sm:flex-row">
+        <a href={primary.href} class="button-gradient">
+          {primary.label}
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+        {secondary && (
+          <a href={secondary.href} class="button-secondary">
+            {secondary.label}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

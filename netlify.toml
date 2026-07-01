@@ -6,6 +6,27 @@
   path = "/admin/*"
   function = "admin-auth"
 
+# Paper Moon uses one static Astro shell while preserving memorable moon URLs.
+[[redirects]]
+  from = "/pm/offline"
+  to = "/pm/offline/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pm/offline/"
+  to = "/pm/offline/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pm/:moonSlug"
+  to = "/pm/paper-moon/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pm/:moonSlug/"
+  to = "/pm/paper-moon/index.html"
+  status = 200
+
 # Redirect all domain variants to canonical https://ashmo.io
 [[redirects]]
   from = "https://www.ashmo.io/*"
@@ -25,6 +46,16 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/growth/*"
+  to = "/restaurant-cafe-growth-systems/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/growth"
+  to = "/restaurant-cafe-growth-systems/"
+  status = 301
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -33,3 +64,11 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+[[headers]]
+  for = "/pm/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive, nosnippet"
+    Cache-Control = "no-store"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob: https://*.supabase.co; connect-src 'self' https://*.supabase.co; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'"
+    Referrer-Policy = "no-referrer"

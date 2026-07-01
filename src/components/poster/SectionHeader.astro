@@ -1,0 +1,24 @@
+---
+import GoldKicker from './GoldKicker.astro';
+
+interface Props {
+  kicker: string;
+  title: string;
+  intro?: string;
+  align?: 'start' | 'between';
+}
+const { kicker, title, intro, align = 'start' } = Astro.props;
+---
+<div
+  class="section-header"
+  data-reveal
+  style={align === 'between'
+    ? 'display:grid;gap:1.5rem;'
+    : 'max-width:46rem;'}
+>
+  <div>
+    <GoldKicker text={kicker} />
+    <h2 class="display-section" style="margin-top:1.1rem;">{title}</h2>
+  </div>
+  {intro && <p class="body-large" style="margin-top:1.2rem;max-width:42rem;">{intro}</p>}
+</div>

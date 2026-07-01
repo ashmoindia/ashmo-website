@@ -1,0 +1,89 @@
+---
+import PaperMoonLayout from '../../layouts/PaperMoonLayout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { moonSlug: 'paper-moon' } },
+  ];
+}
+
+const { moonSlug } = Astro.params;
+---
+
+<PaperMoonLayout title="Paper Moon" pageKind="moon" slug={moonSlug}>
+  <div class="pm-atmosphere pm-atmosphere-moon" aria-hidden="true">
+    <span class="pm-orbit pm-orbit-one"></span>
+    <span class="pm-orbit pm-orbit-two"></span>
+    <span class="pm-moon-shape"></span>
+  </div>
+
+  <div class="pm-shell pm-moon-shell">
+    <header class="pm-brand pm-moon-brand">
+      <a href="/pm/" aria-label="Paper Moon home">
+        <span class="pm-brand-mark" aria-hidden="true"></span>
+        <span>Paper Moon</span>
+      </a>
+      <button class="pm-menu-button" type="button" data-menu-toggle aria-label="Moon choices" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="pm-menu" data-menu hidden>
+        <button type="button" data-copy-link>Copy Link</button>
+        <button type="button" data-share-link-button>Share</button>
+        <button type="button" data-fold-away>Fold Away</button>
+        <button type="button" data-remove-moon hidden>Remove Moon</button>
+      </div>
+    </header>
+
+    <section class="pm-crumb-stage" data-crumb-stage>
+      <div class="pm-paper-card pm-crumb-card">
+        <div class="pm-fold-corner" aria-hidden="true"></div>
+        <span class="pm-crumb-moon" aria-hidden="true"></span>
+        <p class="pm-eyebrow">Paper Moon</p>
+        <h1>Mooncrumb</h1>
+        <p>Ask the sender for the Mooncrumb this moon remembers.</p>
+        <form data-unfold-form>
+          <label class="pm-visually-hidden" for="mooncrumb-input">Mooncrumb</label>
+          <input id="mooncrumb-input" name="mooncrumb" type="text" maxlength="120" autocomplete="off" placeholder="silver" required />
+          <p class="pm-form-notice" data-unfold-notice aria-live="polite"></p>
+          <button class="pm-primary-button" type="submit">Unfold</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="pm-state-stage" data-state-stage hidden>
+      <div class="pm-paper-card pm-state-card">
+        <span class="pm-crumb-moon pm-faded-moon" aria-hidden="true"></span>
+        <h1 data-state-title>This moon has disappeared.</h1>
+        <a class="pm-secondary-button" href="/pm/">Make a new moon</a>
+      </div>
+    </section>
+
+    <section class="pm-trace-stage" data-trace-stage hidden>
+      <div class="pm-moon-heading">
+        <div>
+          <p class="pm-eyebrow">Paper Moon</p>
+          <h1 data-moon-name>{moonSlug}</h1>
+          <p><span data-stay-label>stays this week</span> · link only</p>
+        </div>
+        <span class="pm-heading-moon" aria-hidden="true"></span>
+      </div>
+
+      <p class="pm-clean-notice">No public sky. Keep it clean. Text, links, and light photos only.</p>
+      <div class="pm-traces" data-traces aria-live="polite"></div>
+      <p class="pm-thread-notice" data-thread-notice aria-live="polite"></p>
+
+      <form class="pm-composer" data-trace-form>
+        <label class="pm-photo-button" for="trace-photo" aria-label="Add a light photo">+</label>
+        <input id="trace-photo" data-photo-input type="file" accept="image/jpeg,image/png,image/webp" hidden />
+        <textarea name="body" rows="1" maxlength="2400" placeholder="Leave a trace..." aria-label="Leave a trace"></textarea>
+        <button type="submit">Leave</button>
+        <div class="pm-upload-line" data-upload-line hidden><span></span></div>
+      </form>
+    </section>
+
+    <footer class="pm-footer pm-moon-footer">
+      <span>Paper Moon</span>
+      <span data-connection-note>link only</span>
+    </footer>
+  </div>
+</PaperMoonLayout>

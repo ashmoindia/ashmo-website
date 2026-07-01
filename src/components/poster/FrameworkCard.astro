@@ -1,0 +1,13 @@
+---
+interface Props {
+  num: string;
+  title: string;
+  body: string;
+}
+const { num, title, body } = Astro.props;
+---
+<article class="framework-card" data-reveal>
+  <span class="framework-card__num" aria-hidden="true">{num}</span>
+  <h3 class="framework-card__title">{title}</h3>
+  <p class="framework-card__body">{body}</p>
+</article>

@@ -164,7 +164,7 @@ It has a few principles:
 
 This is less aesthetic than most productivity content online.
 
-It is also more useful for real operator life.
+It is also more useful for real founder life.
 
 ## Why does founder work need multiple modes?
 

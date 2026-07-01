@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TipSectionNav from '../../components/tip/TipSectionNav.astro';
+import TipProductCard from '../../components/tip/TipProductCard.astro';
+import { tipProducts } from '../../data/tip.mjs';
+
+const searchIndex = tipProducts.map((product) => ({
+  slug: product.slug,
+  haystack: [
+    product.name,
+    product.brand,
+    product.category,
+    product.productType,
+    product.activeIngredient,
+    product.specification,
+    product.manufacturer.name,
+    ...product.searchKeywords,
+  ].join(' ').toLowerCase(),
+}));
+---
+
+<BaseLayout
+  title="Search Products — TIP"
+  description="Search TIP by product name, brand, barcode, product code, model, active ingredient, or marketplace link."
+>
+  <TipSectionNav />
+  <section class="mx-auto max-w-[1240px] px-6 pb-24 pt-10 md:px-12 md:pb-28 md:pt-14">
+    <p class="mono-label">TIP search</p>
+    <h1 class="mt-5 max-w-[12ch] text-[3rem] font-extrabold leading-[0.98] tracking-[-0.06em] text-text md:text-[5rem]">Search the public source trail.</h1>
+    <p class="mt-5 max-w-[46rem] text-[1rem] leading-[1.85] text-text-secondary md:text-[1.08rem]">
+      Search by product name, brand, barcode, GTIN, SKU, batch code, registration number, active ingredient, model number, or paste a marketplace link.
+    </p>
+
+    <label class="mt-8 block max-w-[58rem]">
+      <span class="sr-only">Search TIP products</span>
+      <input
+        id="tip-search"
+        type="search"
+        placeholder="Search product name, barcode, batch code, model number, or paste a product link…"
+        class="w-full rounded-[1.2rem] border border-white/12 bg-white/[0.055] px-5 py-4 text-[1rem] text-text outline-none placeholder:text-text-tertiary focus:border-accent/60"
+      />
+    </label>
+    <p id="tip-result-count" class="mt-4 font-mono text-[0.66rem] uppercase tracking-[0.08em] text-text-tertiary">
+      {tipProducts.length} published trace report
+    </p>
+
+    <div id="tip-results" class="mt-8 grid gap-4">
+      {tipProducts.map((product) => <TipProductCard product={product} />)}
+    </div>
+    <div id="tip-empty" class="mt-8 hidden rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-6">
+      <h2 class="text-[1.45rem] font-semibold text-text">No public source match yet.</h2>
+      <p class="mt-3 text-sm leading-[1.8] text-text-secondary">We could not find a published product guide for that search yet. TIP only lists products selected and reviewed by the editor.</p>
+    </div>
+  </section>
+
+  <script is:inline type="application/json" id="tip-search-index" set:html={JSON.stringify(searchIndex)} />
+  <script>
+    const searchInput = document.querySelector<HTMLInputElement>('#tip-search');
+    const resultCount = document.querySelector<HTMLElement>('#tip-result-count');
+    const emptyState = document.querySelector<HTMLElement>('#tip-empty');
+    const searchData = JSON.parse(document.querySelector('#tip-search-index')?.textContent || '[]');
+    const productCards = [...document.querySelectorAll<HTMLElement>('[data-product-card]')];
+
+    const filterProducts = () => {
+      const query = searchInput?.value.trim().toLowerCase() || '';
+      let visibleCount = 0;
+
+      for (const [index, card] of productCards.entries()) {
+        const visible = !query || searchData[index]?.haystack.includes(query);
+        card.classList.toggle('hidden', !visible);
+        if (visible) visibleCount += 1;
+      }
+
+      resultCount && (resultCount.textContent = `${visibleCount} published trace ${visibleCount === 1 ? 'report' : 'reports'}`);
+      emptyState?.classList.toggle('hidden', visibleCount !== 0);
+    };
+
+    searchInput?.addEventListener('input', filterProducts);
+    const initialQuery = new URLSearchParams(window.location.search).get('q');
+    if (searchInput && initialQuery) {
+      searchInput.value = initialQuery;
+      filterProducts();
+    }
+  </script>
+</BaseLayout>

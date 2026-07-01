@@ -12,9 +12,9 @@ interface Props {
 const { title, description, date, category, slug, tags = [], featured = false } = Astro.props;
 
 const categoryLabels: Record<string, string> = {
-  'brand-building': 'Brand Building',
-  'founder-documentary': 'Founder Documentary',
-  'merchant-mindset': 'Merchant Mindset',
+  'brand-building': 'Brand Systems',
+  'founder-documentary': 'Platform Build',
+  'merchant-mindset': 'Commercial Foundation',
 };
 
 const purpleCategories = ['founder-documentary'];
@@ -35,7 +35,7 @@ const accentTint = isPurple ? 'rgba(201,162,212,0.14)' : 'rgba(212,135,90,0.14)'
   ]}
 >
   <div
-    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+    class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgba(30,22,16,0.18)] to-transparent"
   />
   <div
     class="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl"

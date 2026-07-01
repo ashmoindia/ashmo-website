@@ -1,22 +1,29 @@
 User-agent: *
 Allow: /
+Disallow: /pm
 
 User-agent: GPTBot
 Allow: /
+Disallow: /pm
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /pm
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /pm
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /pm
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /pm
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /pm
 
 Sitemap: https://ashmo.io/sitemap-index.xml

@@ -1,0 +1,1098 @@
+/* Fonts (Inter / Inter Tight / JetBrains Mono) are already loaded site-wide
+   via @fontsource imports in global.css — do not re-import here to avoid
+   duplicate font payload on the homepage. */
+
+/* ============================================================
+   ASHMO.IO — BLACK + RED EDITORIAL POSTER THEME
+   Self-contained. Everything is scoped under `.poster-theme`
+   so it cannot leak into the live site. Promote to global
+   theme.css only after the homepage preview is approved.
+   ============================================================ */
+
+.poster-theme {
+  /* --- Ink --- */
+  --ashmo-black: #050505;
+  --ashmo-soft-black: #0b0b0b;
+  --ashmo-charcoal: #151515;
+  --ashmo-charcoal-2: #1e1a18;
+
+  /* --- Red energy --- */
+  --ashmo-red: #c90016;
+  --ashmo-poster-red: #d10f1f;
+  --ashmo-deep-red: #85000e;
+  --ashmo-blood-red: #5e0009;
+
+  /* --- Cream typography --- */
+  --ashmo-cream: #f6e7c8;
+  --ashmo-warm-cream: #fff1d0;
+  --ashmo-off-white: #fff8ea;
+
+  /* --- Gold detail --- */
+  --ashmo-gold: #c99a3a;
+  --ashmo-muted-gold: #9b7629;
+  --ashmo-bronze: #6e3b20;
+
+  /* --- Text --- */
+  --ashmo-muted-text: #b9afa4;
+  --ashmo-soft-text: #d8cfc4;
+
+  /* --- Lines --- */
+  --ashmo-border-dark: rgba(246, 231, 200, 0.12);
+  --ashmo-border-red: rgba(201, 0, 22, 0.35);
+  --ashmo-gold-line: rgba(201, 154, 58, 0.55);
+
+  /* --- Type families (match existing site: theme.css) --- */
+  --poster-display: "Inter Tight Variable", "Inter Variable", system-ui, sans-serif;
+  --poster-body: "Inter Variable", Inter, system-ui, sans-serif;
+  --poster-mono: "JetBrains Mono Variable", "SFMono-Regular", Consolas, monospace;
+
+  /* --- Rhythm --- */
+  --poster-shell: min(1180px, 100% - 2.5rem);
+  --poster-radius: 4px;
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  color: var(--ashmo-soft-text);
+  background-color: var(--ashmo-black);
+  font-family: var(--poster-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+/* Atmospheric base: black stage with two restrained red poster glows
+   and a slow gold horizon line at the very top. */
+.poster-theme::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(60rem 40rem at 82% -8%, rgba(209, 15, 31, 0.16), transparent 62%),
+    radial-gradient(48rem 36rem at 8% 22%, rgba(133, 0, 14, 0.14), transparent 58%),
+    radial-gradient(40rem 30rem at 50% 116%, rgba(201, 0, 22, 0.1), transparent 60%),
+    linear-gradient(180deg, #060606 0%, #0a0807 46%, #050505 100%);
+}
+
+/* Global film grain over the whole stage */
+.poster-theme::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Layout primitives ---------- */
+.poster-theme .editorial-container,
+.poster-theme .poster-shell {
+  width: var(--poster-shell);
+  margin-inline: auto;
+}
+
+.poster-theme .section-shell {
+  width: var(--poster-shell);
+  margin-inline: auto;
+}
+
+.poster-theme .section-pad {
+  padding-block: clamp(4rem, 9vw, 8rem);
+}
+
+.poster-theme .section-pad-sm {
+  padding-block: clamp(2.75rem, 6vw, 5rem);
+}
+
+/* ---------- Texture utilities ---------- */
+.poster-theme .texture-grain {
+  position: relative;
+}
+.poster-theme .texture-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+.poster-theme .poster-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 120% at 50% 40%, transparent 52%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.poster-theme .red-glow {
+  position: relative;
+}
+.poster-theme .red-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(70% 80% at 30% 0%, rgba(209, 15, 31, 0.28), transparent 70%);
+  opacity: 0.85;
+}
+
+.poster-theme .gold-rule {
+  height: 1px;
+  width: 100%;
+  border: 0;
+  background: linear-gradient(90deg, transparent, var(--ashmo-gold-line) 18%, var(--ashmo-gold) 50%, var(--ashmo-gold-line) 82%, transparent);
+}
+
+.poster-theme .gold-rule-left {
+  height: 1px;
+  width: clamp(3rem, 8vw, 6rem);
+  border: 0;
+  background: linear-gradient(90deg, var(--ashmo-gold), transparent);
+}
+
+.poster-theme .editorial-frame {
+  border: 1px solid var(--ashmo-border-dark);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Typography scale ---------- */
+.poster-theme .display-hero {
+  font-family: var(--poster-display);
+  font-weight: 800;
+  font-size: clamp(2.9rem, 7.4vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ashmo-off-white);
+  text-wrap: balance;
+}
+
+.poster-theme .display-section {
+  font-family: var(--poster-display);
+  font-weight: 760;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+  color: var(--ashmo-off-white);
+  text-wrap: balance;
+}
+
+.poster-theme .display-poster {
+  font-family: var(--poster-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  color: var(--ashmo-warm-cream);
+}
+
+.poster-theme .kicker-label,
+.poster-theme .gold-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--poster-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ashmo-gold);
+}
+.poster-theme .gold-kicker::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: var(--ashmo-gold);
+  opacity: 0.8;
+}
+
+.poster-theme .micro-label {
+  font-family: var(--poster-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ashmo-muted-gold);
+}
+
+.poster-theme .body-large {
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--ashmo-soft-text);
+}
+
+.poster-theme .body-copy {
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--ashmo-muted-text);
+}
+
+.poster-theme .pull-quote {
+  font-family: var(--poster-display);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(1.6rem, 3.4vw, 2.7rem);
+  line-height: 1.26;
+  letter-spacing: -0.018em;
+  color: var(--ashmo-cream);
+  text-wrap: balance;
+}
+
+.poster-theme .ink-red { color: var(--ashmo-poster-red); }
+.poster-theme .ink-gold { color: var(--ashmo-gold); }
+.poster-theme .ink-cream { color: var(--ashmo-warm-cream); }
+
+/* Cream word with a hand-drawn gold underline */
+.poster-theme .mark-underline {
+  position: relative;
+  white-space: nowrap;
+}
+.poster-theme .mark-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.04em;
+  height: 0.5em;
+  background: var(--ashmo-gold);
+  opacity: 0.22;
+  z-index: -1;
+}
+
+/* ---------- Buttons ---------- */
+.poster-theme .cream-button,
+.poster-theme .outline-button,
+.poster-theme .red-button,
+.poster-theme .link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.85rem 1.6rem;
+  border-radius: 2px;
+  font-family: var(--poster-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 200ms ease, background 200ms ease, color 200ms ease,
+    border-color 200ms ease, box-shadow 200ms ease;
+}
+
+.poster-theme .cream-button {
+  color: var(--ashmo-black);
+  background: var(--ashmo-warm-cream);
+  border: 1px solid var(--ashmo-warm-cream);
+}
+.poster-theme .cream-button:hover {
+  background: transparent;
+  color: var(--ashmo-warm-cream);
+  transform: translateY(-2px);
+}
+
+.poster-theme .red-button {
+  color: var(--ashmo-warm-cream);
+  background: var(--ashmo-poster-red);
+  border: 1px solid var(--ashmo-poster-red);
+  box-shadow: 0 14px 40px rgba(201, 0, 22, 0.28);
+}
+.poster-theme .red-button:hover {
+  background: var(--ashmo-deep-red);
+  border-color: var(--ashmo-deep-red);
+  transform: translateY(-2px);
+}
+
+.poster-theme .outline-button {
+  color: var(--ashmo-cream);
+  background: transparent;
+  border: 1px solid var(--ashmo-gold-line);
+}
+.poster-theme .outline-button:hover {
+  border-color: var(--ashmo-gold);
+  color: var(--ashmo-warm-cream);
+  transform: translateY(-2px);
+}
+
+.poster-theme .link-button {
+  min-height: auto;
+  padding: 0.4rem 0;
+  border-radius: 0;
+  background: none;
+  color: var(--ashmo-gold);
+  border: 0;
+  border-bottom: 1px solid transparent;
+}
+.poster-theme .link-button:hover {
+  color: var(--ashmo-warm-cream);
+  border-bottom-color: var(--ashmo-gold);
+}
+
+/* ---------- Panels & cards ---------- */
+.poster-theme .poster-panel-black {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(170deg, var(--ashmo-charcoal) 0%, var(--ashmo-soft-black) 100%);
+  border: 1px solid var(--ashmo-border-dark);
+  border-radius: var(--poster-radius);
+}
+
+.poster-theme .poster-panel-red {
+  position: relative;
+  overflow: hidden;
+  color: var(--ashmo-warm-cream);
+  background:
+    radial-gradient(120% 90% at 80% 0%, rgba(255, 241, 208, 0.08), transparent 55%),
+    linear-gradient(160deg, var(--ashmo-poster-red) 0%, var(--ashmo-deep-red) 58%, var(--ashmo-blood-red) 100%);
+  border: 1px solid var(--ashmo-border-red);
+  border-radius: var(--poster-radius);
+}
+
+.poster-theme .poster-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: clamp(1.6rem, 2.5vw, 2.2rem);
+  text-decoration: none;
+  background: linear-gradient(168deg, rgba(30, 26, 24, 0.7) 0%, rgba(11, 11, 11, 0.85) 100%);
+  border: 1px solid var(--ashmo-border-dark);
+  border-radius: var(--poster-radius);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+.poster-theme .poster-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ashmo-poster-red);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 280ms ease;
+}
+.poster-theme .poster-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--ashmo-border-red);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(201, 0, 22, 0.12);
+}
+.poster-theme .poster-card:hover::before {
+  transform: scaleY(1);
+}
+
+.poster-theme .poster-card__index {
+  font-family: var(--poster-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ashmo-gold);
+}
+.poster-theme .poster-card__title {
+  margin-top: 1.5rem;
+  font-family: var(--poster-display);
+  font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--ashmo-warm-cream);
+}
+.poster-theme .poster-card__body {
+  margin-top: 0.9rem;
+  font-size: 0.96rem;
+  line-height: 1.68;
+  color: var(--ashmo-muted-text);
+}
+.poster-theme .poster-card__more {
+  margin-top: auto;
+  padding-top: 1.6rem;
+  font-family: var(--poster-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ashmo-gold);
+}
+
+/* ---------- Grids ---------- */
+.poster-theme .grid-2,
+.poster-theme .grid-3,
+.poster-theme .grid-4 {
+  display: grid;
+  gap: 1.1rem;
+}
+.poster-theme .framework-grid {
+  display: grid;
+  gap: 1.1rem;
+}
+.poster-theme .resource-grid {
+  display: grid;
+  gap: 1.1rem;
+}
+
+@media (min-width: 720px) {
+  .poster-theme .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .poster-theme .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .poster-theme .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .poster-theme .framework-grid { grid-template-columns: repeat(3, 1fr); }
+  .poster-theme .resource-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px) {
+  .poster-theme .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .poster-theme .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .poster-theme .resource-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.poster-theme .poster-masthead {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(5, 5, 5, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--ashmo-border-dark);
+}
+.poster-theme .poster-masthead__inner {
+  width: var(--poster-shell);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1.05rem;
+}
+.poster-theme .poster-wordmark {
+  font-family: var(--poster-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ashmo-warm-cream);
+  text-decoration: none;
+}
+.poster-theme .poster-wordmark span { color: var(--ashmo-poster-red); }
+.poster-theme .poster-nav {
+  display: none;
+  align-items: center;
+  gap: 1.8rem;
+}
+.poster-theme .poster-nav a {
+  font-family: var(--poster-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ashmo-muted-text);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+.poster-theme .poster-nav a:hover { color: var(--ashmo-warm-cream); }
+.poster-theme .poster-masthead__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.15rem;
+  border: 1px solid var(--ashmo-gold-line);
+  border-radius: 2px;
+  font-family: var(--poster-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ashmo-cream);
+  text-decoration: none;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+.poster-theme .poster-masthead__cta:hover {
+  border-color: var(--ashmo-gold);
+  color: var(--ashmo-black);
+  background: var(--ashmo-gold);
+}
+@media (min-width: 940px) {
+  .poster-theme .poster-nav { display: flex; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.poster-theme .poster-hero {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  padding-block: clamp(3rem, 7vw, 6.5rem);
+}
+@media (min-width: 980px) {
+  .poster-theme .poster-hero {
+    grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.88fr);
+    gap: 3.5rem;
+  }
+}
+.poster-theme .hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem 2rem;
+  margin-top: 2.4rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--ashmo-border-dark);
+}
+.poster-theme .hero-trust div { max-width: 12rem; }
+.poster-theme .hero-trust dt {
+  font-family: var(--poster-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ashmo-cream);
+}
+.poster-theme .hero-trust dd {
+  margin: 0.3rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ashmo-muted-text);
+}
+.poster-theme .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+/* Hero poster stage (right column) */
+.poster-theme .hero-stage {
+  position: relative;
+  padding: 1.4rem;
+}
+.poster-theme .hero-poster {
+  position: relative;
+  padding: clamp(1.8rem, 3vw, 2.6rem);
+  min-height: 27rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.poster-theme .hero-poster__seal {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  width: 4.4rem;
+  height: 4.4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 241, 208, 0.5);
+  border-radius: 999px;
+  font-family: var(--poster-mono);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--ashmo-warm-cream);
+}
+.poster-theme .hero-poster__kicker {
+  font-family: var(--poster-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 241, 208, 0.78);
+}
+.poster-theme .hero-poster__statement {
+  font-family: var(--poster-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ashmo-warm-cream);
+}
+.poster-theme .hero-poster__cup {
+  width: clamp(5rem, 9vw, 7rem);
+  height: auto;
+  color: var(--ashmo-warm-cream);
+  opacity: 0.92;
+}
+.poster-theme .hero-poster__foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.poster-theme .hero-poster__note {
+  max-width: 13rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 241, 208, 0.82);
+}
+/* Stacked field-note cards peeking behind the poster */
+.poster-theme .hero-stage__behind {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.poster-theme .hero-stage__behind span {
+  position: absolute;
+  border: 1px solid var(--ashmo-border-dark);
+  border-radius: var(--poster-radius);
+  background: var(--ashmo-soft-black);
+}
+.poster-theme .hero-stage__behind span:nth-child(1) {
+  inset: 0.2rem 2.6rem 2.4rem 0.2rem;
+  transform: rotate(-2.5deg);
+}
+.poster-theme .hero-stage__behind span:nth-child(2) {
+  inset: 2.4rem 0.2rem 0.4rem 2.4rem;
+  transform: rotate(1.8deg);
+  background: var(--ashmo-charcoal);
+}
+
+/* ============================================================
+   MANIFESTO
+   ============================================================ */
+.poster-theme .poster-manifesto {
+  position: relative;
+  overflow: hidden;
+  border-block: 1px solid var(--ashmo-border-dark);
+  background: linear-gradient(180deg, rgba(133, 0, 14, 0.1), transparent 60%);
+}
+.poster-theme .manifesto-watermark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 0;
+  font-family: var(--poster-display);
+  font-weight: 600;
+  font-size: clamp(8rem, 30vw, 24rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201, 154, 58, 0.14);
+  text-stroke: 1px rgba(201, 154, 58, 0.14);
+  user-select: none;
+  white-space: nowrap;
+}
+.poster-theme .manifesto-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+}
+.poster-theme .manifesto-bar {
+  width: 3px;
+  align-self: stretch;
+  min-height: 100%;
+  background: linear-gradient(180deg, var(--ashmo-poster-red), var(--ashmo-blood-red));
+}
+
+/* ============================================================
+   FRAMEWORK CARDS
+   ============================================================ */
+.poster-theme .framework-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.6rem, 2.4vw, 2.1rem);
+  background: linear-gradient(168deg, rgba(30, 26, 24, 0.55), rgba(11, 11, 11, 0.85));
+  border: 1px solid var(--ashmo-border-dark);
+  border-radius: var(--poster-radius);
+  overflow: hidden;
+}
+.poster-theme .framework-card__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  font-family: var(--poster-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ashmo-warm-cream);
+  background: linear-gradient(160deg, var(--ashmo-poster-red), var(--ashmo-blood-red));
+  border-radius: 2px;
+}
+.poster-theme .framework-card__title {
+  margin-top: 1.5rem;
+  font-family: var(--poster-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--ashmo-warm-cream);
+}
+.poster-theme .framework-card__body {
+  margin-top: 0.85rem;
+  font-size: 0.96rem;
+  line-height: 1.68;
+  color: var(--ashmo-muted-text);
+}
+
+/* ============================================================
+   STORY / TIMELINE
+   ============================================================ */
+.poster-theme .poster-story {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 940px) {
+  .poster-theme .poster-story {
+    grid-template-columns: 0.85fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+  }
+}
+.poster-theme .timeline-list {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+}
+.poster-theme .timeline-list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: linear-gradient(180deg, var(--ashmo-gold-line), transparent);
+}
+.poster-theme .timeline-fragment {
+  position: relative;
+  padding: 0 0 1.6rem 1.4rem;
+}
+.poster-theme .timeline-fragment:last-child { padding-bottom: 0; }
+.poster-theme .timeline-fragment::before {
+  content: "";
+  position: absolute;
+  left: -0.32rem;
+  top: 0.35rem;
+  width: 0.66rem;
+  height: 0.66rem;
+  border-radius: 999px;
+  background: var(--ashmo-poster-red);
+  box-shadow: 0 0 0 4px rgba(201, 0, 22, 0.15);
+}
+.poster-theme .timeline-fragment h3 {
+  font-family: var(--poster-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ashmo-cream);
+}
+.poster-theme .timeline-fragment p {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ashmo-muted-text);
+}
+
+/* ============================================================
+   RESOURCE CARDS
+   ============================================================ */
+.poster-theme .resource-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  text-decoration: none;
+  background: var(--ashmo-soft-black);
+  border: 1px solid var(--ashmo-border-dark);
+  border-radius: var(--poster-radius);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+.poster-theme .resource-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ashmo-gold-line);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.poster-theme .resource-card__eyebrow {
+  font-family: var(--poster-mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ashmo-muted-gold);
+}
+.poster-theme .resource-card__title {
+  margin-top: 1rem;
+  font-family: var(--poster-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--ashmo-warm-cream);
+}
+.poster-theme .resource-card__body {
+  margin-top: 0.7rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ashmo-muted-text);
+}
+.poster-theme .resource-card__cta {
+  margin-top: auto;
+  padding-top: 1.4rem;
+  font-family: var(--poster-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ashmo-gold);
+}
+
+/* ============================================================
+   CLOSING CTA
+   ============================================================ */
+.poster-theme .poster-cta {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.6rem, 5vw, 4.5rem);
+  text-align: center;
+  border-radius: var(--poster-radius);
+}
+.poster-theme .poster-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.poster-theme .poster-footer {
+  border-top: 1px solid var(--ashmo-border-dark);
+}
+.poster-theme .poster-footer__inner {
+  width: var(--poster-shell);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding-block: 2.2rem;
+}
+.poster-theme .poster-footer a {
+  color: var(--ashmo-muted-text);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  transition: color 180ms ease;
+}
+.poster-theme .poster-footer a:hover { color: var(--ashmo-warm-cream); }
+.poster-theme .poster-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+.poster-theme .poster-footer__brand {
+  margin: 0;
+  font-family: var(--poster-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ashmo-warm-cream);
+}
+.poster-theme .poster-footer__tag {
+  margin-left: 0.6rem;
+  font-family: var(--poster-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ashmo-muted-text);
+}
+
+/* ============================================================
+   MOTION — subtle scroll reveal
+   ============================================================ */
+/* Scroll reveal is PROGRESSIVE ENHANCEMENT only. Content is fully visible by
+   default; JS adds `reveal-ready` to <html> exclusively when motion is allowed
+   AND IntersectionObserver exists. No-JS users and crawlers always see content. */
+html.reveal-ready .poster-theme [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms ease, transform 700ms ease;
+  will-change: opacity, transform;
+}
+/* Show rule must out-specify the hide rule (which includes `html`),
+   otherwise is-visible never wins and content stays hidden. */
+html.reveal-ready .poster-theme [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poster-theme *,
+  .poster-theme *::before,
+  .poster-theme *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   LIGHT VARIANT — warm white editorial paper
+   Same red energy + gold details, dark ink on cream-white.
+   Red panels (hero poster + closing CTA) stay red on purpose.
+   ============================================================ */
+.poster-theme--light {
+  --ashmo-ink: #1c1512;
+  --ashmo-ink-soft: #4a4038;
+  --ashmo-ink-muted: #6b5f54;
+  --ashmo-paper: #faf6ee;
+  --ashmo-paper-card: #fffdf8;
+  --ashmo-border-dark: rgba(30, 22, 16, 0.13);
+  --ashmo-gold-line: rgba(154, 118, 41, 0.55);
+  color: var(--ashmo-ink-soft);
+  background-color: var(--ashmo-paper);
+}
+
+.poster-theme--light::before {
+  background:
+    radial-gradient(60rem 40rem at 84% -10%, rgba(209, 15, 31, 0.07), transparent 60%),
+    radial-gradient(46rem 34rem at 4% 18%, rgba(133, 0, 14, 0.045), transparent 56%),
+    linear-gradient(180deg, #fcf9f3 0%, #f5eee1 52%, #f8f2e8 100%);
+}
+.poster-theme--light::after {
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+/* Headings & text */
+.poster-theme--light .display-hero,
+.poster-theme--light .display-section,
+.poster-theme--light .pull-quote { color: var(--ashmo-ink); }
+.poster-theme--light .ink-cream { color: var(--ashmo-ink); }
+.poster-theme--light .body-large { color: var(--ashmo-ink-soft); }
+.poster-theme--light .body-copy { color: var(--ashmo-ink-muted); }
+
+/* Gold labels — deepened for contrast on paper */
+.poster-theme--light .gold-kicker,
+.poster-theme--light .kicker-label,
+.poster-theme--light .micro-label,
+.poster-theme--light .poster-card__index,
+.poster-theme--light .poster-card__more,
+.poster-theme--light .resource-card__eyebrow,
+.poster-theme--light .resource-card__cta { color: var(--ashmo-muted-gold); }
+.poster-theme--light .gold-kicker::before { background: var(--ashmo-muted-gold); }
+
+/* Cards */
+.poster-theme--light .poster-card {
+  background: linear-gradient(168deg, var(--ashmo-paper-card) 0%, #f3ebdb 100%);
+  border-color: var(--ashmo-border-dark);
+  box-shadow: 0 10px 30px rgba(70, 48, 22, 0.06);
+}
+.poster-theme--light .poster-card:hover {
+  border-color: var(--ashmo-border-red);
+  box-shadow: 0 22px 50px rgba(90, 35, 20, 0.13);
+}
+.poster-theme--light .poster-card__title,
+.poster-theme--light .framework-card__title,
+.poster-theme--light .resource-card__title { color: var(--ashmo-ink); }
+.poster-theme--light .poster-card__body,
+.poster-theme--light .framework-card__body,
+.poster-theme--light .resource-card__body { color: var(--ashmo-ink-muted); }
+
+.poster-theme--light .framework-card {
+  background: var(--ashmo-paper-card);
+  border-color: var(--ashmo-border-dark);
+}
+.poster-theme--light .resource-card {
+  background: var(--ashmo-paper-card);
+  border-color: var(--ashmo-border-dark);
+}
+.poster-theme--light .resource-card:hover {
+  border-color: var(--ashmo-gold-line);
+  box-shadow: 0 18px 40px rgba(70, 48, 22, 0.1);
+}
+
+/* Frameworks band becomes a warm tinted panel */
+.poster-theme--light .poster-panel-black {
+  background: linear-gradient(170deg, #f2e9d8 0%, #efe4d0 100%);
+  border-color: var(--ashmo-border-dark);
+}
+
+/* Story / timeline */
+.poster-theme--light .timeline-fragment h3 { color: var(--ashmo-ink); }
+.poster-theme--light .timeline-fragment p { color: var(--ashmo-ink-muted); }
+.poster-theme--light .hero-trust { border-top-color: var(--ashmo-border-dark); }
+.poster-theme--light .hero-trust dt { color: var(--ashmo-ink); }
+.poster-theme--light .hero-trust dd { color: var(--ashmo-ink-muted); }
+
+/* Layered cards behind the hero poster — warm paper instead of black */
+.poster-theme--light .hero-stage__behind span { background: #f0e7d6; border-color: var(--ashmo-border-dark); }
+.poster-theme--light .hero-stage__behind span:nth-child(2) { background: #ece1cd; }
+
+/* Manifesto watermark a touch stronger so it reads on paper */
+.poster-theme--light .manifesto-watermark {
+  -webkit-text-stroke: 1px rgba(154, 118, 41, 0.2);
+  text-stroke: 1px rgba(154, 118, 41, 0.2);
+}
+.poster-theme--light .poster-manifesto {
+  background: linear-gradient(180deg, rgba(133, 0, 14, 0.04), transparent 60%);
+}
+
+/* Buttons */
+.poster-theme--light .cream-button {
+  background: var(--ashmo-ink);
+  color: var(--ashmo-off-white);
+  border-color: var(--ashmo-ink);
+}
+.poster-theme--light .cream-button:hover {
+  background: transparent;
+  color: var(--ashmo-ink);
+}
+.poster-theme--light .outline-button {
+  color: var(--ashmo-ink);
+  border-color: var(--ashmo-gold-line);
+}
+.poster-theme--light .outline-button:hover {
+  color: var(--ashmo-ink);
+  border-color: var(--ashmo-muted-gold);
+}
+.poster-theme--light .link-button { color: var(--ashmo-muted-gold); }
+.poster-theme--light .link-button:hover {
+  color: var(--ashmo-ink);
+  border-bottom-color: var(--ashmo-muted-gold);
+}
+
+/* Masthead + footer on paper */
+.poster-theme--light .poster-masthead {
+  background: rgba(250, 246, 238, 0.86);
+  border-bottom-color: var(--ashmo-border-dark);
+}
+.poster-theme--light .poster-wordmark { color: var(--ashmo-ink); }
+.poster-theme--light .poster-nav a { color: var(--ashmo-ink-muted); }
+.poster-theme--light .poster-nav a:hover { color: var(--ashmo-ink); }
+.poster-theme--light .poster-masthead__cta { color: var(--ashmo-ink); border-color: var(--ashmo-gold-line); }
+.poster-theme--light .poster-masthead__cta:hover {
+  color: var(--ashmo-off-white);
+  background: var(--ashmo-muted-gold);
+  border-color: var(--ashmo-muted-gold);
+}
+.poster-theme--light .poster-footer { border-top-color: var(--ashmo-border-dark); }
+.poster-theme--light .poster-footer__brand { color: var(--ashmo-ink); }
+.poster-theme--light .poster-footer__tag { color: var(--ashmo-ink-muted); }
+.poster-theme--light .poster-footer a { color: var(--ashmo-ink-muted); }
+.poster-theme--light .poster-footer a:hover { color: var(--ashmo-ink); }
+
+/* This CTA button sits on the RED panel in both themes — keep it cream.
+   Declared after the light .cream-button override so it wins. */
+.poster-theme .cream-button--on-red,
+.poster-theme--light .cream-button--on-red {
+  background: var(--ashmo-warm-cream);
+  color: var(--ashmo-black);
+  border-color: var(--ashmo-warm-cream);
+}
+.poster-theme .cream-button--on-red:hover,
+.poster-theme--light .cream-button--on-red:hover {
+  background: transparent;
+  color: var(--ashmo-warm-cream);
+}

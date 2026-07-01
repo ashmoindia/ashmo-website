@@ -25,7 +25,7 @@ They share operational DNA.
 
 Here's what I mean. When I started [my first shop at 19](/work/early-hustle/), I learned something that no business book taught me: the difference between a business that works because you're in it and a business that works because of how it's built.
 
-That first grocery shop worked because I was behind the counter. I knew every customer. I read their behaviour in real time. I adjusted pricing, stock, and presentation based on instinct. It was profitable. But it wasn't scalable. It was a performance, and I was the performer.
+That first retail business worked because I was behind the counter. I knew every customer. I read their behaviour in real time. I adjusted pricing, stock, and presentation based on instinct. It was profitable. But it wasn't scalable. It was a performance, and I was the performer.
 
 FiLLi became something different. Not because the tea was better than what I'd served before — but because we built the system around the tea. The recipe was documented. The service standard was repeatable. The brand promise was clear enough that a new team member in a new outlet in a new emirate could deliver the same experience without me standing behind them.
 
@@ -71,10 +71,10 @@ Operational obsession is different. It's the founder obsessing over the system, 
 
 Control scales linearly — one decision at a time, one founder at a time. Obsession scales exponentially — because the system makes thousands of decisions simultaneously.
 
-The best operators I've met in Dubai — across food service, retail, logistics — they all share this trait. They're not controlling people. They're designing environments where good decisions happen by default.
+The best builders I've met in Dubai - across food service, retail, logistics - all share this trait. They're not controlling people. They're designing environments where good decisions happen by default.
 
 At FiLLi, this looked like:
-- **Standardising the chai recipe** so that the saffron chai in Sharjah tastes identical to the one in Jumeirah
+- **Standardising the chai recipe** so that the saffron chai tastes identical across locations
 - **Creating brand playbooks** that define not just what we say, but what we don't say — the same principle I wrote about in [why positioning is the hardest thing](/thinking/brand-positioning-hardest-thing/)
 - **Building feedback loops** so quality issues surface before they reach the customer, not after
 - **Hiring for alignment** with the system, not just for individual talent
@@ -117,7 +117,7 @@ I mean that seriously. The pattern — clarity, system, expansion, patience — 
 
 The stories that get told are about vision, disruption, and overnight success. The work that actually creates scale is repetitive, incremental, and invisible for long stretches.
 
-I think about this often. The lessons I learned [pricing goods behind a grocery counter at 19](/thinking/grocery-shop-pricing-psychology/) — reading customers, understanding margins, staying disciplined — those lessons are still the ones I use most. Not because they're sophisticated. Because they're fundamental. And fundamentals are, by definition, not exciting.
+I think about this often. The lessons I learned [pricing goods in early retail](/thinking/grocery-shop-pricing-psychology/) - reading customers, understanding margins, staying disciplined - are still the ones I use most. Not because they're sophisticated. Because they're fundamental. And fundamentals are, by definition, not exciting.
 
 The pattern in every business that scales is ultimately a pattern of discipline applied over time. Not brilliance. Not luck. Not timing. Discipline — aimed at a narrow promise, embedded in a system, and sustained through the years when nobody's watching.
 

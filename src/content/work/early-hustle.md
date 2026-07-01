@@ -1,6 +1,6 @@
 ---
-title: "The Early Hustle"
-description: "A grocery shop in Sharjah, training institutes, graphic design, computer assembly, freelancing — the years that looked like chaos but were actually preparation."
+title: "Early Commercial Foundation"
+description: "Retail, trade, IT training, design, computer assembly, and freelance work: the years that built market sense before the brand-building years."
 date: 1999-01-01
 category: "merchant-mindset"
 tags: ["entrepreneurship", "hustle", "foundation"]
@@ -9,9 +9,9 @@ image: "/og-default.jpg"
 imageAlt: "Early entrepreneurial journey"
 ---
 
-## The Grocery Shop
+## The Commercial Foundation
 
-At 19, I was running a grocery shop in Sharjah. Not managing it — running it. Stock, pricing, suppliers, customers, margins, losses. Every day was a masterclass in human behaviour.
+The early phase was retail and trade: stock, pricing, suppliers, customers, margins, losses. Every day was a practical lesson in human behaviour.
 
 I learned that people don't buy what they need. They buy what's in front of them at the right moment. I learned that a 5% margin on fast-moving stock beats a 40% margin on dust-collecting inventory. I learned that trust is the only currency that compounds.
 
@@ -19,7 +19,7 @@ These weren't abstract lessons. They were survival.
 
 ## The IT Years
 
-From groceries, I moved into technology and creative services. I ran training institutes — teaching people software skills when Dubai's tech scene was still finding its feet. I assembled computers, freelanced as a graphic designer, and spent nights learning tools that nobody around me was using yet.
+From retail, I moved into technology and creative services. I ran training institutes, assembled computers, freelanced as a graphic designer, and spent nights learning tools that nobody around me was using yet.
 
 For years, it felt like I was preparing for something that might never come.
 
@@ -31,7 +31,7 @@ This is where I first understood that **design is not decoration. Design is stra
 
 ## What Connected Everything
 
-Looking back, every phase — the grocery shop, the training centres, the freelance design work — was building the same muscle: understanding what makes people choose one thing over another.
+Looking back, every phase - retail, training centres, freelance design work - was building the same muscle: understanding what makes people choose one thing over another.
 
 That's branding. I just didn't have the word for it yet.
 
@@ -39,4 +39,4 @@ That's branding. I just didn't have the word for it yet.
 
 When [FiLLi](/work/filli-cafe/) came along, I wasn't starting from zero. I was starting from fifteen years of preparation that finally had a name.
 
-I've written a deeper dive into [what the grocery shop taught me about pricing psychology](/thinking/grocery-shop-pricing-psychology/) — and how those same instincts shaped [my thinking on patience as a strategy](/thinking/patience-is-not-passive/).
+I've written more about pricing psychology and how those same instincts shaped [my thinking on patience as a strategy](/thinking/patience-is-not-passive/).

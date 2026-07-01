@@ -83,7 +83,7 @@ Real audiences are situational. They are tired office workers at 3pm. Families d
 
 When you understand the moment, the message gets sharper.
 
-That is what I learned very early, long before dashboards, when I was selling from a grocery counter in Sharjah. The behaviour came before the metric. The moment came before the report. I wrote more about that in [What a Grocery Shop at 19 Taught Me About Pricing](/thinking/grocery-shop-pricing-psychology/).
+That is what I learned very early, long before dashboards, when I was selling directly to customers in retail. The behaviour came before the metric. The moment came before the report. I wrote more about that in [what early retail taught me about pricing](/thinking/grocery-shop-pricing-psychology/).
 
 **Fourth: what should happen after the click?**
 

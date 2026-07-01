@@ -1,0 +1,21 @@
+---
+import { tipStatusLabels } from '../../data/tip.mjs';
+
+interface Props {
+  status: string;
+}
+
+const { status } = Astro.props;
+const label = tipStatusLabels[status as keyof typeof tipStatusLabels] ?? status;
+const badgeClass = status === 'official_source_found'
+  ? 'border-emerald-300/20 bg-emerald-300/10 text-emerald-200'
+  : status === 'distributor_source_found'
+    ? 'border-accent/25 bg-accent/12 text-accent-light'
+    : status === 'more_proof_needed'
+      ? 'border-amber-300/20 bg-amber-300/10 text-amber-100'
+      : 'border-white/12 bg-white/[0.05] text-text-secondary';
+---
+
+<span class:list={['inline-flex rounded-full border px-3 py-1.5 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.08em]', badgeClass]}>
+  {label}
+</span>

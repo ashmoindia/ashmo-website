@@ -7,7 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://ashmo.io',
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !new URL(page).pathname.startsWith('/pm'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()]
   }

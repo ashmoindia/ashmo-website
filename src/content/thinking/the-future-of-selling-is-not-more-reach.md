@@ -107,7 +107,7 @@ This is why I do not think the future belongs to whoever can create the most con
 
 It belongs to whoever can create the strongest alignment between message, proof, and reality.
 
-## What changes for founders and operators?
+## What changes for founders and teams?
 
 You have to stop asking only, "How do we get in front of more people?"
 

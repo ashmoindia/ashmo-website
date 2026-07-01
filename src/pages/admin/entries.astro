@@ -39,6 +39,7 @@ const statusCounts = sortedEntries.reduce<Record<string, number>>((counts, entry
       <div class="flex flex-wrap gap-3">
         <a href="/admin/challenges/" class="button-secondary">Challenges</a>
         <button type="button" id="export-entries-csv" class="button-gradient">Export CSV</button>
+        <button type="button" class="admin-logout button-secondary">Logout</button>
       </div>
     </div>
   </section>
@@ -46,7 +47,7 @@ const statusCounts = sortedEntries.reduce<Record<string, number>>((counts, entry
   <section class="section-shell pb-12">
     <div class="flex flex-wrap gap-3">
       {Object.entries(entryStatusLabels).map(([status, label]) => (
-        <span class="rounded-full border border-white/8 bg-white/[0.04] px-3 py-2 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-text-secondary">
+        <span data-status-count={status} class="rounded-full border border-white/8 bg-white/[0.04] px-3 py-2 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-text-secondary">
           {label}: {statusCounts[status] || 0}
         </span>
       ))}
@@ -62,7 +63,7 @@ const statusCounts = sortedEntries.reduce<Record<string, number>>((counts, entry
         <span>Score</span>
         <span>Actions</span>
       </div>
-      <div class="divide-y divide-white/8">
+      <div id="entries-list" class="divide-y divide-white/8">
         {sortedEntries.map((entry) => {
           const challenge = challengeById.get(entry.challengeId);
           return (
@@ -125,15 +126,92 @@ const statusCounts = sortedEntries.reduce<Record<string, number>>((counts, entry
     </div>
   </section>
 
+  <script type="application/json" id="entry-status-labels" set:html={JSON.stringify(entryStatusLabels)} />
+
   <script>
-    const forms = document.querySelectorAll<HTMLFormElement>('.admin-entry-form');
     const exportButton = document.getElementById('export-entries-csv');
+    const logoutButtons = document.querySelectorAll<HTMLButtonElement>('.admin-logout');
+    const entriesList = document.getElementById('entries-list');
+    const statusLabels = JSON.parse(document.getElementById('entry-status-labels')?.textContent || '{}') as Record<string, string>;
+
+    const escapeHtml = (value: unknown) =>
+      String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+
+    const renderEntry = (entry: any) => {
+      const participant = entry.participants || {};
+      const challenge = entry.challenges || {};
+      const tools = Array.isArray(entry.ai_tools_used) ? entry.ai_tools_used.join(', ') : '';
+      const participantName = participant.name || participant.instagram_username || 'Unknown creator';
+      const instagramUsername = participant.instagram_username || 'unknown';
+      const statusOptions = Object.entries(statusLabels)
+        .map(([status, label]) => `<option value="${escapeHtml(status)}"${entry.status === status ? ' selected' : ''}>${escapeHtml(label)}</option>`)
+        .join('');
+      const boardLink = challenge.slug
+        ? `<a href="/admin/challenges/${escapeHtml(challenge.slug)}/" class="button-secondary min-h-10 px-3 py-2 text-[0.62rem]">Board</a>`
+        : '';
+
+      return `
+        <article class="grid gap-4 px-5 py-5 lg:grid-cols-[0.85fr_0.95fr_0.55fr_0.45fr_1.25fr] lg:items-center">
+          <div>
+            <h2 class="text-lg font-semibold tracking-normal text-text">${escapeHtml(participantName)}</h2>
+            <p class="mt-1 font-mono text-[0.68rem] uppercase tracking-[0.12em] text-accent-light">@${escapeHtml(instagramUsername)}</p>
+          </div>
+          <div>
+            <p class="text-sm font-medium text-text">${escapeHtml(challenge.title || entry.challenge_id)}</p>
+            <p class="mt-1 text-sm leading-[1.6] text-text-secondary">${escapeHtml(tools)}</p>
+          </div>
+          <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">${escapeHtml(statusLabels[entry.status] || entry.status)}</span>
+          <span class="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-text-secondary">${escapeHtml(entry.score ?? '-')}</span>
+          <div>
+            <form class="admin-entry-form grid gap-2" data-entry-id="${escapeHtml(entry.id)}">
+              <div class="grid gap-2 sm:grid-cols-[1fr_80px]">
+                <label class="sr-only" for="status-${escapeHtml(entry.id)}">Status</label>
+                <select id="status-${escapeHtml(entry.id)}" name="status" class="min-h-10 rounded-[0.8rem] border border-white/10 bg-bg/60 px-3 py-2 text-sm text-text outline-none focus:border-accent/60">
+                  ${statusOptions}
+                </select>
+                <label class="sr-only" for="score-${escapeHtml(entry.id)}">Score</label>
+                <input id="score-${escapeHtml(entry.id)}" name="score" type="number" min="0" max="100" value="${escapeHtml(entry.score ?? '')}" placeholder="Score" class="min-h-10 rounded-[0.8rem] border border-white/10 bg-bg/60 px-3 py-2 text-sm text-text outline-none focus:border-accent/60" />
+              </div>
+              <label class="sr-only" for="notes-${escapeHtml(entry.id)}">Admin notes</label>
+              <textarea id="notes-${escapeHtml(entry.id)}" name="admin_notes" rows="2" placeholder="Admin notes" class="min-h-16 rounded-[0.8rem] border border-white/10 bg-bg/60 px-3 py-2 text-sm text-text outline-none focus:border-accent/60">${escapeHtml(entry.admin_notes || '')}</textarea>
+              <div class="flex flex-wrap items-center gap-2">
+                <button type="submit" class="button-gradient min-h-10 px-3 py-2 text-[0.62rem]">Save</button>
+                <a href="${escapeHtml(entry.submission_url)}" target="_blank" rel="noopener" class="button-secondary min-h-10 px-3 py-2 text-[0.62rem]">Open</a>
+                ${boardLink}
+                <span class="admin-entry-message text-xs text-text-tertiary" aria-live="polite"></span>
+              </div>
+            </form>
+          </div>
+        </article>
+      `;
+    };
+
+    const updateStatusCounts = (entries: any[]) => {
+      Object.entries(statusLabels).forEach(([status, label]) => {
+        const count = entries.filter((entry) => entry.status === status).length;
+        const badge = document.querySelector<HTMLElement>(`[data-status-count="${status}"]`);
+        if (badge) badge.textContent = `${label}: ${count}`;
+      });
+    };
 
     exportButton?.addEventListener('click', () => {
       window.location.assign('/admin/api/entries/export');
     });
 
-    forms.forEach((form) => {
+    logoutButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        window.location.assign('/admin/api/logout');
+      });
+    });
+
+    const attachEntryForms = (scope: ParentNode = document) => {
+      const forms = scope.querySelectorAll<HTMLFormElement>('.admin-entry-form');
+      forms.forEach((form) => {
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -171,5 +249,29 @@ const statusCounts = sortedEntries.reduce<Record<string, number>>((counts, entry
         }
       });
     });
+    };
+
+    attachEntryForms();
+
+    const loadLiveEntries = async () => {
+      if (!entriesList) return;
+
+      try {
+        const response = await fetch('/admin/api/entries/list', { credentials: 'same-origin' });
+        const result = await response.json();
+        if (!response.ok || !result.ok) throw new Error(result.error || 'Could not load entries.');
+
+        const entries = Array.isArray(result.entries) ? result.entries : [];
+        entriesList.innerHTML = entries.length
+          ? entries.map(renderEntry).join('')
+          : '<div class="px-5 py-8 text-sm text-text-secondary">No live entries yet.</div>';
+        updateStatusCounts(entries);
+        attachEntryForms(entriesList);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    loadLiveEntries();
   </script>
 </BaseLayout>

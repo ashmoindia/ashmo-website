@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TipSectionNav from '../../components/tip/TipSectionNav.astro';
+import TipDisclaimerBox from '../../components/tip/TipDisclaimerBox.astro';
+import TipProductCard from '../../components/tip/TipProductCard.astro';
+import { tipCategories, tipProducts } from '../../data/tip.mjs';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'TIP - Trust Intelligence Platform',
+  description: 'Trace product manufacturer details, distributor references, official labels, codes, and buyer checkpoints before you buy.',
+  url: 'https://ashmo.io/tip/',
+};
+---
+
+<BaseLayout
+  title="TIP — Trust Intelligence Platform"
+  description="Trace product manufacturer details, distributor references, official labels, codes, and buyer checkpoints before you buy."
+  extraSchema={[pageSchema]}
+>
+  <TipSectionNav />
+
+  <section class="mx-auto max-w-[1240px] px-6 pb-20 pt-10 md:px-12 md:pb-24 md:pt-14">
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,0.66fr)_minmax(280px,0.34fr)]">
+      <div class="rounded-[2rem] border border-white/8 bg-white/[0.045] p-6 md:p-9">
+        <p class="mono-label">Public-source product tracing</p>
+        <h1 class="mt-5 max-w-[12ch] text-[3.1rem] font-extrabold leading-[0.96] tracking-[-0.06em] text-text md:text-[5.2rem]">
+          Trace products back to their <span class="gradient-text">original source.</span>
+        </h1>
+        <p class="mt-6 max-w-[44rem] text-[1rem] leading-[1.85] text-text-secondary md:text-[1.08rem]">
+          Search manufacturer details, distributor references, product labels, codes, and buyer checkpoints before you buy.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/tip/search/" class="button-gradient">Search a product</a>
+        </div>
+        <p class="mt-8 border-t border-white/8 pt-5 font-mono text-[0.68rem] uppercase tracking-[0.08em] text-accent-light">
+          We do not certify products. We help you verify the source.
+        </p>
+      </div>
+
+      <aside class="rounded-[2rem] border border-white/8 bg-white/[0.035] p-6 md:p-7">
+        <p class="mono-label">OG Trace Report</p>
+        <h2 class="mt-4 text-[1.7rem] font-semibold tracking-[-0.04em] text-text">A calmer way to check before buying.</h2>
+        <div class="mt-6 grid gap-3">
+          {['Product identity', 'Original manufacturer', 'Official references', 'Distributor trail', 'Buyer checklist', 'More-proof-needed signals'].map((item, index) => (
+            <div class="flex items-center gap-3 rounded-[1rem] bg-white/[0.04] px-4 py-3">
+              <span class="font-mono text-[0.62rem] text-accent-light">0{index + 1}</span>
+              <p class="text-sm text-text-secondary">{item}</p>
+            </div>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1240px] px-6 pb-20 md:px-12 md:pb-24">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="mono-label">First trace report</p>
+        <h2 class="mt-4 text-[2.3rem] font-semibold tracking-[-0.05em] text-text md:text-[3.3rem]">Start with the source trail.</h2>
+      </div>
+      <a href="/tip/search/" class="font-mono text-[0.7rem] uppercase tracking-[0.06em] text-accent-light no-underline hover:text-text">Open product search &rarr;</a>
+    </div>
+    <div class="mt-8">
+      {tipProducts.map((product) => <TipProductCard product={product} />)}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1240px] px-6 pb-20 md:px-12 md:pb-24">
+    <p class="mono-label">Research categories</p>
+    <h2 class="mt-4 max-w-[18ch] text-[2.3rem] font-semibold tracking-[-0.05em] text-text md:text-[3.3rem]">Built to grow across everyday buying decisions.</h2>
+    <div class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {tipCategories.map((category) => (
+        <div class="rounded-[1.1rem] border border-white/8 bg-white/[0.035] px-4 py-4 text-sm text-text-secondary">{category}</div>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-[1240px] px-6 pb-24 md:px-12 md:pb-28">
+    <TipDisclaimerBox />
+  </section>
+</BaseLayout>

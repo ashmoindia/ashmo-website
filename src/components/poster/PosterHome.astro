@@ -1,0 +1,290 @@
+---
+import GoldKicker from './GoldKicker.astro';
+import SectionHeader from './SectionHeader.astro';
+import PosterCard from './PosterCard.astro';
+import FrameworkCard from './FrameworkCard.astro';
+import TimelineFragment from './TimelineFragment.astro';
+import ResourceCard from './ResourceCard.astro';
+
+const pillars = [
+  {
+    index: '01',
+    label: 'F&B Growth',
+    title: 'F&B Growth',
+    body: 'Store launches, menu thinking, campaigns, local market moves, and the operational details that make growth real.',
+    href: '/growth/',
+  },
+  {
+    index: '02',
+    label: 'Brand Building',
+    title: 'Brand Building',
+    body: 'How brands earn memory, trust, visibility, and cultural presence over time — not just attention for a week.',
+    href: '/thinking/',
+  },
+  {
+    index: '03',
+    label: 'Founder Lessons',
+    title: 'Founder Lessons',
+    body: 'Notes from pressure, mistakes, recovery, selling, and the discipline of staying in the game long enough to win.',
+    href: '/story/',
+  },
+  {
+    index: '04',
+    label: 'Digital Systems',
+    title: 'Digital Systems',
+    body: 'Websites, automation, content engines, ecommerce, CRM, and the practical tools that quietly hold a business together.',
+    href: '/work/',
+  },
+];
+
+const frameworks = [
+  {
+    num: '01',
+    title: 'Sell with clarity',
+    body: 'Know what you are selling, who it is for, and why anyone should care before you spend on reach.',
+  },
+  {
+    num: '02',
+    title: 'Build with systems',
+    body: 'Turn repeated work into tools, workflows, checklists, and an operating rhythm the team can trust.',
+  },
+  {
+    num: '03',
+    title: 'Grow with trust',
+    body: 'Make the brand visible, believable, useful, and easier to choose than the option beside it.',
+  },
+];
+
+const timeline = [
+  { title: 'Learned trade before theory', note: 'The counter taught faster than any classroom — and the lessons stuck.' },
+  { title: 'Built with design and digital tools', note: 'Turning rough ideas into things people could actually use and buy.' },
+  { title: 'Worked inside real brand pressure', note: 'Launches, deadlines, budgets, and the cost of getting it wrong in public.' },
+  { title: 'Turned mistakes into systems', note: 'Every recovery became a checklist so the same wound never opened twice.' },
+  { title: 'Now sharing practical frameworks', note: 'Field-tested thinking, written plainly for people building real businesses.' },
+];
+
+const resources = [
+  {
+    eyebrow: 'Field manual',
+    title: 'Business setup checklist',
+    body: 'The questions to answer before you sign a lease, hire, or print a single menu.',
+    href: '/growth/',
+    cta: 'Open checklist',
+  },
+  {
+    eyebrow: 'Starter guide',
+    title: 'F&B ecommerce starter',
+    body: 'A grounded way to sell online without burning the budget on the wrong platform.',
+    href: '/work/',
+    cta: 'Read the guide',
+  },
+  {
+    eyebrow: 'Worksheet',
+    title: 'Brand audit worksheet',
+    body: 'A short, honest pass over what your brand actually signals to a first-time customer.',
+    href: '/thinking/',
+    cta: 'Get the worksheet',
+  },
+  {
+    eyebrow: 'Planner',
+    title: 'Marketing system planner',
+    body: 'Turn scattered campaigns into a repeatable monthly rhythm you can measure.',
+    href: '/growth/',
+    cta: 'Open planner',
+  },
+];
+---
+
+<!-- ================= SECTION 2: HERO ================= -->
+<section class="section-shell poster-hero">
+  <div data-reveal>
+    <GoldKicker text="Practical business memory" />
+    <h1 class="display-hero" style="margin-top:1.4rem;">
+      Built from <span class="mark-underline ink-cream">trade.</span><br />
+      Sharpened by brands.<br />
+      Shared for <span class="ink-red">founders.</span>
+    </h1>
+    <p class="body-large" style="margin-top:1.8rem;max-width:38rem;">
+      This is where practical business experience becomes frameworks, stories, tools, and
+      sharp guidance for people building real brands, real stores, and real systems.
+    </p>
+
+    <div class="hero-actions">
+      <a href="/story/" class="cream-button">Start with the story</a>
+      <a href="/growth/" class="outline-button">Explore the frameworks</a>
+      <a href="/thinking/" class="link-button">View resources &rarr;</a>
+    </div>
+
+    <dl class="hero-trust">
+      <div>
+        <dt>Years on the floor</dt>
+        <dd>Lessons earned in real business, not borrowed from a slide deck.</dd>
+      </div>
+      <div>
+        <dt>Brand work at real scale</dt>
+        <dd>Built inside launches, campaigns, and the pressure of public brands.</dd>
+      </div>
+      <div>
+        <dt>Across multiple markets</dt>
+        <dd>Field-tested where local execution actually has to hold up.</dd>
+      </div>
+    </dl>
+  </div>
+
+  <!-- Hero poster stage -->
+  <div class="hero-stage" data-reveal>
+    <div class="hero-stage__behind" aria-hidden="true"><span></span><span></span></div>
+    <div class="hero-poster poster-panel-red texture-grain">
+      <span class="hero-poster__seal" aria-hidden="true">Field<br />Tested</span>
+      <div>
+        <p class="hero-poster__kicker">No. 01 — The operator's desk</p>
+        <p class="hero-poster__statement" style="margin-top:1.2rem;">
+          Business lessons from the floor, not from the clouds.
+        </p>
+      </div>
+      <div class="hero-poster__foot">
+        <!-- Visual metaphor: a cup = conversation, warmth, the trade itself -->
+        <svg class="hero-poster__cup" viewBox="0 0 80 88" fill="none" aria-hidden="true">
+          <path d="M14 30h44v22a20 20 0 0 1-20 20h-4a20 20 0 0 1-20-20V30Z" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M58 36h8a9 9 0 0 1 0 18h-8" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M24 6c-3 4-3 8 0 12M36 4c-3 4-3 9 0 13M48 6c-3 4-3 8 0 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+          <path d="M10 80h56" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <p class="hero-poster__note">
+          Counters, campaigns, launches, mistakes, rebuilds — written down so they stay useful.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3: MANIFESTO ================= -->
+<section class="poster-manifesto section-pad">
+  <div class="manifesto-watermark" aria-hidden="true">TRADE</div>
+  <div class="section-shell manifesto-inner" data-reveal>
+    <div class="manifesto-bar" aria-hidden="true"></div>
+    <div>
+      <GoldKicker text="What this stands for" />
+      <p class="pull-quote" style="margin-top:1.6rem;max-width:30ch;">
+        I write from the floor of real business — counters, campaigns, launches, mistakes,
+        rebuilds, and brand rooms.
+      </p>
+      <p class="body-large" style="margin-top:1.6rem;max-width:42rem;">
+        Not theory. Not borrowed motivation. Practical memory turned into sharper decisions —
+        the kind you can actually use on a Monday morning.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4: CONTENT PILLARS ================= -->
+<section class="section-shell section-pad">
+  <SectionHeader
+    kicker="What you can explore"
+    title="Four shelves of hard-won business knowledge."
+    intro="Each one is built from doing the work, not reading about it. Start where your next decision lives."
+  />
+  <div class="grid-4" style="margin-top:2.6rem;">
+    {pillars.map((p) => (
+      <PosterCard
+        index={p.index}
+        label={p.label}
+        title={p.title}
+        body={p.body}
+        href={p.href}
+        more="Explore"
+      />
+    ))}
+  </div>
+  <div class="grid-4" style="margin-top:1.1rem;">
+    <PosterCard
+      label="Trust Intelligence"
+      title="Trust Intelligence"
+      body="Helping customers and founders understand product origin, proof, verification, and credibility — so the right choice is also the obvious one."
+      href="/tip/"
+      more="See how it works"
+      wide={true}
+    />
+  </div>
+</section>
+
+<!-- ================= SECTION 5: SIGNATURE FRAMEWORKS ================= -->
+<section class="poster-panel-black texture-grain">
+  <div class="section-shell section-pad">
+    <div data-reveal style="max-width:44rem;">
+      <GoldKicker text="The signature frameworks" />
+      <h2 class="display-section" style="margin-top:1.1rem;">
+        Field-tested frameworks for people building real businesses.
+      </h2>
+    </div>
+    <div class="framework-grid" style="margin-top:2.6rem;">
+      {frameworks.map((f) => (
+        <FrameworkCard num={f.num} title={f.title} body={f.body} />
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 6: STORY / CREDIBILITY ================= -->
+<section class="section-shell section-pad">
+  <div class="poster-story">
+    <div data-reveal>
+      <GoldKicker text="The story behind the work" />
+      <h2 class="display-section" style="margin-top:1.1rem;">
+        From merchant instinct to brand systems.
+      </h2>
+      <p class="body-large" style="margin-top:1.4rem;max-width:34rem;">
+        Experience that came through the counter, not the classroom — then sharpened inside
+        design, digital tools, and real brand pressure. The notes on the right are the short
+        version.
+      </p>
+      <a href="/story/" class="link-button" style="margin-top:1.8rem;">Read the full story &rarr;</a>
+    </div>
+    <ol class="timeline-list" data-reveal>
+      {timeline.map((t) => (
+        <TimelineFragment title={t.title} note={t.note} />
+      ))}
+    </ol>
+  </div>
+</section>
+
+<!-- ================= SECTION 7: FEATURED RESOURCES ================= -->
+<section class="section-shell section-pad" style="padding-top:0;">
+  <SectionHeader
+    kicker="The toolbox"
+    title="Tools for the next move."
+    intro="Practical resources for founders, marketers, and operators who want clarity before they spend money, open a store, launch a campaign, or build a system."
+  />
+  <div class="resource-grid" style="margin-top:2.6rem;">
+    {resources.map((r) => (
+      <ResourceCard
+        eyebrow={r.eyebrow}
+        title={r.title}
+        body={r.body}
+        href={r.href}
+        cta={r.cta}
+      />
+    ))}
+  </div>
+</section>
+
+<!-- ================= SECTION 8: CLOSING CTA ================= -->
+<section class="section-shell" style="padding-bottom:clamp(4rem,9vw,8rem);">
+  <div class="poster-cta poster-panel-red texture-grain poster-vignette" data-reveal>
+    <div style="position:relative;z-index:2;max-width:48rem;margin-inline:auto;">
+      <p class="hero-poster__kicker" style="color:rgba(255,241,208,0.82);">Before your next move</p>
+      <h2 class="display-poster" style="margin-top:1.2rem;">
+        If you are stuck before your next move, start here.
+      </h2>
+      <hr class="gold-rule" style="margin:1.8rem auto;max-width:8rem;opacity:0.8;" />
+      <p style="font-size:1.08rem;line-height:1.7;color:rgba(255,241,208,0.9);max-width:38rem;margin-inline:auto;">
+        Read, learn, borrow the frameworks, and build with more clarity. This is practical
+        business memory made useful.
+      </p>
+      <div class="poster-cta__actions">
+        <a href="/story/" class="cream-button cream-button--on-red">Read the story</a>
+        <a href="/growth/" class="outline-button" style="color:var(--ashmo-warm-cream);border-color:rgba(255,241,208,0.55);">Explore resources</a>
+      </div>
+    </div>
+  </div>
+</section>

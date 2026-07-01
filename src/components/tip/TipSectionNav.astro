@@ -1,0 +1,42 @@
+---
+const currentPath = Astro.url.pathname;
+const links = [
+  { href: '/tip/', label: 'Overview' },
+  { href: '/tip/search/', label: 'Search' },
+  { href: '/tip/checklist/', label: 'Buyer checklist' },
+  { href: '/tip/about/', label: 'About TIP' },
+  { href: '/tip/disclaimer/', label: 'Disclaimer' },
+];
+---
+
+<section class="mx-auto max-w-[1240px] px-6 pt-4 md:px-12 md:pt-8">
+  <div class="rounded-[1.65rem] border border-white/8 bg-white/[0.04] px-5 py-4 md:px-6">
+    <div>
+      <div>
+        <p class="mono-label">TIP · Trust Intelligence Platform</p>
+        <p class="mt-2 max-w-[42rem] text-sm leading-[1.7] text-text-secondary">
+          Independent public-source product research. We do not certify products. We help you verify the source.
+        </p>
+      </div>
+    </div>
+    <nav aria-label="TIP section" class="mt-4 border-t border-white/8 pt-4">
+      <ul class="flex list-none flex-wrap gap-2 p-0">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                'inline-flex rounded-full px-3.5 py-2 font-mono text-[0.66rem] font-semibold uppercase tracking-[0.06em] no-underline transition-colors',
+                currentPath === link.href
+                  ? 'bg-accent/18 text-accent-light'
+                  : 'text-text-tertiary hover:bg-white/[0.05] hover:text-text',
+              ]}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</section>

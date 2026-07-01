@@ -103,7 +103,7 @@ export const growthBusinessTypes: GrowthLinkCard[] = [
   {
     eyebrow: 'Business type',
     title: 'Multi-Outlet Chain',
-    description: 'For operators who need a system that works branch by branch, not just one strong flagship store.',
+    description: 'For teams who need a system that works branch by branch, not just one strong flagship store.',
     href: `${growthBasePath}/chain-franchise-marketing/`,
     metadata: 'Best next page: Chain systems',
   },
@@ -169,7 +169,7 @@ export const growthBusinessStages: GrowthLinkCard[] = [
   {
     eyebrow: 'Business stage',
     title: 'Standardizing franchise marketing',
-    description: 'Protect the brand while giving local operators enough room to execute against their own demand reality.',
+    description: 'Protect the brand while giving local teams enough room to execute against their own demand reality.',
     href: `${growthBasePath}/chain-franchise-marketing/`,
   },
 ];
@@ -205,7 +205,7 @@ export const growthFrameworkLayers: GrowthFrameworkLayer[] = [
   },
   {
     title: 'Measurement',
-    description: 'Track the numbers that actually help an operator decide what to open, cut, scale, push, or fix next.',
+    description: 'Track the numbers that actually help a team decide what to open, cut, scale, push, or fix next.',
   },
 ];
 
@@ -219,7 +219,7 @@ export const growthTemplates: GrowthTemplate[] = [
     format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/restaurant-brand-positioning-brief.xlsx',
     audience:
-      'Founder-led cafes, new concepts, and operators repositioning a store that feels commercially active but strategically vague.',
+      'Founder-led cafes, new concepts, and teams repositioning a store that feels commercially active but strategically vague.',
     relatedHref: `${growthBasePath}/brand-strategy/`,
   },
   {
@@ -231,7 +231,7 @@ export const growthTemplates: GrowthTemplate[] = [
     format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/annual-restaurant-marketing-plan.xlsx',
     audience:
-      'Operators who need a proper 12-month marketing rhythm instead of a reactive list of ad hoc promotions.',
+      'Teams who need a proper 12-month marketing rhythm instead of a reactive list of ad hoc promotions.',
     relatedHref: `${growthBasePath}/restaurant-marketing-plan/`,
   },
   {
@@ -279,7 +279,7 @@ export const growthTemplates: GrowthTemplate[] = [
     format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/marketing-roi-calculator.xlsx',
     audience:
-      'Operators who want to review campaign economics like a commercial lead, not just celebrate impressions and traffic.',
+      'Teams who want to review campaign economics like a commercial lead, not just celebrate impressions and traffic.',
     relatedHref: `${growthBasePath}/performance-marketing/`,
   },
   {
@@ -315,7 +315,7 @@ export const growthTemplates: GrowthTemplate[] = [
     format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/menu-launch-and-offer-planner.xlsx',
     audience:
-      'Operators and marketers launching new items or seasonal offers who need margin, storytelling, and rollout assets aligned.',
+      'Marketers and teams launching new items or seasonal offers who need margin, storytelling, and rollout assets aligned.',
     relatedHref: `${growthBasePath}/menu-engineering/`,
   },
   {
@@ -351,7 +351,7 @@ export const growthTemplates: GrowthTemplate[] = [
     format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/google-business-profile-checklist.xlsx',
     audience:
-      'Independent operators and multi-store teams who need store discovery, map visibility, and profile governance handled properly.',
+      'Independent founders and multi-store teams who need store discovery, map visibility, and profile governance handled properly.',
     relatedHref: `${growthBasePath}/google-business-profile-local-seo/`,
   },
   {
@@ -375,7 +375,7 @@ export const growthTemplates: GrowthTemplate[] = [
     format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/restaurant-kpi-dashboard-template.xlsx',
     audience:
-      'Operators and growth leads who need one management view of demand, retention, and channel performance across the trading week.',
+      'Growth leads who need one management view of demand, retention, and channel performance across the trading week.',
     relatedHref: `${growthBasePath}/dashboards-kpis/`,
   },
   {
@@ -387,7 +387,7 @@ export const growthTemplates: GrowthTemplate[] = [
     format: 'Excel · v3 · investor-ready',
     href: '/downloads/restaurant-growth/weekly-flash-report-template.xlsx',
     audience:
-      'Founders, CEOs, CFOs, operators, and investors running a weekly performance cadence — single-store or multi-unit.',
+      'Founders, CEOs, CFOs, growth leads, and investors running a weekly performance cadence - single-store or multi-unit.',
     relatedHref: `${growthBasePath}/dashboards-kpis/`,
   },
 ];
@@ -425,7 +425,7 @@ export const growthProofBlocks: GrowthProofBlock[] = [
     href: `${growthBasePath}/brand-strategy/`,
   },
   {
-    eyebrow: 'Operator lens',
+    eyebrow: 'Commercial lens',
     title: 'Delivery volume can hide bad channel economics',
     description: 'Growth looks impressive until packaging, discounts, and aggregator dependence turn a busy dashboard into weak contribution.',
     href: `${growthBasePath}/delivery-aggregator-marketing/`,
@@ -466,7 +466,7 @@ export const growthOffers: GrowthOffer[] = [
   {
     eyebrow: 'High-intent',
     title: 'Fractional CMO advisory',
-    description: 'Ongoing leadership for brands that need operator-aware marketing direction without a full internal headcount.',
+    description: 'Ongoing leadership for brands that need commercially grounded marketing direction without a full internal headcount.',
     href: `${growthAuditPath}#fractional-cmo`,
   },
 ];
@@ -477,9 +477,9 @@ export const growthPages: GrowthPage[] = [
     navLabel: 'Brand',
     eyebrow: 'Brand Strategy',
     title: 'Brand Strategy for Restaurants & Cafes',
-    description: 'Positioning, concept clarity, and brand systems for restaurant and cafe operators who need a sharper reason to be chosen.',
+    description: 'Positioning, concept clarity, and brand systems for restaurant and cafe teams who need a sharper reason to be chosen.',
     metaTitle: 'Brand Strategy for Restaurants & Cafes',
-    metaDescription: 'Operator-aware brand strategy for cafes, QSRs, and restaurant brands covering positioning, identity, concept clarity, and consistency.',
+    metaDescription: 'Commercially grounded brand strategy for cafes, QSRs, and restaurant brands covering positioning, identity, concept clarity, and consistency.',
     outcome: 'Clarify what the brand stands for so campaigns, stores, packaging, and offers stop pulling in different directions.',
     problem: [
       'Many restaurant brands look active but feel interchangeable. They post often, run offers, and launch items, yet the customer still cannot describe what the brand is really for.',
@@ -513,7 +513,7 @@ export const growthPages: GrowthPage[] = [
     ],
     whoItsFor: [
       'Founders launching a new cafe or restaurant concept',
-      'Operators whose brand feels generic or diluted',
+      'Teams whose brand feels generic or diluted',
       'Premium cafe brands refining their voice and identity',
       'Multi-unit businesses preparing the brand for scale',
     ],
@@ -561,7 +561,7 @@ export const growthPages: GrowthPage[] = [
       },
       {
         title: 'Tie spend to outcomes',
-        description: 'Use budget logic and KPI guardrails so the plan can survive scrutiny from founders and operators.',
+        description: 'Use budget logic and KPI guardrails so the plan can survive scrutiny from founders and finance leads.',
       },
     ],
     includes: [
@@ -574,7 +574,7 @@ export const growthPages: GrowthPage[] = [
     whoItsFor: [
       'Founders who need a clearer marketing operating system',
       'Brand teams preparing a more disciplined annual plan',
-      'Multi-store operators aligning store and central activity',
+      'Multi-store teams aligning store and central activity',
       'Businesses moving beyond random monthly campaigns',
     ],
     mistakes: [
@@ -635,7 +635,7 @@ export const growthPages: GrowthPage[] = [
       'New restaurant and cafe concepts preparing for launch',
       'Existing brands opening another outlet',
       'Marketing teams supporting expansion',
-      'Operators who need launch discipline, not just launch buzz',
+      'Teams who need launch discipline, not just launch buzz',
     ],
     mistakes: [
       'Starting launch promotion too late',
@@ -694,7 +694,7 @@ export const growthPages: GrowthPage[] = [
     whoItsFor: [
       'Single outlets trying to fix weak footfall',
       'Cafe brands with neighborhood-level competition',
-      'Multi-store operators with uneven branch performance',
+      'Multi-store teams with uneven branch performance',
       'Expansion teams opening into new micro-markets',
     ],
     mistakes: [
@@ -753,7 +753,7 @@ export const growthPages: GrowthPage[] = [
     ],
     whoItsFor: [
       'Restaurant brands already spending on paid media',
-      'QSR and fast casual operators needing clearer media discipline',
+      'QSR and fast casual teams needing clearer media discipline',
       'Multi-unit businesses balancing local and central spend',
       'Founders who want sharper visibility into what ads should actually do',
     ],
@@ -815,7 +815,7 @@ export const growthPages: GrowthPage[] = [
       'Cafe brands building a stronger content presence',
       'Restaurant teams tired of reactive posting',
       'Brands launching items and campaigns more regularly',
-      'Operators who want social to support growth, not just aesthetics',
+      'Teams who want social to support growth, not just aesthetics',
     ],
     mistakes: [
       'Posting without clear content roles',
@@ -874,7 +874,7 @@ export const growthPages: GrowthPage[] = [
     whoItsFor: [
       'Restaurants with crowded menus and mixed sales patterns',
       'Cafe brands wanting clearer hero products',
-      'Delivery-first operators improving digital menus',
+      'Delivery-first teams improving digital menus',
       'Teams preparing new product launches',
     ],
     mistakes: [
@@ -935,7 +935,7 @@ export const growthPages: GrowthPage[] = [
       'Cloud kitchens and delivery-first brands',
       'Restaurant groups where delivery is a large sales share',
       'Brands with strong volume but weak contribution',
-      'Operators preparing a more disciplined aggregator strategy',
+      'Teams preparing a more disciplined aggregator strategy',
     ],
     mistakes: [
       'Confusing delivery sales growth with channel health',
@@ -994,7 +994,7 @@ export const growthPages: GrowthPage[] = [
     whoItsFor: [
       'Brands with growing customer data but weak follow-up',
       'Cafe concepts that depend on repeat behavior',
-      'Operators trying to improve lifetime value',
+      'Teams trying to improve lifetime value',
       'Multi-store businesses formalizing retention systems',
     ],
     mistakes: [
@@ -1077,10 +1077,10 @@ export const growthPages: GrowthPage[] = [
     navLabel: 'Franchise',
     eyebrow: 'Chain Systems',
     title: 'Chain & Franchise Marketing Systems',
-    description: 'Centralized brand control, local execution rules, and rollout systems for restaurant groups, chains, and franchise-led operators.',
+    description: 'Centralized brand control, local execution rules, and rollout systems for restaurant groups, chains, and franchise-led teams.',
     metaTitle: 'Chain & Franchise Marketing Systems',
     metaDescription: 'Restaurant chain and franchise marketing systems covering governance, local execution, toolkit rollout, and campaign compliance.',
-    outcome: 'Scale marketing without losing brand control, local relevance, or reporting discipline across multiple stores and operators.',
+    outcome: 'Scale marketing without losing brand control, local relevance, or reporting discipline across multiple stores and teams.',
     problem: [
       'Growth creates marketing complexity long before it creates marketing maturity. Central teams lose control, local stores improvise, and campaign quality becomes inconsistent across the network.',
       'Franchise environments intensify this problem because every market needs room to act, but too much freedom quickly damages the brand.',
@@ -1097,7 +1097,7 @@ export const growthPages: GrowthPage[] = [
       },
       {
         title: 'Support rollout discipline',
-        description: 'Use campaign calendars, launch packs, and reporting standards that travel well across markets and operators.',
+        description: 'Use campaign calendars, launch packs, and reporting standards that travel well across markets and teams.',
       },
       {
         title: 'Measure branch and network effect',
@@ -1115,7 +1115,7 @@ export const growthPages: GrowthPage[] = [
       'Multi-outlet restaurant and cafe groups',
       'Franchise-led brands',
       'Regional chains expanding into more cities or countries',
-      'Operators whose local execution is too inconsistent',
+      'Teams whose local execution is too inconsistent',
     ],
     mistakes: [
       'Giving stores too little freedom to stay locally relevant',
@@ -1140,12 +1140,12 @@ export const growthPages: GrowthPage[] = [
     description: 'Decision dashboards for restaurants and cafes covering footfall, CAC, repeat rate, delivery mix, ROAS, and branch-level performance.',
     metaTitle: 'Dashboards & KPIs for Restaurants',
     metaDescription: 'Restaurant dashboards and KPI systems covering CAC, repeat rate, delivery mix, ROAS, store metrics, and growth measurement.',
-    outcome: 'Give founders and operators a cleaner view of what is working, what is leaking, and what deserves the next decision.',
+    outcome: 'Give founders and teams a cleaner view of what is working, what is leaking, and what deserves the next decision.',
     problem: [
       'Many restaurant reports are full of numbers and still poor at guiding action. Metrics sit in separate tools, branches are compared badly, and teams review channel outputs without seeing the commercial picture.',
       'That causes slow decisions, reactive meetings, and a lot of energy spent debating symptoms instead of identifying the real pressure point.',
     ],
-    approachIntro: 'Good restaurant measurement starts by deciding which questions the dashboard should answer for a founder, marketer, or operator.',
+    approachIntro: 'Good restaurant measurement starts by deciding which questions the dashboard should answer for a founder, marketer, or finance lead.',
     approach: [
       {
         title: 'Separate leading and lagging signals',
@@ -1174,7 +1174,7 @@ export const growthPages: GrowthPage[] = [
     whoItsFor: [
       'Founders who need clearer commercial visibility',
       'Marketing teams reporting beyond vanity metrics',
-      'Multi-store operators comparing branches properly',
+      'Multi-store teams comparing branches properly',
       'Brands formalizing their growth review cadence',
     ],
     mistakes: [

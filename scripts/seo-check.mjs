@@ -204,7 +204,12 @@ async function main() {
   console.log('\n🔍 ashmo.io SEO Validator\n' + '═'.repeat(50));
 
   // Exclude non-page files (Google verification, etc.)
-  const SKIP_PATTERNS = [/google[a-z0-9]+\.html$/i];
+  // Paper Moon is intentionally unlisted and omits social/schema metadata.
+  // Its noindex and privacy requirements are covered by tests/paper-moon-surface.test.mjs.
+  const SKIP_PATTERNS = [
+    /google[a-z0-9]+\.html$/i,
+    /[/\\]pm[/\\]/,
+  ];
   const htmlFiles = (await findHtmlFiles(DIST))
     .filter(f => !SKIP_PATTERNS.some(p => p.test(f)));
   console.log(`\nScanning ${htmlFiles.length} pages...\n`);

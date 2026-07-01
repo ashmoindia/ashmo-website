@@ -1,0 +1,30 @@
+---
+interface Props {
+  index?: string;
+  label: string;
+  title: string;
+  body: string;
+  href?: string;
+  more?: string;
+  wide?: boolean;
+}
+const { index, label, title, body, href, more = 'Explore', wide = false } = Astro.props;
+const Tag = href ? 'a' : 'article';
+const extra = href ? { href } : {};
+---
+<Tag
+  class="poster-card"
+  data-reveal
+  style={wide ? 'grid-column:1/-1;' : ''}
+  {...extra}
+>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+    <span class="micro-label">{label}</span>
+    {index && <span class="poster-card__index">{index}</span>}
+  </div>
+  <h3 class="poster-card__title">{title}</h3>
+  <p class="poster-card__body">{body}</p>
+  {href && (
+    <span class="poster-card__more">{more} &rarr;</span>
+  )}
+</Tag>

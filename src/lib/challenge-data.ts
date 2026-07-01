@@ -59,7 +59,7 @@ const getSupabaseConfig = () => {
   const url = getEnv('SUPABASE_URL')?.replace(/\/$/, '');
   const serviceRoleKey = getEnv('SUPABASE_SERVICE_ROLE_KEY');
   const anonKey = getEnv('SUPABASE_ANON_KEY');
-  const key = serviceRoleKey || anonKey;
+  const key = anonKey || serviceRoleKey;
 
   if (!url || !key) return null;
   return { url, key };

@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PageSection from '../../components/PageSection.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import PageActionPanel from '../../components/PageActionPanel.astro';
 import WorkCard from '../../components/WorkCard.astro';
 import { getCollection } from 'astro:content';
 
@@ -16,16 +20,16 @@ const archiveWork = featuredWork ? sortedWork.filter((item) => item.id !== featu
 
 const categoryMeta = {
   'brand-building': {
-    label: 'Brand Building',
+    label: 'Brand Systems',
     description: 'Identity systems, positioning, rollout consistency, and the commercial layer underneath brand growth.',
   },
   'founder-documentary': {
-    label: 'Founder Documentary',
-    description: 'Projects that document the voice, format, and public-facing layer of the work itself.',
+    label: 'Platform Build',
+    description: 'Projects that document the platform, public-facing systems, and commercial intelligence layer.',
   },
   'merchant-mindset': {
-    label: 'Merchant Mindset',
-    description: 'Early operating seasons that built the pricing, trade, and customer instincts everything else sits on.',
+    label: 'Commercial Foundation',
+    description: 'Early trade, digital, and creative seasons that built market sense before the brand-building years.',
   },
 } as const;
 
@@ -56,87 +60,45 @@ const workFrames = [
 ];
 
 const workLinks = [
-  { href: '/thinking/', label: 'Read the thinking', accent: true },
-  { href: '/story/', label: 'Background' },
+  { href: '/thinking/', label: 'Browse Insights', accent: true },
+  { href: '/story/', label: 'About' },
   { href: '/contact/', label: 'Contact Ashmo' },
 ];
 ---
 
 <BaseLayout
-  title="Case Studies & Brand Work — Ashmo"
-  description="Brand systems, operating seasons, and case studies behind Ashraf Hassan's work — including FiLLi Cafe scaling from one outlet to 70+ across the GCC."
+  title="Case Studies — Brand Systems"
+  description="Selected case studies and working notes from F&B growth, brand systems, product focus, market timing, and commercial execution."
 >
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-8 md:pt-14 pb-10 md:pb-14">
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,0.97fr)_minmax(0,1.03fr)]">
-      <div class="rounded-[2rem] border border-white/6 bg-[linear-gradient(145deg,rgba(18,18,19,0.98),rgba(10,10,10,0.98))] px-7 py-8 md:px-9 md:py-10">
-        <p class="text-[0.7rem] uppercase tracking-[0.24em] text-accent-light">Work</p>
-        <h1 class="mt-5 font-heading text-[2.8rem] md:text-[5rem] leading-[0.94] tracking-[-0.05em] max-w-[8ch]">
-          A body of work, not a polished portfolio.
-        </h1>
-        <p class="mt-6 max-w-[36rem] text-[1.04rem] md:text-[1.12rem] text-text-secondary font-light leading-[1.85]">
-          The writing on this site comes from actual operating seasons: stores, campaigns, product launches, brand systems, trade instincts, and the slower years that taught judgment more than applause ever could.
-        </p>
-
-        <div class="mt-8 grid gap-3 sm:grid-cols-3">
-          <div class="rounded-[1.2rem] border border-white/6 bg-white/[0.03] px-4 py-4">
-            <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Case files</p>
-            <p class="mt-2 text-[1.8rem] font-semibold tracking-[-0.04em] text-text">{sortedWork.length}</p>
-          </div>
-          <div class="rounded-[1.2rem] border border-white/6 bg-white/[0.03] px-4 py-4">
-            <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Time span</p>
-            <p class="mt-2 text-[1.8rem] font-semibold tracking-[-0.04em] text-text">{latestYear - firstYear}+ yrs</p>
-          </div>
-          <div class="rounded-[1.2rem] border border-white/6 bg-white/[0.03] px-4 py-4">
-            <p class="text-[0.62rem] uppercase tracking-[0.18em] text-accent-light">Archive range</p>
-            <p class="mt-2 text-[1.15rem] font-semibold tracking-[-0.03em] text-text">{firstYear}–{latestYear}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="rounded-[2rem] border border-white/6 bg-[linear-gradient(155deg,rgba(18,20,24,0.98),rgba(11,12,15,0.98))] px-6 py-7 md:px-8 md:py-8">
-        <div class="flex flex-col gap-6 border-b border-white/6 pb-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent">What this archive is doing</p>
-            <h2 class="mt-3 font-heading text-[1.9rem] md:text-[2.45rem] leading-[1.02] tracking-[-0.04em] max-w-[12ch]">
-              Showing the work that produced the point of view.
-            </h2>
-          </div>
-          <span class="inline-flex self-start rounded-full border border-white/8 bg-white/[0.04] px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-text-tertiary">
-            Selected, not exhaustive
-          </span>
-        </div>
-
-        <div class="mt-6 grid gap-4 md:grid-cols-3">
-          {categorySummaries.map((category) => (
-            <article class="rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-4 py-4">
-              <div class="flex items-start justify-between gap-4">
-                <p class="text-[0.68rem] uppercase tracking-[0.18em] text-accent-light">{category.label}</p>
-                <span class="text-[0.82rem] font-medium text-text-tertiary">{category.count}</span>
-              </div>
-              <p class="mt-3 text-[0.92rem] text-text-secondary font-light leading-[1.72]">
-                {category.description}
-              </p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+  <PageHero
+    eyebrow="Case Studies"
+    title="Proof from brand systems, growth, and"
+    highlight="commercial execution."
+    description="Selected work and working notes from F&B growth, brand systems, product focus, market timing, and commercial decision-making."
+    primary={{ href: featuredWork ? `/work/${featuredWork.id}/` : '/work/', label: 'Open lead case' }}
+    secondary={{ href: '/thinking/', label: 'Browse Insights' }}
+    stats={[
+      { value: String(sortedWork.length), label: 'case files' },
+      { value: `${latestYear - firstYear}+`, label: 'years' },
+      { value: `${firstYear}`, label: 'started' },
+    ]}
+    sideEyebrow="What this section is doing"
+    sideTitle="Showing proof without turning the site into a life archive."
+    sideDescription="Selected case files and working notes organized by what they reveal about brand systems, growth logic, market timing, and commercial judgment."
+    sideCards={categorySummaries.map((category) => ({
+      eyebrow: `${category.label} / ${category.count}`,
+      description: category.description,
+    }))}
+  />
 
   {featuredWork && (
-    <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-18 md:pb-20">
-      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p class="text-[0.72rem] uppercase tracking-[0.2em] text-accent-light">Lead case file</p>
-          <h2 class="mt-4 font-heading text-[2.2rem] md:text-[3rem] leading-[0.98] tracking-[-0.04em] max-w-[11ch]">
-            The clearest anchor in the body of work.
-          </h2>
-        </div>
-        <p class="max-w-[32rem] text-[0.98rem] text-text-secondary font-light leading-[1.85]">
-          Not because it is the only important project, but because it concentrates the largest number of decisions, repetitions, and consequences in one place.
-        </p>
-      </div>
-
+    <PageSection
+      eyebrow="Lead case file"
+      title="The clearest anchor in the"
+      highlight="case study set."
+      description="Not because it is the only important project, but because it concentrates the largest number of decisions, repetitions, and consequences in one place."
+      spacing="tight"
+    >
       <div class="mt-10">
         <WorkCard
           title={featuredWork.data.title}
@@ -148,49 +110,25 @@ const workLinks = [
           featured={true}
         />
       </div>
-    </section>
+    </PageSection>
   )}
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-18 md:pb-20">
-    <div class="rounded-[1.85rem] border border-white/6 bg-[linear-gradient(180deg,rgba(16,18,22,0.98),rgba(10,11,14,0.98))] px-6 py-7 md:px-8 md:py-8">
-      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Frame</p>
-          <h2 class="mt-3 font-heading text-[1.9rem] md:text-[2.4rem] leading-[1.02] tracking-[-0.04em] max-w-[11ch]">
-            Three ways to read the archive beyond “projects.”
-          </h2>
-        </div>
-        <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
-          The point is not to showcase output. It is to show what the work reveals about how brands are built, protected, and translated into systems.
-        </p>
-      </div>
+  <PageSection
+    eyebrow="Frame"
+    title="Three ways to read the archive beyond"
+    highlight="projects."
+    description="The point is not to showcase output. It is to show what the work reveals about how brands are built, protected, and translated into systems."
+    spacing="tight"
+  >
+    <FeatureGrid columns="3" items={workFrames.map((frame) => ({ title: frame.label, description: frame.description }))} />
+  </PageSection>
 
-      <div class="mt-8 grid gap-4 md:grid-cols-3">
-        {workFrames.map((frame) => (
-          <article class="rounded-[1.35rem] border border-white/6 bg-white/[0.03] px-5 py-5">
-            <p class="text-[0.66rem] uppercase tracking-[0.18em] text-accent-light">{frame.label}</p>
-            <p class="mt-4 text-[0.95rem] text-text-secondary font-light leading-[1.78]">
-              {frame.description}
-            </p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-20 md:pb-24">
-    <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-      <div>
-        <p class="text-[0.72rem] uppercase tracking-[0.2em] text-accent-light">Case file archive</p>
-        <h2 class="mt-4 font-heading text-[2.2rem] md:text-[3rem] leading-[0.98] tracking-[-0.04em] max-w-[10ch]">
-          The rest of the work, arranged like a living record.
-        </h2>
-      </div>
-      <p class="max-w-[32rem] text-[0.98rem] text-text-secondary font-light leading-[1.85]">
-        Some entries are commercial. Some are autobiographical. Some sit in the useful space between the two. Together they explain the operating logic behind the site.
-      </p>
-    </div>
-
+  <PageSection
+    eyebrow="Case study archive"
+    title="The rest of the proof, arranged like a"
+    highlight="living record."
+    description="Each entry should explain a useful commercial capability: brand systems, growth systems, commercial foundation, platform build, public conversation, or market intelligence."
+  >
     {archiveWork.length > 0 ? (
       <div class="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
         {archiveWork.map((item) => (
@@ -205,40 +143,16 @@ const workLinks = [
         ))}
       </div>
     ) : (
-      <p class="mt-10 text-text-secondary font-light">Work coming soon.</p>
+      <p class="mt-10 text-text-secondary font-light">Case studies coming soon.</p>
     )}
-  </section>
+  </PageSection>
 
-  <section class="max-w-[1200px] mx-auto px-6 md:px-12 pb-24 md:pb-28">
-    <div class="rounded-[1.85rem] border border-white/6 bg-[linear-gradient(180deg,rgba(16,18,22,0.98),rgba(10,11,14,0.98))] px-6 py-7 md:px-8 md:py-8">
-      <div class="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p class="text-[0.68rem] uppercase tracking-[0.22em] text-accent-light">Keep moving</p>
-          <h2 class="mt-3 font-heading text-[1.9rem] md:text-[2.4rem] leading-[1.02] tracking-[-0.04em] max-w-[12ch]">
-            The work makes the most sense when it is read beside the writing.
-          </h2>
-        </div>
-        <p class="max-w-[28rem] text-sm text-text-secondary leading-[1.8]">
-          The archive here is one side of the site. The thinking explains the judgment, and the background explains where that judgment was learned.
-        </p>
-      </div>
-
-      <div class="mt-8 flex flex-col gap-3 md:flex-row md:flex-wrap">
-        {workLinks.map((link) => (
-          <a
-            href={link.href}
-            class:list={[
-              'inline-flex items-center justify-center rounded-full px-5 py-3 text-[0.78rem] font-semibold uppercase tracking-[0.16em] no-underline transition-colors',
-              link.accent
-                ? 'bg-gradient-to-r from-accent-light to-accent text-bg'
-                : 'border border-white/10 text-text-secondary hover:border-accent/40 hover:text-text',
-            ]}
-            style={link.accent ? 'color: var(--color-bg);' : undefined}
-          >
-            {link.label}
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
+  <PageActionPanel
+    eyebrow="Keep moving"
+    title="The case studies make the most sense beside the"
+    highlight="insights."
+    description="The proof here is one side of the site. The insights explain the judgment, and the About page explains where that judgment was learned."
+    primary={workLinks[0]}
+    secondary={workLinks[1]}
+  />
 </BaseLayout>

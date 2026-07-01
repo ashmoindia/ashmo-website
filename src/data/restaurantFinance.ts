@@ -81,11 +81,11 @@ export const financeTemplates: FinanceTemplate[] = [
     slug: 'restaurant-p-and-l-template',
     name: 'Restaurant P&L template',
     summary:
-      'A monthly close workbook with gross-to-net sales bridge, COGS split, payroll, occupancy, EBITDA, dashboard outputs, and review checks for UAE operators.',
+      'A monthly close workbook with gross-to-net sales bridge, COGS split, payroll, occupancy, EBITDA, dashboard outputs, and review checks for UAE restaurant teams.',
     format: 'XLSX',
     href: '/downloads/restaurant-finance/restaurant-p-and-l-template.xlsx',
     audience:
-      'Founders, operators, finance leads, and GMs who need a month-end pack that can stand up to lender, investor, or audit review.',
+      'Founders, finance leads, and GMs who need a month-end pack that can stand up to lender, investor, or audit review.',
   },
   {
     slug: 'weekly-flash-report-template',
@@ -95,7 +95,7 @@ export const financeTemplates: FinanceTemplate[] = [
     format: 'XLSX',
     href: '/downloads/restaurant-finance/weekly-flash-report-template.xlsx',
     audience:
-      'Operators, founders, and finance leads who need board-ready weekly visibility before month-end surprises become expensive.',
+      'Founders and finance leads who need board-ready weekly visibility before month-end surprises become expensive.',
   },
   {
     slug: 'recipe-costing-sheet',
@@ -125,7 +125,7 @@ export const financeTemplates: FinanceTemplate[] = [
     format: 'XLSX',
     href: '/downloads/restaurant-finance/business-plan-model-template.xlsx',
     audience:
-      'Operators preparing for investors, landlords, lenders, or internal expansion decisions that need more than a one-tab spreadsheet.',
+      'Teams preparing for investors, landlords, lenders, or internal expansion decisions that need more than a one-tab spreadsheet.',
   },
 ];
 
@@ -176,7 +176,7 @@ export const financeInsights: FinanceInsight[] = [
   },
   {
     slug: 'restaurant-p-and-l-explained-for-uae-operators',
-    title: 'Restaurant P&L explained for UAE operators',
+    title: 'Restaurant P&L explained for UAE teams',
     description: 'What a restaurant P&L should actually help you decide, and why founders often read revenue before they read pressure.',
     readTime: '8 min read',
   },
@@ -229,8 +229,8 @@ export const evidenceLayers = [
     summary: 'Paid strategic context from Euromonitor and YouGov, supported by JLL and CBRE market insight.',
   },
   {
-    title: 'Ashmo Operator Benchmark',
-    summary: 'Anonymized operator benchmarks built from real submissions once quality and sample thresholds are met.',
+    title: 'Ashmo Restaurant Benchmark',
+    summary: 'Anonymized restaurant benchmarks built from real submissions once quality and sample thresholds are met.',
   },
   {
     title: 'Model Assumption',
@@ -251,7 +251,7 @@ export const roadmapPhases = [
   },
   {
     title: 'Phase 2 — Benchmark pilot',
-    summary: 'Recruit a small operator cohort, validate submissions, and publish the first benchmark methodology and pilot note.',
+    summary: 'Recruit a small restaurant cohort, validate submissions, and publish the first benchmark methodology and pilot note.',
   },
   {
     title: 'Phase 3 — Premium intelligence',

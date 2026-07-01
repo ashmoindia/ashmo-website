@@ -1,0 +1,47 @@
+---
+interface FeatureItem {
+  eyebrow?: string;
+  title: string;
+  description: string;
+  href?: string;
+  metadata?: string;
+}
+
+interface Props {
+  items: FeatureItem[];
+  columns?: '2' | '3' | '4';
+}
+
+const { items, columns = '3' } = Astro.props;
+
+const gridClass = {
+  '2': 'grid grid-cols-1 gap-5 md:grid-cols-2',
+  '3': 'grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3',
+  '4': 'grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4',
+}[columns];
+---
+
+<div class={gridClass}>
+  {items.map((item) => {
+    const Wrapper = item.href ? 'a' : 'article';
+    return (
+      <Wrapper href={item.href} class:list={['feature-card p-6 no-underline', item.href ? 'hover-lift group block' : undefined]}>
+        <div class="relative z-10">
+          {item.eyebrow && <p class="mono-label mb-3">{item.eyebrow}</p>}
+          <h3 class="text-[1.35rem] font-bold leading-[1.12] text-text md:text-[1.45rem]">
+            {item.title}
+          </h3>
+          <p class="mt-4 text-[0.96rem] leading-[1.75] text-text-secondary">
+            {item.description}
+          </p>
+          {(item.href || item.metadata) && (
+            <div class="mt-6 flex items-center justify-between gap-4 font-mono text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-text-tertiary">
+              <span>{item.metadata ?? 'Open page'}</span>
+              {item.href && <span class="transition-transform group-hover:translate-x-1">&rarr;</span>}
+            </div>
+          )}
+        </div>
+      </Wrapper>
+    );
+  })}
+</div>

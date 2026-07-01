@@ -1,0 +1,22 @@
+---
+interface Props {
+  items: string[];
+  title?: string;
+}
+
+const { items, title = 'Buyer verification checklist' } = Astro.props;
+---
+
+<section aria-labelledby="tip-checklist-title">
+  <p class="mono-label">Before purchase</p>
+  <h2 id="tip-checklist-title" class="mt-4 text-[2rem] font-semibold tracking-[-0.04em] text-text md:text-[2.6rem]">{title}</h2>
+  <div class="mt-7 grid gap-3 md:grid-cols-2">
+    {items.map((item) => (
+      <div class="flex gap-3 rounded-[1.2rem] border border-white/8 bg-white/[0.04] p-4">
+        <span class="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full border border-accent/35 font-mono text-[0.62rem] text-accent-light">✓</span>
+        <p class="text-sm leading-[1.75] text-text-secondary">{item}</p>
+      </div>
+    ))}
+  </div>
+</section>
+

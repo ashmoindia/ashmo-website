@@ -1,0 +1,130 @@
+---
+import PaperMoonLayout from '../../layouts/PaperMoonLayout.astro';
+
+const suggestions = [
+  'paper-moon',
+  'blue-lantern',
+  'tiny-rocket',
+  'glass-river',
+  'mirror-rain',
+  'quiet-map',
+  'old-satellite',
+  'dusty-star',
+  'small-comet',
+];
+---
+
+<PaperMoonLayout pageKind="create">
+  <div class="pm-atmosphere" aria-hidden="true">
+    <span class="pm-orbit pm-orbit-one"></span>
+    <span class="pm-orbit pm-orbit-two"></span>
+    <span class="pm-moon-shape"></span>
+  </div>
+
+  <div class="pm-shell pm-create-shell">
+    <header class="pm-brand">
+      <a href="/pm/" aria-label="Paper Moon home">
+        <span class="pm-brand-mark" aria-hidden="true"></span>
+        <span>Paper Moon</span>
+      </a>
+      <button class="pm-quiet-button" type="button" data-about-toggle aria-expanded="false">About</button>
+    </header>
+
+    <section class="pm-hero" aria-labelledby="pm-title">
+      <p class="pm-eyebrow">Tiny, unlisted, personal.</p>
+      <h1 id="pm-title">Make a paper moon.<br /><em>Let someone leave a trace.</em></h1>
+      <p class="pm-lede">
+        Choose a memorable name. Share the link personally. They can leave text, links, or one light photo.
+      </p>
+      <div class="pm-pills" aria-label="Paper Moon qualities">
+        <span>No feed</span>
+        <span>No public wall</span>
+        <span>Link only</span>
+        <span>Light photos</span>
+        <span>Disappears later</span>
+      </div>
+    </section>
+
+    <section class="pm-paper-card pm-maker-card" id="make-moon">
+      <div class="pm-fold-corner" aria-hidden="true"></div>
+      <form data-moon-form novalidate>
+        <div class="pm-field">
+          <label for="moon-name">Moon name</label>
+          <div class="pm-name-wrap">
+            <span aria-hidden="true">ashmo.io/pm/</span>
+            <input id="moon-name" name="name" type="text" maxlength="48" autocomplete="off" required placeholder="paper-moon" />
+          </div>
+          <div class="pm-chips" aria-label="Suggested moon names">
+            {suggestions.map((suggestion) => (
+              <button type="button" data-name-chip={suggestion}>{suggestion}</button>
+            ))}
+          </div>
+          <div class="pm-chips pm-alternatives" data-alternatives hidden></div>
+        </div>
+
+        <div class="pm-field">
+          <label for="mooncrumb">Mooncrumb</label>
+          <input id="mooncrumb" name="mooncrumb" type="text" maxlength="120" autocomplete="off" required placeholder="silver" />
+          <p class="pm-helper">Share the Mooncrumb separately with the person.</p>
+        </div>
+
+        <fieldset class="pm-field">
+          <legend>How long should it stay?</legend>
+          <div class="pm-duration-grid">
+            <label><input type="radio" name="duration" value="today" /><span>Today only</span></label>
+            <label><input type="radio" name="duration" value="week" checked /><span>This week</span></label>
+            <label><input type="radio" name="duration" value="month" /><span>This month</span></label>
+          </div>
+        </fieldset>
+
+        <div class="pm-field">
+          <label for="first-trace">First trace</label>
+          <textarea id="first-trace" name="firstTrace" maxlength="2400" required rows="5" placeholder="I made this paper moon for you. Leave something back here."></textarea>
+        </div>
+
+        <p class="pm-form-notice" data-form-notice aria-live="polite"></p>
+        <button class="pm-primary-button" type="submit" data-make-button>
+          <span>Make Moon</span>
+          <span aria-hidden="true">↗</span>
+        </button>
+      </form>
+    </section>
+
+    <section class="pm-paper-card pm-share-card" data-share-card hidden>
+      <p class="pm-eyebrow">Your link</p>
+      <a class="pm-share-link" data-share-link href="/pm/"></a>
+      <div class="pm-share-actions">
+        <button class="pm-secondary-button" type="button" data-copy-link>Copy Link</button>
+        <button class="pm-primary-button" type="button" data-share-link-button>Share</button>
+      </div>
+      <p class="pm-helper">Share the Mooncrumb separately.</p>
+    </section>
+
+    <section class="pm-rules">
+      <div class="pm-rule-grid">
+        <p><span>Search listing</span><strong>No</strong></p>
+        <p><span>Heavy uploads</span><strong>No</strong></p>
+        <p><span>Bad behavior</span><strong>Stopped</strong></p>
+      </div>
+      <p class="pm-safety-copy">
+        Keep it clean. Not allowed: illegal content, threats, harassment, hate, abuse, blackmail, exploitation, or sharing another person’s details without permission.
+      </p>
+    </section>
+
+    <aside class="pm-about" data-about-panel hidden>
+      <div>
+        <p class="pm-eyebrow">About Paper Moon</p>
+        <h2>A small place with no public sky.</h2>
+        <p>Text, links, and light photos only. Old moons disappear by themselves.</p>
+        <p>You can add this page to your home screen from your browser menu.</p>
+        <button class="pm-secondary-button" type="button" data-remove-local>Remove local data</button>
+        <small>App version 1.0.0</small>
+      </div>
+    </aside>
+
+    <footer class="pm-footer">
+      <span>Paper Moon</span>
+      <span>No public sky.</span>
+    </footer>
+  </div>
+</PaperMoonLayout>

@@ -1,6 +1,6 @@
 ---
-title: "What a Grocery Shop at 19 Taught Me About Pricing"
-metaTitle: "Grocery Shop Pricing Psychology"
+title: "What Early Retail Taught Me About Pricing"
+metaTitle: "Retail Pricing Psychology"
 description: "Before analytics dashboards existed, there was a counter, a customer, and a decision to make in real time."
 date: 2026-03-08
 pillar: merchant-mindset
@@ -9,7 +9,7 @@ featured: false
 published: true
 ---
 
-Pricing psychology is the study of how customers perceive value and make purchasing decisions — and it's best learned not from textbooks, but from behind a counter. At 19, I was running a grocery shop in Sharjah, serving 200+ customers daily. It was part of [a longer journey](/work/early-hustle/) that shaped everything I do today.
+Pricing psychology is the study of how customers perceive value and make purchasing decisions, and it is best learned close to the customer, not only from textbooks. At 19, I was working inside a fast-moving retail environment, serving customers daily and learning how price, trust, stock, and timing shape behaviour. It was part of [a longer journey](/work/early-hustle/) that shaped everything I do today.
 
 No MBA. No pricing framework. No spreadsheet optimisation. Just a counter, a customer, and a decision to make in real time.
 
@@ -29,7 +29,7 @@ A merchant reads these signals in real time. It's not manipulation — it's atte
 
 Everyone talks about revenue. Nobody talks about margin discipline.
 
-In a grocery shop, your margins are thin — typically 5-15% on staples, up to 40% on impulse items. Some items you sell at almost no profit because they bring people through the door. Other items carry the business.
+In small-format retail, your margins are thin, often 5-15% on staples and much higher on impulse items. Some items you sell at almost no profit because they bring people through the door. Other items carry the business.
 
 The skill is knowing which is which. And having the discipline not to chase volume on the wrong items.
 

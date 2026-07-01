@@ -8,7 +8,7 @@ featured: false
 published: true
 ---
 
-Showing up when it's boring means sustaining effort on the days when work feels routine, invisible, and unrewarding. It is the single behaviour that separates people who build lasting things from people who start exciting things and abandon them. After 25 years of building — from a grocery shop counter in Sharjah to scaling FiLLi Cafe across 100+ outlets in 13 countries — I can say this with certainty: the boring days are where the real work happens.
+Showing up when it's boring means sustaining effort on the days when work feels routine, invisible, and unrewarding. It is the single behaviour that separates people who build lasting things from people who start exciting things and abandon them. After 25 years across retail, design, brand systems, and scaling FiLLi Cafe across 100+ outlets in 13 countries, I can say this with certainty: the boring days are where the real work happens.
 
 Nobody posts about the boring days. There are no stories about the Tuesday afternoon where you did the same thing you did last Tuesday. No documentaries about the weeks where nothing changed. No interviews about the month where you just kept going.
 
@@ -20,7 +20,7 @@ Motivation is a spark. It gets you started. It shows up on day one, maybe day tw
 
 Consistency is different. Consistency doesn't ask how you feel. It doesn't care if you're inspired. It's the decision to do the thing regardless — and then doing it again tomorrow.
 
-When I was 19, running a grocery shop in Dubai, motivation lasted about a week. The excitement of having my own space, managing stock, serving customers. That was thrilling for exactly seven days.
+In my earliest retail work, motivation lasted about a week. The excitement of having my own space, managing stock, serving customers. That was thrilling for exactly seven days.
 
 Then it became routine. Wake up. Open the shop. Stock the shelves. Serve the same customers buying the same things. Close up. Count the register. Do it again.
 
@@ -28,7 +28,7 @@ There was no applause. No milestone. No notification telling me I was doing well
 
 > "Discipline is not doing hard things. It's doing ordinary things on the days when ordinary feels unbearable."
 
-That grocery counter was my first real education in consistency. Not the exciting lessons — those came from [reading customers and learning pricing in real time](/thinking/grocery-shop-pricing-psychology/). The deeper lesson was simpler: the shop only works if you open it. Every day. Even the boring ones. Especially the boring ones.
+That counter was my first real education in consistency. Not the exciting lessons. Those came from [reading customers and learning pricing in real time](/thinking/grocery-shop-pricing-psychology/). The deeper lesson was simpler: the business only works if you open it. Every day. Even the boring ones. Especially the boring ones.
 
 ## What Does "Boring" Actually Look Like When You're Building Something?
 
@@ -60,7 +60,7 @@ During those stretches, I relied on three things:
 
 **Second, small evidence.** When the big picture feels invisible, you learn to pay attention to the small things. A customer who came back. A supplier who trusted you enough to offer better terms. A team member who started solving problems without being asked. These aren't headlines. They're signals. And if you're paying attention, they're enough to keep going.
 
-**Third, removing the option to quit.** This sounds dramatic, but it's practical. When I was running the grocery shop, quitting wasn't an option — my family depended on it. When we were building FiLLi, walking away would have meant letting down a growing team of people who believed in what we were doing. Sometimes the best motivation isn't internal. It's the weight of responsibility. Not in a heavy way — in a grounding way.
+**Third, removing the option to quit.** This sounds dramatic, but it's practical. In the early retail years, quitting was not an option. The work had consequences beyond mood. When we were building FiLLi, walking away would have meant letting down a growing team of people who believed in what we were doing. Sometimes the best motivation isn't internal. It's the weight of responsibility. Not in a heavy way. In a grounding way.
 
 ## What Happens When You Accumulate Boring Days?
 
@@ -90,7 +90,7 @@ Starting over feels productive. It has the energy of a beginning. But it resets 
 
 The people who build lasting things aren't the ones with the best starts. They're the ones who never restart. They keep the same clock running through the boring days, the frustrating months, the invisible years.
 
-## What Did the Grocery Shop Teach Me About Boredom?
+## What Did Early Retail Teach Me About Boredom?
 
 The shop taught me that boredom is information. When I felt bored behind that counter, it meant one of two things: either I wasn't paying enough attention, or I needed to find a new challenge within the same work.
 

@@ -49,6 +49,7 @@ const breadcrumbs = [
         <div class="mt-7 flex flex-wrap gap-3">
           {challenge.status !== 'draft' && <a href={`/challenges/${challenge.slug}/`} class="button-secondary">Public page</a>}
           <a href="/admin/entries/" class="button-gradient">All entries</a>
+          <button type="button" class="admin-logout button-secondary">Logout</button>
         </div>
       </div>
 
@@ -102,4 +103,14 @@ const breadcrumbs = [
       </div>
     </div>
   </section>
+
+  <script>
+    const logoutButtons = document.querySelectorAll<HTMLButtonElement>('.admin-logout');
+
+    logoutButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        window.location.assign('/admin/api/logout');
+      });
+    });
+  </script>
 </BaseLayout>

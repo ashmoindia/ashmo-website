@@ -1,0 +1,57 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  highlight?: string;
+  suffix?: string;
+  description?: string;
+  align?: 'left' | 'split' | 'center';
+  spacing?: 'default' | 'tight' | 'loose';
+}
+
+const {
+  id,
+  eyebrow,
+  title,
+  highlight,
+  suffix,
+  description,
+  align = 'split',
+  spacing = 'default',
+} = Astro.props;
+
+const spacingClass = {
+  tight: 'pb-16 md:pb-20',
+  default: 'pb-18 md:pb-24',
+  loose: 'section-pad',
+}[spacing];
+
+const headerClass = {
+  left: 'mb-10 max-w-[760px]',
+  split: 'mb-10 grid gap-6 md:grid-cols-[minmax(0,0.5fr)_minmax(0,0.5fr)] md:items-end',
+  center: 'mx-auto mb-10 max-w-[760px] text-center',
+}[align];
+---
+
+<section id={id} class:list={['section-shell', spacingClass]}>
+  {(eyebrow || title || description) && (
+    <div class={headerClass}>
+      <div>
+        {eyebrow && <p class="mono-label mb-4">{eyebrow}</p>}
+        {title && (
+          <h2 class:list={['section-title', align === 'center' ? 'mx-auto max-w-[14ch]' : 'max-w-[14ch]']}>
+            {title}{highlight && <>&nbsp;<span class="gradient-text">{highlight}</span></>}{suffix && <>&nbsp;{suffix}</>}
+          </h2>
+        )}
+      </div>
+      {description && (
+        <p class:list={['body-lead', align === 'center' ? 'mx-auto mt-6 max-w-[42rem]' : 'max-w-[40rem]', align === 'left' ? 'mt-6' : undefined]}>
+          {description}
+        </p>
+      )}
+    </div>
+  )}
+
+  <slot />
+</section>

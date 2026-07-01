@@ -19,25 +19,30 @@ interface Props {
   breadcrumbs?: BreadcrumbItem[];
   noindex?: boolean;
   extraSchema?: Record<string, unknown>[];
+  /* Optional override for the <body> class list. When omitted, the default
+     site background/typography is used so every existing page is unchanged. */
+  bodyClass?: string;
 }
 
 const {
   title,
-  description = "Notes on brand building, merchant thinking, and the discipline of showing up.",
+  description = "Commercial intelligence, F&B growth systems, market research, AI-age marketing workflows, and practical business judgment by Ashraf Hassan, known as Ashmo.",
   image = "/og-default.jpg",
   type = "website",
   publishedDate,
   breadcrumbs,
   noindex = false,
   extraSchema,
+  bodyClass,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const isChallengePath = Astro.url.pathname === '/challenges' || Astro.url.pathname.startsWith('/challenges/');
 const bodyBgClass = isChallengePath ? 'challenge-bg' : 'site-bg';
+const resolvedBodyClass = bodyClass ?? `${bodyBgClass} bg-bg text-text font-body leading-relaxed`;
 const brandName = "Ashraf Hassan";
 const fullTitle = title === "Home"
-  ? "Ashraf Hassan (Ashmo) — Founder, Brand Builder, Writer"
+  ? "Ashmo.io — Commercial Intelligence for AI-Age Brands"
   : title.includes(brandName)
     ? title
     : `${title} — ${brandName}`;
@@ -125,7 +130,7 @@ if (extraSchema && extraSchema.length > 0) entityGraph.push(...extraSchema);
 
   {isChallengePath && <MetaPixel />}
 </head>
-<body class:list={[bodyBgClass, "bg-bg text-text font-body leading-relaxed"]}>
+<body class={resolvedBodyClass}>
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2V4B96"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

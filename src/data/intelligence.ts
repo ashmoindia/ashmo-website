@@ -183,7 +183,7 @@ export const intelligenceSources: SourceRecord[] = [
     reuseClassification: 'approved_reuse',
     updateFrequency: 'Monthly / quarterly dataset updates',
     coverage: 'United Arab Emirates',
-    usefulness: 'Inflation and price-pressure framing for operator margin watch',
+    usefulness: 'Inflation and price-pressure framing for restaurant margin watch',
     backlinksRequired: true,
     usageRule: 'CC BY 4.0 dataset. Use only original visualizations and preserve attribution.',
     attribution: 'Source: Federal Competitiveness and Statistics Centre open data portal (CC BY 4.0).',
@@ -199,13 +199,13 @@ export const intelligenceSources: SourceRecord[] = [
     reuseClassification: 'citation_only',
     updateFrequency: 'Annual report',
     coverage: 'Dubai, UAE',
-    usefulness: 'Dining demand, category trends, consumer behavior, operator signals',
+    usefulness: 'Dining demand, category trends, consumer behavior, commercial signals',
     backlinksRequired: true,
     usageRule:
       'Use as linked and attributed source material. Summarize findings, but do not reproduce DET charts, layouts, or report pages.',
     attribution: 'Source: Dubai Department of Economy and Tourism (DET), Gastronomy Industry Report 2024.',
     governanceNote:
-      'Safe for descriptive summary and operator commentary. Avoid raw-data ingestion until dataset licensing is confirmed separately.',
+      'Safe for descriptive summary and commercial commentary. Avoid raw-data ingestion until dataset licensing is confirmed separately.',
   },
   {
     id: 'dubai-det-tourism-2024',
@@ -304,7 +304,7 @@ export const intelligenceFacts: IntelligenceFact[] = [
     sourceId: 'world-bank-data',
     sourcePublished: '2024',
     attribution: 'Source: World Bank country profile for the United Arab Emirates.',
-    note: 'Useful as a base-demand and labor-pool signal for operator planning.',
+    note: 'Useful as a base-demand and labor-pool signal for restaurant planning.',
     kind: 'approved_data',
     chartable: true,
   },
@@ -346,7 +346,7 @@ export const intelligenceFacts: IntelligenceFact[] = [
     sourceId: 'world-bank-data',
     sourcePublished: '2024',
     attribution: 'Source: World Bank country profile for Saudi Arabia.',
-    note: 'Still positive demand context, but the operator story hinges more on sector capacity build-out and tourism infrastructure.',
+    note: 'Still positive demand context, but the commercial story hinges more on sector capacity build-out and tourism infrastructure.',
     kind: 'approved_data',
     chartable: true,
   },
@@ -430,7 +430,7 @@ export const intelligenceFacts: IntelligenceFact[] = [
     sourceId: 'world-bank-data',
     sourcePublished: '2024',
     attribution: 'Source: World Bank country profile for Saudi Arabia.',
-    note: 'Saudi opportunity is less about headline FDI and more about domestic scale, state-backed development, and operator build-out.',
+    note: 'Saudi opportunity is less about headline FDI and more about domestic scale, state-backed development, and restaurant build-out.',
     kind: 'approved_data',
     chartable: true,
   },
@@ -483,7 +483,7 @@ export const intelligenceFacts: IntelligenceFact[] = [
     sourceId: 'dubai-det-gastronomy-2024',
     sourcePublished: '9 Apr 2025',
     attribution: 'Source: Dubai DET press release summarizing the Gastronomy Industry Report 2024.',
-    note: 'Descriptive operator signal showing continued category churn and appetite for new concepts.',
+    note: 'Descriptive commercial signal showing continued category churn and appetite for new concepts.',
     kind: 'citation_signal',
   },
   {
@@ -614,7 +614,7 @@ export const intelligenceComparisons: ComparisonCard[] = [
     id: 'gcc-operator-inflation',
     title: 'Price-pressure context',
     description:
-      'Starter inflation watch that gives operators a safe macro pulse without implying menu-specific pricing guidance.',
+      'Starter inflation watch that gives restaurant teams a safe macro pulse without implying menu-specific pricing guidance.',
     groups: [
       {
         label: 'Inflation, consumer prices (2024)',
@@ -683,12 +683,12 @@ export const intelligenceCountries: IntelligenceCountry[] = [
     name: 'United Arab Emirates',
     shortName: 'UAE',
     eyebrow: 'Country intelligence',
-    title: 'UAE F&B intelligence for operators building in a high-discovery, tourism-linked market.',
+    title: 'UAE F&B intelligence for teams building in a high-discovery, tourism-linked market.',
     summary:
-      'The UAE page leans on approved macro datasets for charts, then layers in citation-led Dubai demand signals so operators get useful context without crossing licensing lines.',
+      'The UAE page leans on approved macro datasets for charts, then layers in citation-led Dubai demand signals so teams get useful context without crossing licensing lines.',
     metaTitle: 'UAE F&B Intelligence Dashboard',
     metaDescription:
-      'A legal-safe UAE food and beverage intelligence page covering macro demand, digital adoption, tourism-linked signals, and operator takeaways.',
+      'A legal-safe UAE food and beverage intelligence page covering macro demand, digital adoption, tourism-linked signals, and commercial takeaways.',
     coverageNote:
       'Dubai demand signals are cited from DET, while visualized comparisons stay inside approved-reuse data boundaries.',
     macroFacts: ['uae-population-2024', 'uae-gdp-growth-2024', 'uae-inflation-2024', 'uae-fdi-2024'],
@@ -729,12 +729,12 @@ export const intelligenceCountries: IntelligenceCountry[] = [
     name: 'Saudi Arabia',
     shortName: 'Saudi Arabia',
     eyebrow: 'Country intelligence',
-    title: 'Saudi Arabia F&B intelligence focused on scale, hospitality capacity, and operator timing.',
+    title: 'Saudi Arabia F&B intelligence focused on scale, hospitality capacity, and market timing.',
     summary:
       'Saudi Arabia combines national-scale demand with a rapidly expanding hospitality backdrop. This starter page uses approved charts for macro context and citation-led GASTAT releases for sector signals.',
     metaTitle: 'Saudi Arabia F&B Intelligence Dashboard',
     metaDescription:
-      'A legal-safe Saudi foodservice intelligence page covering population scale, macro context, hospitality growth signals, and operator takeaways.',
+      'A legal-safe Saudi foodservice intelligence page covering population scale, macro context, hospitality growth signals, and commercial takeaways.',
     coverageNote:
       'GASTAT tourism-establishment figures are used as attributed signals only while the chart layer stays inside approved-reuse datasets.',
     macroFacts: ['saudi-population-2024', 'saudi-gdp-growth-2024', 'saudi-inflation-2024', 'saudi-spi-2024'],
@@ -760,7 +760,7 @@ export const intelligenceCountries: IntelligenceCountry[] = [
         'Treat delivery as a format strategy, not just an incremental channel.',
       ],
       multiUnitOperators: [
-        'Saudi suits operators who can standardize opening playbooks, staff training, and branch-level performance measurement.',
+        'Saudi suits teams that can standardize opening playbooks, staff training, and branch-level performance measurement.',
         'Expansion needs a city-by-city sequencing model, not a national splash launch.',
       ],
     },
@@ -777,12 +777,12 @@ export const intelligenceTopics: IntelligenceTopic[] = [
     slug: 'delivery-cloud-kitchens',
     name: 'Delivery & Cloud Kitchens',
     eyebrow: 'Topic intelligence',
-    title: 'Delivery and cloud kitchen intelligence built on proxies, governance, and operator reality.',
+    title: 'Delivery and cloud kitchen intelligence built on proxies, governance, and commercial reality.',
     summary:
-      'This topic page intentionally avoids unlicensed market-share claims. Instead, it combines approved digital-readiness proxies with citation-led regional signals to give operators a safer decision surface.',
+      'This topic page intentionally avoids unlicensed market-share claims. Instead, it combines approved digital-readiness proxies with citation-led regional signals to give teams a safer decision surface.',
     metaTitle: 'Delivery & Cloud Kitchen Intelligence',
     metaDescription:
-      'A legal-safe delivery and cloud kitchen intelligence page for GCC operators using proxy indicators, governance notes, and operator-focused takeaways.',
+      'A legal-safe delivery and cloud kitchen intelligence page for GCC restaurant teams using proxy indicators, governance notes, and commercial takeaways.',
     safeDataStrategy:
       'Direct delivery market-share datasets are frequently proprietary. This page therefore uses reusable proxy indicators for charts and keeps delivery-specific market commentary descriptive and source-linked.',
     proxyFacts: ['uae-internet-2024', 'saudi-internet-2024', 'uae-fdi-2024', 'saudi-fdi-2024'],
@@ -803,12 +803,12 @@ export const intelligenceTopics: IntelligenceTopic[] = [
     slug: 'tourism-demand',
     name: 'Tourism & Demand',
     eyebrow: 'Topic intelligence',
-    title: 'Tourism-linked demand signals for operators who need to separate hype from usable demand.',
+    title: 'Tourism-linked demand signals for teams separating hype from usable demand.',
     summary:
-      'Tourism can elevate F&B demand, but strong operators need to know when it supports repeatable revenue and when it only creates seasonal noise.',
+      'Tourism can elevate F&B demand, but strong teams need to know when it supports repeatable revenue and when it only creates seasonal noise.',
     metaTitle: 'Tourism & Demand Signals for GCC F&B',
     metaDescription:
-      'Tourism-linked food and beverage intelligence for UAE and Saudi operators, built from public sources and legal-safe attribution.',
+      'Tourism-linked food and beverage intelligence for UAE and Saudi restaurant teams, built from public sources and legal-safe attribution.',
     safeDataStrategy:
       'Public tourism authority and statistical releases are used as attributed signals. Reusable macro charts provide the stable comparison layer.',
     proxyFacts: ['uae-gdp-growth-2024', 'saudi-gdp-growth-2024', 'uae-population-2024', 'saudi-population-2024'],
@@ -829,12 +829,12 @@ export const intelligenceTopics: IntelligenceTopic[] = [
     slug: 'pricing-inflation',
     name: 'Pricing & Inflation',
     eyebrow: 'Topic intelligence',
-    title: 'Pricing and inflation context for operators who need calm margin decisions, not noise.',
+    title: 'Pricing and inflation context for calm margin decisions.',
     summary:
       'This page keeps the inflation story honest: broad macro price signals are helpful, but they do not replace store-level menu engineering and procurement discipline.',
     metaTitle: 'GCC Pricing & Inflation',
     metaDescription:
-      'A legal-safe inflation watch page for GCC food and beverage operators using approved macro indicators and clear commercial caveats.',
+      'A legal-safe inflation watch page for GCC food and beverage teams using approved macro indicators and clear commercial caveats.',
     safeDataStrategy:
       'Only approved macro indicators are charted here. No claim is made that these figures represent restaurant-specific cost baskets.',
     proxyFacts: ['uae-inflation-2024', 'saudi-inflation-2024', 'uae-gdp-growth-2024', 'saudi-gdp-growth-2024'],
@@ -843,7 +843,7 @@ export const intelligenceTopics: IntelligenceTopic[] = [
     operatorActions: [
       'Use inflation context to guide pricing cadence, not to justify across-the-board price increases.',
       'Pair macro watchlists with menu engineering, supplier negotiations, and contribution-margin tracking.',
-      'Use this page as context for operator decisions, not as investment advice or financial forecasting.',
+      'Use this page as context for commercial decisions, not as investment advice or financial forecasting.',
     ],
     caution: [
       'Macro inflation is a directional lens only.',
@@ -886,7 +886,7 @@ export const intelligenceReports: IntelligenceReport[] = [
       {
         title: 'Why this report exists',
         body:
-          'Most F&B market pages online lean on republished proprietary data. This report takes the opposite route: approved public indicators first, then clearly labeled citation-only operator signals around them.',
+          'Most F&B market pages online lean on republished proprietary data. This report takes the opposite route: approved public indicators first, then clearly labeled citation-only commercial signals around them.',
         bullets: [
           'Charts are original visualizations only.',
           'All metrics are traceable to visible source records.',
@@ -920,7 +920,7 @@ export const intelligenceReports: IntelligenceReport[] = [
       'A UAE report that combines reusable macro signals with attributed Dubai demand commentary so founders can think about format fit, not just category hype.',
     metaTitle: 'UAE Demand-Led Format Playbook',
     metaDescription:
-      'A UAE food and beverage intelligence report translating public demand signals into operator-focused commercial takeaways.',
+      'A UAE food and beverage intelligence report translating public demand signals into commercial takeaways.',
     geography: 'United Arab Emirates / Dubai',
     accessModel: 'mixed_source',
     updated: '2026-04-19',
@@ -974,10 +974,10 @@ export const intelligenceReports: IntelligenceReport[] = [
     title: 'Saudi scale and hospitality signals',
     eyebrow: 'Country report',
     summary:
-      'A Saudi report for operators who need to interpret official hospitality-growth releases without pretending they are full market-share datasets.',
+      'A Saudi report for teams that need to interpret official hospitality-growth releases without pretending they are full market-share datasets.',
     metaTitle: 'Saudi Scale & Hospitality Signals',
     metaDescription:
-      'A Saudi foodservice intelligence report using public macro indicators and official hospitality signals to frame operator opportunity.',
+      'A Saudi foodservice intelligence report using public macro indicators and official hospitality signals to frame commercial opportunity.',
     geography: 'Saudi Arabia',
     accessModel: 'mixed_source',
     updated: '2026-04-19',
@@ -1001,7 +1001,7 @@ export const intelligenceReports: IntelligenceReport[] = [
       {
         title: 'Why the scale story matters',
         body:
-          'Saudi population scale is not the same thing as guaranteed format success, but it changes the size of the prize for operators who can execute well and choose the right city sequence.',
+          'Saudi population scale is not the same thing as guaranteed format success, but it changes the size of the prize for teams that can execute well and choose the right city sequence.',
         bullets: [
           'Macro demand context is supportive, even if growth is lower than the UAE headline.',
           'The statistical-governance quality is strong enough to justify future official-data expansion.',
@@ -1009,7 +1009,7 @@ export const intelligenceReports: IntelligenceReport[] = [
         ],
       },
       {
-        title: 'What operators should test',
+        title: 'What teams should test',
         body:
           'Saudi rewards businesses that learn quickly in-market. Use the first city or two as operating labs rather than as proof that one format fits the whole country.',
         bullets: [
@@ -1028,13 +1028,13 @@ export const intelligenceReports: IntelligenceReport[] = [
   },
   {
     slug: 'operator-inflation-watch',
-    title: 'Operator inflation watch',
+    title: 'Restaurant inflation watch',
     eyebrow: 'Topic report',
     summary:
-      'A careful inflation watch for operators who want margin context without being misled into thinking generic CPI is a direct menu-cost dashboard.',
-    metaTitle: 'Operator Inflation Watch',
+      'A careful inflation watch for teams that want margin context without being misled into thinking generic CPI is a direct menu-cost dashboard.',
+    metaTitle: 'Restaurant Inflation Watch',
     metaDescription:
-      'A legal-safe inflation watch for GCC food and beverage operators using approved macro indicators and explicit caveats.',
+      'A legal-safe inflation watch for GCC food and beverage teams using approved macro indicators and explicit caveats.',
     geography: 'UAE / Saudi Arabia',
     accessModel: 'approved_reuse',
     updated: '2026-04-19',
@@ -1058,7 +1058,7 @@ export const intelligenceReports: IntelligenceReport[] = [
       {
         title: 'How to read this page correctly',
         body:
-          'This page is built to calm the operator, not to excite them. Public inflation numbers are useful, but only if you read them as context.',
+          'This page is built to calm the decision, not to excite it. Public inflation numbers are useful, but only if you read them as context.',
         bullets: [
           'Inflation is broader than restaurant cost pressure.',
           'Restaurant-specific pricing decisions need internal unit economics.',
@@ -1081,7 +1081,7 @@ export const intelligenceReports: IntelligenceReport[] = [
       'A delivery-intelligence page that proves you can be useful without publishing unlicensed market-share slides.',
     metaTitle: 'Delivery Proxy Playbook',
     metaDescription:
-      'A legal-safe delivery and cloud kitchen playbook for GCC operators using approved proxy indicators and citation-led signals.',
+      'A legal-safe delivery and cloud kitchen playbook for GCC restaurant teams using approved proxy indicators and citation-led signals.',
     geography: 'GCC / UAE / Saudi Arabia',
     accessModel: 'mixed_source',
     updated: '2026-04-19',
@@ -1156,13 +1156,13 @@ export const intelligenceLaunchModules: LaunchModule[] = [
   },
   {
     title: 'Delivery and cloud kitchen landscape',
-    description: 'Proxy-led topic page built for legal safety and operator usefulness.',
+    description: 'Proxy-led topic page built for legal safety and commercial usefulness.',
     slug: 'delivery-proxy-playbook',
     status: 'Live',
     sourceStrategy: 'Proxy indicators + cited commentary',
   },
   {
-    title: 'Operator inflation watch',
+    title: 'Restaurant inflation watch',
     description: 'Macro price-pressure context with clear commercial caveats.',
     slug: 'operator-inflation-watch',
     status: 'Live',
@@ -1181,13 +1181,13 @@ export const intelligenceLaunchModules: LaunchModule[] = [
     sourceStrategy: 'City pages only where public source quality is strong',
   },
   {
-    title: 'Benchmark metrics for new operators',
+    title: 'Benchmark metrics for new teams',
     description: 'A benchmark layer for founders evaluating demand, digital readiness, and price context before launch.',
     status: 'Ready next',
     sourceStrategy: 'Approved reuse only',
   },
   {
-    title: 'Quarterly operator briefing',
+    title: 'Quarterly restaurant briefing',
     description: 'A recurring “what this quarter means” format pulling only from source-approved signals.',
     status: 'Ready next',
     sourceStrategy: 'Governed mixed-source editorial brief',
@@ -1222,7 +1222,7 @@ export const methodologyPrinciples = [
   'Original charts only. Never republish third-party report visuals.',
   'Visible attribution on every metric, signal, and report block.',
   'If reuse rights are unclear, the source becomes citation-only or blocked.',
-  'Operator usefulness beats vanity data. A smaller safe dataset is better than a larger risky one.',
+  'Commercial usefulness beats vanity data. A smaller safe dataset is better than a larger risky one.',
 ];
 
 export function getSourceById(id: string) {

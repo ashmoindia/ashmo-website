@@ -50,6 +50,119 @@ a:hover {
   color: var(--color-accent-light);
 }
 
+/* Site-wide bridge for older public templates: keep legacy pages aligned with
+   the homepage hero system until each page is fully componentized. */
+main > section h1:not(.hero-title),
+main > article h1:not(.hero-title) {
+  max-width: 12ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-weight: 820;
+  line-height: 0.98;
+  letter-spacing: 0;
+}
+
+main > section.bg-surface {
+  background: transparent;
+}
+
+main section h2.font-heading:not(.section-title) {
+  max-width: 14ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4.4vw, 3.25rem);
+  font-weight: 780;
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+main section p[class*="uppercase"][class*="tracking"]:not(.mono-label) {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+}
+
+main :is(.bg-surface, .bg-surface\/50, .bg-surface\/60, .bg-surface\/70, .bg-surface\/80, .bg-white\/\[0\.03\], .bg-white\/\[0\.04\]) {
+  border-color: var(--color-border);
+  background: var(--gradient-surface);
+}
+
+/* ============================================================
+   LIGHT-THEME OVERLAY REMAP (site-wide)
+   The site was authored for a dark background, so subtle surfaces and
+   borders used translucent WHITE. On the light editorial theme those
+   become invisible, so every white-overlay utility is remapped to a
+   warm ink token here. Unlayered rules beat Tailwind's @layer utilities,
+   so these win without !important. Header/Footer (outside <main>) included.
+   ============================================================ */
+:is(.bg-white\/\[0\.02\], .bg-white\/\[0\.025\], .bg-white\/\[0\.03\], .bg-white\/\[0\.035\], .bg-white\/\[0\.04\], .bg-white\/\[0\.045\], .bg-white\/\[0\.05\], .bg-white\/\[0\.055\], .bg-white\/\[0\.06\], .bg-white\/\[0\.07\]) {
+  background-color: rgba(30, 22, 16, 0.038);
+}
+:is(.hover\:bg-white\/\[0\.03\], .hover\:bg-white\/\[0\.05\]):hover {
+  background-color: rgba(30, 22, 16, 0.06);
+}
+:is(.border-white\/6, .border-white\/8, .border-white\/10, .border-white\/12) {
+  border-color: var(--color-border);
+}
+:is(.border-white\/15, .border-white\/20) {
+  border-color: var(--color-border-light);
+}
+.hover\:border-white\/15:hover {
+  border-color: var(--color-border-light);
+}
+/* slash-form white backgrounds */
+:is(.bg-white\/5, .bg-white\/6, .bg-white\/7, .bg-white\/10) {
+  background-color: rgba(30, 22, 16, 0.045);
+}
+:is(.hover\:bg-white\/4, .hover\:bg-white\/6):hover {
+  background-color: rgba(30, 22, 16, 0.06);
+}
+/* faint white text / dividers used as hairlines on dark */
+.text-white\/20 { color: rgba(30, 22, 16, 0.3); }
+.divide-white\/8 > :not([hidden]) ~ :not([hidden]) { border-color: var(--color-border); }
+/* arbitrary dark-glass backgrounds (sticky header, overlays) → light glass */
+:is(.bg-\[rgba\(7\,7\,17\,0\.78\)\], .bg-\[rgba\(7\,5\,22\,0\.6\)\]) {
+  background-color: rgba(252, 249, 243, 0.82);
+}
+
+/* The intelligence section uses many dark `bg-[linear-gradient(<angle>,rgba(...))]`
+   panel literals (dashboard aesthetic). Substring-match every dark card gradient
+   and flatten it to a light card surface. Does NOT match `#hex` light gradients,
+   `(90deg,…)` data-bar fills, or `radial-gradient(...)` accent overlays. */
+[class*="bg-[linear-gradient(180deg,rgba("],
+[class*="bg-[linear-gradient(145deg,rgba("],
+[class*="bg-[linear-gradient(135deg,rgba("] {
+  background-image: none !important;
+  background-color: var(--color-surface) !important;
+}
+[class*="bg-[linear-gradient(180deg,rgba("]:hover,
+[class*="hover:bg-[linear-gradient(180deg,rgba("]:hover {
+  background-color: var(--color-surface-hover) !important;
+}
+/* dark bottom-fade overlays → removed on light */
+[class*="transparent,rgba(8,9,11"],
+[class*="transparent,rgba(8,9,12"] {
+  background-image: none !important;
+}
+
+main :is(form.bg-surface\/80, .bg-\[linear-gradient\(145deg\,rgba\(21\,21\,20\,0\.95\)\,rgba\(11\,11\,11\,0\.98\)\)\], .bg-\[linear-gradient\(145deg\,rgba\(20\,20\,19\,0\.96\)\,rgba\(12\,12\,12\,0\.98\)\)\], .bg-\[linear-gradient\(140deg\,rgba\(24\,24\,23\,0\.96\)\,rgba\(12\,12\,12\,0\.98\)\)\]) {
+  background: var(--gradient-surface);
+}
+
+main :is(.rounded-lg, .rounded-xl, .rounded-\[1rem\], .rounded-\[1\.1rem\], .rounded-\[1\.2rem\], .rounded-\[1\.25rem\], .rounded-\[1\.35rem\], .rounded-\[1\.4rem\], .rounded-\[1\.5rem\], .rounded-\[1\.75rem\], .rounded-\[1\.8rem\], .rounded-\[1\.85rem\]) {
+  border-radius: var(--radius-card);
+}
+
+main :is(.bg-accent, .bg-gradient-to-r) {
+  background: var(--gradient-primary);
+}
+
+main a:is(.bg-accent, .bg-gradient-to-r) {
+  color: #090914;
+}
+
 /* ============================================
    ARTICLE BODY PROSE
    ============================================ */
@@ -142,9 +255,9 @@ a:hover {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-card);
   background:
-    radial-gradient(circle at 12% 0%, rgba(212, 135, 90, 0.12), transparent 38%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028));
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.2);
+    radial-gradient(circle at 12% 0%, rgba(209, 15, 31, 0.06), transparent 38%),
+    linear-gradient(180deg, #fffdf8, #f5ecdd);
+  box-shadow: 0 18px 50px rgba(60, 40, 20, 0.1);
 }
 
 .prose th,
@@ -158,7 +271,7 @@ a:hover {
 }
 
 .prose th {
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(30, 22, 16, 0.04);
   color: var(--color-primary-light);
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -228,4 +341,81 @@ a:hover {
     min-width: 13rem;
     padding: 1rem;
   }
+}
+
+/* ============================================================
+   FLAT & MODERN — remove every drop/glow shadow site-wide.
+   Shadows read as dated; the editorial theme leans on borders and
+   flat fills. Keyboard focus is restored via outline (not a shadow).
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-shadow: none !important;
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ============================================================
+   MODERN FORM FIELDS (site-wide)
+   Clean filled fields, refined 1.5px border, comfortable padding,
+   smooth accent focus with a soft ring (outline, not a shadow),
+   and a custom chevron for <select>. !important so it wins over the
+   per-page Tailwind utility classes used across the calculators/forms.
+   ============================================================ */
+input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="range"]):not([type="file"]):not([type="image"]):not([type="color"]),
+textarea,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1.5px solid var(--color-border) !important;
+  border-radius: 12px !important;
+  background-color: var(--color-surface) !important;
+  color: var(--color-text) !important;
+  font-family: var(--font-body);
+  font-size: 1rem !important;
+  line-height: 1.5;
+  padding: 0.85rem 1.05rem !important;
+  transition: border-color 160ms ease, background-color 160ms ease, outline-color 160ms ease;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="range"]):not([type="file"]):not([type="image"]):not([type="color"]):hover,
+textarea:hover,
+select:hover {
+  border-color: var(--color-border-light) !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):not([type="submit"]):not([type="button"]):not([type="range"]):not([type="file"]):not([type="image"]):not([type="color"]):focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-accent) !important;
+  background-color: #fffdf9 !important;
+  outline: 3px solid rgba(201, 0, 22, 0.14);
+  outline-offset: 0;
+}
+
+::placeholder {
+  color: var(--color-text-tertiary);
+  opacity: 1;
+}
+
+textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+select {
+  padding-right: 2.6rem !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%231c1512' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 1rem center !important;
+  background-size: 0.85rem !important;
 }

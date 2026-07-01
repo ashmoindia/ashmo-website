@@ -1,0 +1,16 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  body: string;
+  href: string;
+  cta?: string;
+}
+const { eyebrow, title, body, href, cta = 'Open' } = Astro.props;
+---
+<a class="resource-card" href={href} data-reveal>
+  <span class="resource-card__eyebrow">{eyebrow}</span>
+  <h3 class="resource-card__title">{title}</h3>
+  <p class="resource-card__body">{body}</p>
+  <span class="resource-card__cta">{cta} &rarr;</span>
+</a>

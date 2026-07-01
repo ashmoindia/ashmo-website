@@ -20,7 +20,7 @@ export const personSchema = {
   mainEntityOfPage: `${siteUrl}/ashraf-hassan/`,
   image: `${siteUrl}/images/ashmo-portrait.webp`,
   description:
-    'Founder, brand builder, and operator with 25+ years of experience in retail, restaurant growth, brand scaling, F&B operations, and AI-assisted marketing across the GCC.',
+    'Commercial strategist, brand builder, and writer focused on F&B growth, AI-age marketing systems, market intelligence, and practical business judgment.',
   email: 'mailto:ashmoindia@gmail.com',
   jobTitle: 'Head of Brand & Growth',
   worksFor: {
@@ -66,7 +66,7 @@ export const organizationSchema = {
   },
   founder: { '@id': personId },
   description:
-    'Operator-led brand, growth, and F&B intelligence platform by Ashraf Hassan — covering brand systems, restaurant marketing, AI-assisted execution, and GCC market signal.',
+    'Commercial intelligence platform by Ashraf Hassan covering brand systems, F&B growth, AI-age marketing workflows, and GCC market signals.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Dubai',
@@ -90,7 +90,7 @@ export const websiteSchema = {
   name: 'Ashmo',
   alternateName: 'Ashmo.io',
   description:
-    'Operator-led essays, intelligence, and growth systems for brand builders, restaurant operators, and founders across the GCC.',
+    'Commercial intelligence, market intelligence, growth systems, and practical frameworks for founders, marketers, restaurant leaders, and brand builders.',
   publisher: { '@id': organizationId },
   author: { '@id': personId },
   inLanguage: 'en',

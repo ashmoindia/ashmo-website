@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const next = Astro.url.searchParams.get('next') || '/admin/entries/';
+const hasError = Astro.url.searchParams.get('error') === '1';
+---
+
+<BaseLayout
+  title="Admin Login"
+  description="Secure login for the Ashmo AI challenge admin, entry review, scoring, exports, and ManyChat checks."
+  noindex={true}
+>
+  <section class="section-shell min-h-[72vh] pt-12 pb-24 md:pt-18 md:pb-28">
+    <div class="mx-auto max-w-[460px] rounded-[1.5rem] border border-white/8 bg-white/[0.04] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.24)] md:p-8">
+      <p class="mono-label">Ashmo Admin</p>
+      <h1 class="mt-5 font-heading text-[2.4rem] font-bold leading-[1.02] tracking-normal text-text">
+        Sign in to review entries.
+      </h1>
+      <p class="mt-4 text-sm leading-[1.75] text-text-secondary">
+        Access the challenge backend, moderation queue, scoring, exports, and ManyChat checks.
+      </p>
+
+      {hasError && (
+        <div class="mt-6 rounded-[1rem] border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+          The username or password is not correct.
+        </div>
+      )}
+
+      <form action="/admin/api/login" method="post" class="mt-7 grid gap-4">
+        <input type="hidden" name="next" value={next} />
+
+        <div>
+          <label for="username" class="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-text-tertiary">
+            Username
+          </label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            value="ashmo"
+            autocomplete="username"
+            required
+            class="mt-2 min-h-12 w-full rounded-[0.9rem] border border-white/10 bg-bg/70 px-4 py-3 text-text outline-none transition-colors focus:border-accent/60"
+          />
+        </div>
+
+        <div>
+          <label for="password" class="font-mono text-[0.65rem] uppercase tracking-[0.14em] text-text-tertiary">
+            Password
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            autofocus
+            class="mt-2 min-h-12 w-full rounded-[0.9rem] border border-white/10 bg-bg/70 px-4 py-3 text-text outline-none transition-colors focus:border-accent/60"
+          />
+        </div>
+
+        <button type="submit" class="button-gradient mt-2 w-full">
+          Sign in
+        </button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

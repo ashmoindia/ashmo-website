@@ -1,6 +1,6 @@
 ---
 title: "FiLLi Cafe"
-description: "From a single karak chai outlet to 100+ locations across 13 countries. I didn't just design the brand — I shaped how an entire generation thinks about tea."
+description: "Brand systems, campaign logic, product focus, local growth, and market consistency across a growing cafe network."
 date: 2012-01-01
 category: "brand-building"
 tags: ["branding", "F&B", "scaling"]
@@ -35,4 +35,4 @@ FiLLi taught me that brand building is not design. It's not marketing. It's the 
 
 Consistency compounds. That's the real secret behind FiLLi's growth.
 
-I've written about [why brand positioning is the hardest thing to get right](/thinking/brand-positioning-hardest-thing/) — FiLLi is the proof. And the foundation for all of this was laid during [my early years as a merchant and designer](/work/early-hustle/).
+I've written about [why brand positioning is the hardest thing to get right](/thinking/brand-positioning-hardest-thing/) - FiLLi is the proof. And the foundation for all of this was laid during [my early commercial and design years](/work/early-hustle/).

@@ -1,0 +1,35 @@
+---
+interface Signal {
+  severity: string;
+  title: string;
+  detail: string;
+  safeLanguage: string;
+}
+
+interface Props {
+  signals: Signal[];
+}
+
+const { signals } = Astro.props;
+---
+
+<section aria-labelledby="tip-risk-title">
+  <p class="mono-label">Listing proof signals</p>
+  <h2 id="tip-risk-title" class="mt-4 text-[2rem] font-semibold tracking-[-0.04em] text-text md:text-[2.6rem]">When to ask for more proof.</h2>
+  <p class="mt-4 max-w-[46rem] text-sm leading-[1.8] text-text-secondary">
+    These signals do not decide authenticity. They identify missing information that should be clarified before purchase.
+  </p>
+  <div class="mt-7 grid gap-3">
+    {signals.map((signal) => (
+      <article class="rounded-[1.2rem] border border-amber-200/12 bg-amber-200/[0.045] p-5">
+        <div class="flex flex-wrap items-center gap-3">
+          <span class="rounded-full border border-amber-200/18 px-2.5 py-1 font-mono text-[0.58rem] uppercase tracking-[0.08em] text-amber-100">{signal.severity}</span>
+          <h3 class="text-[1.08rem] font-semibold text-text">{signal.title}</h3>
+        </div>
+        <p class="mt-3 text-sm leading-[1.75] text-text-secondary">{signal.detail}</p>
+        <p class="mt-3 font-mono text-[0.68rem] uppercase tracking-[0.06em] text-amber-100">{signal.safeLanguage}</p>
+      </article>
+    ))}
+  </div>
+</section>
+

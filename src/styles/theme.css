@@ -4,27 +4,29 @@
    ============================================ */
 
 @theme {
-  --color-bg: #070711;
-  --color-bg-deep: #03030a;
-  --color-surface: #10111d;
-  --color-surface-hover: #171827;
-  --color-surface-soft: rgba(255, 255, 255, 0.06);
+  /* LIGHT EDITORIAL THEME — warm cream paper, ink text, red energy, gold detail.
+     (Matches the homepage poster theme; recoloring the tokens flips the whole site.) */
+  --color-bg: #faf6ee;
+  --color-bg-deep: #f4ecdd;
+  --color-surface: #fffdf8;
+  --color-surface-hover: #f6efe1;
+  --color-surface-soft: rgba(30, 22, 16, 0.04);
 
-  --color-text: #f8fafc;
-  --color-text-secondary: #c7c8d5;
-  --color-text-tertiary: #8b8ea3;
-  --color-muted: #a1a1aa;
+  --color-text: #1c1512;
+  --color-text-secondary: #4a4038;
+  --color-text-tertiary: #6b5f54;
+  --color-muted: #6b5f54;
 
-  --color-primary: #d4875a;
-  --color-primary-light: #f1b284;
-  --color-accent: #d4875a;
-  --color-accent-light: #f1b284;
+  --color-primary: #d10f1f;
+  --color-primary-light: #9b7629;
+  --color-accent: #c90016;
+  --color-accent-light: #9b7629;
 
-  --color-secondary: #c9a2d4;
-  --color-secondary-light: #e2c2eb;
+  --color-secondary: #b07a2a;
+  --color-secondary-light: #c99a3a;
 
-  --color-border: rgba(255, 255, 255, 0.12);
-  --color-border-light: rgba(255, 255, 255, 0.18);
+  --color-border: rgba(30, 22, 16, 0.13);
+  --color-border-light: rgba(30, 22, 16, 0.2);
 
   --font-sans: "Inter Variable", Inter, system-ui, sans-serif;
   --font-display: "Inter Tight Variable", "Inter Variable", system-ui, sans-serif;
@@ -38,11 +40,11 @@
   --container-default: 1200px;
   --radius-card: 24px;
   --radius-card-lg: 28px;
-  --shadow-glow: 0 24px 80px rgba(0, 0, 0, 0.34), 0 0 48px rgba(212, 135, 90, 0.08);
-  --shadow-glow-secondary: 0 24px 80px rgba(0, 0, 0, 0.34), 0 0 52px rgba(201, 162, 212, 0.12);
-  --gradient-primary: linear-gradient(135deg, var(--color-primary-light), var(--color-primary) 48%, var(--color-secondary));
-  --gradient-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028));
-  --gradient-border: linear-gradient(135deg, rgba(212, 135, 90, 0.74), rgba(201, 162, 212, 0.45), rgba(255, 255, 255, 0.1));
+  --shadow-glow: 0 22px 60px rgba(60, 40, 20, 0.12), 0 0 40px rgba(201, 0, 22, 0.06);
+  --shadow-glow-secondary: 0 22px 60px rgba(60, 40, 20, 0.12), 0 0 44px rgba(201, 154, 58, 0.1);
+  --gradient-primary: linear-gradient(135deg, #d10f1f, #b00b1a 60%, #85000e);
+  --gradient-surface: linear-gradient(180deg, #fffdf8, #f5ecdd);
+  --gradient-border: linear-gradient(135deg, rgba(201, 154, 58, 0.55), rgba(209, 15, 31, 0.28), rgba(30, 22, 16, 0.06));
 }
 
 @media (min-width: 768px) {
@@ -57,10 +59,10 @@
   min-height: 100vh;
   overflow-x: clip;
   background:
-    radial-gradient(circle at 18% -8%, rgba(201, 162, 212, 0.22), transparent 30rem),
-    radial-gradient(circle at 85% 6%, rgba(212, 135, 90, 0.16), transparent 34rem),
-    radial-gradient(circle at 52% 46%, rgba(75, 117, 255, 0.09), transparent 38rem),
-    linear-gradient(180deg, #070711 0%, #090914 42%, #05050b 100%);
+    radial-gradient(circle at 84% -8%, rgba(209, 15, 31, 0.08), transparent 34rem),
+    radial-gradient(circle at 8% 14%, rgba(133, 0, 14, 0.05), transparent 32rem),
+    radial-gradient(circle at 52% 120%, rgba(201, 154, 58, 0.07), transparent 40rem),
+    linear-gradient(180deg, #fcf9f3 0%, #f6efe2 46%, #f8f2e8 100%);
 }
 
 .site-bg::before {
@@ -70,10 +72,10 @@
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    linear-gradient(rgba(30, 22, 16, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 22, 16, 0.026) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 76%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 76%);
 }
 
 /* Engagement variant: challenges section.
@@ -84,11 +86,11 @@
   min-height: 100vh;
   overflow-x: clip;
   background:
-    radial-gradient(circle at 10% -6%, rgba(201, 162, 212, 0.42), transparent 30rem),
-    radial-gradient(circle at 78% 26%, rgba(180, 130, 220, 0.24), transparent 34rem),
-    radial-gradient(circle at 94% -4%, rgba(241, 178, 132, 0.18), transparent 22rem),
-    radial-gradient(circle at 50% 82%, rgba(140, 90, 190, 0.13), transparent 42rem),
-    linear-gradient(180deg, #060512 0%, #09061c 40%, #030209 100%);
+    radial-gradient(circle at 10% -6%, rgba(209, 15, 31, 0.12), transparent 30rem),
+    radial-gradient(circle at 78% 26%, rgba(201, 154, 58, 0.12), transparent 34rem),
+    radial-gradient(circle at 94% -4%, rgba(133, 0, 14, 0.08), transparent 22rem),
+    radial-gradient(circle at 50% 82%, rgba(201, 0, 22, 0.06), transparent 42rem),
+    linear-gradient(180deg, #fcf8f1 0%, #f6eee0 40%, #f8f2e8 100%);
 }
 
 .challenge-bg::before {
@@ -98,10 +100,10 @@
   z-index: -1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(201, 162, 212, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 162, 212, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(30, 22, 16, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 22, 16, 0.026) 1px, transparent 1px);
   background-size: 56px 56px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 76%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent 76%);
 }
 
 /* Glass CTA that picks up the challenge atmosphere. */
@@ -119,25 +121,25 @@
   letter-spacing: 0.06em;
   text-decoration: none;
   text-transform: uppercase;
-  color: var(--color-secondary-light);
-  background: rgba(7, 5, 22, 0.55);
-  border: 1px solid rgba(201, 162, 212, 0.45);
+  color: var(--color-accent);
+  background: rgba(255, 253, 248, 0.7);
+  border: 1px solid rgba(201, 154, 58, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    0 14px 40px rgba(140, 90, 180, 0.22),
-    inset 0 0 0 1px rgba(201, 162, 212, 0.08);
+    0 14px 40px rgba(201, 0, 22, 0.12),
+    inset 0 0 0 1px rgba(201, 154, 58, 0.08);
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, color 180ms ease;
 }
 
 .button-challenge:hover {
   transform: translateY(-2px);
-  background: rgba(7, 5, 22, 0.72);
-  border-color: rgba(201, 162, 212, 0.7);
-  color: var(--color-text);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff8ea;
   box-shadow:
-    0 18px 46px rgba(140, 90, 180, 0.3),
-    inset 0 0 0 1px rgba(201, 162, 212, 0.14);
+    0 18px 46px rgba(201, 0, 22, 0.22),
+    inset 0 0 0 1px rgba(255, 241, 208, 0.14);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -231,20 +233,20 @@
 }
 
 .button-gradient {
-  color: #090914;
+  color: #fff8ea;
   background: var(--gradient-primary);
-  box-shadow: 0 16px 44px rgba(212, 135, 90, 0.22), 0 0 34px rgba(201, 162, 212, 0.14);
+  box-shadow: 0 16px 44px rgba(201, 0, 22, 0.2), 0 0 34px rgba(201, 0, 22, 0.1);
 }
 
 .button-secondary {
   color: var(--color-text);
   border: 1px solid var(--color-border-light);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(30, 22, 16, 0.04);
 }
 
 .button-text {
   padding-inline: 0;
-  color: var(--color-primary-light);
+  color: var(--color-accent);
 }
 
 .button-gradient:hover,
@@ -254,8 +256,8 @@
 }
 
 .button-secondary:hover {
-  border-color: rgba(212, 135, 90, 0.5);
-  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(201, 0, 22, 0.45);
+  background: rgba(30, 22, 16, 0.06);
 }
 
 .card-base,
@@ -286,9 +288,9 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 12% 0%, rgba(212, 135, 90, 0.12), transparent 36%),
-    radial-gradient(circle at 96% 8%, rgba(201, 162, 212, 0.12), transparent 34%);
-  opacity: 0.78;
+  background: radial-gradient(circle at 12% 0%, rgba(209, 15, 31, 0.07), transparent 38%),
+    radial-gradient(circle at 96% 8%, rgba(201, 154, 58, 0.09), transparent 36%);
+  opacity: 0.9;
 }
 
 .hover-lift {
@@ -297,7 +299,7 @@
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(201, 0, 22, 0.28);
   box-shadow: var(--shadow-glow);
 }
 
@@ -494,7 +496,7 @@
   stroke: var(--color-secondary-light);
   stroke-linecap: round;
   stroke-width: 3;
-  filter: drop-shadow(0 0 8px rgba(201, 162, 212, 0.42));
+  filter: none;
 }
 
 .responsive-grid {
@@ -508,7 +510,7 @@
   width: 100%;
   border: 1px solid var(--color-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(30, 22, 16, 0.04);
   padding: 0.9rem 1.1rem;
   color: var(--color-text);
   outline: none;
@@ -516,9 +518,9 @@
 }
 
 .input-dark:focus {
-  border-color: rgba(212, 135, 90, 0.72);
-  background: rgba(255, 255, 255, 0.075);
-  box-shadow: 0 0 0 4px rgba(212, 135, 90, 0.14);
+  border-color: rgba(201, 0, 22, 0.6);
+  background: rgba(30, 22, 16, 0.02);
+  box-shadow: 0 0 0 4px rgba(201, 0, 22, 0.12);
 }
 
 .input-dark::placeholder {
