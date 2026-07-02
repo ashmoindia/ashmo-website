@@ -137,6 +137,10 @@ main :is(.bg-surface, .bg-surface\/50, .bg-surface\/60, .bg-surface\/70, .bg-sur
   background-image: none !important;
   background-color: var(--color-surface) !important;
 }
+header [class*="bg-[linear-gradient(180deg,rgba("] {
+  background-image: linear-gradient(180deg, rgba(5, 5, 8, 0.98), rgba(0, 0, 0, 0.94)) !important;
+  background-color: transparent !important;
+}
 [class*="bg-[linear-gradient(180deg,rgba("]:hover,
 [class*="hover:bg-[linear-gradient(180deg,rgba("]:hover {
   background-color: var(--color-surface-hover) !important;

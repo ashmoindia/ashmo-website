@@ -171,11 +171,11 @@
 }
 
 .hero-title {
-  max-width: 11ch;
+  max-width: min(100%, 13em);
   font-family: var(--font-display);
-  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  font-size: clamp(2.35rem, 5vw, 5rem);
   font-weight: 820;
-  line-height: 0.98;
+  line-height: 1.02;
   letter-spacing: 0;
 }
 

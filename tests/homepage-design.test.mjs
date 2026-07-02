@@ -43,6 +43,23 @@ test('uses the dark-era navbar labels and growth route', async () => {
   assert.doesNotMatch(header, /Conversations/);
 });
 
+test('keeps the merchant headline readable at desktop widths', async () => {
+  const theme = await readFile(join(projectRoot, 'src/styles/theme.css'), 'utf8');
+
+  assert.match(theme, /\.hero-title\s*{[\s\S]*max-width:\s*min\(100%,\s*13em\)/);
+  assert.match(theme, /\.hero-title\s*{[\s\S]*font-size:\s*clamp\(2\.35rem,\s*5vw,\s*5rem\)/);
+  assert.match(theme, /\.hero-title\s*{[\s\S]*line-height:\s*1\.02/);
+  assert.doesNotMatch(theme, /\.hero-title\s*{[\s\S]*max-width:\s*11ch/);
+});
+
+test('does not flatten the header black-gradient navbar', async () => {
+  const global = await readFile(join(projectRoot, 'src/styles/global.css'), 'utf8');
+
+  assert.match(global, /header \[class\*="bg-\[linear-gradient\(180deg,rgba\("\] \{/);
+  assert.match(global, /background-image:\s*linear-gradient\(180deg,\s*rgba\(5,\s*5,\s*8,\s*0\.98\),\s*rgba\(0,\s*0,\s*0,\s*0\.94\)\)\s*!important;/);
+  assert.match(global, /background-color:\s*transparent\s*!important;/);
+});
+
 test('uses plain business language in homepage metadata', async () => {
   const layout = await readFile(join(projectRoot, 'src/layouts/BaseLayout.astro'), 'utf8');
   const entity = await readFile(join(projectRoot, 'src/data/entity.ts'), 'utf8');
