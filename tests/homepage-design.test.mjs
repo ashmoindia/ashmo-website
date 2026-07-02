@@ -27,6 +27,8 @@ test('uses the restored dark editorial homepage shell with merchant-friendly cop
 test('uses the dark-era navbar labels and growth route', async () => {
   const header = await readFile(join(projectRoot, 'src/components/Header.astro'), 'utf8');
 
+  assert.match(header, /bg-\[linear-gradient\(180deg,rgba\(5,5,8,0\.98\),rgba\(0,0,0,0\.94\)\)\]/);
+  assert.doesNotMatch(header, /bg-\[rgba\(7,7,17,0\.78\)\]/);
   assert.match(header, /label: "Thinking"/);
   assert.match(header, /label: "Intelligence"/);
   assert.match(header, /href: "\/restaurant-cafe-growth-systems\/", label: "Growth"/);
