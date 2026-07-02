@@ -14,3 +14,11 @@ test('uses the poster homepage design shell from the pre-restore version', async
   assert.match(page, /<PosterHome \/>/);
   assert.doesNotMatch(page, /HeroExchange/);
 });
+
+test('keeps the original poster-light homepage without the added TIP search panel', async () => {
+  const posterHome = await readFile(join(projectRoot, 'src/components/poster/PosterHome.astro'), 'utf8');
+
+  assert.match(posterHome, /href="\/tip\/"/);
+  assert.doesNotMatch(posterHome, /action="\/tip\/search\/"/);
+  assert.doesNotMatch(posterHome, /Search published trace articles/);
+});

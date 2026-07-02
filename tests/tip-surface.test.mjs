@@ -81,7 +81,7 @@ test('skips visitor auto-replies for private TIP editor intake submissions', asy
   assert.match(handler, /Private TIP intake stored/);
 });
 
-test('offers published TIP article access and search from the homepage without public upload', async () => {
+test('offers published TIP access from the homepage without public upload', async () => {
   const page = [
     await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8'),
     await readFile(join(projectRoot, 'src/components/poster/PosterHome.astro'), 'utf8'),
@@ -89,10 +89,8 @@ test('offers published TIP article access and search from the homepage without p
 
   assert.doesNotMatch(page, /name="tip-product-submission"/);
   assert.doesNotMatch(page, /name="product_image"/);
-  assert.match(page, /action="\/tip\/search\/"/);
-  assert.match(page, /name="q"/);
-  assert.match(page, /Search published trace articles/i);
-  assert.match(page, /Advion Cockroach Gel Bait/);
+  assert.match(page, /href="\/tip\/"/);
+  assert.match(page, /Trust Intelligence/);
 });
 
 test('retires public TIP upload and standalone example routes', async () => {
