@@ -26,7 +26,7 @@ interface Props {
 
 const {
   title,
-  description = "Commercial intelligence, F&B growth systems, market research, AI-age marketing workflows, and practical business judgment by Ashraf Hassan, known as Ashmo.",
+  description = "Practical business lessons for merchants, shopkeepers, restaurants, cafes, and growing brands by Ashraf Hassan, known as Ashmo.",
   image = "/og-default.jpg",
   type = "website",
   publishedDate,
@@ -42,7 +42,7 @@ const bodyBgClass = isChallengePath ? 'challenge-bg' : 'site-bg';
 const resolvedBodyClass = bodyClass ?? `${bodyBgClass} bg-bg text-text font-body leading-relaxed`;
 const brandName = "Ashraf Hassan";
 const fullTitle = title === "Home"
-  ? "Ashmo.io — Commercial Intelligence for AI-Age Brands"
+  ? "Ashmo.io — Practical Business Growth for Owners"
   : title.includes(brandName)
     ? title
     : `${title} — ${brandName}`;
