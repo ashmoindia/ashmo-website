@@ -82,7 +82,10 @@ test('skips visitor auto-replies for private TIP editor intake submissions', asy
 });
 
 test('offers published TIP article access and search from the homepage without public upload', async () => {
-  const page = await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8');
+  const page = [
+    await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8'),
+    await readFile(join(projectRoot, 'src/components/poster/PosterHome.astro'), 'utf8'),
+  ].join('\n');
 
   assert.doesNotMatch(page, /name="tip-product-submission"/);
   assert.doesNotMatch(page, /name="product_image"/);
@@ -93,7 +96,10 @@ test('offers published TIP article access and search from the homepage without p
 });
 
 test('retires public TIP upload and standalone example routes', async () => {
-  const homepage = await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8');
+  const homepage = [
+    await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8'),
+    await readFile(join(projectRoot, 'src/components/poster/PosterHome.astro'), 'utf8'),
+  ].join('\n');
   const tipIndex = await readFile(join(projectRoot, 'src/pages/tip/index.astro'), 'utf8');
   const tipNav = await readFile(join(projectRoot, 'src/components/tip/TipSectionNav.astro'), 'utf8');
   const tipSearch = await readFile(join(projectRoot, 'src/pages/tip/search.astro'), 'utf8');

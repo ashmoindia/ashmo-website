@@ -5,11 +5,13 @@ import test from 'node:test';
 
 const projectRoot = new URL('..', import.meta.url).pathname;
 
-test('keeps the pre-poster homepage design shell', async () => {
+test('uses the dark poster homepage design shell', async () => {
   const page = await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8');
 
-  assert.match(page, /import HeroExchange from/);
-  assert.match(page, /<HeroExchange \/>/);
-  assert.doesNotMatch(page, /PosterHome/);
-  assert.doesNotMatch(page, /poster-theme/);
+  assert.match(page, /import PosterHome from/);
+  assert.match(page, /import '\.\.\/styles\/poster-theme\.css'/);
+  assert.match(page, /bodyClass="poster-theme"/);
+  assert.match(page, /<PosterHome \/>/);
+  assert.doesNotMatch(page, /poster-theme--light/);
+  assert.doesNotMatch(page, /HeroExchange/);
 });
