@@ -1,13 +1,12 @@
 ---
 const navLinks = [
-  { href: "/thinking/", label: "Insights" },
-  { href: "/intelligence/", label: "Market Intelligence" },
-  { href: "/tip/", label: "TIP" },
-  { href: "/growth/", label: "Growth Systems" },
-  { href: "/principles/", label: "Building Principles" },
-  { href: "/work/", label: "Case Studies" },
-  { href: "/podcast/", label: "Conversations" },
-  { href: "/story/", label: "About" },
+  { href: "/thinking/", label: "Thinking" },
+  { href: "/intelligence/", label: "Intelligence" },
+  { href: "/restaurant-cafe-growth-systems/", label: "Growth" },
+  { href: "/principles/", label: "Principles" },
+  { href: "/work/", label: "Work" },
+  { href: "/podcast/", label: "Podcast" },
+  { href: "/story/", label: "Story" },
   { href: "/contact/", label: "Contact" },
 ];
 
@@ -32,7 +31,7 @@ const isGrowthPath = currentPath.startsWith('/restaurant-cafe-growth-systems/') 
               href={link.href}
               class:list={[
                 "inline-flex items-center rounded-full px-3.5 py-2 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.06em] transition-all duration-200 no-underline",
-                (link.href === "/growth/" ? isGrowthPath || currentPath.startsWith('/growth/') : currentPath.startsWith(link.href))
+                (link.href === "/restaurant-cafe-growth-systems/" ? isGrowthPath : currentPath.startsWith(link.href))
                   ? "bg-white/10 text-text shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]"
                   : "text-text-tertiary hover:bg-white/6 hover:text-text"
               ]}
@@ -73,7 +72,7 @@ const isGrowthPath = currentPath.startsWith('/restaurant-cafe-growth-systems/') 
                 href={link.href}
                 class:list={[
                   "flex min-h-11 items-center rounded-[18px] px-4 py-3 font-mono text-[0.82rem] font-semibold uppercase tracking-[0.06em] transition-all duration-200 no-underline",
-                  (link.href === "/growth/" ? isGrowthPath || currentPath.startsWith('/growth/') : currentPath.startsWith(link.href))
+                  (link.href === "/restaurant-cafe-growth-systems/" ? isGrowthPath : currentPath.startsWith(link.href))
                     ? "bg-white/7 text-text"
                     : "text-text-secondary hover:bg-white/4 hover:text-text"
                 ]}

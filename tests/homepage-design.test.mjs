@@ -18,3 +18,20 @@ test('uses the long-running dark editorial homepage shell from before the first 
   assert.match(theme, /linear-gradient\(180deg, #070711 0%, #090914 42%, #05050b 100%\)/);
   assert.doesNotMatch(theme, /LIGHT EDITORIAL THEME/);
 });
+
+test('uses the dark-era navbar labels and growth route', async () => {
+  const header = await readFile(join(projectRoot, 'src/components/Header.astro'), 'utf8');
+
+  assert.match(header, /label: "Thinking"/);
+  assert.match(header, /label: "Intelligence"/);
+  assert.match(header, /href: "\/restaurant-cafe-growth-systems\/", label: "Growth"/);
+  assert.match(header, /label: "Principles"/);
+  assert.match(header, /label: "Work"/);
+  assert.match(header, /label: "Podcast"/);
+  assert.match(header, /label: "Story"/);
+  assert.doesNotMatch(header, /Market Intelligence/);
+  assert.doesNotMatch(header, /href: "\/tip\/"/);
+  assert.doesNotMatch(header, /Growth Systems/);
+  assert.doesNotMatch(header, /Case Studies/);
+  assert.doesNotMatch(header, /Conversations/);
+});
