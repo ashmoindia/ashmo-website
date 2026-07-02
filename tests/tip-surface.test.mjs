@@ -81,15 +81,16 @@ test('skips visitor auto-replies for private TIP editor intake submissions', asy
   assert.match(handler, /Private TIP intake stored/);
 });
 
-test('offers published TIP access from the homepage without public upload', async () => {
+test('keeps public TIP access available without public upload', async () => {
   const page = [
-    await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8'),
-    await readFile(join(projectRoot, 'src/components/poster/PosterHome.astro'), 'utf8'),
+    await readFile(join(projectRoot, 'src/pages/tip/index.astro'), 'utf8'),
+    await readFile(join(projectRoot, 'src/components/tip/TipSectionNav.astro'), 'utf8'),
   ].join('\n');
 
   assert.doesNotMatch(page, /name="tip-product-submission"/);
   assert.doesNotMatch(page, /name="product_image"/);
-  assert.match(page, /href="\/tip\/"/);
+  assert.match(page, /href=\{link\.href\}/);
+  assert.match(page, /href: '\/tip\/'/);
   assert.match(page, /Trust Intelligence/);
 });
 

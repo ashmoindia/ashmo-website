@@ -5,20 +5,16 @@ import test from 'node:test';
 
 const projectRoot = new URL('..', import.meta.url).pathname;
 
-test('uses the poster homepage design shell from the pre-restore version', async () => {
+test('uses the long-running dark editorial homepage shell from before the first light theme', async () => {
   const page = await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8');
+  const theme = await readFile(join(projectRoot, 'src/styles/theme.css'), 'utf8');
 
-  assert.match(page, /import PosterHome from/);
-  assert.match(page, /import '\.\.\/styles\/poster-theme\.css'/);
-  assert.match(page, /bodyClass="poster-theme poster-theme--light"/);
-  assert.match(page, /<PosterHome \/>/);
-  assert.doesNotMatch(page, /HeroExchange/);
-});
-
-test('keeps the original poster-light homepage without the added TIP search panel', async () => {
-  const posterHome = await readFile(join(projectRoot, 'src/components/poster/PosterHome.astro'), 'utf8');
-
-  assert.match(posterHome, /href="\/tip\/"/);
-  assert.doesNotMatch(posterHome, /action="\/tip\/search\/"/);
-  assert.doesNotMatch(posterHome, /Search published trace articles/);
+  assert.match(page, /import HeroExchange from/);
+  assert.match(page, /<HeroExchange \/>/);
+  assert.match(page, /AI Marketing OS/);
+  assert.doesNotMatch(page, /PosterHome/);
+  assert.doesNotMatch(page, /poster-theme/);
+  assert.match(theme, /--color-bg: #070711/);
+  assert.match(theme, /linear-gradient\(180deg, #070711 0%, #090914 42%, #05050b 100%\)/);
+  assert.doesNotMatch(theme, /LIGHT EDITORIAL THEME/);
 });
