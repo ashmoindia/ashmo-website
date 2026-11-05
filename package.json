@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/seo-check.mjs",
+    "build": "astro build && python3 scripts/restore-publications.py && node scripts/seo-check.mjs && node scripts/confidentiality-check.mjs",
     "build:no-seo": "astro build",
     "lint": "astro check",
     "test:pm": "node --test tests/paper-moon-core.test.mjs tests/paper-moon-surface.test.mjs",
@@ -16,7 +16,8 @@
     "build:premium-workbooks": "python3 tools/build-premium-workbooks.py",
     "qa:premium-workbooks": "python3 tools/build-premium-workbooks.py --qa-only",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check:confidentiality": "node scripts/confidentiality-check.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
