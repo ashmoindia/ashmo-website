@@ -2,13 +2,14 @@
 title: "Why Brand Positioning Is the Hardest Thing"
 description: "Most founders skip positioning because it feels abstract. That's exactly why it's the most expensive mistake you can make."
 date: 2026-03-12
+updated: 2026-11-06
 pillar: brand-growth
 tags: ["positioning", "brand", "strategy"]
 featured: true
 published: true
 ---
 
-Brand positioning is the strategic process of defining what a brand stands for in the minds of its customers — and equally important, what it does not stand for. It determines your messaging, pricing, product decisions, and hiring. After 25 years of building brands — including scaling [FiLLi Cafe](/work/filli-cafe/) from a single karak chai outlet to 100+ locations across 13 countries — I've learned that positioning is the single most expensive thing founders skip.
+Brand positioning defines what a business should stand for in the minds of its customers. It guides messaging, product choices and the experience people should expect. Leaving that choice vague makes later decisions harder.
 
 Most founders skip it because it feels abstract. It doesn't look like work. There's no dashboard for it, no metric that moves overnight, no A/B test that proves it right.
 
@@ -24,7 +25,7 @@ But being for everyone means being memorable to no one.
 
 The brands that win — the ones that people recommend without being asked — are the ones that can explain what they are in one clear sentence. Not a paragraph. Not a deck. One sentence.
 
-I learned this the hard way with [FiLLi](/work/filli-cafe/). We weren't "a cafe." We were the place for saffron chai. That specificity didn't limit us. **It made us unforgettable.**
+**Hypothetical example:** a fictional breakfast bakery could focus on a dependable morning collection service for commuters. A clear customer need gives the message direction. This is an invented example, not an employer or client case study.
 
 > "The problem with most brand strategies is not the strategy. It's that nobody follows through past week two."
 
@@ -57,8 +58,8 @@ But by year three, something shifts. People start describing your brand the way 
 
 By year five, your positioning is your moat. Competitors can copy your product. They can't copy ten years of consistent positioning.
 
-At FiLLi, our positioning as the saffron chai brand compounded for over a decade. Today, with 100+ outlets across 13 countries, customers don't just buy our tea — they identify with the brand. That didn't happen because of a single campaign. It happened because of 10+ years of disciplined positioning.
+Recognition develops through repeated experiences that support the same promise. A single campaign cannot establish whether customers will continue to trust that promise.
 
 That's the compound effect nobody talks about. And it starts with the abstract work most founders skip.
 
-I talk about this in more depth in [the podcast](/podcast/) — and much of what I know about consistency comes from [the years I spent learning pricing and selling](/thinking/grocery-shop-pricing-psychology/) long before FiLLi existed.
+The foundations of this thinking also connect to [what I learned about pricing and selling in early retail](/thinking/grocery-shop-pricing-psychology/).

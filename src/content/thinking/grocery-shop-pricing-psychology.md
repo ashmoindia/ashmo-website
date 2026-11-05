@@ -3,6 +3,7 @@ title: "What Early Retail Taught Me About Pricing"
 metaTitle: "Retail Pricing Psychology"
 description: "Before analytics dashboards existed, there was a counter, a customer, and a decision to make in real time."
 date: 2026-03-08
+updated: 2026-11-06
 pillar: merchant-mindset
 tags: ["pricing", "retail", "selling"]
 featured: false
@@ -55,4 +56,4 @@ I learned all of this behind a counter at 19.
 
 The shop is gone. The lessons compound daily.
 
-Those same instincts — reading people, understanding value, staying disciplined on margins — became the foundation of [how I approach brand positioning](/thinking/brand-positioning-hardest-thing/) and eventually [how FiLLi Cafe scaled to 100+ outlets across 13 countries](/work/filli-cafe/).
+Those early lessons about customers and value inform [how I think about brand positioning](/thinking/brand-positioning-hardest-thing/).

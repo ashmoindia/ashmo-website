@@ -34,7 +34,7 @@ That usually means one of these:
 - repurposing existing ideas into multiple usable formats
 - reducing setup time on repetitive execution work
 
-This is one reason I do not think of AI primarily as intelligence. I think of it as friction removal. I wrote about that more broadly in [How AI Runs Marketing for a 100+ Outlet Chain](/thinking/ai-marketing-70-outlet-chain/). The biggest advantage was never magical thinking. It was shorter distance between idea and execution.
+This is one reason I do not think of AI primarily as intelligence. I think of it as friction removal. I wrote about that more broadly in [Using AI in Marketing Without Losing Judgment](/thinking/ai-assisted-marketing-guide/). The biggest advantage was never magical thinking. It was shorter distance between idea and execution.
 
 ## Which tools have actually mattered for me?
 

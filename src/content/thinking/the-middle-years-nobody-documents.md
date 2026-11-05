@@ -2,6 +2,7 @@
 title: "The Middle Years Nobody Documents"
 description: "Everyone talks about the beginning and the breakthrough. Almost nobody tells the truth about the long middle."
 date: 2026-04-18
+updated: 2026-11-06
 pillar: founder-documentary
 tags: ["founders", "patience", "building"]
 featured: false
@@ -63,7 +64,7 @@ That is the first truthful word.
 
 Not dramatic. Not cinematic. Long.
 
-There were phases in my journey with FiLLi where the work became more serious before it became more rewarding. More systems. More decisions. More responsibility. More operational complexity. But the external story had not caught up yet. To outsiders, it could look stable. Internally, it felt like carrying weight every day while trying to stay clear enough to make good decisions.
+Professional progress can feel less visible as responsibilities become more complex. A job title or a polished public story does not explain the experience of learning to make better decisions.
 
 I have felt the same thing in smaller ways while building ashmo.io.
 

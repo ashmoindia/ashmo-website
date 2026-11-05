@@ -3,6 +3,7 @@ title: "Old Markets Teach Business Better Than Most Courses"
 metaTitle: "Old Markets Teach Business"
 description: "Before dashboards and playbooks, there was the market. The lessons are still more honest there."
 date: 2026-04-15
+updated: 2026-11-06
 pillar: merchant-mindset
 tags: ["markets", "business", "customers"]
 featured: false
@@ -104,7 +105,7 @@ That might be the simplest way to say it.
 
 When you have spent time in a real selling environment, you develop a lower tolerance for language that sounds intelligent but has no commercial contact. You can feel when something has been built from observation and when it has been built from borrowed vocabulary.
 
-That instinct helped me across FiLLi, especially in moments where it would have been easy to get seduced by trend language or marketing theatre. Scale introduces its own risks. Teams get larger. Presentations get cleaner. Distances from the customer grow. If you are not careful, the business starts talking to itself.
+As a business grows, it can become more distant from the customer. Larger teams and polished presentations do not remove the need to listen to what happens at the point of sale.
 
 Merchant experience protects against that.
 

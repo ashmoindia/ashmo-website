@@ -2,6 +2,7 @@
 title: "The Future of Selling Is Not More Reach"
 description: "Reach is getting cheaper, easier, and less defensible. Trust is becoming the real infrastructure."
 date: 2026-04-17
+updated: 2026-11-06
 pillar: ai-selling
 tags: ["selling", "trust", "ai"]
 featured: false
@@ -99,7 +100,7 @@ But the illusion does not hold for long.
 
 Because AI helps everyone increase output. It does not help everyone increase truth.
 
-The brands that will benefit most from AI are the ones that already know what they are trying to say. They use AI to reduce friction between insight and execution. I wrote about that in [How AI Runs Marketing for a 100+ Outlet Chain](/thinking/ai-marketing-70-outlet-chain/).
+The brands that will benefit most from AI are the ones that already know what they are trying to say. They use AI to reduce friction between insight and execution. I wrote about that in [Using AI in Marketing Without Losing Judgment](/thinking/ai-assisted-marketing-guide/).
 
 The brands that struggle are the ones hoping AI will compensate for weak positioning, weak judgement, or weak operations. It won't. It will just help them produce inconsistency faster.
 
@@ -137,7 +138,7 @@ A strong campaign can bring people in once. A familiar logo can create one more 
 
 That is exhausting.
 
-One of the deepest advantages FiLLi built over time was not just awareness. It was familiarity linked to consistency. The reason [the 80th outlet has to feel like the first](/thinking/why-the-80th-outlet-must-feel-like-the-first/) is because scale without continuity destroys belief. A customer is not buying one ad. They are buying the expectation that the brand they met yesterday is the same brand they will meet tomorrow.
+Familiarity is more useful when the experience supports it. The principle behind [consistency across locations](/thinking/why-the-80th-outlet-must-feel-like-the-first/) is that customers should be able to recognise the promise they chose.
 
 That is trust infrastructure in action.
 
