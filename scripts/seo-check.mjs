@@ -207,6 +207,7 @@ async function main() {
   // Paper Moon is intentionally unlisted and omits social/schema metadata.
   // Its noindex and privacy requirements are covered by tests/paper-moon-surface.test.mjs.
   const SKIP_PATTERNS = [
+    /[/\\]__review\.html$/i, // Preview-only layout inspection surface.
     /google[a-z0-9]+\.html$/i,
     /[/\\]pm[/\\]/,
   ];

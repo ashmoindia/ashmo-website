@@ -50,3 +50,15 @@ async function update(directory) {
 }
 await update('dist');
 console.log('Preserved current published navigation, footer and design styles.');
+
+// This review surface is generated only for Netlify previews and never for production.
+if (process.env.CONTEXT === 'deploy-preview') {
+  const routes = ['/', '/ashraf-hassan/', '/story/', '/work/', '/work/ashmo-platform/', '/work/early-hustle/', '/podcast/', '/employment-disclaimer/', '/legal/', '/concepts/', '/concepts/uae-specialty-karak-kiosk-business-plan/', '/410/'];
+  for (const name of await readdir('src/content/thinking')) {
+    if (!name.endsWith('.md')) continue;
+    const article = await readFile(join('src/content/thinking', name), 'utf8');
+    if (!/published:\s*false/.test(article)) routes.push(`/thinking/${name.slice(0, -3)}/`);
+  }
+  const options = routes.map(path => `<option value="${path}">${path}</option>`).join('');
+  await writeFile('dist/__review.html', `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Mobile layout review</title><style>body{margin:0;background:#e9e9ed;color:#16161c;font:16px system-ui}header{padding:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:white}select{max-width:700px;padding:8px;font:inherit}main{padding:20px;display:flex;justify-content:center}iframe{display:block;width:390px;height:844px;border:1px solid #aaa;background:#070711;box-shadow:0 8px 30px #0002}</style></head><body><header><strong>Mobile review · 390 px</strong><label>Page <select id="page">${options}</select></label><a id="desktop" href="/" target="_blank">Open full page</a></header><main><iframe title="Mobile page preview" src="/"></iframe></main><script>const select=document.getElementById('page');select.addEventListener('change',()=>{document.querySelector('iframe').src=select.value;document.getElementById('desktop').href=select.value;});</script></body></html>`);
+}
