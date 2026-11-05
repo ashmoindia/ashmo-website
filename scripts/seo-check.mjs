@@ -6,7 +6,7 @@
  * Like Yoast, but automated and build-integrated.
  */
 
-import { readdir, readFile } from 'node:fs/promises';
+import { readdir, readFile, stat } from 'node:fs/promises';
 import { join, relative } from 'node:path';
 
 const DIST = join(process.cwd(), 'dist');
@@ -261,7 +261,8 @@ async function main() {
   for (const entry of allInternalLinks) {
     const { from, to } = JSON.parse(entry);
     const normalizedTo = to.endsWith('/') ? to : to + '/';
-    if (!validPaths.has(normalizedTo) && !validPaths.has(to)) {
+    const linkedFile = await stat(join(DIST, to)).catch(() => null);
+    if (!validPaths.has(normalizedTo) && !validPaths.has(to) && !linkedFile?.isFile()) {
       console.log(`   ❌ Broken: ${from} → ${to}`);
       brokenLinks++;
       totalIssues++;
