@@ -9,7 +9,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) => !new URL(page).pathname.startsWith('/pm') && new URL(page).pathname !== '/410/',
+      filter: (page) => !new URL(page).pathname.startsWith('/pm') && !new URL(page).pathname.startsWith('/admin') && new URL(page).pathname !== '/410/',
     }),
   ],
   vite: {

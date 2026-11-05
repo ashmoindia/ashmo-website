@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && python3 scripts/restore-publications.py && node scripts/seo-check.mjs && node scripts/confidentiality-check.mjs",
+    "build": "astro build && python3 scripts/restore-publications.py && node scripts/preserve-layout.mjs && node scripts/seo-check.mjs && node scripts/confidentiality-check.mjs",
     "build:no-seo": "astro build",
     "lint": "astro check",
     "test:pm": "node --test tests/paper-moon-core.test.mjs tests/paper-moon-surface.test.mjs",
@@ -27,6 +27,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.6",
     "bcryptjs": "^3.0.3",
+    "parse5": "^8.1.0",
     "resend": "^6.9.4",
     "tailwindcss": "^4.2.2"
   },
