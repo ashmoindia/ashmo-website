@@ -6,13 +6,13 @@ import test from 'node:test';
 const projectRoot = new URL('..', import.meta.url).pathname;
 
 test('uses the restored dark editorial homepage shell with merchant-friendly copy', async () => {
-  const page = await readFile(join(projectRoot, 'src/pages/index.astro'), 'utf8');
+  const page = await readFile(join(projectRoot, 'dist/index.html'), 'utf8');
   const theme = await readFile(join(projectRoot, 'src/styles/theme.css'), 'utf8');
 
-  assert.match(page, /import HeroExchange from/);
-  assert.match(page, /<HeroExchange \/>/);
+  assert.match(page, /ashmo-hero-desktop\.jpg/);
+  assert.match(page, /ashmo-hero-mobile\.jpg/);
   assert.match(page, /Practical growth ideas for restaurants, cafes, shops, and small businesses/);
-  assert.match(page, /more customers, better sales, clearer pricing, and marketing that people understand/);
+  assert.match(page, /customers, sales, marketing, pricing, and repeat business/);
   assert.match(page, /merchants, shopkeepers, and F&amp;B owners/);
   assert.doesNotMatch(page, /PosterHome/);
   assert.doesNotMatch(page, /poster-theme/);
@@ -24,23 +24,17 @@ test('uses the restored dark editorial homepage shell with merchant-friendly cop
   assert.doesNotMatch(theme, /LIGHT EDITORIAL THEME/);
 });
 
-test('uses the dark-era navbar labels and growth route', async () => {
-  const header = await readFile(join(projectRoot, 'src/components/Header.astro'), 'utf8');
+test('preserves the published navigation and its working menu controls', async () => {
+  const page = await readFile(join(projectRoot, 'dist/index.html'), 'utf8');
 
-  assert.match(header, /bg-\[linear-gradient\(180deg,rgba\(5,5,8,0\.98\),rgba\(0,0,0,0\.94\)\)\]/);
-  assert.doesNotMatch(header, /bg-\[rgba\(7,7,17,0\.78\)\]/);
-  assert.match(header, /label: "Thinking"/);
-  assert.match(header, /label: "Intelligence"/);
-  assert.match(header, /href: "\/restaurant-cafe-growth-systems\/", label: "Growth"/);
-  assert.match(header, /label: "Principles"/);
-  assert.match(header, /label: "Work"/);
-  assert.match(header, /label: "Podcast"/);
-  assert.match(header, /label: "Story"/);
-  assert.doesNotMatch(header, /Market Intelligence/);
-  assert.doesNotMatch(header, /href: "\/tip\/"/);
-  assert.doesNotMatch(header, /Growth Systems/);
-  assert.doesNotMatch(header, /Case Studies/);
-  assert.doesNotMatch(header, /Conversations/);
+  assert.match(page, /href="\/thinking\/"[^>]*>\s*Notes\s*<\/a>/);
+  assert.match(page, /href="\/intelligence\/"[^>]*>\s*Markets\s*<\/a>/);
+  assert.match(page, /data-concepts-menu/);
+  assert.match(page, /concepts-menu-trigger/);
+  assert.match(page, /mobile-menu-btn/);
+  assert.match(page, /BaseLayout\.M_YbBtH6\.css/);
+  assert.doesNotMatch(page, /href="\/work\/filli-cafe\/"/);
+  assert.doesNotMatch(page, /youtube\.com\/embed\//);
 });
 
 test('keeps the merchant headline readable at desktop widths', async () => {
