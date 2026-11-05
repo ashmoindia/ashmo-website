@@ -22,12 +22,6 @@ export const personSchema = {
   description:
     'Brand builder and writer sharing practical business lessons for merchants, shopkeepers, restaurant leaders, cafe owners, and growing brands.',
   email: 'mailto:ashmoindia@gmail.com',
-  jobTitle: 'Head of Brand & Growth',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'FiLLi Cafe',
-    url: 'https://fillicafe.com',
-  },
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Dubai',

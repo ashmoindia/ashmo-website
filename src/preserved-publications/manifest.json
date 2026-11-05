@@ -1,0 +1,212 @@
+[
+  {
+    "url": "https://ashmo.io/articles/",
+    "snapshot": "src/preserved-publications/articles.html",
+    "route": "src/pages/articles/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/",
+    "snapshot": "src/preserved-publications/concepts.html",
+    "route": "src/pages/concepts/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/bahrain-specialty-coffee-cart-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--bahrain-specialty-coffee-cart-business-plan.html",
+    "route": "src/pages/concepts/bahrain-specialty-coffee-cart-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/cloud-kitchen-business-dubai/",
+    "snapshot": "src/preserved-publications/concepts--cloud-kitchen-business-dubai.html",
+    "route": "src/pages/concepts/cloud-kitchen-business-dubai/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/dessert-shop-business-dubai/",
+    "snapshot": "src/preserved-publications/concepts--dessert-shop-business-dubai.html",
+    "route": "src/pages/concepts/dessert-shop-business-dubai/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/dubai-cloud-bakery-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--dubai-cloud-bakery-business-plan.html",
+    "route": "src/pages/concepts/dubai-cloud-bakery-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/dubai-mobile-car-wash-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--dubai-mobile-car-wash-business-plan.html",
+    "route": "src/pages/concepts/dubai-mobile-car-wash-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/dubai-mobile-pet-grooming-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--dubai-mobile-pet-grooming-business-plan.html",
+    "route": "src/pages/concepts/dubai-mobile-pet-grooming-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/karak-tea-shop-business-uae/",
+    "snapshot": "src/preserved-publications/concepts--karak-tea-shop-business-uae.html",
+    "route": "src/pages/concepts/karak-tea-shop-business-uae/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/kuwait-auto-accessories-ecommerce-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--kuwait-auto-accessories-ecommerce-business-plan.html",
+    "route": "src/pages/concepts/kuwait-auto-accessories-ecommerce-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/kuwait-smart-home-installation-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--kuwait-smart-home-installation-business-plan.html",
+    "route": "src/pages/concepts/kuwait-smart-home-installation-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/oman-adventure-equipment-rental-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--oman-adventure-equipment-rental-business-plan.html",
+    "route": "src/pages/concepts/oman-adventure-equipment-rental-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/qatar-bridal-beauty-concierge-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--qatar-bridal-beauty-concierge-business-plan.html",
+    "route": "src/pages/concepts/qatar-bridal-beauty-concierge-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/qatar-corporate-catering-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--qatar-corporate-catering-business-plan.html",
+    "route": "src/pages/concepts/qatar-corporate-catering-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/qatar-residential-laundry-pickup-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--qatar-residential-laundry-pickup-business-plan.html",
+    "route": "src/pages/concepts/qatar-residential-laundry-pickup-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/qatar-short-stay-turnover-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--qatar-short-stay-turnover-business-plan.html",
+    "route": "src/pages/concepts/qatar-short-stay-turnover-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/qsr-restaurant-business-saudi-arabia/",
+    "snapshot": "src/preserved-publications/concepts--qsr-restaurant-business-saudi-arabia.html",
+    "route": "src/pages/concepts/qsr-restaurant-business-saudi-arabia/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/restaurant-franchise-uae/",
+    "snapshot": "src/preserved-publications/concepts--restaurant-franchise-uae.html",
+    "route": "src/pages/concepts/restaurant-franchise-uae/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-arabic-content-studio-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-arabic-content-studio-business-plan.html",
+    "route": "src/pages/concepts/saudi-arabic-content-studio-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-cloud-bakery-subscription-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-cloud-bakery-subscription-business-plan.html",
+    "route": "src/pages/concepts/saudi-cloud-bakery-subscription-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-ecommerce-returns-logistics-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-ecommerce-returns-logistics-business-plan.html",
+    "route": "src/pages/concepts/saudi-ecommerce-returns-logistics-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-fleet-car-detailing-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-fleet-car-detailing-business-plan.html",
+    "route": "src/pages/concepts/saudi-fleet-car-detailing-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-furniture-assembly-handyman-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-furniture-assembly-handyman-business-plan.html",
+    "route": "src/pages/concepts/saudi-furniture-assembly-handyman-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-healthy-meal-prep-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-healthy-meal-prep-business-plan.html",
+    "route": "src/pages/concepts/saudi-healthy-meal-prep-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-home-salon-marketplace-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-home-salon-marketplace-business-plan.html",
+    "route": "src/pages/concepts/saudi-home-salon-marketplace-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-multi-branch-dashboard-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-multi-branch-dashboard-business-plan.html",
+    "route": "src/pages/concepts/saudi-multi-branch-dashboard-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-pet-boarding-daycare-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-pet-boarding-daycare-business-plan.html",
+    "route": "src/pages/concepts/saudi-pet-boarding-daycare-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/saudi-womens-wellness-studio-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--saudi-womens-wellness-studio-business-plan.html",
+    "route": "src/pages/concepts/saudi-womens-wellness-studio-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-ac-maintenance-subscription-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-ac-maintenance-subscription-business-plan.html",
+    "route": "src/pages/concepts/uae-ac-maintenance-subscription-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-corporate-gifting-fulfilment-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-corporate-gifting-fulfilment-business-plan.html",
+    "route": "src/pages/concepts/uae-corporate-gifting-fulfilment-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-dog-walking-pet-sitting-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-dog-walking-pet-sitting-business-plan.html",
+    "route": "src/pages/concepts/uae-dog-walking-pet-sitting-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-ecommerce-product-photography-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-ecommerce-product-photography-business-plan.html",
+    "route": "src/pages/concepts/uae-ecommerce-product-photography-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-healthy-meal-prep-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-healthy-meal-prep-business-plan.html",
+    "route": "src/pages/concepts/uae-healthy-meal-prep-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-home-maintenance-subscription-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-home-maintenance-subscription-business-plan.html",
+    "route": "src/pages/concepts/uae-home-maintenance-subscription-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-laundry-coffee-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-laundry-coffee-business-plan.html",
+    "route": "src/pages/concepts/uae-laundry-coffee-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-mens-grooming-home-service-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-mens-grooming-home-service-business-plan.html",
+    "route": "src/pages/concepts/uae-mens-grooming-home-service-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-mobile-tyre-battery-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-mobile-tyre-battery-business-plan.html",
+    "route": "src/pages/concepts/uae-mobile-tyre-battery-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-move-in-cleaning-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-move-in-cleaning-business-plan.html",
+    "route": "src/pages/concepts/uae-move-in-cleaning-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-refill-grocery-delivery-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-refill-grocery-delivery-business-plan.html",
+    "route": "src/pages/concepts/uae-refill-grocery-delivery-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-sme-bookkeeping-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-sme-bookkeeping-business-plan.html",
+    "route": "src/pages/concepts/uae-sme-bookkeeping-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-sme-hr-outsourcing-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-sme-hr-outsourcing-business-plan.html",
+    "route": "src/pages/concepts/uae-sme-hr-outsourcing-business-plan/index.astro"
+  },
+  {
+    "url": "https://ashmo.io/concepts/uae-specialty-karak-kiosk-business-plan/",
+    "snapshot": "src/preserved-publications/concepts--uae-specialty-karak-kiosk-business-plan.html",
+    "route": "src/pages/concepts/uae-specialty-karak-kiosk-business-plan/index.astro"
+  }
+]

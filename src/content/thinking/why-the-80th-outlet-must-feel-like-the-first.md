@@ -2,6 +2,7 @@
 title: "Why the 80th Outlet Must Feel Like the First"
 description: "Scale does not protect a brand. It exposes whether the original promise was ever built strongly enough to survive repetition."
 date: 2026-04-12
+updated: 2026-11-06
 pillar: brand-growth
 tags: ["scale", "consistency", "brand"]
 featured: false
@@ -71,7 +72,7 @@ It lives in whether the brand promise can be delivered by different people in di
 - what is trained
 - what is protected when the business is under pressure
 
-At FiLLi, this meant more than protecting a logo. It meant making sure the saffron chai tasted recognisable, the menu boards looked like they belonged to the same brand, the uniforms carried the same visual language, and the outlet still felt like the same ritual whether you walked into one branch or another.
+**Hypothetical example:** a fictional repair service with several collection points should give customers clear, consistent instructions at each one. The aim is recognisable service, not identical decoration. This example describes no actual business.
 
 This is why [brand positioning is so expensive to leave vague](/thinking/brand-positioning-hardest-thing/). If the promise is fuzzy, the system built around it will also be fuzzy. And once you multiply a fuzzy system, all you get is larger inconsistency.
 

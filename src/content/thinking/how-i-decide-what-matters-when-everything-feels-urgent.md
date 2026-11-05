@@ -3,6 +3,7 @@ title: "How I Decide What Matters When Everything Is Urgent"
 metaTitle: "How to Decide What Matters"
 description: "Urgency is noisy. Importance is usually quieter. The work is learning to tell the difference."
 date: 2026-04-16
+updated: 2026-11-06
 pillar: habit-philosophy
 tags: ["priorities", "decision-making", "discipline"]
 featured: false
@@ -37,7 +38,7 @@ When ten reasonable claims arrive at once, the founder starts working from emoti
 
 That is when the day gets hijacked.
 
-I have seen this happen at FiLLi many times over the years. Multi-location operations create a constant stream of legitimate demands. If you respond to every issue with equal energy, you slowly teach the business that your nervous system is the central operating system.
+A business can generate a constant stream of legitimate demands. If every issue receives the same attention, urgent requests can displace decisions that matter more to customers and the team.
 
 That does not scale.
 

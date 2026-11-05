@@ -56,7 +56,7 @@
 
 | Platform | Presence | Impact on AI Citations |
 |----------|----------|----------------------|
-| **Wikipedia** | NONE — no page for Ashmo, Ashraf Hassan, or FiLLi Cafe | Critical gap — Wikipedia is #1 source for ChatGPT (47.9% of citations) |
+Historical employer-related SEO recommendation removed during the confidentiality content review.
 | **Reddit** | NONE — no mentions found | Critical gap — Reddit is #1 source for Perplexity (46.7%) |
 | **YouTube** | Channel exists but minimal — @iamashmo, 1 podcast episode | YouTube mentions are strongest AI citation signal (0.737 correlation) |
 | **LinkedIn** | Profile exists at /in/iamashmo/ | Moderate signal |
@@ -119,7 +119,7 @@
 2. **Enhance llms.txt** — Add individual article URLs, expertise section
 3. **Add question-based H2 headings** — "What is brand positioning?", "How does pricing psychology work?"
 4. **Add definition blocks** — First 60 words of each article should contain a clear definition/answer
-5. **Add specific statistics** — Reference real data (FiLLi outlet count, campaign numbers, years of experience)
+Historical employer-related SEO recommendation removed during the confidentiality content review.
 
 ### Medium Effort (this month)
 
@@ -131,7 +131,7 @@
 
 ### High Impact (3-6 months)
 
-11. **Get FiLLi Cafe on Wikipedia** — This is the single highest-leverage move for ChatGPT visibility. FiLLi is notable enough (70+ outlets, UAE cultural brand)
+Historical employer-related SEO recommendation removed during the confidentiality content review.
 12. **Create original research** — "State of Cafe Branding in the UAE" type content = unique citability
 13. **Build entity linking** — Get mentioned in industry publications, directories, podcast guest appearances
 14. **Implement RSL 1.0 licensing** — Signal to AI crawlers how content can be used
@@ -194,4 +194,4 @@ ashmo.io has **excellent technical foundations** (SSR, schema, llms.txt, clean H
 1. Fix robots.txt + llms.txt (15 minutes)
 2. Add question headings + definition blocks to existing articles (1 hour)
 3. Start YouTube + Reddit presence (ongoing)
-4. Get FiLLi on Wikipedia (high-impact, medium effort)
+Historical employer-related SEO recommendation removed during the confidentiality content review.

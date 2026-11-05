@@ -3,6 +3,7 @@ title: "Why Founders Should Write (Even If No One Reads It)"
 metaTitle: "Why Founders Should Write"
 description: "Writing isn't content marketing. It's a thinking tool. The founders who write clearly, build clearly."
 date: 2026-03-02
+updated: 2026-11-06
 pillar: founder-documentary
 tags: ["writing", "founders", "thinking"]
 featured: false
@@ -11,7 +12,7 @@ published: true
 
 Writing is the highest-leverage thinking tool available to founders. It is not content marketing, not personal branding, not audience building — it is the act of forcing clarity on ideas that would otherwise stay vague, untested, and invisible. After 25+ years of building businesses, I've found that the quality of my decisions improves in direct proportion to how much I write about them before making them.
 
-I didn't always believe this. For most of my career, I operated on instinct. Conversations. Whiteboard sessions. Quick decisions made on the move. That worked — until it didn't. The moments where I got stuck, where FiLLi hit a wall, where I couldn't explain to my team why we were doing what we were doing — those were almost always moments where I hadn't thought clearly enough. And the reason I hadn't thought clearly enough is that I hadn't written anything down.
+Writing down a decision makes its assumptions easier to examine. A brief that feels clear in conversation can reveal gaps when someone tries to explain it on a page.
 
 ## Why Should Founders Write?
 
@@ -25,7 +26,7 @@ There's a difference between having an idea and being able to explain it. You ca
 
 Writing is the stress test.
 
-When I started building [ashmo.io](/work/ashmo-platform/), I didn't have a clear thesis for why I was doing it. I had a feeling. Something about wanting to own my own platform, wanting to document what I've learned, wanting to build something outside of FiLLi that was entirely mine.
+When developing [ashmo.io](/work/ashmo-platform/), writing helped me clarify the purpose of this independent educational website and the audience it should serve.
 
 But feelings aren't strategies. The clarity came from writing. From sitting down and trying to articulate — in actual words, on an actual page — what this platform was for, who it was for, and why it mattered to me.
 
@@ -37,7 +38,7 @@ That single insight changed how I think about publishing. The article isn't the 
 
 Something strange happens when you write consistently. You start noticing patterns in your own thinking that you'd never see otherwise.
 
-When I wrote about [why brand positioning is the hardest thing](/thinking/brand-positioning-hardest-thing/), I didn't set out to write about positioning. I set out to understand why so many founders I've met — smart, capable people — kept making the same mistake of staying vague. Halfway through writing it, I realised I was also writing about my own early mistakes at FiLLi. The piece taught me something about myself that I hadn't consciously understood before.
+Writing about [brand positioning](/thinking/brand-positioning-hardest-thing/) is also a way to examine the difference between a broad ambition and a choice that a customer can understand.
 
 That's the hidden value. Writing isn't just communication. It's self-diagnosis.
 
