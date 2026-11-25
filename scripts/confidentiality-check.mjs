@@ -1,11 +1,10 @@
 // A regression check for the reviewed disclosure patterns, not a legal-compliance test.
 import { readdir, readFile } from 'node:fs/promises';
-import { join, relative } from 'node:path';
+import { join } from 'node:path';
 
-const company = /\bfilli\b|fillicafe|zafran|rafih|limetray|clevertap/iu;
+const company = /\bf[\s._-]*i[\s._-]*l[\s._-]*l[\s._-]*[ií]\b|fillicafe|\bphilly\s+caf[eé]\b|\bzafran\b|\brafih\b|limetray|clevertap|\bpulse[\s._-]+os\b|\bchembot\b/iu;
 const withdrawn = /(?:href|src)=["'][^"']*(?:\/work\/(?:filli-cafe|the-podcast)|\/thinking\/ai-marketing-70-outlet-chain)/iu;
 const sensitive = /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----|gh[pousr]_[A-Za-z0-9]{30,}|sk_live_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|xox[baprs]-[A-Za-z0-9-]{15,}/u;
-const allowedBiography = 'Head of Brand & Growth at FiLLi Cafe. Ashmo.io is an independent personal website. The content here does not represent or imply endorsement by the company.';
 let files = 0;
 const failures = [];
 async function inspect(dir) {
@@ -13,12 +12,11 @@ async function inspect(dir) {
     const path = join(dir, entry.name);
     if (entry.isDirectory()) { await inspect(path); continue; }
     if (/\.map$/iu.test(path)) failures.push(`${path}: public source map`);
-    if (!/\.(?:html|xml|txt|css|js|json|md|csv|svg)$/iu.test(path)) continue;
+    if (company.test(entry.name)) failures.push(`${path}: unexpected employer reference in asset name`);
+    if (!/\.(?:html?|xml|txt|css|[cm]?js|json|jsonld|md|csv|svg|webmanifest)$/iu.test(path)) continue;
     files++;
     const text = await readFile(path, 'utf8');
-    const profile = relative('dist', path) === 'ashraf-hassan/index.html';
-    const reviewed = profile ? text.replace(allowedBiography.replaceAll('&', '&amp;'), '') : text;
-    if (company.test(reviewed)) failures.push(`${path}: unexpected employer reference`);
+    if (company.test(text)) failures.push(`${path}: unexpected employer reference`);
     if (withdrawn.test(text)) failures.push(`${path}: link to a withdrawn publication`);
     if (sensitive.test(text)) failures.push(`${path}: credential pattern; review privately`);
     if (/worksFor/u.test(text)) failures.push(`${path}: employer attribution in structured data`);
@@ -33,5 +31,5 @@ if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Confidentiality regression check passed: ${files} public text files; only the reviewed profile employment sentence is permitted.`);
+  console.log(`Confidentiality regression check passed: ${files} public text files.`);
 }
