@@ -1,0 +1,30 @@
+---
+import CommerceLayout from '../../components/commerce/CommerceLayout.astro';
+import CheckoutForm from '../../components/commerce/CheckoutForm.astro';
+import { aed, workbooks } from '../../data/commerce.mjs';
+export function getStaticPaths() {
+  return workbooks.map(item => ({ params: { workbook: item.id }, props: { item } }));
+}
+const { item } = Astro.props;
+---
+<CommerceLayout title={item.name} description={item.description}>
+  <div class="commerce-detail">
+    <section class="commerce-panel">
+      <h2>{aed(item.amount)} one time</h2>
+      <p>Guest checkout. Membership also includes access to this workbook.</p>
+      <CheckoutForm id={item.id} />
+      <p class="commerce-sep"><a href="/membership/">Compare membership</a> · <a href="/account/">Open your library</a></p>
+    </section>
+    <section class="commerce-panel">
+      <h2>Workbook preview</h2>
+      <p>Illustrative data · AED</p>
+      <table class="commerce-table">
+        <thead><tr><th scope="col">Line item</th><th scope="col">Value</th></tr></thead>
+        <tbody>{item.sample.map(([label, value]) => <tr><th scope="row">{label}</th><td>{value}</td></tr>)}</tbody>
+      </table>
+      <p class="commerce-sep">Planned workbook tabs</p>
+      <ul class="commerce-list">{item.tabs.map(tab => <li>{tab}</li>)}</ul>
+      <p>Staging downloads contain sample XLSX files.</p>
+    </section>
+  </div>
+</CommerceLayout>

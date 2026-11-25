@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const here = Astro.url.pathname;
+const nav = [
+  { href: '/restaurant-finance/', text: 'Free guides' },
+  { href: '/shop/', text: 'Shop' },
+  { href: '/membership/', text: 'Membership' },
+  { href: '/account/', text: 'Account' },
+];
+---
+<BaseLayout title={title} description={description} noindex analytics={false}>
+  <div class="commerce mx-auto max-w-[1200px] px-4 pb-16 md:px-10">
+    <nav class="commerce-nav" aria-label="Shop and membership">
+      {nav.map(({ href, text }) => <a href={href} aria-current={here === href ? 'page' : here.startsWith(href) ? 'location' : undefined}>{text}</a>)}
+    </nav>
+    <p class="staging-label">Staging · Stripe test mode</p>
+    <div class="commerce-heading">
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+    <slot />
+  </div>
+</BaseLayout>
+<style is:global>
+  .commerce { --commerce-border: rgba(255,255,255,.13); --commerce-warm: rgba(255,138,61,.36); }
+  .commerce-nav { display:flex; flex-wrap:wrap; gap:.4rem; padding:.55rem; border:1px solid var(--commerce-border); border-radius:24px; background:rgba(255,255,255,.045); }
+  .commerce-nav a { display:inline-flex; min-height:42px; align-items:center; padding:.4rem .7rem; border:1px solid var(--commerce-border); border-radius:999px; color:#ffb16f; font:650 .8rem/1.3 var(--font-mono); text-decoration:none; }
+  .commerce-nav a[aria-current], .commerce-nav a:hover { color:#ffd2a6; border-color:var(--commerce-warm); background:rgba(194,65,22,.17); }
+  .commerce .staging-label { margin:.65rem 0 0; color:#c7c8d5; font:500 .8rem/1.5 var(--font-mono); }
+  .commerce-heading { padding:clamp(2rem,6vw,5rem) 0 clamp(1.5rem,3.5vw,2.9rem); }
+  .commerce-heading h1 { max-width:17ch; margin:0 0 .8rem; font-family:var(--font-heading); font-size:clamp(2.5rem,7vw,5.5rem); font-weight:820; line-height:.98; }
+  .commerce-heading p { max-width:61ch; color:#c7c8d5; font-size:1.1rem; }
+  .commerce-grid { display:grid; gap:1rem; }
+  .commerce-panel { min-width:0; padding:clamp(1rem,3vw,1.7rem); border:1px solid var(--commerce-border); border-radius:24px; background:linear-gradient(rgba(255,255,255,.075),rgba(255,255,255,.027)); }
+  .commerce-panel h2 { margin:0 0 .6rem; font-family:var(--font-heading); font-size:clamp(1.45rem,2.7vw,2rem); font-weight:780; line-height:1.12; }
+  .commerce-panel p { margin:0 0 .75rem; color:#c7c8d5; }
+  .commerce-panel p:last-child { margin-bottom:0; }
+  .commerce a:focus-visible, .commerce button:focus-visible, .commerce input:focus-visible { outline:2px solid #ffd2a6; outline-offset:4px; }
+  .commerce .price { margin:.35rem 0 .85rem; color:#f8fafc; font:780 2rem/1.1 var(--font-heading); }
+  .commerce-action { display:inline-flex; min-height:44px; align-items:center; justify-content:center; padding:.55rem .95rem; border:1px solid transparent; border-radius:999px; background:linear-gradient(125deg,#ffc58f,#ff9b56 57%,#e06c3d); color:#170b08; font:700 .83rem/1.3 var(--font-mono); text-align:center; text-decoration:none; cursor:pointer; }
+  .commerce-action:hover { color:#170b08; background:#ffd2a6; }
+  .commerce-action:disabled { opacity:.6; cursor:wait; }
+  .commerce-action.secondary { border-color:var(--commerce-warm); color:#ffd2a6; background:rgba(7,5,22,.35); }
+  .commerce-action.secondary:hover { color:#f8fafc; border-color:#ffb16f; }
+  .commerce-form { display:grid; justify-items:start; gap:.55rem; }
+  .commerce-form input { width:100%; min-height:44px; padding:.45rem .65rem; color:#f8fafc; background:#0c0b15; border:1px solid rgba(255,255,255,.27); border-radius:10px; }
+  .commerce [data-status]:empty { display:none; }
+  .commerce [data-status] { margin:.7rem 0; overflow-wrap:anywhere; }
+  .commerce-table { width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+  .commerce-table th, .commerce-table td { padding:.6rem .3rem; text-align:left; border-bottom:1px solid var(--commerce-border); }
+  .commerce-table td { text-align:right; white-space:nowrap; }
+  .commerce-table tbody tr:last-child { background:rgba(194,65,22,.16); color:#ffd2a6; }
+  .commerce-detail { display:grid; gap:1rem; align-items:start; }
+  .commerce-sep { margin-top:1rem; }
+  .commerce-list { margin:.65rem 0; padding-left:1.25rem; list-style:disc; }
+  .commerce-library { display:grid; gap:1rem; }
+  .commerce-library li { list-style:none; }
+  @media(min-width:700px) {
+    .commerce-grid.two, .commerce-detail { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .commerce-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  }
+</style>

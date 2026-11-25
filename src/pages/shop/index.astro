@@ -1,0 +1,16 @@
+---
+import CommerceLayout from '../../components/commerce/CommerceLayout.astro';
+import { aed, workbooks } from '../../data/commerce.mjs';
+---
+<CommerceLayout title="The Ashmo shop" description="Editable Excel workbooks for restaurant finance and operations. Pay once and check out as a guest.">
+  <div class="commerce-grid three">
+    {workbooks.map((item) => <article class="commerce-panel">
+      <p class="mono-label">{item.category}</p>
+      <h2>{item.name}</h2>
+      <p>{item.description}</p>
+      <p class="price">{aed(item.amount)}</p>
+      <a class="commerce-action" href={`/shop/${item.id}/`}>View workbook</a>
+    </article>)}
+  </div>
+  <p class="commerce-sep">All three workbooks are included with <a href="/membership/">Ashmo Membership</a>.</p>
+</CommerceLayout>

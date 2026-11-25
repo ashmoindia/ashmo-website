@@ -18,6 +18,7 @@ interface Props {
   publishedDate?: Date;
   breadcrumbs?: BreadcrumbItem[];
   noindex?: boolean;
+  analytics?: boolean;
   extraSchema?: Record<string, unknown>[];
   /* Optional override for the <body> class list. When omitted, the default
      site background/typography is used so every existing page is unchanged. */
@@ -32,6 +33,7 @@ const {
   publishedDate,
   breadcrumbs,
   noindex = false,
+  analytics = true,
   extraSchema,
   bodyClass,
 } = Astro.props;
@@ -84,11 +86,11 @@ if (extraSchema && extraSchema.length > 0) entityGraph.push(...extraSchema);
 <html lang="en">
 <head>
   <!-- Google Tag Manager -->
-  <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  {analytics && <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TB2V4B96');</script>
+  })(window,document,'script','dataLayer','GTM-TB2V4B96');</script>}
   <!-- End Google Tag Manager -->
 
   <meta charset="utf-8" />
@@ -128,12 +130,12 @@ if (extraSchema && extraSchema.length > 0) entityGraph.push(...extraSchema);
   <!-- JSON-LD: entity graph -->
   <script is:inline type="application/ld+json" set:html={JSON.stringify(entityGraph)} />
 
-  {isChallengePath && <MetaPixel />}
+  {analytics && isChallengePath && <MetaPixel />}
 </head>
 <body class={resolvedBodyClass}>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2V4B96"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {analytics && <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TB2V4B96"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>}
   <!-- End Google Tag Manager (noscript) -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-accent focus:text-bg focus:px-4 focus:py-2 focus:rounded focus:text-sm">Skip to main content</a>
   <Header />

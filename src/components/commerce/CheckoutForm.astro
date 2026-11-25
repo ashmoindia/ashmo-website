@@ -1,0 +1,16 @@
+---
+interface Props {
+  id: string;
+  subscription?: boolean;
+}
+const { id, subscription = false } = Astro.props;
+---
+<form method="post" class="commerce-form" data-checkout={id}>
+  <label for={`email-${id}`}>Email for checkout</label>
+  <input id={`email-${id}`} type="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required />
+  <button class="commerce-action" type="submit">{subscription ? 'Start test membership' : 'Open test checkout'}</button>
+  <p data-status role="status"></p>
+</form>
+<script>
+  import '../../scripts/commerce-client';
+</script>

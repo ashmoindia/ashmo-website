@@ -1,0 +1,26 @@
+---
+import CommerceLayout from '../../components/commerce/CommerceLayout.astro';
+---
+<CommerceLayout title="Your Ashmo account" description="Find workbooks you bought, open membership resources or manage your billing.">
+  <section class="commerce-panel" data-account>
+    <h2>Library</h2>
+    <p data-status role="status">Checking your access…</p>
+    <ul class="commerce-library" data-library></ul>
+    <button class="commerce-action secondary" type="button" data-signout hidden>Sign out</button>
+  </section>
+  <section class="commerce-panel commerce-sep">
+    <h2>Recover access</h2>
+    <p>Use the email and the order reference from your Ashmo checkout.</p>
+    <form method="post" class="commerce-form" data-recover>
+      <label for="recover-email">Checkout email</label>
+      <input type="email" id="recover-email" name="email" autocomplete="email" maxlength="254" required />
+      <label for="recover-reference">Order reference</label>
+      <input id="recover-reference" name="reference" maxlength="128" required />
+      <button class="commerce-action" type="submit">Email my access link</button>
+      <p data-status role="status"></p>
+    </form>
+  </section>
+</CommerceLayout>
+<script>
+  import '../../scripts/commerce-client';
+</script>
