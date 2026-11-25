@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import FinanceSectionNav from '../../../components/FinanceSectionNav.astro';
+const commercePreview = ['deploy-preview', 'branch-deploy'].includes(process.env.CONTEXT || '');
 import { financeTemplates } from '../../../data/restaurantFinance';
 ---
 
@@ -9,6 +10,11 @@ import { financeTemplates } from '../../../data/restaurantFinance';
   description="Download restaurant finance workbooks for UAE teams: P&L, weekly flash reporting, recipe costing, budgets, and business planning."
 >
   <FinanceSectionNav />
+  {commercePreview && (
+    <div class="mx-auto max-w-[1200px] px-6 pt-5 md:px-12">
+      <p class="feature-card px-5 py-4 text-text-secondary">Explore upgraded workbooks in the <a class="text-accent-light" href="/shop/">shop preview</a> or compare <a class="text-accent-light" href="/membership/">membership plans</a>.</p>
+    </div>
+  )}
   <section class="max-w-[1200px] mx-auto px-6 md:px-12 pt-10 md:pt-16 pb-20 md:pb-28">
     <div class="max-w-[760px] mb-12">
       <p class="text-[0.72rem] uppercase tracking-[0.18em] text-accent mb-3">Templates</p>

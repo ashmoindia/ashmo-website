@@ -1,0 +1,21 @@
+---
+import CommerceLayout from '../../components/commerce/CommerceLayout.astro';
+import CheckoutForm from '../../components/commerce/CheckoutForm.astro';
+import { aed, plans, workbooks } from '../../data/commerce.mjs';
+---
+<CommerceLayout title="Ashmo Membership" description="Full playbooks, worked examples and editable tools for owners who review sales and margins every month.">
+  <div class="commerce-grid two">
+    {plans.map(plan => <section class="commerce-panel">
+      <h2>{plan.label}</h2>
+      <p class="price">{aed(plan.amount)} / {plan.interval}</p>
+      <p>{plan.interval === 'year' ? 'Save AED 138 over 12 monthly payments.' : 'Billed monthly. Access runs through the paid period.'}</p>
+      <CheckoutForm id={plan.id} subscription />
+    </section>)}
+  </div>
+  <section class="commerce-panel commerce-sep">
+    <h2>Included in the library</h2>
+    <ul class="commerce-list">{workbooks.map(item => <li>{item.name}</li>)}<li>Month-end review playbook</li></ul>
+    <p>Membership renews until cancelled. A workbook bought separately stays in your purchases even when membership ends.</p>
+    <a href="/account/">Open your library</a>
+  </section>
+</CommerceLayout>
