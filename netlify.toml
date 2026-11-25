@@ -2,6 +2,80 @@
   command = "npm run build"
   publish = "dist"
 
+
+# Withdrawn publications must not serve their original content.
+[[redirects]]
+  from = "/work/filli-cafe"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/work/filli-cafe/"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/work/filli-cafe/*"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/work/filli-cafe.html"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/thinking/ai-marketing-70-outlet-chain"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/thinking/ai-marketing-70-outlet-chain/"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/thinking/ai-marketing-70-outlet-chain/*"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/thinking/ai-marketing-70-outlet-chain.html"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/work/the-podcast"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/work/the-podcast/"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/work/the-podcast/*"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
+[[redirects]]
+  from = "/work/the-podcast.html"
+  to = "/410/index.html"
+  status = 410
+  force = true
+
 [[edge_functions]]
   path = "/admin/*"
   function = "admin-auth"

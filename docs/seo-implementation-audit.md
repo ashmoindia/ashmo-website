@@ -68,7 +68,7 @@
   - Added `mainEntityOfPage` pointing to `/ashraf-hassan/`
   - Added `address` (Dubai, AE)
   - Added `knowsLanguage` (en, ar, hi, ml)
-  - Added `worksFor.url` (FiLLi Cafe)
+  Employer attribution removed from current structured data during the confidentiality content review.
   - Expanded `knowsAbout` (F&B Operations, Franchise Scaling, AI-assisted Marketing, GCC F&B Markets)
 - Updated `websiteSchema`:
   - Publisher is now `Organization` (was `Person`)
@@ -149,7 +149,7 @@ Every page now emits this entity graph (via BaseLayout):
     @id: https://ashmo.io/#person
     mainEntityOfPage: /ashraf-hassan/
     address: Dubai, AE
-    worksFor: FiLLi Cafe
+  Employer attribution removed from current structured data during the confidentiality content review.
     knowsAbout: [Brand Strategy, Cafe Growth, F&B Operations, ...]
 
   Organization (Ashmo)

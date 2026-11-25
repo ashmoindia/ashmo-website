@@ -2,6 +2,7 @@
 title: "Selling Is Not Persuasion. It Is Perception."
 description: "The best sellers are rarely the loudest people in the room. They are the ones who notice what the customer is already feeling before a word is spoken."
 date: 2026-04-11
+updated: 2026-11-06
 pillar: merchant-mindset
 tags: ["selling", "perception", "merchant"]
 featured: false
@@ -131,7 +132,7 @@ Not shallow ones.
 
 They force you to stop admiring your own intentions and start examining the experience from the other side of the counter.
 
-That habit has stayed with me from early retail to [FiLLi Cafe](/work/filli-cafe/) to every strategic conversation I have now.
+Looking at the experience from the customer's side of the counter remains a useful habit across retail, marketing and public writing.
 
 The language changes. The principle does not.
 

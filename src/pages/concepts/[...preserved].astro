@@ -1,0 +1,15 @@
+---
+import manifest from '../../preserved-publications/manifest.json';
+
+export function getStaticPaths() {
+  const pages = import.meta.glob('../../preserved-publications/*.html', {
+    query: '?raw', import: 'default', eager: true,
+  });
+  return manifest.filter(item => item.url.startsWith('https://ashmo.io/concepts/') && item.url !== 'https://ashmo.io/concepts/').map(item => ({
+    params: { preserved: new URL(item.url).pathname.split('/').filter(Boolean).at(-1) },
+    props: { html: pages['../../preserved-publications/' + item.snapshot.split('/').at(-1)] as string },
+  }));
+}
+
+return new Response(Astro.props.html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+---

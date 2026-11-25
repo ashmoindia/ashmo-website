@@ -13,7 +13,7 @@ const purplePillars = ['ai-selling', 'habit-philosophy'];
     title="Conversations on brand, growth, and"
     highlight="commercial judgment."
     description="Long-form conversations and public notes on F&B growth, founder clarity, AI-age execution, and the discipline behind building brands."
-    primary={{ href: '#episodes', label: podcastEpisodes.length > 1 ? 'Watch episodes' : 'Watch conversation' }}
+    primary={{ href: '/thinking/', label: 'Read business notes' }}
     secondary={{ href: '/thinking/', label: 'Browse Insights' }}
     stats={[
       { value: String(podcastEpisodes.length), label: 'episodes' },
@@ -27,12 +27,13 @@ const purplePillars = ['ai-selling', 'habit-philosophy'];
 
   <section id="episodes" class="section-shell pb-24 md:pb-32">
     <div class="mb-10">
-      <p class="mono-label mb-4">{podcastEpisodes.length > 1 ? 'Conversation archive' : 'Featured conversation'}</p>
+      <p class="mono-label mb-4">{podcastEpisodes.length ? 'Conversation archive' : 'Conversations'}</p>
       <h2 class="section-title max-w-[12ch]">
-        {podcastEpisodes.length > 1 ? 'Long-form talks on brand and growth.' : 'One useful conversation, clearly presented.'}
+        {podcastEpisodes.length ? 'Long-form talks on brand and growth.' : 'Explore the written notes.'}
       </h2>
     </div>
     <div class="flex flex-col gap-12">
+      {podcastEpisodes.length === 0 && <p class="text-text-secondary leading-relaxed">There are no recordings available here at present. Browse the business notes for independent educational guidance.</p>}
       {podcastEpisodes.map(ep => (
         <article class="feature-card overflow-hidden">
           <!-- Video Embed -->

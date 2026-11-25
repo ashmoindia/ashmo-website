@@ -9,11 +9,7 @@ import { getCollection } from 'astro:content';
 
 const allWork = await getCollection('work', ({ data }) => data.published);
 
-const sortedWork = allWork.sort((a, b) => {
-  if (a.id === 'filli-cafe') return -1;
-  if (b.id === 'filli-cafe') return 1;
-  return b.data.date.valueOf() - a.data.date.valueOf();
-});
+const sortedWork = allWork.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 const featuredWork = sortedWork[0];
 const archiveWork = featuredWork ? sortedWork.filter((item) => item.id !== featuredWork.id) : [];

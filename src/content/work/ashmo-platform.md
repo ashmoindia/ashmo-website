@@ -11,7 +11,7 @@ imageAlt: "ashmo.io personal brand website"
 
 ## Why Build This
 
-For two decades, I was the person behind the brand, not the public platform. FiLLi was the story the world knew. The useful work now is turning the judgment behind brand systems, growth, AI workflows, and market reading into something others can use.
+ashmo.io is my independent publishing project for general business guidance, public-source market notes and original educational tools. It does not offer access to employer systems or materials.
 
 ashmo.io exists because I believe the most useful business lessons are the ones nobody writes down. The messy ones. The ones that don't fit into a LinkedIn post.
 
@@ -26,9 +26,9 @@ ashmo.io exists because I believe the most useful business lessons are the ones 
 - Decision Discipline - restraint, prioritization, and cleaner choices
 - Founder Clarity - useful public thinking for people still building
 
-## How It's Built
+## This Website
 
-Intentionally simple. Astro for static generation. Markdown for content. Netlify for deployment. No CMS, no database, no complexity. The technology stays out of the way so the writing can breathe.
+This personal website uses Astro and Markdown, with hosting on Netlify. These details refer only to ashmo.io and describe no employer technology or infrastructure.
 
 The design follows the same principle: dark, focused, minimal. Strong hierarchy, clear routes, and enough restraint for the content to do the work.
 

@@ -2,6 +2,7 @@
 title: "Patience Is Not Passive"
 description: "There's a version of patience that looks like waiting. And there's a version that looks like doing the work every day while the results take their time."
 date: 2026-03-05
+updated: 2026-11-06
 pillar: habit-philosophy
 tags: ["patience", "discipline", "compounding"]
 featured: false
@@ -28,7 +29,7 @@ But nobody talks about the middle.
 
 The middle is where most people quit. It's the phase where effort and results are completely disconnected. You're working hard and nothing visible is happening. Research suggests that roughly 90% of startups fail, and many of them fail not because the idea was wrong, but because the founders couldn't sustain effort through this invisible phase.
 
-I spent years in the middle. At [FiLLi](/work/filli-cafe/), scaling from a handful of outlets to 100+ across 13 countries took over a decade of daily decisions that nobody saw. In my personal life, in my creative work — years where the effort was real but the reward was invisible.
+The gap between effort and visible results can be frustrating. That is a reason to review the evidence and the approach, rather than assume either that success is guaranteed or that slow progress means failure.
 
 > "When opportunity comes, it feels sudden to the world. But to you — it feels inevitable."
 
@@ -58,4 +59,4 @@ The discipline of showing up is the discipline of patience.
 
 They're the same thing.
 
-This is the same principle behind [what I learned in early retail](/thinking/grocery-shop-pricing-psychology/) and the same principle that [made FiLLi's brand positioning compound over a decade](/thinking/brand-positioning-hardest-thing/).
+This connects to [lessons from early retail](/thinking/grocery-shop-pricing-psychology/) and to [the value of clear brand positioning](/thinking/brand-positioning-hardest-thing/).

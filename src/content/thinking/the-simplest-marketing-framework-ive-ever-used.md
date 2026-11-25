@@ -2,6 +2,7 @@
 title: "The Simplest Marketing Framework I Use"
 description: "The best marketing framework I know is not complicated. It just forces the right questions in the right order."
 date: 2026-04-20
+updated: 2026-11-06
 pillar: merchant-mindset
 tags: ["marketing", "framework", "customers"]
 featured: false
@@ -137,15 +138,15 @@ And most importantly, they stop teams from blaming creative for problems that st
 
 ## What does this look like in practice?
 
-At FiLLi, a strong seasonal push might look something like this:
+**Hypothetical example:** consider a fictional independent sandwich shop planning a lunchtime message. This is an invented illustration, not an employer campaign.
 
-**Moment:** customers want comfort, familiarity, and an easy break in the middle of a long day.
+**Moment:** someone needs a straightforward lunch during a short break.
 
-**Message:** Zafran Chai is the reliable answer to that moment.
+**Message:** explain the sandwich choice clearly.
 
-**Proof:** years of brand familiarity, real product memory, visible consistency across locations.
+**Proof:** use an accurate product description and an original photo the shop has permission to publish.
 
-**Path:** walk into the nearest FiLLi or order quickly through the channel already in their routine.
+**Path:** give a clear collection or ordering instruction.
 
 Nothing about that is overly clever.
 

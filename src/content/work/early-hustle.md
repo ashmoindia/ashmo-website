@@ -37,6 +37,6 @@ That's branding. I just didn't have the word for it yet.
 
 > The years that look wasted are often the ones doing the most work.
 
-When [FiLLi](/work/filli-cafe/) came along, I wasn't starting from zero. I was starting from fifteen years of preparation that finally had a name.
+Those early commercial and creative years shaped my interest in how customers understand value.
 
 I've written more about pricing psychology and how those same instincts shaped [my thinking on patience as a strategy](/thinking/patience-is-not-passive/).
